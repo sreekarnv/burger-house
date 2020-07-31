@@ -1,0 +1,234 @@
+.home{
+    display: grid;
+    grid-template-rows: (
+        8rem [hero-start] 100vh [hero-end burger-builder-start] 40vh [burger-builder-end popular-start] 1fr [popular-end reviews-start] .5fr [reviews-end]
+    );
+    grid-template-columns: [full-start] 1fr [full-end];
+}
+
+.section-hero {
+    grid-row: hero-start / hero-end;
+    grid-column: full-start / full-end;
+    background-image: linear-gradient(to right bottom,
+    rgba($color-white, .1), rgba($color-white, .6)),
+    url(../../assets/images/Home-bg-large.jpg);
+    
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: grid;
+    grid-template-columns: [full-start] 1fr [main-start] 2fr [main-end] 3fr [full-end];
+    grid-template-rows: 2fr 1fr;
+    
+
+    @include respond(tab-land) {
+        height: auto;
+        grid-template-rows: 1fr 2fr 1fr;
+    }
+
+    @include respond(phone) {
+        background-size: initial;
+        grid-template-rows: 1fr 2fr 2fr 1fr;
+        background-image: linear-gradient(to right bottom,
+        rgba($color-white, .1), rgba($color-white, .6)),
+       url(../../assets/images/Home-bg-small.jpg);
+    }
+
+
+    .hero__header {
+        background-color: rgba($color-black, .9);
+        grid-column: main-start / main-end ;
+        grid-row: 1 / 2;
+
+        display: grid;
+        justify-content: center;
+        align-content: space-evenly;
+        justify-items: start;
+        align-items: start;
+
+        @include respond(tab-land) {
+            grid-row: 2 / 3;
+            grid-column: full-start / main-end;
+        }
+
+        @include respond(phone) {
+            grid-column: full-start / full-end;
+        }
+    }
+
+    .hero__promises {
+        @include respond(tab-land) {
+            grid-row: 2 / 3;
+            grid-column: main-end / full-end;
+        }
+
+        @include respond(phone) {
+            grid-row: 3 / 4;
+            grid-column: full-start / full-end;
+        }
+
+        background-image: linear-gradient(to right,
+        rgba($color-white, .55), rgba($color-white, .95));
+
+        grid-column: main-start / main-end;
+        grid-row: 2 / 3;
+
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-row-gap: 1rem;
+
+
+        &-item {
+            color: $color-success;
+            fill: $color-success;
+            font-size: 2rem;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 2fr 4fr;
+            grid-column-gap: 2rem;
+            align-items: center;
+
+            @include respond(phone) {
+                grid-column-gap: 4rem;
+            }
+            
+            &-1 {
+                grid-row: 1 / 2;
+                align-self: end;
+            }
+
+            &-2 {
+                align-self: center;
+                grid-row: 2 / 3;
+            }
+
+            &-3 {
+                align-self: start;
+                grid-row: 3 / 4;
+            }
+            
+        }
+        .icon-check {
+            grid-column: 1 / 2;
+            justify-self: end;
+        }
+    }
+}
+
+
+.section-popular { 
+    background-color: $color-grey-light;
+    grid-row: popular-start / popular-end;
+    grid-column: full-start / full-end;
+
+    display: grid;
+    grid-template-rows: 8rem [heading-start] 4rem [heading-end card-start] 1fr [card-end] 2rem ;
+    grid-template-columns: 1fr;;
+    grid-gap: 5rem;
+
+    background-color: $color-secondary;
+
+    justify-items: center;
+    align-items: center;
+ 
+  
+    .popular__heading {
+        grid-row: heading-start / heading-end;
+        align-self: center;
+        justify-self: center;
+        color: $color-primary;
+    }
+
+    .popular__card{
+        grid-row: card-start / card-end;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        justify-items: center;
+        grid-template-columns:repeat(auto-fit, minmax(45rem, 1fr)) ;
+        grid-gap: 8rem;
+    }
+
+}
+
+.section-reviews {
+    height: 100vh;
+    padding: 4rem 0;
+    grid-column: full-start / full-end;
+    grid-row: reviews-start / reviews-end;
+    align-items: center;
+    justify-items: center;
+    background-color: $color-grey-light;
+
+    display: grid;
+    grid-template-rows: [heading-start] 1fr [heading-end review-start] 6fr [review-end];
+    grid-template-columns: 1fr [main-start] 4fr [main-end] 1fr;
+
+    @include respond(tab-port) {
+        height: auto;
+    }
+
+    .reviews__heading {
+        grid-column: main-start / main-end;
+        grid-row: heading-start / heading-end;
+        color: $color-primary;
+    }
+
+    .reviews {
+        grid-column: main-start / main-end;
+        grid-row: review-start / review-end;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit,  1fr);
+        grid-row-gap: 5rem;
+        align-items: center;
+        justify-items: center;
+    }
+}
+
+.section-burgerbuilder {
+    grid-row: burger-builder-start / burger-builder-end;
+    grid-column: full-start / full-end;
+
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr [main-start] 2fr [main-end] 1fr ;
+    align-items: center;
+    justify-items: center;
+
+    background-image: linear-gradient(to right bottom,
+    rgba($color-black, .75), rgba($color-black, .75)), 
+    url(../../assets/images/gallery-2.jpg);
+    background-position: center;
+
+    grid-row-gap: 5rem;
+    text-align: center;
+
+
+    @include respond(tab-land) {
+        height: auto;
+        grid-template-columns: .5fr [main-start] 2fr [main-end] .5fr ;
+    }
+
+    @include respond(phone) {
+        grid-template-columns: .125fr [main-start] 4fr [main-end] .125fr ;
+    }
+
+
+    &__heading {
+        grid-row: 1 / 2;
+        grid-column: main-start / main-end;
+        align-self: end;
+        color: $color-secondary;
+        font-style: $font-heading;
+    }
+
+    &__btn {
+        grid-row: 2 / 3;
+        grid-column: main-start / main-end;
+        align-self: start;
+    }
+
+}

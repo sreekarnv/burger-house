@@ -1,0 +1,183 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        padding: .75rem 1.25rem;
+        border-radius: 2px;
+        outline: none;
+        font-size: 2rem;
+        border: none;
+        cursor: pointer;
+
+        @include respond(tab-land) {
+            font-size: 1.8rem;
+        }
+    }
+
+    &-sm {
+        font-size: 1.6rem;
+    }
+
+    &__addOrRemove {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    };
+
+    &__primary-round {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 50% !important;
+        height: 3rem;
+        width: 3rem;
+
+        @include respond(tab-port) {
+            width: 2rem;
+        }
+    }
+
+    &--large {
+        height: 4rem;
+        font-size: 3rem;
+        width: 4rem;
+   }
+
+    &__primary {
+        &,&:active{
+            border: 2px solid $color-primary;
+            color: $color-primary;
+            font-weight: 500;
+            background-color: transparent;
+            border-radius: 100px;
+            transition: all .2s;
+        }
+       
+        &:hover,
+        &:focus {
+            color: $color-white;
+            background-color: $color-primary;
+        }
+    }
+
+    
+    &__primary-disabled {
+        @include disabledButton;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 50% !important;
+        height: 3rem;
+        width: 3rem;
+       
+    }
+
+
+    &__tertiary {
+        @include simpleButton($color-white, $color-tertiary, 85%);
+
+        &,&:active {
+            box-shadow: $shadow-light;
+            font-weight: 500;
+        }
+    }
+
+    &__tertiary-goTo {
+        &,
+        &:active {
+            padding-right: 0;
+            padding-left: 0;
+            color: $color-tertiary;
+            font-weight: 400;
+            background-color: transparent;
+            border-bottom: 2px solid $color-tertiary;
+            transition: all .2s;
+        }
+       
+        span {
+            margin-left: 1rem;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:focus {
+            transform: translateX(1rem);
+        }
+
+        &:hover span,
+        &:focus span {
+            margin-left: 2rem;
+        }
+    }
+
+
+    &__tertiary-back {
+        padding-right: 0;
+        padding-left: 0;
+        color: $color-tertiary;
+        font-weight: 400;
+        background-color: transparent;
+        border-bottom: 2px solid $color-tertiary;
+        transition: all .2s;
+
+        span {
+            margin-right: 1rem;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:focus {
+            transform: translateX(-2rem);
+        }
+        
+        &:hover span,
+        &:focus span {
+            margin-right: 2rem;
+        }
+    }
+
+
+    &__delete {
+        @include svgButton($color-danger, transparent, 120%);
+    }
+
+    &__edit {
+        @include svgButton($color-secondary, transparent, 80%);
+    }
+    
+
+    &__success {
+        @include simpleButton($color-white, $color-success, 110%);
+    }
+
+
+    &__danger {
+        @include simpleButton($color-white, $color-danger, 90%);
+    }
+    
+ 
+    &__danger--outline {
+        @include simpleButtonOutline($color-danger, $color-white);
+    };
+
+
+    &__success--outline {
+        @include simpleButtonOutline($color-success, $color-white);
+    };
+
+ 
+    &__success--outline-disabled {
+        @include disabledButton;
+        background-color: transparent;
+        border-radius: 100px;
+        transition: all .2s;
+    };
+
+    &__logout {
+        @include simpleButton($color-danger, transparent, 70%);
+        font-size: 1.6rem;
+        text-transform: capitalize;
+    }
+}

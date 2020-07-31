@@ -1,0 +1,116 @@
+.card__cart {
+    width: 65%;
+    padding: 2rem;
+    background-color: $color-white;
+    display: grid;
+    grid-template-columns:[img-start] 1fr [img-end title-start] 1fr [title-end foodType-start] 1fr [foodType-end ing-start] 1fr [ing-end];
+    grid-template-rows: 2fr 1fr;  
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    box-shadow: $shadow-light;
+    border-radius: 3px;
+   
+    @include respond(tab-land) {
+        width: 80%;
+        grid-gap: 4rem;
+    }
+
+    @include respond(tab-port) {
+        width: 90%;
+    }
+
+    @include respond (phone) {
+        width: 95%;
+        grid-template-columns:[img-start] 1fr [img-end title-start] 1fr [title-end foodType-start] 1fr [foodType-end];
+        grid-template-rows: 2fr 1fr 1fr;  
+    }
+
+    &-img {
+        height: 10rem;
+        grid-column: img-start / img-end ;
+        grid-row:  1 / 2;
+    }
+
+    &-foodType {
+        font-size: 2rem;
+        grid-column: foodType-start /foodType-end ;
+        grid-row: 1 / 2;
+        text-transform: capitalize;
+
+        @include respond(tab-port) {
+            font-size: 1.6rem;
+            text-align: center;
+        }
+    }
+
+    &-title {
+        grid-column: title-start / title-end;
+        grid-row: 1 / 2;
+        font-size: 3rem;
+        font-weight: 400;
+        font-display: $font-heading;
+        color: rgba($color-tertiary, .75);
+
+        @include respond(tab-port) {
+            font-size: 2.5rem;
+        }
+    }
+
+    &-btn {
+        grid-column: img-start / title-start;
+        grid-row: 2 / 3;
+
+        @include respond(phone) {
+            grid-row: 3 / 4;
+        }
+    }
+
+    &-btn--delete {
+        grid-row: 2 / 3;
+        grid-column: foodType-start / foodType-end ;
+
+        @include respond(phone) {
+            grid-row: 3 / 4;
+            grid-column: foodType-start / foodType-end;
+        }
+    }
+
+    &-price {
+        grid-row: 2 / 3;
+        grid-column : title-start / title-end;
+        font-size: 4rem;
+        color: $color-primary;
+
+        @include respond(tab-port) {
+            font-size: 2.7rem;
+        }
+
+        @include respond(phone) {
+            grid-row: 3 / 4;
+            grid-column: title-start / title-end;
+        }
+    }
+
+    &-ingredients {
+        grid-row: 1 / 3;
+        grid-column : ing-start / ing-end;
+        font-size: 1.6rem;
+        color: rgba($color-black, .55);
+
+        @include respond(phone) {
+            grid-row: 2 / 3;
+            grid-column : 1 / -1;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    &-ingredient {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+body {
+    font-family: $font-default;
+    line-height: 1.7;
+
+    @include respond(tab-port) {
+        line-height: 1.3;
+    }
+}
+
+.heading-1 {
+    font-size: 5rem;
+    font-family: $font-heading;
+
+    @include respond(tab-land) {
+        font-size: 4rem;
+    } 
+
+    @include respond(tab-port) {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+}
+
+.heading-2 {
+    font-size: 3rem;
+    font-family: $font-heading;
+
+    @include respond(tab-land) {
+        font-size: 2.75rem;
+        text-align: center;
+        
+    }
+}
+

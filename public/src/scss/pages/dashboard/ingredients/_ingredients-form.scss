@@ -1,0 +1,60 @@
+.ingredients__form {
+    display: grid;
+    padding: 2rem;
+    height: 100vh;
+    grid-template-rows: 10rem [heading-start] 10rem [heading-end form-start] 1fr [form-end] ;
+    grid-template-columns: [full-start] 5rem [main-start] 1fr [main-end] 5rem [full-end];
+
+    align-items: center;
+    justify-items: center;
+
+    background-image: linear-gradient(rgba($color-white, .75), rgba($color-white, .75)),
+    url(../../../../assets/images/contact.jpg);
+
+    background-position: center;
+    background-size: cover;
+
+    @include respond(phone) {
+        grid-template-rows: 10rem [heading-start] 10rem [heading-end form-start] 70vh [form-end] ;
+    }
+
+
+    &-heading {
+        grid-column: main-start / main-end;
+        grid-row: heading-start / heading-end;
+        font-weight: 400;
+    }
+
+    &-back-btn {
+        grid-column: full-start / main-start;
+        grid-row: heading-start / heading-end;
+        margin-left: 8rem;
+    }
+
+    &-form {
+        grid-column: full-start / full-end;
+        grid-row: form-start / form-end;
+
+        @include respond(phone) {
+            padding: 4rem;
+            padding-right: 6rem;
+        }
+    }
+}
+
+
+.ingredients-preview-img {
+    &-bg {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+    }
+
+    &-image {
+        height: 5rem;
+        width: 5rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+    }
+}

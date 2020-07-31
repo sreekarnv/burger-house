@@ -1,0 +1,76 @@
+.card__static {
+    background-color: rgba($color-white, .7);
+    width : 60%;
+    height: 80vh;
+    border-top-left-radius: 20rem;
+    border-top-right-radius: .2rem;
+    border-bottom-right-radius: 20rem;
+    border-bottom-left-radius: .2rem;
+    box-shadow: $shadow-medium;
+
+    display : grid;
+    grid-template-rows:  [brand-start] 1fr [brand-end body-start] 5fr [body-end] 1fr ;
+    grid-template-columns: [full-start] 1fr [main-start] 4fr [main-end] 1fr [full-end];
+
+
+    @include respond(tab-land) {
+        width: 85%;
+        grid-template-rows:  [brand-start] .5fr [brand-end body-start] 1fr [body-end] 3rem ;
+        grid-template-columns: [full-start] 5rem [main-start] 1fr [main-end] 5rem [full-end];
+        border-radius: 3px;
+    
+    }
+
+    @include respond(tab-port) {
+        width: 95%;
+        height: auto;
+    }
+
+    &-brand {
+        text-align: center; 
+        align-self: center;
+        justify-self: center;
+        grid-row: brand-start / brand-end;
+        grid-column: main-start / main-end;
+        height: 20rem;
+        width: 20rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &-brand-name {
+        font-size: 3rem;
+        font-family: $font-brand;
+        color: $color-tertiary;
+
+        @include respond(tab-land) {
+            font-size: 4rem;
+        }
+    }
+
+    &-para {
+        grid-row: body-start / body-end;
+        align-self: center;
+        grid-column: main-start / main-end;
+        font-size: 1.8rem;
+        color: $color-primary;
+        font-style: italic;
+        letter-spacing: 1px;
+
+        @include respond(tab-land) {
+            font-size: 2.75rem;
+        }
+    }
+
+    &-form {
+        grid-row: body-start / body-end;
+        align-self: center;
+        justify-self: center;
+        grid-column: main-start / main-end;
+        font-size: 1.8rem;
+        width: 80%;
+    }
+}

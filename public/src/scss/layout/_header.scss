@@ -1,0 +1,90 @@
+.header {
+    width: 100%;
+    height: 4rem;
+    display: grid;
+    grid-template-columns: 1fr [header-brand-start] .75fr [header-brand-end header-nav-start] 2fr [header-nav-end] 1fr;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    padding: 2rem 0;
+    position: fixed;
+    z-index: 100;
+    background-color: $color-white;
+
+    @include respond(tab-land) {
+        height: 8rem;
+        grid-template-columns: 1fr [header-brand-start header-nav-start] 6fr [header-nav-end header-brand-end] 1fr;
+        grid-template-rows:  [header-brand-start] 1fr [header-brand-end header-nav-start] 1fr [header-nav-end];
+        justify-items: center;
+        grid-row-gap: 3rem;
+    }
+
+    &__brand {
+        grid-column: header-brand-start / header-brand-end ;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+
+        @include respond(tab-land) {
+            grid-row: header-brand-start / header-brand-end;
+            font-size: 2.25rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        &-name {
+            font-family: $font-brand;
+            font-size: 2.65rem;
+            color: $color-black;
+        }
+    }
+
+    &__logo {
+        height: 3rem;
+        margin-right: 1rem;
+    }
+
+    &__nav {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        justify-self: end;
+        align-self: center;
+        align-items: center;
+        justify-items: center;
+        grid-column-gap: 2rem;
+
+        
+        @include respond(tab-land) {
+            width: 100%;
+            grid-row: header-nav-start / header-nav-end;
+            grid-column: header-nav-start / header-nav-end;
+            justify-content: center;
+        }
+
+        &-item {
+            padding: .75rem 1rem;
+            list-style: none;
+            position: relative;
+        }
+
+    
+        &-link {
+            font-size: 1.6rem;
+            color: $color-black;
+            text-decoration: none;
+            transition: all .2s ease-out;
+
+            @include respond(tab-port) {
+                font-size: 1.5rem;
+            }
+           
+
+            &--active,
+            &:hover {
+                color: $color-tertiary;
+            }
+        }
+
+    }
+}

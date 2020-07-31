@@ -1,0 +1,144 @@
+/*
+    ORDER DETAIL PAGE
+*/
+.order__details {
+    display: grid;
+    grid-template-rows: [heading-start] .25fr [heading-end btn-start] .125fr [btn-end info-start] 1fr [info-end list-start] 1fr [list-end];
+    grid-template-columns: [full-start] 2.5rem [main-start] 1fr [main-end] 2.5rem [full-end];
+    height: 100vh;
+    background-image: linear-gradient(rgba($color-white, .75), rgba($color-white, .75)),
+    url(./../../../../assets/images/contact.jpg);
+    align-items: center;
+    justify-items: center;
+
+    // orders detail page heading
+    &-heading {
+        grid-row: heading-start / heading-end;
+        grid-column: full-start / full-end;
+        color: $color-primary;
+        font-weight: 400;
+        
+        @include respond(tab-land) {
+            margin-top: 8rem;
+        }
+    }
+
+    // go back button
+    &-back-btn {
+        grid-row: btn-start / btn-end;
+        grid-column: main-start / main-end;
+        justify-self: start;
+
+        @include respond(tab-port) {
+            justify-self: center;
+        }
+    }
+
+    // Information and status of orders
+    &-info {
+        grid-column: full-start / full-end;
+        grid-row: info-start / info-end;
+        display: grid;
+        justify-content: space-around;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(auto-fit,minmax(30rem,max-content));
+        width: 80%;
+        grid-gap: 3rem;
+
+        @include respond(tab-port) {
+            justify-content: center;
+        }
+
+        @include respond(phone) {
+            text-align: center;            
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: $color-tertiary;
+            font-family: $font-heading;
+            font-weight: 400
+        }
+        
+        h4 {
+            font-size: 3rem;
+            font-weight: 400;
+            font-family: $font-heading;
+            color: $color-grey-dark
+        }
+
+        p {
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+    
+
+        // status cards
+        &-status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            &--total-orders {
+                transform: translateY(2.25rem);
+
+                @include respond(phone) {
+                    margin-bottom: 2rem;
+                }
+            }
+
+            &-card {
+                margin-bottom: 1.5rem;
+                h2 {
+                    font-size: 3rem;
+                    text-transform: capitalize;
+                }
+    
+                p {
+                    font-size: 4rem;
+                    text-transform: capitalize;
+                    color: $color-primary;
+                }
+            }           
+        }
+    }
+
+    // No. of Items list  
+    &-list {
+        grid-column: full-start / full-end;
+        grid-row: list-start/list-end;
+        align-self: start;
+        width: 70%;
+        display: grid;
+        grid-auto-rows: auto;
+        grid-gap: 3rem;
+
+        @include respond(phone) {
+            width: 90%
+        }
+
+        &-item-name {
+            font-size: 3rem;
+            color: $color-tertiary;
+
+            @include respond(phone) {
+                font-size: 2rem;
+            }
+        }
+
+        &-item-ings {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: 3rem;
+            font-size: 2rem;
+
+            @include respond(tab-port) {
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

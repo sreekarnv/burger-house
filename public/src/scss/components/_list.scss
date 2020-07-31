@@ -1,0 +1,33 @@
+.list__item {
+    display: grid;
+    
+    background-color: $color-white;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    box-shadow: $shadow-light;
+    font-size: 2rem;;
+    font-family: $font-heading;
+    color: $color-black;
+    cursor: pointer;
+    text-decoration: none;
+
+    align-items: center;
+    justify-items: center;
+
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 1.8rem;
+    }
+
+    @include respond(phone) {
+        font-size: 1.4rem;
+    }
+
+    &:hover,
+    &:focus {
+        outline: none;
+        box-shadow: $shadow-medium;
+        transform: translateX(-1.2rem);
+    }
+}

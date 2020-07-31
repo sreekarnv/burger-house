@@ -1,0 +1,39 @@
+.custom-burger {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 8rem 1fr;
+    grid-template-columns: repeat(2, 1fr);
+ 
+
+    @include respond(tab-port) {
+        grid-template-rows: 8rem 1fr 1fr;
+        grid-template-columns: 1fr;
+        position: relative;
+    }
+
+
+    .burger {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        width: 80%;
+
+
+        @include respond(tab-port) {
+            width: 55%;
+        }
+
+        @include respond(phone) {
+            width: 100%;
+        }
+    }
+
+    .controls {
+        background-color: $color-grey-light;
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+
+        @include respond(tab-port) {
+            grid-row: 3 / 4;
+            grid-column: 1 / 2;
+        }
+}}

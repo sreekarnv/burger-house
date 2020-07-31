@@ -1,0 +1,54 @@
+.ingredients {
+    display: grid;
+    grid-template-rows: 10rem [heading-start] 10rem [heading-end btn-start] 10rem [btn-end list-start] 1fr [list-end];
+    justify-items: center;
+    align-items: center;
+
+
+    &__heading {
+        grid-row: heading-start / heading-end;
+        font-weight: 400;
+    }
+
+    &__create-btn {
+        grid-row: btn-start / btn-end;
+    }
+
+    &__list {
+        grid-row: list-start / list-end;
+        width: 60%;
+
+        display: grid;
+        grid-auto-flow: row;
+        grid-gap: 2rem;
+
+        @include respond(tab-port) {
+            width: 70%;
+        }
+
+        @include respond(phone) {
+            width: 90%;
+        }
+    }
+}
+
+
+.ingredients__list-item {
+    grid-template-columns: 1fr 1fr 1fr 1.5fr 1fr 1fr ;
+
+
+    &-name {
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+
+    &-diet {
+        text-align: center
+    }
+
+    &-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $color-primary;
+    }
+}
