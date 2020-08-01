@@ -48,7 +48,6 @@ app.use('/api', limiter);
 app.use(express.json());
 
 
-app.use(compression());
 
 app.use('/uploads/burgers', express.static(path.join('uploads', 'burgers')))
 app.use('/uploads/ingredients', express.static(path.join('uploads', 'ingredients')))
@@ -62,6 +61,8 @@ app.use(mongoSanitize());
 // cleaning malicious Data aganinst XSS
 app.use(xss());
 
+
+app.use(compression());
 
 // ROUTES
 app.use('/api/v1/burgers', burgerRouter);
