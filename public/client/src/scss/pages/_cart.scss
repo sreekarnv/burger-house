@@ -1,0 +1,89 @@
+.section-cart {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 7rem [btn-goback-start] 5rem [btn-goback-end heading-start] 8rem [heading-end list-start] 1fr [list-end price-start] .5fr [price-end] ;
+    grid-template-columns: 1rem [full-start] 1fr  [price-start] .25fr  [full-end] 1rem;
+    grid-gap: 3rem;
+    background-color: $color-grey-light; 
+
+    @include respond(tab-land) {
+        grid-template-rows: 11rem [btn-goback-start] 5rem [btn-goback-end heading-start] 8rem [heading-end list-start] 1fr [list-end price-start] .5fr [price-end] ;
+    }
+}
+
+.cart__goback-btn {
+    grid-row: btn-goback-start / btn-goback-end;
+    grid-column: full-start / full-end;
+    justify-self: start;
+}
+
+.cart__heading {
+    align-self: start;
+    justify-self: center;
+    grid-row: heading-start / heading-end;
+    grid-column: full-start / full-end;
+    color: $color-primary;
+}
+
+.cart__empty {
+    text-align: center;
+    align-self: start;
+    justify-self: center;
+    grid-row: list-start / list-end;
+    grid-column: full-start / full-end;   
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 2.5rem;
+
+    &-heading {
+        font-size: 4.5rem;
+        color: rgba($color-grey-dark, .35);
+
+    }
+
+    &-btn {
+        grid-row: list-start  / list-end;
+
+        @include respond(tab-port) {
+            justify-self: center;
+        }
+    }
+}
+
+.cart {
+    grid-row: list-start / list-end;
+    grid-column : full-start / full-end;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    align-content: start;
+    grid-gap: 3rem;
+
+    
+    &:last-child {
+        margin-bottom: 2rem;
+    }
+}
+
+
+.cart__checkout {
+    grid-row: price-start / price-end; 
+    grid-column: price-start / full-end;
+
+    @include respond(tab-port) {
+        justify-self: center;
+        text-align: center;
+        grid-column: full-start / full-end;
+    }
+
+
+    &-price {
+        font-size: 3rem;
+        font-weight: 400;
+        color: rgba($color-primary, .6);
+        text-transform: uppercase;
+        font-family: $font-heading;
+    }
+}

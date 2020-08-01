@@ -1,0 +1,29 @@
+.error {
+    height: 100vh;
+    background-color: $color-grey-light; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: $font-heading;
+
+    &__text {
+        font-size: 5rem;
+        margin-bottom: 4rem;
+        color: $color-grey-dark;
+        text-align: center;
+
+        @include respond(tab-land) {
+            font-size: 4rem;
+        }
+
+        @include respond(tab-port) {
+            font-size: 3rem;
+        }
+
+        @include respond(phone) {
+            font-size: 2.75rem;
+        }
+        
+    }
+}

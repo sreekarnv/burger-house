@@ -1,0 +1,89 @@
+.custom-burger__home {
+    display: grid;;
+    grid-template-columns: 2rem [veg-start] 1fr [veg-end heading-start] 10rem [heading-end non-veg-start] 1fr [non-veg-end] 2rem;
+    height: 100vh;
+
+    align-items: center;
+    justify-items: center;
+
+    background-color: $color-white;
+
+
+    @include respond(tab-land) {
+        height: auto;
+        padding: none;
+        grid-template-columns: none;
+        grid-template-rows: 15rem [veg-start] 1fr [veg-end heading-start] 10rem [heading-end non-veg-start] 1fr [non-veg-end] ;
+    }
+
+    &-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 4px;
+        transform: scale(1);
+        transition: all .2s ease-out;
+        position: relative;
+        &:hover {
+            transform: scale(1.02);
+            filter: blur(2px) brightness(85%);
+        }
+    }
+
+    &-text {
+        background-color: $color-grey-light;
+        text-align: center;
+        padding: .25rem .7rem;
+        font-size: 3rem;
+        background-color: rgba($color-white, .65);
+        box-shadow: $shadow-light;
+        
+        &-veg {
+            transform: translateX(-8rem);
+        }
+    }
+
+    &-heading {
+        font-size: 4rem;
+        font-family: $font-heading;
+        color: $color-primary;
+        font-weight: 500;
+        grid-column: heading-start / heading-end;
+
+        @include respond(tab-land) {
+            grid-row: heading-start / heading-end;
+            font-size: 3rem;
+        }
+    }
+
+
+    &-veg,
+    &-non-veg {
+        object-fit: cover;
+        object-position: center;
+        overflow: hidden;
+        backface-visibility: hidden;
+    }
+
+    &-veg {
+        grid-column: veg-start / veg-end;
+        clip-path: polygon(0 0,0 100%,70% 100%,100% 0);
+        backface-visibility: hidden;
+
+        @include respond(tab-land) {
+            grid-row: veg-start / veg-end;
+        }
+    }
+
+    
+    &-non-veg {
+        grid-column: non-veg-start / non-veg-end;
+        clip-path: polygon(25% 0,0 100%,100% 100%,100% 0);
+        backface-visibility: hidden;
+       
+
+        @include respond(tab-land) {
+            grid-row: non-veg-start / non-veg-end;
+        }
+    }
+
+}

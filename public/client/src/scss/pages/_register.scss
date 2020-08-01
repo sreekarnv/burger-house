@@ -1,0 +1,53 @@
+.register {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-image: linear-gradient(rgba($color-black, .7 ), rgba($color-black, .7 )),
+    url(../../assets/images/gallery-1.jpg);
+    
+    background-position: center;
+    background-size: cover;
+
+    
+    @include respond(tab-port) {
+        background-image: linear-gradient(rgba($color-white, .7 ), rgba($color-white, .7 )),
+    url(../../assets/images/gallery-1.jpg);
+    }
+
+
+    &__form {
+        margin-top: 5rem ;
+        width : max-content;
+        padding-right: 4rem;
+        padding-left: 2rem;
+        height: 60vh;
+        background-color: rgba($color-white, .7 );
+        border-radius: 3px;
+        box-shadow: $shadow-light;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+
+        @include respond(tab-land) {
+            width: 30%;
+        }
+
+        @include respond(tab-port) {
+            width: 55%;
+            background-color: transparent;
+            box-shadow: none;
+            border-radius: none;
+            padding: 0 0 0 4rem;
+            transform: translateX(-2.75rem);
+            background-position: left;
+        }
+
+        @include respond(phone) {
+            width: 80%;
+        }
+    }
+}

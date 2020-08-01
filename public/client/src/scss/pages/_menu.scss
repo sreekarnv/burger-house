@@ -1,0 +1,54 @@
+.section-menu {
+    background-color: $color-grey-light;
+    display: grid;
+    grid-template-rows: 10rem [heading-start] 5rem [heading-end btn-start] 10rem [btn-end menu-list-start] 1fr [menu-list-end];
+    grid-template-columns: 2rem [main-start] 10fr [main-end] 2rem;
+
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+    grid-row-gap: 2rem;
+
+    .menu{
+        &__heading {
+            grid-row: heading-start / heading-end;
+            grid-column: main-start / main-end;
+            color: $color-primary;
+            font-weight: 400;
+            margin-top: 3rem;
+        }
+
+        &__list {
+            grid-row: menu-list-start / menu-list-end;
+            grid-column: main-start / main-end;   
+            
+
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+            grid-template-columns:repeat(auto-fit, minmax(45rem, max-content)) ;
+            margin-bottom: 8rem;
+            grid-gap: 4rem;
+        
+            @include respond(tab-land) {
+                grid-gap: 8rem;
+                margin-top: 4rem;
+            }
+        }
+
+        &__btn {
+            justify-self: end;
+            margin-right: 12rem;
+            grid-row: btn-start / btn-end;
+            grid-column: main-start / main-end;
+
+            @include respond(tab-land) {
+                justify-self: center;
+            margin-right: 0;
+            }
+        }
+    }
+}

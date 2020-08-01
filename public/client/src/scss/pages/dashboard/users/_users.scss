@@ -1,0 +1,97 @@
+.users {
+    display: grid;
+    grid-template-rows: [heading-start] 10rem [heading-end filter-start] 10rem [filter-end list-start] 1fr [list-end];
+    padding: 4rem 0;
+    align-items: center;
+    justify-items: center;
+    list-style: none;
+    
+    @include respond(tab-port) {
+        grid-row-gap : 3rem;
+    }
+
+    @include respond(phone) {
+        padding: 8rem 0;
+    }
+
+    &__heading {
+        grid-row: heading-start / heading-end;
+        margin-bottom: 4rem !important;
+        text-align: center;
+        font-weight: 400;
+        width: 100%;
+
+    }
+
+    &__list {
+        grid-row: list-start / list-end;
+        width: 60%;
+        padding: 4rem ;
+        display: flex;
+        flex-direction: column;
+        min-height: 80vh;
+
+        @include respond(tab-port) {
+            width: 70%;
+            margin-top: 4rem;
+        }
+
+        @include respond(phone) {
+            width: 90%;
+        }
+    }
+
+    &__list-item {
+        margin-bottom: 2rem;
+        grid-template-columns: .5fr 1fr .5fr .25fr .25fr;
+
+        &-name {
+            color: $color-tertiary;
+            grid-column: 1 / 2;
+            text-transform: capitalize;
+        }
+
+        &-email {
+            color: $color-grey-dark;
+            font-weight: 400;
+            grid-column: 2 / 3;
+        }
+
+        &-role {
+            color: rgba($color-primary, .65);
+            grid-column: 3 / 4;
+        }
+
+        &-edit {
+            grid-column: 4 / 5;
+        }
+
+        &-delete {
+            grid-column: 5 / 6;
+        }
+    }
+
+    &__filter-form {
+        grid-row: filter-start / filter-end;
+        display: grid;
+        grid-template-columns: 4fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        grid-gap: 5rem;
+        margin-bottom: 3rem;
+
+        .btn {
+            margin-bottom: 2rem;
+        }
+
+        select {
+            cursor: pointer;
+        }
+   
+        @include respond(tab-port) {
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+ .alert{
+    position: fixed;
+    left: 23.5%;
+    top: 10%;
+    z-index: 120;
+    background-color: $color-white;
+    width: 50%;
+    box-shadow: 0 1px 2px rgba($color-black, .45);
+    padding: 1.5rem;
+    border-radius: 3px;
+    transition: all 2s ease-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+
+    @include respond(tab-port) {
+        left: 10.5%;
+        width: 70%;
+    }
+
+    &--success {
+        background-color: $color-success;
+        color: $color-white;
+    }
+  
+    &--error,
+    &--fail {
+        background-color: $color-danger;
+        color: $color-white;
+    }
+  
+    &__true {
+        transform: translateY(0);
+        opacity: 1;
+    }
+  
+    &__false {
+        transform: translateY(-30vh);
+        opacity: 0;
+    }
+  }
+
+  

@@ -1,0 +1,97 @@
+.controls {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: $color-grey-light;
+
+        
+        &__choose {
+            width: 100%;
+            display: grid;
+            grid-template-rows: [question-start] 1fr [question-end btn-start] 1fr [btn-end];
+            grid-template-columns: [btn-veg-start] 1fr [btn-veg-end btn-nonveg-start] 1fr [btn-nonveg-end];
+            justify-items: center;
+            align-items: center;
+            grid-gap: 10rem;
+        }
+
+        &__question {
+            font-size: 3rem;
+            font-display: $font-heading;
+            grid-row: question-start / question-end;
+            grid-column: 1 / -1;
+        }
+
+        &__btn--veg {
+            grid-row: btn-start / btn-end;
+            grid-column : btn-veg-start / btn-veg-end;
+        }
+
+        &__btn--non-veg {
+            grid-row: btn-start / btn-end;
+            grid-column: btn-nonveg-start / btn-nonveg-end;
+        }
+        
+        
+
+        
+
+        &__ingredients {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            align-items: center;
+            justify-items: center;
+
+            grid-gap: 2.25rem;
+        }
+
+        &__price {
+            width: 100%;
+            grid-column: 1 / -1;
+            font-size: 2rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            color: $color-primary;
+            font-family: $font-heading;
+
+            &-value {
+                font-size: 2.25rem;
+                font-weight: bold;
+                color: $color-tertiary;
+            }
+        }
+
+
+        &__ingredient {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            justify-self: center;
+            align-self: center;
+            grid-column: 1 / -1;
+
+            &-name {
+                width: 25rem;
+                font-size: 2.5rem;
+
+                @include respond(tab-land) {
+                    font-size: 2rem;
+                }
+            }
+
+            &-img {
+                height: 3rem;
+                width: 3rem;
+                margin-right: 2rem;
+            }
+        }
+}
