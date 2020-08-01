@@ -8,7 +8,6 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const compression = require('compression');
 const burgerRouter = require('./routes/burgerRoutes');
 const userRouter = require('./routes/userRoutes');
 const IngredientRoutes = require('./routes/ingredientRoutes');
@@ -48,7 +47,6 @@ app.use('/api', limiter);
 app.use(express.json());
 
 
-app.use(compression());
 
 
 app.use('/uploads/burgers', express.static(path.join('uploads', 'burgers')))
