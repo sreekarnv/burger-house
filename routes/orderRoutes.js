@@ -23,18 +23,11 @@ router.route('/me')
 router.route('/:id')
     .get(
         authController.protectRoutes,
-        authController.restrictRoutes('admin'),
         ordersController.getOrder
     )
     .patch(
         authController.protectRoutes,
-        authController.restrictRoutes('admin'),
         ordersController.updateOrder
-    )
-    .delete(
-        authController.protectRoutes,
-        authController.restrictRoutes('admin'),
-        ordersController.deleteOrder
     )
 
 module.exports = router;

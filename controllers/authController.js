@@ -26,11 +26,8 @@ const generateCookie = (req, res, token) => {
 exports.LogoutUsers = async (req, res, next) => {
     try {
 
-        res.cookie('burgerHouse', null, {
-            expires: new Date(Date.now() + 1000),
-            httpOnly: true,
-            secure: (req.secure || req.headers('x-forwarded-proto') === 'https'),
-        })
+
+        generateCookie(req, res, null);
 
         res.status(200).json({
             status: 'success',

@@ -1,7 +1,6 @@
 const Order = require('./../models/orderModel');
 const AppError = require('../errors/AppError');
 
-
 exports.createOrder = async (req, res, next) => {
     try {
         let { menuOrders, customOrders, user, price } = req.body;
@@ -44,7 +43,10 @@ exports.getAllOrders = async (req, res, next) => {
 
 exports.getAllUserOrders = async (req, res, next) => {
     try {
-        const orders = await Order.find({ user: req.user.id }).populate('menuOrders').populate('user');
+        const orders = await Order.find({ user: req.user.id })
+            .populate('user')
+            .populate({ path: 'menuOrders', populate: { path: '_id' } })
+            .populate({ path: 'customOrders', populate: { path: 'ingredients', populate: { path: '_id' } } });
 
         res.status(200).json({
             status: 'success',
@@ -59,10 +61,10 @@ exports.getAllUserOrders = async (req, res, next) => {
 
 exports.getOrder = async (req, res, next) => {
     try {
-
         const order = await Order.findById(req.params.id)
-            .populate('menuOrders')
-            .populate('customOrders.ingredients._id');
+            .populate('user')
+            .populate({ path: 'menuOrders', populate: { path: '_id' } })
+            .populate({ path: 'customOrders', populate: { path: 'ingredients', populate: { path: '_id' } } });
 
         if (!order) {
             return next(new AppError('Order with this id does not exist', 404))
@@ -96,25 +98,6 @@ exports.updateOrder = async (req, res, next) => {
         res.status(200).json({
             status: 'success',
             order
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.deleteOrder = async (req, res, next) => {
-    try {
-
-        const order = await Order.findByIdAndDelete(req.params.id);
-
-        if (!order) {
-            return next(new AppError('Order with this id does not exist', 404))
-        }
-
-        res.status(204).json({
-            status: 'success',
-            order: null
         })
 
     } catch (err) {

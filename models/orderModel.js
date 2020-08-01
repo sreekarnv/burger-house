@@ -48,6 +48,13 @@ const orderSchema = new mongoose.Schema(
                     type: String,
                     default: `customBurger.jpg`
                 },
+                foodType: {
+                    type: String,
+                    enum: {
+                        values: ['vegetarian', 'non-vegetarian'],
+                        message: 'Can only have values vegetarian and non-vegetarian'
+                    }
+                },
                 items: {
                     type: String,
                 }
