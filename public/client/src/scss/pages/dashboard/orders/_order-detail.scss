@@ -110,6 +110,7 @@
 
     // No. of Items list  
     &-list {
+        padding: 2rem;
         grid-column: full-start / full-end;
         grid-row: list-start/list-end;
         align-self: start;

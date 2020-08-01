@@ -126,11 +126,11 @@ class OrderDetail extends Component {
                             <ListItem className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
                                 <React.Fragment>
                                     <p className="order__details-list-item-name">
-                                        {el._id.title || el._id.name} ({el.items})
+                                        {el._id.title} ({el.items})
                                     </p>
                                     <div className="order__details-list-item-ings">
                                         {el._id.ingredients.map(el2 => {
-                                            return <p>{el2.name} ({el2.amount})</p>
+                                            return <p>{el2._id.name ? el2._id.name : el2.name} ({el2.amount})</p>
                                         })}
                                     </div>
                                 </React.Fragment>
