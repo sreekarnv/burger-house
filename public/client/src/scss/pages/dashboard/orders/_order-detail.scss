@@ -3,11 +3,12 @@
 */
 .order__details {
     display: grid;
-    grid-template-rows: [heading-start] .25fr [heading-end btn-start] .125fr [btn-end info-start] 1fr [info-end list-start] 1fr [list-end];
+    grid-template-rows: [heading-start] .25fr [heading-end btn-start] .125fr [btn-end info-start] .6fr [info-end list-start] 1fr [list-end];
     grid-template-columns: [full-start] 2.5rem [main-start] 1fr [main-end] 2.5rem [full-end];
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(rgba($color-white, .75), rgba($color-white, .75)),
     url(./../../../../assets/images/contact.jpg);
+    padding-bottom: 2rem;
     align-items: center;
     justify-items: center;
 
