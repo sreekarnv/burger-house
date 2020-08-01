@@ -13,24 +13,23 @@ const verifyToken = token => {
     return jwt.verify(token, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE_TIME })
 }
 
-const generateCookie = (res, token) => {
-    const secure = process.env.NODE_ENV === 'production' ? true : false;
+const generateCookie = (req, res, token) => {
     res.cookie('burgerHouse', token, {
         expires: new Date(
             Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 60 * 60 * 1000
         ),
-        secure,
+        secure: (req.secure || req.headers('x-forwarded-proto') === 'https'),
         httpOnly: true,
     })
 }
 
 exports.LogoutUsers = async (req, res, next) => {
     try {
-        const secure = process.env.NODE_ENV === 'production' ? true : false;
+
         res.cookie('burgerHouse', null, {
             expires: new Date(Date.now() + 1000),
             httpOnly: true,
-            secure
+            secure: (req.secure || req.headers('x-forwarded-proto') === 'https'),
         })
 
         res.status(200).json({
@@ -53,7 +52,7 @@ exports.RegisterUsers = async (req, res, next) => {
         // 2. Create token an g generate cookie
         const token = await signToken(user._id);
 
-        generateCookie(res, token);
+        generateCookie(req, res, token);
 
         // 3. remove password from output
         user.password = undefined;
@@ -92,7 +91,7 @@ exports.LoginUsers = async (req, res, next) => {
         // 3. send JWT token
         const token = await signToken(user._id);
 
-        generateCookie(res, token);
+        generateCookie(req, res, token);
 
         user.password = undefined;
         user.passwordChangedAt = undefined;

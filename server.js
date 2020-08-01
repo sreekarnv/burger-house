@@ -5,7 +5,6 @@ dotenv.config({ path: './config.env' });
 
 const app = require('./app');
 
-
 const DATABASE = 'mongodb+srv://sreekarnv:<PASSWORD>@cluster0.kad9x.mongodb.net/burger-house?retryWrites=true&w=majority'
 
 const DB = `${DATABASE}`.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
@@ -20,7 +19,24 @@ mongoose.connect(DB, {
     .catch((err) => console.log(`Error regarding connection with database. Shutting down...`, err))
 
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
     console.log(process.env.NODE_ENV);
     console.log(`App running on port ${process.env.PORT}`);
+})
+
+// For Unhandeled Rejections
+process.on('unhandledRejection', err => {
+    console.log('UNHANDLED REJECTION, SHUTTING DOWN......');
+    console.log(err);
+    server.close(() => {
+        process.exit(1);
+    })
+})
+
+// For Heroku 
+process.on('SIGTERM', () => {
+    console.log('SIGTERM RECEIEVED. Shutting down....')
+    server.close(() => {
+        console.log('Process terminated...')
+    })
 })

@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 const morgan = require('morgan')
 const rateLimit = require('express-rate-limit');
@@ -15,9 +14,11 @@ const orderRoutes = require('./routes/orderRoutes');
 
 const globalErrorHandler = require('./errors/globalErrorHandler');
 
+const app = express();
+
+app.enable('trust proxy');
+
 // GLOBAL MIDDLEWARES 
-
-
 // development logger
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
