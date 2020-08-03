@@ -42,14 +42,10 @@ exports.LogoutUsers = async (req, res, next) => {
 exports.RegisterUsers = async (req, res, next) => {
     try {
         // 1.  Create User
-        const { name, email, password, passwordConfirm, role } = req.body;
+        const { name, email, password, passwordConfirm } = req.body;
 
-        const user = await User.create({ name, email, password, passwordConfirm, role })
+        const user = await User.create({ name, email, password, passwordConfirm })
 
-        // 2. Create token an g generate cookie
-        const token = await signToken(user._id);
-
-        generateCookie(req, res, token);
 
         // 3. remove password from output
         user.password = undefined;
@@ -57,9 +53,7 @@ exports.RegisterUsers = async (req, res, next) => {
 
         res.status(201).json({
             status: 'success',
-            // data: {
             user
-            // }
         })
     } catch (err) {
         next(err);
