@@ -86,13 +86,6 @@ userSchema.methods.changedPassword = async function (iat) {
     return false;
 }
 
-userSchema.methods.generateResetPassToken = async function () {
-    const token = crypto.randomBytes(32).toString('hex')
-    this.passwordResetToken = crypto.createHash('sha256').update(token).digest('hex');
-    this.passwordResetExpireTime = Date.now() + 1000 * 60 * 10
-    return token;
-}
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

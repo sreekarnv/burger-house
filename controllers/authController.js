@@ -25,8 +25,6 @@ const generateCookie = (req, res, token) => {
 
 exports.LogoutUsers = async (req, res, next) => {
     try {
-
-
         generateCookie(req, res, null);
 
         res.status(200).json({
