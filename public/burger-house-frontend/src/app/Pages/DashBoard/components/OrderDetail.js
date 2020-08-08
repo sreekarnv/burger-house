@@ -100,7 +100,7 @@ class OrderDetail extends Component {
                             value={this.state.orders.status}
                         />
                         {this.props.loggedInUser.role === 'admin' && this.props.match.url.startsWith('/dashboard/manage-orders/') &&
-                            <button onClick={this.onChangeStatusHandler}
+                            <button onClick={this.onChangeStatusHandler} disabled={this.state.orders.status === 'cancelled' ? true : false}
                                 className={`btn btn__success--outline${this.state.orders.status === 'cancelled' ? '-disabled' : ''} `}>
                                 Mark Order as {this.state.orders.status === 'pending' ? 'Delivered' : 'Pending'}
                             </button>}

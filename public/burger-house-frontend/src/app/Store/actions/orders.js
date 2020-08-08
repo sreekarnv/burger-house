@@ -259,6 +259,7 @@ export const getOrder = (id) => {
                     },
                     items: parseInt(el.items),
                 })
+                return customOrders;
             })
 
             order = {
