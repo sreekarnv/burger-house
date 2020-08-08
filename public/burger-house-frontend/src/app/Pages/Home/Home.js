@@ -108,7 +108,7 @@ class Home extends Component {
                     addItem={this.incrementBurgerInCart}
                     removeItem={this.decrementItemFromCartHandler}
                     addItemToCart={this.addItemToCart} />
-            }).reverse().slice(0, 3);
+            }).slice(0, 3);
         }
 
         if (this.props.loading || this.state.isLoading) {

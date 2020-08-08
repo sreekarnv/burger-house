@@ -234,7 +234,6 @@ export const updateCurrentUserPassword = (data) => {
                 data,
             })
             dispatch(updateCurrentUserPasswordSuccess())
-            dispatch(logout());
         } catch (err) {
             let error = { ...err }.response ? { ...err }.response.data : err
             dispatch(updateCurrentUserPasswordFailed(error))
