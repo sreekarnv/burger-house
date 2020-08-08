@@ -57,16 +57,16 @@ class UpdateUserPassword extends Component {
         if (this.props.userPasswordStatus === 'success') {
             status = this.props.userPasswordStatus
             message = 'User Password updated Successfully'
-        } else {
-            status = this.props.userPasswordStatus.status;
-            message = this.props.userPasswordStatus.message;
-        }
+            this.showAlertHandler(message, status)
 
-        this.showAlertHandler(message, status)
-        if (status === 'success') {
             this.LogoutTimer = setTimeout(() => {
                 this.props.history.replace('/logout');
             }, 2500)
+
+        } else {
+            status = this.props.userPasswordStatus.status;
+            message = this.props.userPasswordStatus.message;
+            this.showAlertHandler(message, status)
         }
     }
 
