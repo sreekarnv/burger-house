@@ -48,12 +48,15 @@ app.use('/api', limiter);
 app.use(express.json());
 
 
-
-
 app.use('/uploads/burgers', express.static(path.join('uploads', 'burgers')))
 app.use('/uploads/ingredients', express.static(path.join('uploads', 'ingredients')))
 app.use('/uploads/users', express.static(path.join('uploads', 'users')))
-app.use('/', express.static(path.join(__dirname, 'public')))
+
+if (process.env.NODE_ENV === 'development') {
+    app.use('/', express.static(path.join(__dirname, 'public/burger-house-frontend/build')))
+} else {
+    app.use('/', express.static(path.join(__dirname, 'public')))
+}
 
 
 // cleaning malicious Data against NoSQL query injections
@@ -70,9 +73,16 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ingredients', IngredientRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
-app.use((req, res, next) => {
-    res.sendFile(path.resolve(__dirname, 'public/index.html'));
-});
+if (process.env.NODE_ENV === 'development') {
+    app.use((req, res, next) => {
+        res.sendFile(path.resolve(__dirname, 'public/burger-house-frontend/build/index.html'));
+    });
+} else {
+    app.use((req, res, next) => {
+        res.sendFile(path.resolve(__dirname, 'public/index.html'));
+    });
+}
+
 
 // GLOBAL ERROR HANDLER
 app.use(globalErrorHandler);

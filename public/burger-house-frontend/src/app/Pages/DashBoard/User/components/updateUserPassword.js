@@ -61,7 +61,7 @@ class UpdateUserPassword extends Component {
 
             this.LogoutTimer = setTimeout(() => {
                 this.props.history.replace('/logout');
-            }, 2500)
+            }, 1500)
 
         } else {
             status = this.props.userPasswordStatus.status;

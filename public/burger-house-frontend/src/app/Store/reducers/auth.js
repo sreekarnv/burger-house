@@ -159,7 +159,6 @@ const updateUserPasswordInit = (state, action) => {
 const updateUserPasswordSuccess = (state, action) => {
     return {
         ...state,
-        user: action.user,
         updateUserPasswordStatus: 'success',
         updateUserPasswordInit: false
     }

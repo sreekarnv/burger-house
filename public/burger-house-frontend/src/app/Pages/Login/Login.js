@@ -96,7 +96,7 @@ class Login extends Component {
                             onChange={this.onChangeHandler}
                             value={this.state.formInput.password}
                             minLength={6} />
-                        <Input inputtype='submit' value="Login Now" variant="tertiary" />
+                        <Input inputtype='submit' value={this.props.loginInit ? 'Loading...' : 'Login Now'} variant="tertiary" />
                     </form>
                 </section>
 
