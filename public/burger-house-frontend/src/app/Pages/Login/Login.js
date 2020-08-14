@@ -4,11 +4,9 @@ import Input from '../../Shared/Components/Form/Input';
 
 
 import * as authActions from './../../Store/actions/auth';
-
 import { onChangeFormInput, clearFields } from '../../Shared/Utils/formInput';
-import Loader from '../../Shared/Components/Loader/Loader';
-
 import Alert from '../../Shared/Components/Alert/Alert';
+import Loader from '../../Shared/Components/Loader/Loader';
 
 class Login extends Component {
     state = {
@@ -16,19 +14,9 @@ class Login extends Component {
             email: '',
             password: ''
         },
-        isLoading: false,
-        showAlert: false
+        showAlert: false,
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        setTimeout(() => {
-            this.setState({ isLoading: false })
-            if (this.props.user) {
-                return this.props.history.goBack();
-            }
-        }, 2000)
-    }
 
     onChangeHandler = e => {
         let formInput = onChangeFormInput(e, { ...this.state })
@@ -45,7 +33,7 @@ class Login extends Component {
             } else if (this.props.loginStatus === 'success') {
                 this.props.history.replace('/menu');
             }
-        }, 300)
+        }, 1500)
     }
 
     onSubmitHandler = async e => {
@@ -60,9 +48,6 @@ class Login extends Component {
     }
 
     render() {
-        if (this.state.isLoading) {
-            return <div className="u-flex-center u-vh-100"><Loader /></div>
-        }
 
         return (
             <React.Fragment>
@@ -109,6 +94,7 @@ const mapStateToProps = state => {
     return {
         loginInit: state.auth.loginInit,
         loginStatus: state.auth.loginStatus,
+        checkAuthInit: state.auth.checkAuthInit,
         user: state.auth.user,
         cart: state.cart.cart
     }
@@ -117,7 +103,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loginUser: (data) => dispatch(authActions.login(data)),
-
     }
 }
 

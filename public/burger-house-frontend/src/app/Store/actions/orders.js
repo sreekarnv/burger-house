@@ -23,6 +23,7 @@ export const getAllUserOrdersFailed = error => {
     }
 }
 
+
 export const getAllUserOrders = () => {
     return async dispatch => {
         dispatch(getAllUserOrdersInit());
@@ -43,7 +44,7 @@ export const getAllUserOrders = () => {
         }
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////
 
 export const createOrdersInit = () => {
     return {
@@ -81,16 +82,16 @@ export const createOrders = (data) => {
         }
     }
 }
-
+///////////////////////////////////////////////////////////////////////////////
 export const clearCart = () => {
     return {
         type: actionTypes.CLEAR_CART
     }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////
 export const getAllOrdersInit = () => {
     return {
-        type: actionTypes.GET_ALL_USER_ORDERS_INIT
+        type: actionTypes.GET_ALL_ORDERS_INIT
     }
 }
 
@@ -137,7 +138,6 @@ export const getAllOrders = (filter) => {
 
 
             }
-
             let totalOrders = res.data.orders.length;
             let totalPrice = 0;
             let pendingOrders = 0;

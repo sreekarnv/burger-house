@@ -23,6 +23,15 @@ const initialState = {
 }
 
 
+
+const checkAuthStateInit = (state, action) => {
+    return {
+        ...state,
+        checkAuthInit: true
+    }
+}
+
+
 const checkAuthSuccess = (state, action) => {
     let userPhoto = `/uploads/users/${action.user.photo}`
     return {
@@ -32,10 +41,10 @@ const checkAuthSuccess = (state, action) => {
     }
 }
 
-const checkAuthStateInit = (state, action) => {
+const checkAuthStateFailed = (state, action) => {
     return {
         ...state,
-        checkAuthInit: true
+        checkAuthInit: false
     }
 }
 
@@ -206,6 +215,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.CHECK_AUTH_STATE_SUCCESS: return checkAuthSuccess(state, action);
         case actionTypes.CHECK_AUTH_STATE_INIT: return checkAuthStateInit(state, action)
+        case actionTypes.CHECK_AUTH_STATE_FAILED: return checkAuthStateFailed(state, action)
 
         case actionTypes.REGISTER_USER_INIT: return registerInit(state, action);
         case actionTypes.REGISTER_USER_SUCCESS: return registerSuccess(state, action);

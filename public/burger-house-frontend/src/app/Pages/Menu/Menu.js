@@ -24,11 +24,7 @@ class Menu extends Component {
     takeToBurgerBuilder = () => this.props.history.push('/build-your-burger');
 
     componentDidMount() {
-        this.setState({ isLoading: true })
         this.props.loadBurgers();
-        this.timer = setTimeout(() => {
-            this.setState({ isLoading: false })
-        }, 1000)
     }
 
     showAlertHandler = (message, status) => {
@@ -97,7 +93,7 @@ class Menu extends Component {
             });
         }
 
-        if (this.props.loading || this.state.isLoading) {
+        if (this.props.loading) {
             return <div className="u-flex-center u-vh-100"><Loader /></div>
         }
 

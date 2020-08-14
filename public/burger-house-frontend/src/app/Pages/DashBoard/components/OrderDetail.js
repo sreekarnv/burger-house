@@ -9,23 +9,20 @@ import Loader from '../../../Shared/Components/Loader/Loader';
 class OrderDetail extends Component {
     state = {
         orders: null,
-        isLoading: false,
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.timer = setTimeout(async () => {
-            await this.props.getOrder(this.props.match.params.id)
-            if (!this.props.order && this.props.match.url.startsWith('/dashboard/manage-orders')) {
-                return this.props.history.push('/dashboard/manage-orders')
-            } else if (!this.props.order && this.props.match.url.startsWith(`/dashboard/my-orders`)) {
-                return this.props.history.push('/dashboard/my-orders')
-            }
-            else {
-                let orders = this.props.order;
-                this.setState({ isLoading: false, orders })
-            }
-        }, 2000)
+    async componentDidMount() {
+
+        await this.props.getOrder(this.props.match.params.id)
+        if (!this.props.order && this.props.match.url.startsWith('/dashboard/manage-orders')) {
+            return this.props.history.push('/dashboard/manage-orders')
+        } else if (!this.props.order && this.props.match.url.startsWith(`/dashboard/my-orders`)) {
+            return this.props.history.push('/dashboard/my-orders')
+        }
+        else {
+            let orders = this.props.order;
+            this.setState({ orders })
+        }
     }
 
     onChangeStatusHandler = async () => {
@@ -120,7 +117,6 @@ class OrderDetail extends Component {
                 </div>
 
                 <div className="order__details-list">
-                    {/* {this.state.orders.orders.map(el => { */}
                     {this.state.orders.orders.map(el => {
                         return (
                             <ListItem className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
@@ -147,6 +143,7 @@ class OrderDetail extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.orders.orders,
+        getOrderInit: state.orders.getOrderInit,
         order: state.orders.order,
         loggedInUser: state.auth.user,
         orderStatus: state.orders.updateOrderStatusAdminStatus.status,
@@ -156,7 +153,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // getAllOrders: () => dispatch(orderActions.getAllOrders()),
         getOrder: (id) => dispatch(orderActions.getOrder(id)),
         updateOrderStatusAdmin: (payload) => dispatch(orderActions.updateOrderStatusAdmin(payload))
     }

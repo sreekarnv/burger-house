@@ -21,7 +21,6 @@ class Header extends Component {
                     <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/menu" >Menu</NavItem>
 
                     {this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link"
-                        // path={`/dashboard/${this.props.user.role === 'admin' ? 'manage-orders' : 'my-orders'}`} >Dashboard</NavItem>}
                         path={`/dashboard`} >Dashboard</NavItem>}
 
                     {!this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/login" >Login</NavItem>}

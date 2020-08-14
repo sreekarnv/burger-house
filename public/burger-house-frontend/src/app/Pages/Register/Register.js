@@ -6,7 +6,6 @@ import Input from '../../Shared/Components/Form/Input';
 import * as authActions from './../../Store/actions/auth';
 
 import { onChangeFormInput, clearFields } from '../../Shared/Utils/formInput';
-import Loader from '../../Shared/Components/Loader/Loader';
 
 import Alert from '../../Shared/Components/Alert/Alert';
 
@@ -19,15 +18,7 @@ class Register extends Component {
             password: '',
             passwordConfirm: ''
         },
-        isLoading: false,
         showAlert: false
-    }
-
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        setTimeout(() => {
-            this.setState({ isLoading: false })
-        }, 300)
     }
 
     onChangeHandler = e => {
@@ -57,11 +48,6 @@ class Register extends Component {
     }
 
     render() {
-        if (this.state.isLoading) {
-            return <div className="u-flex-center u-vh-100" ><Loader /></div>
-        }
-
-
         let authRedirect = null;
         if (this.props.user) {
             authRedirect = <Redirect to="/dashboard" />

@@ -27,6 +27,7 @@ export const checkAuthFailed = error => {
 
 export const checkAuth = () => {
     return async dispatch => {
+        dispatch(checkAuthInit());
         try {
             let res = await axios.get(`/api/v1/users/checkAuth`)
             dispatch(checkAuthSuccess(res.data.user))

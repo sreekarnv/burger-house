@@ -4,6 +4,8 @@ import * as actionTypes from '../actions/actions';
 const initialState = {
     Burgers: [],
     updateBurgers: [],
+
+    ingredientsInit: false,
     ingredients: {},
 
     error: null,
@@ -72,6 +74,15 @@ const fetchBurgersInit = (state, action) => {
 }
 ////////////////////////////////////////////////////////////////////////////
 
+
+const fetchIngredientsInit = (state, action) => {
+    return {
+        ...state,
+        ingredientsInit: true,
+        error: null,
+    }
+}
+
 const fetchIngredientsSuccess = (state, action) => {
     let ings = {};
 
@@ -82,7 +93,7 @@ const fetchIngredientsSuccess = (state, action) => {
     return {
         ...state,
         ingredients: ings,
-        loading: false,
+        ingredientsInit: false,
     }
 }
 
@@ -90,7 +101,7 @@ const fetchIngredientsFailed = (state, action) => {
     return {
         ...state,
         ingredients: action.error,
-        loading: false
+        ingredientsInit: false,
     }
 }
 
@@ -210,6 +221,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_BURGERS_FAILED: return fetchBurgersFailed(state, action);
         case actionTypes.FETCH_BURGERS_INIT: return fetchBurgersInit(state, action);
 
+        case actionTypes.FETCH_INGREDIENTS_INIT: return fetchIngredientsInit(state, action);
         case actionTypes.FETCH_INGREDIENTS_SUCCESS: return fetchIngredientsSuccess(state, action);
         case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action);
 
@@ -217,6 +229,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.UPDATE_MENU_REMOVE_INGREDIENT: return removeIngredient(state, action);
 
         case actionTypes.SET_MENU_INGREDIENTS: return setMenuIngredients(state, action);
+
         case actionTypes.UPDATE_BURGER_SUCCESS: return updateMenuBurgerSuccess(state, action);
         case actionTypes.UPDATE_BURGER_FAILED: return updateMenuBurgerFailed(state, action);
 

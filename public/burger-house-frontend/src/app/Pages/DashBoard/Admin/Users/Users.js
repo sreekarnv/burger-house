@@ -12,23 +12,14 @@ import Backdrop from '../../../../Shared/Components/BackDrop/BackDrop';
 
 class Users extends Component {
     state = {
-        isLoading: false,
         showModal: false,
         message: '',
         type: '',
         userId: ''
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.timer = setTimeout(() => {
-            this.props.getAllUsers();
-            this.setState({ isLoading: false })
-        }, 2000)
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.timer)
+    async componentDidMount() {
+        await this.props.getAllUsers();
     }
 
     showModal = (message, type, userId) => {
@@ -59,7 +50,7 @@ class Users extends Component {
     }
 
     render() {
-        if (this.state.isLoading || this.props.getUsersInit) {
+        if (this.props.getUsersInit) {
             return <div className="u-flex-center u-vh-100 u-bg-white dashboard__dashboard"><Loader /></div>
         }
 

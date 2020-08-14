@@ -8,21 +8,16 @@ import { onChangeFormInput } from './../../../Shared/Utils/formInput';
 
 class Orders extends Component {
     state = {
-        isLoading: false,
         formInput: {
             orders: 'pending'
         }
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.timer = setTimeout(async () => {
-            await this.props.getAllOrders(this.state.formInput.orders);
-            if (!this.props.user) {
-                this.props.history.push('/login')
-            }
-            this.setState({ isLoading: false })
-        }, 2000)
+    async componentDidMount() {
+        await this.props.getAllOrders(this.state.formInput.orders);
+        if (!this.props.user) {
+            this.props.history.push('/login')
+        }
     }
 
     onChangeHandler = e => {
@@ -30,9 +25,6 @@ class Orders extends Component {
         this.setState({ ...formInput })
     }
 
-    componentWillUnmount() {
-        clearTimeout(this.timer)
-    }
 
     onFilterHandler = () => {
         this.props.getAllOrders(this.state.formInput.orders)
@@ -41,7 +33,7 @@ class Orders extends Component {
     render() {
         let orders = this.props.orders;
 
-        if (this.state.isLoading || this.props.loading) {
+        if (this.props.loading) {
             return <div className="u-flex-center dashboard__dashboard u-bg-white u-vh-100"><Loader /></div>
         }
 

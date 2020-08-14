@@ -10,22 +10,11 @@ import Backdrop from '../../../Shared/Components/BackDrop/BackDrop';
 
 class Profile extends Component {
     state = {
-        isLoading: false,
         showModal: false,
         message: '',
         type: ''
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.timer = setTimeout(() => {
-            this.setState({ isLoading: false })
-        }, 2000)
-    }
-
-    componentWillUnmount() {
-        clearTimeout(this.timer)
-    }
 
     showModal = (message, type) => {
         this.setState({ showModal: true, message, type })
@@ -50,7 +39,7 @@ class Profile extends Component {
     }
 
     render() {
-        if (this.state.isLoading || this.props.deleteUserInit) {
+        if (this.props.deleteUserInit) {
             return <div className="u-flex-center u-vh-100 u-bg-white dashboard__dashboard"><Loader /></div>
         }
 

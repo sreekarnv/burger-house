@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import SideBar from './components/Sidebar';
 import { Route, Switch } from 'react-router-dom';
-import Profile from './User/Profile';
 
 import Backdrop from './../../Shared/Components/BackDrop/BackDrop';
-
 import HamburgerMenu from './../../Shared/Icons/HamburgerMenu';
+import AuthenticatedRoutes from '../../Shared/hoc/AuthRoutes';
+import Loader from '../../Shared/Components/Loader/Loader';
 
-import Users from './Admin/Users/Users';
+const Sidebar = lazy(() => import('./components/Sidebar'))
 
-import UserOrders from './Admin/Orders/UserOrders';
+// USER ONLY
+const CurrentUserOrders = lazy(() => import('./User/CurrentUserOrders'));
+const Profile = lazy(() => import('./User/Profile'));
 
-import CurrentUserOrders from './User/CurrentUserOrders';
-
-import UpdateBurgerDetail from './Admin/Menu/UpdateBurgerDetail';
-import UpdateBurgerList from './Admin/Menu/UpdateBurgerList';
-import CreateBurger from './Admin/Menu/CreateBurger';
-import OrderDetail from './components/OrderDetail';
-
-import Ingredients from './Admin/Ingredients/Ingredients';
-
-import IngredientsForm from './Admin/Ingredients/IngredientsForm';
-
+// ADMIN ONLY
+const Users = lazy(() => import('./Admin/Users/Users'))
+const UserOrders = lazy(() => import('./Admin/Orders/UserOrders'))
+const UpdateBurgerDetail = lazy(() => import('./Admin/Menu/UpdateBurgerDetail'));
+const UpdateBurgerList = lazy(() => import('./Admin/Menu/UpdateBurgerList'));
+const CreateBurger = lazy(() => import('./Admin/Menu/CreateBurger'));
+const OrderDetail = lazy(() => import('./components/OrderDetail'));
+const Ingredients = lazy(() => import('./Admin/Ingredients/Ingredients'));
+const IngredientsForm = lazy(() => import('./Admin/Ingredients/IngredientsForm'));
 
 
 class Layout extends Component {
@@ -31,10 +30,6 @@ class Layout extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.user) {
-            return this.props.history.push('/login')
-        }
-
         if (this.props.user && this.props.user.role === 'admin') {
             return this.props.history.push('/dashboard/manage-orders')
         }
@@ -56,35 +51,42 @@ class Layout extends Component {
         let showSideBar = null;
         if (this.state.showSideBar) showSideBar = 'dashboard__sidebar-show'
 
+        let loading = <div className="dashboard u-flex-center u-vh-100 u-bg-white">
+            <Loader />
+        </div>
+
         return (
             <React.Fragment>
                 <div className="dashboard">
-                    <button onClick={this.sidebarShowHandler} className="dashboard__sidebar-btn">
-                        <HamburgerMenu className="icon-hamburger" />
-                    </button>
-                    {this.props.user && <div className={`sidebar dashboard__sidebar ${showSideBar}`} >
-                        <SideBar {...this.props} closeSidebar={this.sidebarCloseHandler} />
-                    </div>}
-                    <Backdrop show={this.state.showSideBar} close={this.sidebarCloseHandler} user={this.props.user} />
-                    <Switch>
-                        <Route path={`${this.props.match.url}/manage-profile`} exact component={Profile} {...this.props} />
+                    <Suspense fallback={loading}>
+                        <button onClick={this.sidebarShowHandler} className="dashboard__sidebar-btn">
+                            <HamburgerMenu className="icon-hamburger" />
+                        </button>
+                        {this.props.user && <div className={`sidebar dashboard__sidebar ${showSideBar}`} >
+                            <Sidebar {...this.props} closeSidebar={this.sidebarCloseHandler} />
+                        </div>}
+                        <Backdrop show={this.state.showSideBar} close={this.sidebarCloseHandler} user={this.props.user} />
+                        <Switch>
+                            <AuthenticatedRoutes {...this.props}>
+                                <Route path={`${this.props.match.url}/manage-profile`} exact component={Profile} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-users`} exact component={Users} {...this.props} />
 
-                        <Route path={`${this.props.match.url}/manage-users`} exact component={Users} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-ingredients`} exact component={Ingredients} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-ingredients/new`} component={IngredientsForm} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-ingredients/:id`} component={IngredientsForm} {...this.props} />
 
-                        <Route path={`${this.props.match.url}/manage-ingredients`} exact component={Ingredients} {...this.props} />
-                        <Route path={`${this.props.match.url}/manage-ingredients/new`} component={IngredientsForm} {...this.props} />
-                        <Route path={`${this.props.match.url}/manage-ingredients/:id`} component={IngredientsForm} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-orders`} exact component={UserOrders} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-orders/:id`} component={OrderDetail} {...this.props} />
 
-                        <Route path={`${this.props.match.url}/manage-orders`} exact component={UserOrders} {...this.props} />
-                        <Route path={`${this.props.match.url}/manage-orders/:id`} component={OrderDetail} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-menu`} exact component={UpdateBurgerList} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-menu/new`} exact component={CreateBurger} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-menu/:id`} component={UpdateBurgerDetail} {...this.props} />
 
-                        <Route path={`${this.props.match.url}/manage-menu`} exact component={UpdateBurgerList} {...this.props} />
-                        <Route path={`${this.props.match.url}/manage-menu/new`} exact component={CreateBurger} {...this.props} />
-                        <Route path={`${this.props.match.url}/manage-menu/:id`} component={UpdateBurgerDetail} {...this.props} />
-
-                        <Route path={`${this.props.match.url}/my-orders`} exact component={CurrentUserOrders} {...this.props} />
-                        <Route path={`${this.props.match.url}/my-orders/:id`} component={OrderDetail} {...this.props} />
-                    </Switch>
+                                <Route path={`${this.props.match.url}/my-orders`} exact component={CurrentUserOrders} {...this.props} />
+                                <Route path={`${this.props.match.url}/my-orders/:id`} component={OrderDetail} {...this.props} />
+                            </AuthenticatedRoutes>
+                        </Switch>
+                    </Suspense>
                 </div>
             </React.Fragment>
         )

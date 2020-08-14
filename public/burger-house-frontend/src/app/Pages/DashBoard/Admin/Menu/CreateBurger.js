@@ -25,7 +25,6 @@ const setMenuIngredients = (ingredientsFetched) => {
 
 class CreateBurger extends Component {
     state = {
-        isLoading: false,
         formInput: {
             title: '',
             price: '',
@@ -42,14 +41,10 @@ class CreateBurger extends Component {
         },
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.timer = setTimeout(async () => {
-            await this.props.fetchIngredients();
-            let ingredients = setMenuIngredients(this.props.ingredients);
-            await this.props.setIngredients(ingredients);
-            this.setState({ isLoading: false })
-        }, 2000)
+    async componentDidMount() {
+        await this.props.fetchIngredients();
+        let ingredients = setMenuIngredients(this.props.ingredients);
+        this.props.setIngredients(ingredients);
     }
 
     showAlertHandler = (message, status) => {
@@ -152,7 +147,7 @@ class CreateBurger extends Component {
     render() {
         let ingredients = this.props.menuIngs;
 
-        if (this.state.isLoading || this.props.createBurgerInit) {
+        if (this.props.createBurgerInit || this.props.ingredientsInit) {
             return <div className="dashboard__dashboard u-flex-center u-vh-100">
                 <Loader />
             </div>
@@ -246,6 +241,7 @@ class CreateBurger extends Component {
 const mapStateToProps = state => {
     return {
         ingredients: state.menu.ingredients,
+        ingredientsInit: state.menu.ingredientsInit,
         menuIngs: state.menu.menuIngs,
         createBurgerStatus: state.menu.createBurgerStatus,
         createBurgerInit: state.menu.createBurgerInit,

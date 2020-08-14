@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import HeroPromises from './Components/HeroPromises/HeroPromises';
 import Card from '../../Shared/Components/Card/CardMenu';
 import Review from './Components/Review/Review';
-import Loader from './../../Shared/Components/Loader/Loader';
 
 import * as cartActions from './../../Store/actions/cart';
 import * as menuActions from './../../Store/actions/menu';
@@ -15,7 +14,6 @@ import Alert from './../../Shared/Components/Alert/Alert';
 
 class Home extends Component {
     state = {
-        isLoading: false,
         alert: {
             show: false,
             status: '',
@@ -26,12 +24,8 @@ class Home extends Component {
     takeToMenu = () => this.props.history.push('/menu');
     tocustomBurger = () => this.props.history.push('/build-your-burger');
 
-    componentDidMount() {
-        this.setState({ isLoading: true })
-        this.props.loadBurgers();
-        this.timer = setTimeout(() => {
-            this.setState({ isLoading: false })
-        }, 1000)
+    async componentDidMount() {
+        await this.props.loadBurgers();
     }
 
     showAlertHandler = (message, status) => {
@@ -78,10 +72,6 @@ class Home extends Component {
         this.showAlertHandler(message, 'success');
     }
 
-    componentWillUnmount() {
-        clearTimeout(this.closeAlertTimer);
-        clearTimeout(this.timer);
-    }
 
 
     render() {
@@ -109,10 +99,6 @@ class Home extends Component {
                     removeItem={this.decrementItemFromCartHandler}
                     addItemToCart={this.addItemToCart} />
             }).slice(0, 3);
-        }
-
-        if (this.props.loading || this.state.isLoading) {
-            return <div className="u-flex-center u-vh-100"><Loader /></div>
         }
 
         if (this.props.error) {

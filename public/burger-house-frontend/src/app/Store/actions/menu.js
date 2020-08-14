@@ -24,6 +24,13 @@ export const fetchBurgersInit = () => {
 }
 ////////////////////////////////////////////////////////////////
 
+
+export const fetchIngredientsInit = () => {
+    return {
+        type: actionTypes.FETCH_INGREDIENTS_INIT
+    }
+}
+
 export const fetchIngredientsSuccess = (ingredients) => {
     return {
         type: actionTypes.FETCH_INGREDIENTS_SUCCESS,
@@ -40,6 +47,7 @@ export const fetchIngredientsFailed = (error) => {
 
 export const fetchIngredients = () => {
     return async dispatch => {
+        dispatch(fetchIngredientsInit())
         try {
             const response = await axios.get(`/api/v1/ingredients`);
             dispatch(fetchIngredientsSuccess(response.data.ingredients));
@@ -48,6 +56,8 @@ export const fetchIngredients = () => {
         }
     }
 };
+
+
 ///////////////////////////////////////////////////////////////
 export const initBurgers = () => {
     return async dispatch => {

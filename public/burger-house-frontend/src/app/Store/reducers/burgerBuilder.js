@@ -12,12 +12,15 @@ const initialState = {
 
 const fetchIngredientsSuccess = (state, action) => {
     let ings = {};
-
-    action.ingredients.map(el => {
-        return ings[el.name] = { ...el, value: 0, photo: `/uploads/ingredients/${el.photo}` }
+    console.log(action.ingredients);
+    action.ingredients.forEach(el => {
+        ings[el.name] = { ...el, value: 0, photo: `/uploads/ingredients/${el.photo}` }
     });
+
+    console.log(ings);
     return {
         ...state,
+        ingredientsLoading: false,
         ingredients: ings,
         error: false,
     }
@@ -26,6 +29,7 @@ const fetchIngredientsSuccess = (state, action) => {
 const fetchIngredientsFailed = (state, action) => {
     return {
         ...state,
+        ingredientsLoading: false,
         error: action.error,
     }
 };
@@ -84,6 +88,7 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_INGREDIENTS_SUCCESS: return fetchIngredientsSuccess(state, action);
         case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action);
+
         case actionTypes.ADD_INGREDIENT: return addIngredient(state, action);
         case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action);
         case actionTypes.CLEAR_INGREDIENT_VALUES: return clearIngredientValues(state, action);

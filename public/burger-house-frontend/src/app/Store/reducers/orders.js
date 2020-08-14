@@ -77,6 +77,7 @@ const getUserOrdersFailed = (state, action) => {
 }
 
 const getAllOrdersInit = (state, action) => {
+
     return {
         ...state,
         getOrdersInit: true
