@@ -21,9 +21,9 @@ class App extends Component {
             <Loader />
         </div>
 
-        if (this.props.checkAuthInit) {
-            return loading;
-        }
+        // if (this.props.checkAuthInit) {
+        //     return loading;
+        // }
 
         return (
             <BrowserRouter>
