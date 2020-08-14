@@ -10,9 +10,17 @@ class AuthRoutes extends Component {
         await this.props.checkAuthState();
     }
 
+
+
     render() {
+
+        let style;
+        if (this.props.match.url.startsWith('dashboard')) {
+            style = { display: 'none' }
+        }
+
         if (this.props.checkAuthInit) {
-            return <div className={`u-flex-center u-vh-100 u-bg-white ${this.props.match.url.startsWith('dashboard') && 'dashboard'}`}>
+            return <div className={`u-flex-center u-vh-100 u-bg-white`} style={style}>
                 <Loader />
             </div>
         }
