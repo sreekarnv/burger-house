@@ -12,8 +12,8 @@ const Header = lazy(() => import('./Layout/Header'));
 const Footer = lazy(() => import('./Layout/Footer'));
 
 class App extends Component {
-    async componentDidMount() {
-        await this.props.checkAuthState();
+    componentDidMount() {
+        this.props.checkAuthState();
     }
 
     render() {
