@@ -8,9 +8,7 @@ import Loader from '../Components/Loader/Loader';
 
 class UnAuthRoutes extends Component {
     async componentDidMount() {
-        if (this.props.user) {
-            await this.props.checkAuthState();
-        }
+        await this.props.checkAuthState();
     }
 
     render() {

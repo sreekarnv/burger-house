@@ -7,14 +7,12 @@ import Loader from '../Components/Loader/Loader';
 
 class AuthRoutes extends Component {
     async componentDidMount() {
-        if (!this.props.user) {
-            await this.props.checkAuthState();
-        }
+        await this.props.checkAuthState();
     }
 
     render() {
         if (this.props.checkAuthInit) {
-            return <div className="u-flex-center u-vh-100 u-bg-white">
+            return <div className={`u-flex-center u-vh-100 u-bg-white ${this.props.match.url.startsWith('dashboard') && 'dashboard'}`}>
                 <Loader />
             </div>
         }
