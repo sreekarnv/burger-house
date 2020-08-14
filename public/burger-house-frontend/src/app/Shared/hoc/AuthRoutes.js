@@ -14,16 +14,12 @@ class AuthRoutes extends Component {
 
     render() {
 
-        let style;
-        if (this.props.match.url.startsWith('dashboard')) {
-            style = { display: 'none' }
-        }
 
-        if (this.props.checkAuthInit) {
-            return <div className={`u-flex-center u-vh-100 u-bg-white`} style={style}>
-                <Loader />
-            </div>
-        }
+        // if (this.props.checkAuthInit) {
+        //     return <div className={`u-flex-center u-vh-100 u-bg-white`} >
+        //         <Loader />
+        //     </div>
+        // }
 
         if (!this.props.user) {
             return <Redirect to="/login" />
