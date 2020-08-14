@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Backdrop from './../../Shared/Components/BackDrop/BackDrop';
 import HamburgerMenu from './../../Shared/Icons/HamburgerMenu';
 import AuthenticatedRoutes from '../../Shared/hoc/AuthRoutes';
-import Loader from '../../Shared/Components/Loader/Loader';
+// import Loader from '../../Shared/Components/Loader/Loader';
 
 const Sidebar = lazy(() => import('./components/Sidebar'))
 
@@ -51,14 +51,16 @@ class Layout extends Component {
         let showSideBar = null;
         if (this.state.showSideBar) showSideBar = 'dashboard__sidebar-show'
 
-        let loading = <div className="dashboard u-flex-center u-vh-100 u-bg-white">
-            <Loader />
-        </div>
+        // let loading = <div className="dashboard u-flex-center u-vh-100 u-bg-white">
+        //     <Loader />
+        // </div>
 
         return (
             <React.Fragment>
                 <div className="dashboard">
-                    <Suspense fallback={loading}>
+                    <Suspense
+                    // fallback={loading}
+                    >
                         <button onClick={this.sidebarShowHandler} className="dashboard__sidebar-btn">
                             <HamburgerMenu className="icon-hamburger" />
                         </button>

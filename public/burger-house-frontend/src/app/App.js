@@ -12,18 +12,10 @@ const Header = lazy(() => import('./Layout/Header'));
 const Footer = lazy(() => import('./Layout/Footer'));
 
 class App extends Component {
-    // componentDidMount() {
-    //     this.props.checkAuthState();
-    // }
-
     render() {
         let loading = <div className="u-flex-center u-vh-100 u-bg-white">
             <Loader />
         </div>
-
-        // if (this.props.checkAuthInit) {
-        //     return loading;
-        // }
 
         return (
             <BrowserRouter>
@@ -40,8 +32,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.auth.user,
-        // checkAuthInit: state.auth.checkAuthInit
+        user: state.auth.user
     }
 }
 
@@ -52,4 +43,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default App;

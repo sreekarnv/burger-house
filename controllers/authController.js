@@ -1,6 +1,5 @@
 const User = require('./../models/userModel');
 const jwt = require('jsonwebtoken');
-// const crypto = require('crypto');
 const AppError = require('../errors/AppError');
 
 // To sign and return a token

@@ -20,11 +20,11 @@ class UnAuthRoutes extends Component {
 
         if (this.props.user && this.props.user.role === 'admin') {
             return <Redirect to="/dashboard/manage-orders" />
-        } else if (this.props.user) {
+        } else if (this.props.user && (!this.props.user.role || this.props.user.role !== 'admin')) {
             return <Redirect to="/menu" />
         }
 
-        return this.props.children
+        if (!this.props.user) return this.props.children
     }
 }
 
