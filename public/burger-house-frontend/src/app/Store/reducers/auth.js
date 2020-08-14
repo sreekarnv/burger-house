@@ -44,6 +44,7 @@ const checkAuthSuccess = (state, action) => {
 const checkAuthStateFailed = (state, action) => {
     return {
         ...state,
+        user: null,
         checkAuthInit: false
     }
 }

@@ -18,10 +18,9 @@ export const checkAuthSuccess = user => {
     }
 }
 
-export const checkAuthFailed = error => {
+export const checkAuthFailed = () => {
     return {
         type: actionTypes.CHECK_AUTH_STATE_FAILED,
-        error
     }
 }
 
