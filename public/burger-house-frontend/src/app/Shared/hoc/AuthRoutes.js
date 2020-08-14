@@ -3,24 +3,13 @@ import { connect } from 'react-redux'
 
 import * as authActions from '../../Store/actions/auth';
 import { Redirect } from 'react-router';
-import Loader from '../Components/Loader/Loader';
 
 class AuthRoutes extends Component {
     async componentDidMount() {
         await this.props.checkAuthState();
     }
 
-
-
     render() {
-
-
-        // if (this.props.checkAuthInit) {
-        //     return <div className={`u-flex-center u-vh-100 u-bg-white`} >
-        //         <Loader />
-        //     </div>
-        // }
-
         if (!this.props.user) {
             return <Redirect to="/login" />
         }
