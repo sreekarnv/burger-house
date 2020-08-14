@@ -12,9 +12,9 @@ const Header = lazy(() => import('./Layout/Header'));
 const Footer = lazy(() => import('./Layout/Footer'));
 
 class App extends Component {
-    componentDidMount() {
-        this.props.checkAuthState();
-    }
+    // componentDidMount() {
+    //     this.props.checkAuthState();
+    // }
 
     render() {
         let loading = <div className="u-flex-center u-vh-100 u-bg-white">
@@ -41,7 +41,7 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         user: state.auth.user,
-        checkAuthInit: state.auth.checkAuthInit
+        // checkAuthInit: state.auth.checkAuthInit
     }
 }
 
