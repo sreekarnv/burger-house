@@ -53,7 +53,7 @@ app.use('/uploads/ingredients', express.static(path.join('uploads', 'ingredients
 app.use('/uploads/users', express.static(path.join('uploads', 'users')))
 
 if (process.env.NODE_ENV === 'development') {
-    app.use('/', express.static(path.join(__dirname, 'public/burger-house-frontend/build')))
+    app.use('/', express.static(path.join(__dirname, 'frontend-src/build')))
 } else {
     app.use('/', express.static(path.join(__dirname, 'public')))
 }
