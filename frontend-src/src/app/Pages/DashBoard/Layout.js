@@ -20,8 +20,8 @@ const UpdateBurgerDetail = lazy(() => import('./Admin/Menu/UpdateBurgerDetail'))
 const UpdateBurgerList = lazy(() => import('./Admin/Menu/UpdateBurgerList'));
 const CreateBurger = lazy(() => import('./Admin/Menu/CreateBurger'));
 const OrderDetail = lazy(() => import('./components/OrderDetail'));
-const Ingredients = lazy(() => import('./Admin/Ingredients/Ingredients'));
-const IngredientsForm = lazy(() => import('./Admin/Ingredients/IngredientsForm'));
+// const Ingredients = lazy(() => import('./Admin/Ingredients/Ingredients'));
+// const IngredientsForm = lazy(() => import('./Admin/Ingredients/IngredientsForm'));
 
 
 class Layout extends Component {
@@ -69,9 +69,9 @@ class Layout extends Component {
                                 <Route path={`${this.props.match.url}/manage-profile`} exact component={Profile} {...this.props} />
                                 <Route path={`${this.props.match.url}/manage-users`} exact component={Users} {...this.props} />
 
-                                <Route path={`${this.props.match.url}/manage-ingredients`} exact component={Ingredients} {...this.props} />
-                                <Route path={`${this.props.match.url}/manage-ingredients/new`} component={IngredientsForm} {...this.props} />
-                                <Route path={`${this.props.match.url}/manage-ingredients/:id`} component={IngredientsForm} {...this.props} />
+                                {/* <Route path={`${this.props.match.url}/manage-ingredients`} exact component={Ingredients} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-ingredients/new`} exact component={IngredientsForm} {...this.props} />
+                                <Route path={`${this.props.match.url}/manage-ingredients/:id`} exact component={IngredientsForm} {...this.props} /> */}
 
                                 <Route path={`${this.props.match.url}/manage-orders`} exact component={UserOrders} {...this.props} />
                                 <Route path={`${this.props.match.url}/manage-orders/:id`} component={OrderDetail} {...this.props} />

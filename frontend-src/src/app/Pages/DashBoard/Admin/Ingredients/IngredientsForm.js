@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import * as ingredientActions from '../../../../Store/actions/ingredients';
 import Loader from '../../../../Shared/Components/Loader/Loader';
 import Alert from '../../../../Shared/Components/Alert/Alert';
+// import { PureComponent } from 'react';
 
 class IngredientsCreate extends Component {
     state = {
@@ -164,7 +165,7 @@ class IngredientsCreate extends Component {
                     status={this.state.alert.status}
                     message={this.state.alert.message}
                 />}
-                <div className="ingredients__form dashboard__dashboard">
+                <div className=" dashboard__dashboard ingredients__form">
                     <h2 className="heading-1 u-text-primary ingredients__form-heading">
                         {this.props.location.pathname.startsWith('/dashboard/manage-ingredients/new')
                             ? 'Create a New Ingredient' : `Update Ingredient ${this.state.formInput.name}`}

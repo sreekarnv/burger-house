@@ -46,13 +46,13 @@ class Sidebar extends Component {
                         classNavItem="sidebar__nav-item" classNavLink="sidebar__nav-link"
                         path={`${this.props.match.url}/manage-orders`}>Manage Orders</NavItem>}
 
-                    {this.props.user.role === 'admin' && <NavItem
+                    {/* {this.props.user.role === 'admin' && <NavItem
                         isActive
                         active="sidebar__nav-link--active"
                         closeSidebar={this.props.closeSidebar}
                         classNavItemActive="sidebar__nav-item--active"
                         classNavItem="sidebar__nav-item" classNavLink="sidebar__nav-link"
-                        path={`${this.props.match.url}/manage-ingredients`}>Manage Ingredients</NavItem>}
+                        path={`${this.props.match.url}/manage-ingredients`}>Manage Ingredients</NavItem>} */}
 
                 </Navbar>
             </React.Fragment >
