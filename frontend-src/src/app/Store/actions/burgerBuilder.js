@@ -46,7 +46,6 @@ export const initIngredients = () => {
     return async dispatch => {
         try {
             const response = await axios.get(`/api/v1/ingredients`);
-            console.log(response);
             dispatch(fetchIngredientsSuccess(response.data.ingredients));
         } catch (err) {
             dispatch(fetchIngredientsFailed({ ...err }.response.data));
