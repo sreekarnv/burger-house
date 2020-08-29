@@ -8,7 +8,7 @@ To place an order you must be logged in.
     2. npm run dev to run server in localhost (both react and express run on port 4000)
     3. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
 
-# The Dashboard
+# The Website
 There is also a dashboard for both customers and the Administrator.
 The customer can keep the track of his orders or cancel his order.
 
@@ -19,6 +19,10 @@ The Admin has the privilege to:
 
 # Technologies Used
 This website was built using ReactJs for the frontend and ExpressJs and mongoDB for the backend
+
+This website is a desktop-first-approach website.
+The styling for this website was done without using any css frameworks.
+SCSS (css preprocessor) was used instead of regular css so as to maintain cleaner css code.
 
 # credentials 
     Admin:  email: admin@email.com
