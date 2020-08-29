@@ -2,7 +2,7 @@
     position: fixed;
     left: 35.5%;
     top: 40%;
-    z-index: 120;
+    z-index: 140;
     width: 30%;
     box-shadow: 0 1px 2px rgba($color-black, .45);
     padding: 2rem;
@@ -18,7 +18,7 @@
     align-items: center;
 
     @include respond(tab-port) {
-        left: 10.5%;
+        left: 25.5%;
         width: 50%;
     }
 

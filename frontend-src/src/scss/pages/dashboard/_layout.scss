@@ -18,7 +18,7 @@
             height: 100%;
             transform: translateX(-60vh);
             opacity: 0;
-            z-index: 120;
+            z-index: 140;
             transition: all .3s;
 
             &-show {
@@ -46,13 +46,13 @@
                 top: 14rem;
                 left: 5rem;
                 height: 8rem;
-                z-index: 120;
                 width: 8rem;
                 border-radius: 50%;
                 background-color: $color-secondary;
                 border: none;
                 box-shadow : $shadow-light;
                 outline: none;
+                z-index: 120;
             }
 
             @include respond(phone) {
