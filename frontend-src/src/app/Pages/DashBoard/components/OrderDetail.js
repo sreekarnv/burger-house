@@ -5,6 +5,7 @@ import CardStatus from './StatusCard';
 
 import * as orderActions from '../../../Store/actions/orders';
 import Loader from '../../../Shared/Components/Loader/Loader';
+import AuthRoutes from '../../../Shared/hoc/AuthRoutes';
 
 class OrderDetail extends Component {
     state = {
@@ -72,70 +73,72 @@ class OrderDetail extends Component {
         }
 
         return (
-            <div className="order__details dashboard__dashboard">
-                <button
-                    onClick={() => this.props.history.push(
-                        this.props.match.url.startsWith(`/dashboard/my-orders`)
-                            ? '/dashboard/my-orders' : '/dashboard/manage-orders'
-                    )}
-                    className="btn  btn__tertiary-back order__details-back-btn">
-                    <span>&larr;</span>Back
+            <AuthRoutes>
+                <div className="order__details dashboard__dashboard">
+                    <button
+                        onClick={() => this.props.history.push(
+                            this.props.match.url.startsWith(`/dashboard/my-orders`)
+                                ? '/dashboard/my-orders' : '/dashboard/manage-orders'
+                        )}
+                        className="btn  btn__tertiary-back order__details-back-btn">
+                        <span>&larr;</span>Back
                 </button>
 
-                <h4 className="heading-1 order__details-heading">
-                    Order Details
+                    <h4 className="heading-1 order__details-heading">
+                        Order Details
                 </h4>
-                <div className="order__details-info">
-                    <div>
-                        <h2>Order Id: #{this.props.match.params.id}</h2>
-                        <h4>{this.state.orders.user.name}</h4>
-                        <p>{this.state.orders.user.email}</p>
-                    </div>
-                    <div className="order__details-info-status order__details-info-status--total-orders">
-                        <CardStatus className="order__details-info-status-card"
-                            heading="Order Status"
-                            value={this.state.orders.status}
-                        />
-                        {this.props.loggedInUser.role === 'admin' && this.props.match.url.startsWith('/dashboard/manage-orders/') &&
-                            <button onClick={this.onChangeStatusHandler} disabled={this.state.orders.status === 'cancelled' ? true : false}
-                                className={`btn btn__success--outline${this.state.orders.status === 'cancelled' ? '-disabled' : ''} `}>
-                                Mark Order as {this.state.orders.status === 'pending' ? 'Delivered' : 'Pending'}
-                            </button>}
-                        {this.props.match.path === '/dashboard/my-orders/:id' &&
-                            <button onClick={this.onCancelOrder}
-                                className={`btn btn__success--outline${this.state.orders.status === 'delivered' || this.state.orders.status === 'cancelled' ? '-disabled' : ''} `} >
-                                Cancel Order
+                    <div className="order__details-info">
+                        <div>
+                            <h2>Order Id: #{this.props.match.params.id}</h2>
+                            <h4>{this.state.orders.user.name}</h4>
+                            <p>{this.state.orders.user.email}</p>
+                        </div>
+                        <div className="order__details-info-status order__details-info-status--total-orders">
+                            <CardStatus className="order__details-info-status-card"
+                                heading="Order Status"
+                                value={this.state.orders.status}
+                            />
+                            {this.props.loggedInUser.role === 'admin' && this.props.match.url.startsWith('/dashboard/manage-orders/') &&
+                                <button onClick={this.onChangeStatusHandler} disabled={this.state.orders.status === 'cancelled' ? true : false}
+                                    className={`btn btn__success--outline${this.state.orders.status === 'cancelled' ? '-disabled' : ''} `}>
+                                    Mark Order as {this.state.orders.status === 'pending' ? 'Delivered' : 'Pending'}
+                                </button>}
+                            {this.props.match.path === '/dashboard/my-orders/:id' &&
+                                <button onClick={this.onCancelOrder}
+                                    className={`btn btn__success--outline${this.state.orders.status === 'delivered' || this.state.orders.status === 'cancelled' ? '-disabled' : ''} `} >
+                                    Cancel Order
                             </button>
-                        }
+                            }
+                        </div>
+
+                        <CardStatus className="order__details-info-status-card"
+                            heading="Total Orders"
+                            value={items}
+                        />
+
                     </div>
 
-                    <CardStatus className="order__details-info-status-card"
-                        heading="Total Orders"
-                        value={items}
-                    />
-
-                </div>
-
-                <div className="order__details-list">
-                    {this.state.orders.orders.map(el => {
-                        return (
-                            <ListItem className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
-                                <React.Fragment>
-                                    <p className="order__details-list-item-name">
-                                        {el._id.title} ({el.items})
+                    <div className="order__details-list">
+                        {this.state.orders.orders.map(el => {
+                            return (
+                                <ListItem className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
+                                    <React.Fragment>
+                                        <p className="order__details-list-item-name">
+                                            {el._id.title} ({el.items})
                                     </p>
-                                    <div className="order__details-list-item-ings">
-                                        {el._id.ingredients.map(el2 => {
-                                            return <p>{el2._id.name ? el2._id.name : el2.name} ({el2.amount})</p>
-                                        })}
-                                    </div>
-                                </React.Fragment>
-                            </ListItem>
-                        )
-                    })}
-                </div>
+                                        <div className="order__details-list-item-ings">
+                                            {el._id.ingredients.map(el2 => {
+                                                return <p>{el2._id.name ? el2._id.name : el2.name} ({el2.amount})</p>
+                                            })}
+                                        </div>
+                                    </React.Fragment>
+                                </ListItem>
+                            )
+                        })}
+                    </div>
 
-            </div >
+                </div >
+            </AuthRoutes>
         )
     }
 }

@@ -5,6 +5,7 @@ import Card from '../../../../Shared/Components/Card/CardMenu';
 import Loader from '../../../../Shared/Components/Loader/Loader';
 
 import * as menuActions from '../../../../Store/actions/menu';
+import AuthRoutes from '../../../../Shared/hoc/AuthRoutes';
 
 class UpdateBurgerList extends Component {
     state = {
@@ -64,13 +65,15 @@ class UpdateBurgerList extends Component {
         }
 
         return (
-            <div className="update-menu dashboard__dashboard">
-                <h2 className="update-menu__heading heading-1">Update Menu</h2>
-                <button
-                    onClick={this.toCreateBurger}
-                    className="update-menu__btn btn btn__tertiary-goTo">Create a New Burger</button>
-                {menuList}
-            </div>
+            <AuthRoutes>
+                <div className="update-menu dashboard__dashboard">
+                    <h2 className="update-menu__heading heading-1">Update Menu</h2>
+                    <button
+                        onClick={this.toCreateBurger}
+                        className="update-menu__btn btn btn__tertiary-goTo">Create a New Burger</button>
+                    {menuList}
+                </div>
+            </AuthRoutes>
         )
     }
 }

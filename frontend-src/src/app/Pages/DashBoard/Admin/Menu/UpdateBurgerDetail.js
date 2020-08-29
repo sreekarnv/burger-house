@@ -12,6 +12,7 @@ import { onChangeFormInput } from '../../../../Shared/Utils/formInput';
 import Backdrop from '../../../../Shared/Components/BackDrop/BackDrop';
 import ConfirmModal from '../../../../Shared/Components/Modal/ConfirmModal';
 import Alert from '../../../../Shared/Components/Alert/Alert';
+import AuthRoutes from '../../../../Shared/hoc/AuthRoutes';
 
 
 
@@ -191,7 +192,7 @@ class UpdateBurgerDetail extends Component {
         }
 
         return (
-            <React.Fragment>
+            <AuthRoutes>
                 {this.state.alert.status && <Alert
                     close={this.onCloseHandler()}
                     show={this.state.alert.show}
@@ -273,7 +274,7 @@ class UpdateBurgerDetail extends Component {
                         </button>
                     </div>
                 </div>
-            </React.Fragment>
+            </AuthRoutes>
         )
     }
 }

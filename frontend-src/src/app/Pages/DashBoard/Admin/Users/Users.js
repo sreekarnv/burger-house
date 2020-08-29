@@ -8,6 +8,7 @@ import Loader from '../../../../Shared/Components/Loader/Loader';
 import * as userActions from '../../../../Store/actions/users';
 import ConfirmModal from '../../../../Shared/Components/Modal/ConfirmModal';
 import Backdrop from '../../../../Shared/Components/BackDrop/BackDrop';
+import AuthRoutes from '../../../../Shared/hoc/AuthRoutes';
 
 
 class Users extends Component {
@@ -55,7 +56,7 @@ class Users extends Component {
         }
 
         return (
-            <React.Fragment>
+            <AuthRoutes>
                 <ConfirmModal
                     show={this.state.showModal}
                     close={this.closeModal}
@@ -90,7 +91,7 @@ class Users extends Component {
                             })}
                     </div>
                 </div>
-            </React.Fragment>
+            </AuthRoutes>
         )
     }
 }

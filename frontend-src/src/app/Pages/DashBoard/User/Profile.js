@@ -7,6 +7,7 @@ import ConfirmModal from '../../../Shared/Components/Modal/ConfirmModal';
 
 import * as authActions from '../../../Store/actions/auth';
 import Backdrop from '../../../Shared/Components/BackDrop/BackDrop';
+import AuthRoutes from '../../../Shared/hoc/AuthRoutes';
 
 class Profile extends Component {
     state = {
@@ -45,7 +46,7 @@ class Profile extends Component {
 
         if (this.props.user) {
             return (
-                <React.Fragment  >
+                <AuthRoutes>
                     {
                         <ConfirmModal
                             show={this.state.showModal}
@@ -73,7 +74,7 @@ class Profile extends Component {
                                 className="btn btn__danger--outline">Delete</button>
                         </div>
                     </div>
-                </React.Fragment >
+                </AuthRoutes>
             )
         } else {
             return '';

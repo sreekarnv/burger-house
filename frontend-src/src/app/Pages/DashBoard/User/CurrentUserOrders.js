@@ -3,17 +3,20 @@ import { connect } from 'react-redux';
 import Orders from '../components/Orders';
 
 import * as orderActions from '../../../Store/actions/orders';
+import AuthRoutes from '../../../Shared/hoc/AuthRoutes';
 
 class CurrentUserOrders extends Component {
     render() {
-        return <Orders
-            orders={this.props.userOrders}
-            loading={this.props.userOrdersInit}
-            getAllOrders={this.props.getAllUserOrders}
-            heading="My Orders"
-            showOrdersStatus={false}
-            {...this.props}
-        />
+        return <AuthRoutes>
+            <Orders
+                orders={this.props.userOrders}
+                loading={this.props.userOrdersInit}
+                getAllOrders={this.props.getAllUserOrders}
+                heading="My Orders"
+                showOrdersStatus={false}
+                {...this.props}
+            />
+        </AuthRoutes>
     }
 }
 

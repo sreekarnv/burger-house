@@ -9,6 +9,7 @@ import * as menuActions from '../../../../Store/actions/menu';
 import Loader from '../../../../Shared/Components/Loader/Loader';
 import { onChangeFormInput } from '../../../../Shared/Utils/formInput';
 import Alert from '../../../../Shared/Components/Alert/Alert';
+import AuthRoutes from '../../../../Shared/hoc/AuthRoutes';
 
 
 const setMenuIngredients = (ingredientsFetched) => {
@@ -154,7 +155,7 @@ class CreateBurger extends Component {
         }
 
         return (
-            <React.Fragment>
+            <AuthRoutes>
                 {this.state.alert.status && <Alert
                     close={this.onCloseHandler()}
                     show={this.state.alert.show}
@@ -232,7 +233,7 @@ class CreateBurger extends Component {
                         </button>
                     </form>
                 </div>
-            </React.Fragment>
+            </AuthRoutes>
         )
     }
 }
