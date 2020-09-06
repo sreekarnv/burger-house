@@ -66,12 +66,10 @@ module.exports = (err, req, res, next) => {
     err.status = err.status || 'error';
 
 
-    // if (process.env.NODE_ENV === 'development') {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'development') {
         devError(err, res);
     }
-    // else if (process.env.NODE_ENV === 'production') {
-    else if (process.env.NODE_ENV === 'development') {
+    else if (process.env.NODE_ENV === 'production') {
         let error = { ...err, message: err.message };
 
         if (err.name === 'CastError') error = handleCastError(err);
