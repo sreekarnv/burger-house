@@ -8,14 +8,23 @@ To place an order you must be logged in.
     2. npm run dev to run server in localhost (both react and express run on port 4000)
     3. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
 
-# The Website
+# Home Page
+![](preview-images/home-1.jpg)
+![](preview-images/home-2.PNG)
+
+# Make your own Burger
+You are allowed to make your own burger if don't prefer the burgers offered in the menu.
+![](preview-images/make-your-burger.PNG)
+
 There is also a dashboard for both customers and the Administrator.
 The customer can keep the track of his orders or cancel his order.
 
+# Admin Dashboard
+![](preview-images/Admin-dashboard.PNG)
 The Admin has the privilege to:
-    1. Manage Orders. Mark certain customer order as delivered or pending.
-    2. Manage Menu. Create a new burger for the menu and update existings burgers.
-    3. Manage Users. (Can only make the customer an admin but cannot change the customer's details but is allowed to delete a customer).  
+1. Manage Orders. Mark certain customer order as delivered or pending.
+2. Manage Menu. Create a new burger for the menu and update existings burgers.
+3. Manage Users. (Can only make the customer an admin but cannot change the customer's details but is allowed to delete a customer).  
 
 # Technologies Used
 This website was built using ReactJs for the frontend and ExpressJs and mongoDB for the backend
