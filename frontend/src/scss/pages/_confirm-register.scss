@@ -1,0 +1,32 @@
+.register__confirm {
+    min-height: 100vh;
+    background-color: $color-grey-light;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    &-text {
+        font-family: $font-heading;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 3.5rem;
+        line-height: 1.4;
+
+        &--1 {
+            font-size: 6rem;
+            color: $color-grey-dark;
+
+            @include respond (tab-land) {
+                font-size: 5rem;
+            }          
+        }
+
+        &--2 {
+            font-size: 4.5rem;
+            color: $color-danger; 
+        }
+    }
+}

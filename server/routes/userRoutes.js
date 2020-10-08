@@ -4,7 +4,7 @@ const userController = require('./../controllers/userController');
 
 const router = express.Router();
 
-
+router.get('/verifyAccount/:id', authController.verifyUserEmail);
 
 router.get('/checkAuth', authController.checkIsLoggedIn);
 

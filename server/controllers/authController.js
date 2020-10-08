@@ -1,6 +1,7 @@
 const User = require('./../models/userModel');
 const jwt = require('jsonwebtoken');
 const AppError = require('../errors/AppError');
+const sendEmail = require('./../utils/sendEmail');
 
 // To sign and return a token
 const signToken = id => {
@@ -12,6 +13,7 @@ const verifyToken = token => {
     return jwt.verify(token, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE_TIME })
 }
 
+// generate cookie
 const generateCookie = (req, res, token) => {
     res.cookie('burgerHouse', token, {
         expires: new Date(
@@ -21,6 +23,8 @@ const generateCookie = (req, res, token) => {
         httpOnly: true,
     })
 }
+
+
 
 exports.LogoutUsers = async (req, res, next) => {
     try {
@@ -39,19 +43,32 @@ exports.LogoutUsers = async (req, res, next) => {
 exports.RegisterUsers = async (req, res, next) => {
     try {
         // 1.  Create User
-        const { name, email, password, passwordConfirm } = req.body;
+        const { name, email, password, passwordConfirm, location } = req.body;
 
-        const user = await User.create({ name, email, password, passwordConfirm })
-
+        const user = await User.create({ name, email, password, passwordConfirm, location })
 
         // 3. remove password from output
         user.password = undefined;
         user.passwordChangedAt = undefined;
 
+        const verificationUrl = `
+            ${req.protocol}://${req.get('host')}/api/v1/users/verifyAccount/${user.userVerificationToken}
+        `
+
+        const message = `Please activate your account by going to: ${verificationUrl}`;
+
+
+        await sendEmail({
+            email: user.email,
+            subject: 'Please verify your email',
+            message,
+        })
+
         res.status(201).json({
             status: 'success',
             user
         })
+
     } catch (err) {
         next(err);
     }
@@ -70,10 +87,13 @@ exports.LoginUsers = async (req, res, next) => {
 
         const user = await User.findOne({ email }).select('+password')
 
-
         // 2. check password
         if (!user || !(await user.checkPassword(password, user.password))) {
-            next(new AppError('Invalid Email or Password', 401))
+            return next(new AppError('Invalid Email or Password', 401))
+        }
+
+        if (!user.isVerified) {
+            return next(new AppError('Please verify your email address', 401))
         }
 
         // 3. send JWT token
@@ -221,6 +241,38 @@ exports.updateCurrentUserPassword = async (req, res, next) => {
 
         res.status(200).json({
             status: 'success'
+        })
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+// exports.sendUserVerification = (req, res, next) => {
+//     try {
+
+//     } catch (err) {
+//         next(err);
+//     }
+// }
+
+
+exports.verifyUserEmail = async (req, res, next) => {
+    try {
+
+        const user = await User.findOneAndUpdate(
+            { userVerificationToken: req.params.id, isVerified: false },
+            { isVerified: true },
+            { runValidators: true, new: true }
+        )
+
+        if (!user) {
+            return next();
+        }
+
+        res.status(200).json({
+            status: 'success',
+            verified: user.isVerified
         })
 
     } catch (err) {

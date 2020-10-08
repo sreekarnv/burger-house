@@ -19,6 +19,7 @@ class Header extends Component {
                     <NavItem active="header__nav-link--active" exact classNavItem="header__nav-item" classNavLink="header__nav-link" path="/" >Home</NavItem>
 
                     <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/menu" >Menu</NavItem>
+                    {/* <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/confirm-email" >Menu</NavItem> */}
 
                     {this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link"
                         path={`/dashboard`} >Dashboard</NavItem>}

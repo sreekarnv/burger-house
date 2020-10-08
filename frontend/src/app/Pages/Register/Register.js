@@ -16,10 +16,28 @@ class Register extends Component {
             name: '',
             email: '',
             password: '',
-            passwordConfirm: ''
+            passwordConfirm: '',
+            location: {
+                coordinates: null
+            },
         },
         showAlert: false
     }
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition((res) => {
+            console.log(res);
+            this.setState({
+                formInput: {
+                    ...this.state.formInput,
+                    location: {
+                        coordinates: [res.coords.longitude, res.coords.latitude]
+                    }
+                }
+            })
+        });
+    }
+
 
     onChangeHandler = e => {
         let formInput = onChangeFormInput(e, { ...this.state })
@@ -38,7 +56,7 @@ class Register extends Component {
         this.closeAlertTimer = setTimeout(() => {
             this.setState({ showAlert: false });
             if (this.props.registerStatus.data.status === 'success') {
-                this.props.history.replace('/login')
+                this.props.history.replace('/confirm-email')
             }
         }, 2000)
     }
@@ -48,7 +66,6 @@ class Register extends Component {
     }
 
     render() {
-
         return (
             <UnAuthRoutes>
                 {this.state.showAlert && this.props.registerStatus &&

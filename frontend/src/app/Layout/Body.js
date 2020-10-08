@@ -6,6 +6,7 @@ import Dashboard from '../Pages/DashBoard/Layout';
 import Error from '../Pages/Error/Error';
 import Logout from '../Pages/Logout/Logout';
 import Loader from '../Shared/Components/Loader/Loader';
+// import ConfirmRegistration from '../Pages/Register/ConfirmRegistration';
 
 const Menu = lazy(() => import('../Pages/Menu/Menu'));
 const Cart = lazy(() => import('../Pages/Cart/Cart'));
@@ -14,6 +15,7 @@ const About = lazy(() => import('../Pages/About/About'));
 const Home = lazy(() => import('../Pages/Home/Home'));
 const Register = lazy(() => import('../Pages/Register/Register'));
 const Login = lazy(() => import('../Pages/Login/Login'));
+const ConfirmRegistration = lazy(() => import('../Pages/Register/ConfirmRegistration'))
 
 class Body extends Component {
     render() {
@@ -31,6 +33,7 @@ class Body extends Component {
                     <Route path="/menu" exact component={Menu} {...this.props} />
                     <Route path="/dashboard" {...this.props} component={Dashboard} />
                     <Route path="/logout" component={Logout} {...this.props} />
+                    <Route path="/confirm-email" component={ConfirmRegistration} {...this.props} />
                     <Route path="/something-went-wrong" component={Error} {...this.props} />
                     <Route path="/register" exact component={Register} {...this.props} />
                     <Route path="/login" component={Login} {...this.props} />

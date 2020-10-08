@@ -55,6 +55,23 @@ const userSchema = new mongoose.Schema({
         type: Date,
         select: false
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    location: {
+        type: {
+            type: String,
+            default: 'Point',
+            enum: ['Point']
+        },
+        coordinates: [{
+            type: Number
+        }],
+    },
+    userVerificationToken: {
+        type: String
+    }
 });
 
 
@@ -73,10 +90,17 @@ userSchema.pre('save', function (next) {
     next();
 })
 
+userSchema.pre('save', async function (next) {
+    if (!this.isNew) return next();
+
+    this.userVerificationToken = crypto.randomBytes(32).toString('hex');
+    next();
+})
+
+
 userSchema.methods.checkPassword = async function (enteredPass, actualPass) {
     return bcrypt.compare(enteredPass, actualPass).then(result => result)
 }
-
 
 userSchema.methods.changedPassword = async function (iat) {
     if (this.passwordChangedAt) {
@@ -85,6 +109,13 @@ userSchema.methods.changedPassword = async function (iat) {
     }
     return false;
 }
+
+userSchema.methods.createUserVerificationToken = function () {
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    this.userVerificationToken = crypto.createHash('sha256').update(verificationToken).digest('hex');
+    return verificationToken;
+}
+
 
 const User = mongoose.model('User', userSchema);
 
