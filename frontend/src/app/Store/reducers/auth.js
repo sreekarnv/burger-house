@@ -19,9 +19,16 @@ const initialState = {
     updateUserPasswordStatus: null,
 
     deleteUserInit: false,
-    deleteUserStatus: null
+    deleteUserStatus: null,
+
+    sendEmailInit: false,
+    sendEmailStatus: null,
+
+    accountVerifiedInit: false,
+    accountVerifiedStatus: null
 }
 
+//////////////////////////////////////////////////////
 
 
 const checkAuthStateInit = (state, action) => {
@@ -49,6 +56,7 @@ const checkAuthStateFailed = (state, action) => {
     }
 }
 
+///////////////////////////////////////////////////
 
 const registerInit = (state, action) => {
     return {
@@ -75,7 +83,7 @@ const registerFailed = (state, action) => {
 }
 
 
-
+///////////////////////////////////////////////////////////////////
 
 
 const loginInit = (state, action) => {
@@ -105,7 +113,7 @@ const loginFailed = (state, action) => {
     }
 }
 
-
+/////////////////////////////////////////////////////////////
 const logoutInit = (state, action) => {
     return {
         ...state,
@@ -128,6 +136,7 @@ const logoutFailed = (state, action) => {
     }
 }
 
+//////////////////////////////////////////////////////////////////
 
 const updateUserDataInit = (state, action) => {
     return {
@@ -156,7 +165,7 @@ const updateUserDataFailed = (state, action) => {
 }
 
 
-
+//////////////////////////////////////////////////////////////////
 
 const updateUserPasswordInit = (state, action) => {
     return {
@@ -212,6 +221,61 @@ const deleteCurrentUserFailed = (state, action) => {
 
 ////////////////////////////////////////////////////////////////////////////////////
 
+const sendEmailConfirmationInit = (state, action) => {
+    return {
+        ...state,
+        sendEmailInit: true,
+        sendEmailStatus: null
+    }
+}
+
+const sendEmailConfirmationSuccess = (state, action) => {
+    return {
+        ...state,
+        sendEmailInit: false,
+        sendEmailStatus: 'success'
+    }
+}
+
+
+const sendEmailConfirmationFailed = (state, action) => {
+    return {
+        ...state,
+        sendEmailInit: false,
+        sendEmailStatus: 'failed'
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+const accountVerifiedInit = (state, action) => {
+    return {
+        ...state,
+        accountVerifiedInit: true,
+        accountVerifiedStatus: null
+    }
+}
+
+const accountVerifiedSuccess = (state, action) => {
+    return {
+        ...state,
+        accountVerifiedInit: false,
+        accountVerifiedStatus: 'success'
+    }
+}
+
+
+const accountVerifiedFailed = (state, action) => {
+    return {
+        ...state,
+        accountVerifiedInit: false,
+        accountVerifiedStatus: 'failed'
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.CHECK_AUTH_STATE_SUCCESS: return checkAuthSuccess(state, action);
@@ -238,9 +302,17 @@ const reducer = (state = initialState, action) => {
         case actionTypes.UPDATE_CURRENT_USER_PASSWORD_SUCCESS: return updateUserPasswordSuccess(state, action);
         case actionTypes.UPDATE_CURRENT_USER_PASSWORD_FAILED: return updateUserPasswordFailed(state, action);
 
-        case actionTypes.DELETE_CURRENT_USER_INIT: return deleteCurrentUserInit(state, action)
+        case actionTypes.DELETE_CURRENT_USER_INIT: return deleteCurrentUserInit(state, action);
         case actionTypes.DELETE_CURRENT_USER_SUCCESS: return deleteCurrentUserSuccess(state, action);
-        case actionTypes.DELETE_CURRENT_USER_FAILED: return deleteCurrentUserFailed(state, action)
+        case actionTypes.DELETE_CURRENT_USER_FAILED: return deleteCurrentUserFailed(state, action);
+
+        case actionTypes.SEND_EMAIL_CONFIRMATION_INIT: return sendEmailConfirmationInit(state, action);
+        case actionTypes.SEND_EMAIL_CONFIRMATION_SUCCESS: return sendEmailConfirmationSuccess(state, action);
+        case actionTypes.SEND_EMAIL_CONFIRMATION_FAILED: return sendEmailConfirmationFailed(state, action);
+
+        case actionTypes.VERIFY_ACCOUNT_INIT: return accountVerifiedInit(state, action);
+        case actionTypes.VERIFY_ACCOUNT_SUCCESS: return accountVerifiedSuccess(state, action);
+        case actionTypes.VERIFY_ACCOUNT_FAILED: return accountVerifiedFailed(state, action);
 
         default: return state;
     }

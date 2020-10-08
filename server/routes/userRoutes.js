@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/verifyAccount/:id', authController.verifyUserEmail);
 
+router.post('/sendUserVerification', authController.sendUserVerification);
+
 router.get('/checkAuth', authController.checkIsLoggedIn);
 
 router.get('/logout', authController.LogoutUsers);

@@ -24,7 +24,20 @@ const generateCookie = (req, res, token) => {
     })
 }
 
+// send verify email 
 
+const sendVerificationEmail = async (req, user) => {
+    const verificationUrl = `
+    ${req.protocol}://${req.get('host')}/verified/${user.userVerificationToken}
+    `
+    const message = `Please activate your account by going to: ${verificationUrl}`;
+
+    await sendEmail({
+        email: user.email,
+        subject: 'Please verify your email',
+        message,
+    })
+}
 
 exports.LogoutUsers = async (req, res, next) => {
     try {
@@ -51,18 +64,8 @@ exports.RegisterUsers = async (req, res, next) => {
         user.password = undefined;
         user.passwordChangedAt = undefined;
 
-        const verificationUrl = `
-            ${req.protocol}://${req.get('host')}/api/v1/users/verifyAccount/${user.userVerificationToken}
-        `
 
-        const message = `Please activate your account by going to: ${verificationUrl}`;
-
-
-        await sendEmail({
-            email: user.email,
-            subject: 'Please verify your email',
-            message,
-        })
+        await sendVerificationEmail(req, user);
 
         res.status(201).json({
             status: 'success',
@@ -248,13 +251,27 @@ exports.updateCurrentUserPassword = async (req, res, next) => {
     }
 }
 
-// exports.sendUserVerification = (req, res, next) => {
-//     try {
+exports.sendUserVerification = async (req, res, next) => {
+    try {
 
-//     } catch (err) {
-//         next(err);
-//     }
-// }
+        const { email } = req.body;
+        const user = await User.findOne({ isVerified: false, email })
+
+        if (!user) {
+            return next(new AppError('Please enter a valid email', 400));
+        }
+
+        await sendVerificationEmail(req, user);
+
+        res.status(200).json({
+            status: 'success',
+            message: 'Email Sent...'
+        })
+
+    } catch (err) {
+        next(err);
+    }
+}
 
 
 exports.verifyUserEmail = async (req, res, next) => {
@@ -262,7 +279,7 @@ exports.verifyUserEmail = async (req, res, next) => {
 
         const user = await User.findOneAndUpdate(
             { userVerificationToken: req.params.id, isVerified: false },
-            { isVerified: true },
+            { isVerified: true, userVerificationToken: undefined },
             { runValidators: true, new: true }
         )
 

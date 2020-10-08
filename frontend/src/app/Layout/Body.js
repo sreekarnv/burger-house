@@ -6,6 +6,8 @@ import Dashboard from '../Pages/DashBoard/Layout';
 import Error from '../Pages/Error/Error';
 import Logout from '../Pages/Logout/Logout';
 import Loader from '../Shared/Components/Loader/Loader';
+import VerifyEmail from '../Pages/Login/VerifyEmail';
+import VerifyAccount from '../Pages/Login/VerifyAccount';
 // import ConfirmRegistration from '../Pages/Register/ConfirmRegistration';
 
 const Menu = lazy(() => import('../Pages/Menu/Menu'));
@@ -33,7 +35,9 @@ class Body extends Component {
                     <Route path="/menu" exact component={Menu} {...this.props} />
                     <Route path="/dashboard" {...this.props} component={Dashboard} />
                     <Route path="/logout" component={Logout} {...this.props} />
-                    <Route path="/confirm-email" component={ConfirmRegistration} {...this.props} />
+                    <Route path="/send-confirm-email" component={VerifyEmail} {...this.props} />
+                    <Route path="/verified/:id" component={VerifyAccount} {...this.props} />
+                    <Route path="/confirm-email-message" component={ConfirmRegistration} {...this.props} />
                     <Route path="/something-went-wrong" component={Error} {...this.props} />
                     <Route path="/register" exact component={Register} {...this.props} />
                     <Route path="/login" component={Login} {...this.props} />

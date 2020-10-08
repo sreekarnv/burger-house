@@ -56,7 +56,7 @@ class Register extends Component {
         this.closeAlertTimer = setTimeout(() => {
             this.setState({ showAlert: false });
             if (this.props.registerStatus.data.status === 'success') {
-                this.props.history.replace('/confirm-email')
+                this.props.history.replace('/confirm-email-message')
             }
         }, 2000)
     }

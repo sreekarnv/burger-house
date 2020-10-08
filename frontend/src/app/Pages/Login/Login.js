@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Input from '../../Shared/Components/Form/Input';
 
@@ -82,6 +83,11 @@ class Login extends Component {
                             value={this.state.formInput.password}
                             minLength={6} />
                         <Input inputtype='submit' value={this.props.loginInit ? 'Loading...' : 'Login Now'} variant="tertiary" />
+
+                        <div className="form__group">
+                            <NavLink className="login__form-link"
+                                to="/send-confirm-email" >Please click here to verify your email</NavLink>
+                        </div>
                     </form>
                 </section>
 

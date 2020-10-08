@@ -63,6 +63,15 @@ export const LOGOUT_USER_INIT = 'LOGOUT_USER_INIT';
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
 export const LOGOUT_USER_FAILED = 'LOGOUT_USER_FAILED';
 
+// send email confirmation
+export const SEND_EMAIL_CONFIRMATION_INIT = 'SEND_EMAIL_CONFIRMATION_INIT';
+export const SEND_EMAIL_CONFIRMATION_SUCCESS = 'SEND_EMAIL_CONFIRMATION_SUCCESS';
+export const SEND_EMAIL_CONFIRMATION_FAILED = 'SEND_EMAIL_CONFIRMATION_FAILED';
+
+// Verifying Account
+export const VERIFY_ACCOUNT_INIT = 'VERIFY_ACCOUNT_INIT';
+export const VERIFY_ACCOUNT_SUCCESS = 'VERIFY_ACCOUNT_SUCCESS';
+export const VERIFY_ACCOUNT_FAILED = 'VERIFY_ACCOUNT_FAILED';
 
 //////////////////////////////////////////////////////////////////////////////////////
 // USERS

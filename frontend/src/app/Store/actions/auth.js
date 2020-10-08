@@ -279,3 +279,83 @@ export const deleteCurrentUser = () => {
         }
     }
 }
+
+/////////////////////////////////////////////////////////////////////////
+// Send email confirmation
+
+
+export const sendEmailConfirmationInit = () => {
+    return {
+        type: actionTypes.SEND_EMAIL_CONFIRMATION_INIT
+    }
+}
+
+export const sendEmailConfirmationSuccess = () => {
+    return {
+        type: actionTypes.SEND_EMAIL_CONFIRMATION_SUCCESS
+    }
+}
+
+export const sendEmailConfirmationFailed = () => {
+    return {
+        type: actionTypes.SEND_EMAIL_CONFIRMATION_FAILED
+    }
+}
+
+export const sendEmailConfirmation = (email) => {
+    return async dispatch => {
+        dispatch(sendEmailConfirmationInit());
+        try {
+            await axios({
+                method: 'POST',
+                url: '/api/v1/users/sendUserVerification',
+                data: {
+                    email
+                }
+            })
+
+            dispatch(sendEmailConfirmationSuccess());
+        } catch (err) {
+            dispatch(sendEmailConfirmationFailed());
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////
+// verify account 
+
+export const verifyAccountInit = () => {
+    return {
+        type: actionTypes.VERIFY_ACCOUNT_INIT
+    }
+}
+
+export const verifyAccountSuccess = () => {
+    return {
+        type: actionTypes.VERIFY_ACCOUNT_SUCCESS
+    }
+}
+
+export const verifyAccountFailed = () => {
+    return {
+        type: actionTypes.VERIFY_ACCOUNT_FAILED
+    }
+}
+
+export const verifyAccount = (id) => {
+    return async dispatch => {
+        dispatch(verifyAccountInit());
+        try {
+            const res = await axios({
+                method: 'GET',
+                url: `/api/v1/users/verifyAccount/${id}`,
+            })
+
+            console.log(res);
+
+            dispatch(verifyAccountSuccess());
+        } catch (err) {
+            dispatch(verifyAccountFailed());
+        }
+    }
+}
