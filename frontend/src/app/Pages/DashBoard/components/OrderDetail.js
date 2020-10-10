@@ -7,6 +7,8 @@ import * as orderActions from '../../../Store/actions/orders';
 import Loader from '../../../Shared/Components/Loader/Loader';
 import AuthRoutes from '../../../Shared/hoc/AuthRoutes';
 
+import Map from './Map';
+
 class OrderDetail extends Component {
     state = {
         orders: null,
@@ -119,16 +121,16 @@ class OrderDetail extends Component {
                     </div>
 
                     <div className="order__details-list">
-                        {this.state.orders.orders.map(el => {
+                        {this.state.orders.orders.map((el, i) => {
                             return (
-                                <ListItem className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
+                                <ListItem key={el._id + i} className={`order__details-list-item u-bg-${el._id.foodType}--opacity-35`}>
                                     <React.Fragment>
                                         <p className="order__details-list-item-name">
                                             {el._id.title} ({el.items})
                                     </p>
                                         <div className="order__details-list-item-ings">
                                             {el._id.ingredients.map(el2 => {
-                                                return <p>{el2._id.name ? el2._id.name : el2.name} ({el2.amount})</p>
+                                                return <p key={el2._id}>{el2._id.name ? el2._id.name : el2.name} ({el2.amount})</p>
                                             })}
                                         </div>
                                     </React.Fragment>
@@ -137,6 +139,12 @@ class OrderDetail extends Component {
                         })}
                     </div>
 
+                    <div className="order__details-map" style={{ height: '100%', width: '100%' }}>
+                        <h4 className="heading-1 order__details-heading">
+                            Check Your Order Here
+                        </h4>
+                        <Map user={this.props.user} order={this.props.order} onChangeStatusHandler={this.onChangeStatusHandler} />
+                    </div>
                 </div >
             </AuthRoutes>
         )
@@ -150,7 +158,8 @@ const mapStateToProps = state => {
         order: state.orders.order,
         loggedInUser: state.auth.user,
         orderStatus: state.orders.updateOrderStatusAdminStatus.status,
-        updatedOrder: state.orders.updateOrderStatusAdminStatus.order
+        updatedOrder: state.orders.updateOrderStatusAdminStatus.order,
+        user: state.auth.user
     }
 }
 

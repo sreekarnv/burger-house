@@ -79,6 +79,7 @@ class Orders extends Component {
                     {orders.length > 0
                         ? orders.map(el => {
                             return <ListItem
+                                key={el._id}
                                 id={el._id}
                                 results={el.orders.length}
                                 price={el.price}

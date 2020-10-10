@@ -3,11 +3,14 @@ const AppError = require('../errors/AppError');
 
 exports.createOrder = async (req, res, next) => {
     try {
+
         let { menuOrders, customOrders, user, price } = req.body;
         if (!user) user = req.user
 
+        const createdAt = new Date(Date.now());
+        console.log(createdAt);
         const order = await Order.create({
-            menuOrders, customOrders, user, price
+            menuOrders, customOrders, user, price, createdAt
         })
 
         res.status(201).json({

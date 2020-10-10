@@ -71,7 +71,6 @@ class Menu extends Component {
     }
 
     componentWillUnmount() {
-        clearTimeout(this.timer);
         clearTimeout(this.closeAlertTimer);
     }
 

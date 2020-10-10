@@ -24,7 +24,7 @@ const generateCookie = (req, res, token) => {
     })
 }
 
-// send verify email 
+// send verify email
 
 const sendVerificationEmail = async (req, user) => {
     const verificationUrl = `
@@ -94,6 +94,8 @@ exports.LoginUsers = async (req, res, next) => {
         if (!user || !(await user.checkPassword(password, user.password))) {
             return next(new AppError('Invalid Email or Password', 401))
         }
+
+        console.log(user);
 
         if (!user.isVerified) {
             return next(new AppError('Please verify your email address', 401))
