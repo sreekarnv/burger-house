@@ -104,7 +104,8 @@ class OrderDetail extends Component {
                                 <button onClick={this.onChangeStatusHandler} disabled={this.state.orders.status === 'cancelled' ? true : false}
                                     className={`btn btn__success--outline${this.state.orders.status === 'cancelled' ? '-disabled' : ''} `}>
                                     Mark Order as {this.state.orders.status === 'pending' ? 'Delivered' : 'Pending'}
-                                </button>}
+                                </button>
+                            }
                             {this.props.match.path === '/dashboard/my-orders/:id' &&
                                 <button onClick={this.onCancelOrder}
                                     className={`btn btn__success--outline${this.state.orders.status === 'delivered' || this.state.orders.status === 'cancelled' ? '-disabled' : ''} `} >
@@ -139,12 +140,13 @@ class OrderDetail extends Component {
                         })}
                     </div>
 
-                    <div className="order__details-map" style={{ height: '100%', width: '100%' }}>
-                        <h4 className="heading-1 order__details-heading">
-                            Check Your Order Here
+                    {this.props.match.path === '/dashboard/my-orders/:id' &&
+                        <div className="order__details-map" style={{ height: '100%', width: '100%' }}>
+                            <h4 className="heading-1 order__details-heading">
+                                Check Your Order Here
                         </h4>
-                        <Map user={this.props.user} order={this.props.order} onChangeStatusHandler={this.onChangeStatusHandler} />
-                    </div>
+                            <Map user={this.props.user} order={this.props.order} onChangeStatusHandler={this.onChangeStatusHandler} />
+                        </div>}
                 </div >
             </AuthRoutes>
         )
