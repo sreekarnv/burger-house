@@ -4,9 +4,10 @@ This website allows you to choose burgers from a menu or you are free to make yo
 To place an order you must be logged in.
 
 # First steps
-    1. npm install to install all dependencies
-    2. npm run dev to run server in localhost (both react and express run on port 4000)
-    3. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
+    1. cd into both frontend and server folders 
+    2. npm install to install all dependencies
+    3. npm run dev in the server folder to run server in localhost (both react and express run on port 4000)
+    4. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
 
 # Home Page
 ![](preview-images/home-1.jpg)
