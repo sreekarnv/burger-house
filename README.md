@@ -46,3 +46,6 @@ SCSS (css preprocessor) was used instead of regular css so as to maintain cleane
 # credentials 
     Admin:  email: admin@email.com
             Pass: Pass123#
+
+    user : email: user1@email.com (You can create your own account)
+            Pass: Pass123#
