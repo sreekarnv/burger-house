@@ -9,6 +9,15 @@ To place an order you must be logged in.
     3. npm run dev in the server folder to run server in localhost (both react and express run on port 4000)
     4. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
 
+
+# For task 2
+    1. I have added user account (email) verification upon user registration or resend that registration incase you have missed that email. 
+    2. Collecting user location using Browser's Geo Location API when the user registers.
+    3. A map (using Mapbox API) has been added in customer dashboard. Where they can track their order
+    4. The map shows store location, user location, route between two locations and updates location of mock delivery driver.
+    5. A button has been added so as to update the location of mock delivery driver.
+
+
 # Home Page
 ![](preview-images/home-1.jpg)
 ![](preview-images/home-2.PNG)
