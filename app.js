@@ -44,6 +44,7 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
+
 // storing data from body to req.body
 app.use(express.json());
 
@@ -52,14 +53,8 @@ app.use('/uploads/burgers', express.static(path.join('uploads', 'burgers')))
 app.use('/uploads/ingredients', express.static(path.join('uploads', 'ingredients')))
 app.use('/uploads/users', express.static(path.join('uploads', 'users')))
 
-// if (process.env.NODE_ENV === 'development') {
-//     app.use('/', express.static(path.join(__dirname, 'frontend-src/build')))
-// } else {
 
 app.use('/', express.static(path.join(__dirname, 'public')))
-
-// }
-
 
 // cleaning malicious Data against NoSQL query injections
 app.use(mongoSanitize());
@@ -73,11 +68,6 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/ingredients', IngredientRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
-// if (process.env.NODE_ENV === 'development') {
-//     app.use((req, res, next) => {
-//         res.sendFile(path.resolve(__dirname, 'public/burger-house-frontend/build/index.html'));
-//     });
-// } else {
 
 app.use((req, res, next) => {
     res.sendFile(path.resolve(__dirname, 'public/index.html'));

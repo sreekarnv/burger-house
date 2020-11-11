@@ -11,7 +11,6 @@ import { Redirect } from 'react-router';
 
 import Alert from '../../Shared/Components/Alert/Alert';
 
-
 class Home extends Component {
     state = {
         alert: {
@@ -71,6 +70,9 @@ class Home extends Component {
         const message = 'Added Burger to Cart successfully';
         this.showAlertHandler(message, 'success');
     }
+
+
+
 
 
 

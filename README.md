@@ -10,7 +10,7 @@ To place an order you must be logged in.
     4. Production ready app is hosted on https://burger-house-sreekar.herokuapp.com/
 
 
-# For task 2
+# New Changes
     1. I have added user account (email) verification upon user registration or resend that registration incase you have missed that email. 
     2. Collecting user location using Browser's Geo Location API when the user registers.
     3. A map (using Mapbox API) has been added in customer dashboard. Where they can track their order
