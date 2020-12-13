@@ -6,9 +6,9 @@ exports.signToken = async (payload, req, res) => {
 	});
 
 	let secure = false;
-	// if (process.env.NODE_ENV === "production") {
-	// secure = req.secure || req.headers("x-forwarded-proto") === "https";
-	// }
+	if (process.env.NODE_ENV === "production") {
+		secure = req.secure || req.headers("x-forwarded-proto") === "https";
+	}
 
 	res.cookie("burgerHouse", token, {
 		expires: new Date(
