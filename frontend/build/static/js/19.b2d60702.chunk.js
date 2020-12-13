@@ -1,0 +1,2 @@
+(this["webpackJsonpburger-house-frontend"]=this["webpackJsonpburger-house-frontend"]||[]).push([[19],{128:function(e,t,n){"use strict";n.r(t);var u=n(1),c=n(0),r=n(5),f=n(7),s=n(18),o=n(35);t.default=function(){var e=Object(r.d)((function(e){return e.auth.user})),t=Object(f.g)().replace,n=Object(r.c)();return Object(c.useEffect)((function(){n(o.d())}),[n]),Object(c.useEffect)((function(){if(!e)return t("/login")}),[e,t]),Object(u.jsx)(s.a,{fullScreen:!0})}}}]);
+//# sourceMappingURL=19.b2d60702.chunk.js.map

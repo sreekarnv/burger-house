@@ -1,77 +1,73 @@
-const mongoose = require('mongoose');
-const Ingredient = require('./ingredientModel');
-const AppError = require('../errors/AppError');
+const mongoose = require("mongoose");
+const slugify = require("slugify");
 
-const burgerSchema = mongoose.Schema({
-    title: {
-        type: String,
-        unique: true,
-        required: [true, 'All burgers must have a name'],
-        trim: true,
-    },
-    foodType: {
-        type: String,
-        enum: {
-            values: ['vegetarian', 'non-vegetarian'],
-            message: 'Diet can either be vegetarian or non-vegetarian'
-        },
-        required: [true, 'Diet should be included'],
-        lowercase: true,
-        trim: true,
-    },
-    ratings: {
-        type: Number,
-        default: 4,
-        min: [1, 'Rating cannot be less than 1'],
-        max: [5, 'Rating cannot be greater than 5']
-    },
-    price: {
-        type: Number,
-        required: [true, 'All burgers must have a price']
-    },
-    ingredients: [
-        {
-            name: {
-                type: String,
-                required: [true, 'ingredient must have a name'],
-            },
-            amount: {
-                type: Number,
-                required: [true, 'ingredients must have amount'],
-            }
-        }
-    ],
-    photo: {
-        type: String,
-        default: 'customBurger.jpg'
-    }
+const burgerSchema = new mongoose.Schema(
+	{
+		name: {
+			type: String,
+			trim: true,
+			lowercase: true,
+			unique: [true, "burger with this name already exists"],
+			required: [true, "burger must have a valid name"],
+		},
+		price: {
+			type: Number,
+			required: [true, "burger must have a price"],
+		},
+		ingredients: [
+			{
+				ingredient: {
+					type: mongoose.Schema.ObjectId,
+					ref: "Ingredient",
+					required: [true, "ingredient id must be provided"],
+				},
+				amount: {
+					type: Number,
+					required: [true, "ingredient must have field amount"],
+				},
+			},
+		],
+		isVegetarian: {
+			type: Boolean,
+			required: [true, "burger must have be vegetarian or non-vegetarian"],
+		},
+		photo: {
+			type: String,
+			trim: true,
+			default: "burger.jpg",
+		},
+		createdAt: {
+			type: Date,
+			default: Date.now(),
+		},
+		slug: {
+			type: String,
+		},
+	},
+	{
+		toJSON: { virtuals: true },
+		toObject: { virtuals: true },
+	}
+);
+
+burgerSchema.virtual("photoUrl").get(function () {
+	return `/uploads/burgers/${this.photo}`;
 });
 
-burgerSchema.pre('save', async function (next) {
-    const namePromises = Object.keys(this.ingredients).map(async el => {
-        let ingredientsArr = [];
-        let ing = await Ingredient.findOne({ name: this.ingredients[el].name.toLowerCase() })
+burgerSchema.index({ name: "text" });
 
-        if (!ing) {
-            return next(
-                new AppError('Ingredient with this name does not exist', 400)
-            );
-        }
+burgerSchema.pre(/^find/, function (next) {
+	this.populate("ingredients.ingredient");
+	next();
+});
 
-        let ingObj = {
-            _id: ing._id,
-            name: ing.name,
-            amount: this.ingredients[el].amount
-        }
+burgerSchema.pre("save", function (next) {
+	this.slug = slugify(this.name, {
+		lowercase: true,
+	});
+	next();
+});
 
-        ingredientsArr.push(ingObj);
-        return ingObj
-    })
-
-    this.ingredients = await Promise.all(namePromises);
-    next()
-})
-
-const Burger = mongoose.model('Burger', burgerSchema);
+const Burger = mongoose.model("Burger", burgerSchema);
 
 module.exports = Burger;

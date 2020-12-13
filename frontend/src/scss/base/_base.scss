@@ -3,25 +3,36 @@
 *::after {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
 }
-
 
 html {
     font-size: 62.5%;
 
+    @include respond(laptop) {
+        font-size: 56.25%; // 1rem = 9px
+    }
+
     @include respond(tab-land) {
-        font-size: 56.25%;
+        font-size: 50%; // 1rem = 8px
     }
 
     @include respond(tab-port) {
-        font-size: 50%;
-    }
+        font-size: 43.75%; // 1rem = 7px
+    } 
 
     @include respond(phone) {
-        font-size: 37.5%; 
+        font-size: 37.5%; // 1rem = 6px
+    }
+    
+    @include respond(phone-xs) {
+        font-size: 31.25%; // 1rem = 5px
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem = 12px
     }
 }
-
 
 body {
     box-sizing: border-box;

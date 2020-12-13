@@ -1,54 +1,93 @@
-.section-menu {
+.menu {
+    min-height: 100vh;
     background-color: $color-grey-light;
+    padding: 10rem;
     display: grid;
-    grid-template-rows: 10rem [heading-start] 5rem [heading-end btn-start] 10rem [btn-end menu-list-start] 1fr [menu-list-end];
-    grid-template-columns: 2rem [main-start] 10fr [main-end] 2rem;
+    grid-row-gap: 5rem;
 
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
     align-items: center;
+    align-content: center;
 
-    grid-row-gap: 2rem;
+    @include respond(tab-port) {
+        padding: 20rem 10rem 10rem 10rem;
+    }
 
-    .menu{
-        &__heading {
-            grid-row: heading-start / heading-end;
-            grid-column: main-start / main-end;
-            color: $color-primary;
-            font-weight: 400;
-            margin-top: 3rem;
+    @include respond(phone) {
+        padding: 20rem 5rem 10rem 5rem;
+    }
+
+    &__heading {
+        text-align: center;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        grid-row-gap: 3.5rem;
+
+        @include respond(phone) {
+            grid-column-gap: 4.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+        }
+    }
+
+    &__subnav {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 9rem;
+        justify-content: center;
+
+        @include respond(tab-port) {
+            display: grid;
+            padding: 0;
+            justify-content: stretch;
+
+            grid-row-gap: 4rem;
         }
 
-        &__list {
-            grid-row: menu-list-start / menu-list-end;
-            grid-column: main-start / main-end;   
-            
+        &-veg-only {
+            flex-basis: 25%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
 
-            display: grid;
-            justify-content: center;
-            align-content: center;
-            justify-items: center;
-            grid-template-columns:repeat(auto-fit, minmax(45rem, max-content)) ;
-            margin-bottom: 8rem;
-            grid-gap: 4rem;
-        
-            @include respond(tab-land) {
-                grid-gap: 8rem;
-                margin-top: 4rem;
+            align-self: center;
+            color: $color-success;
+
+            &-text {
+                font-size: 2rem;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                img {
+                    height: 5rem;
+                    width: 5rem;
+                }
+    
+                @include respond(tab-port) {
+                    font-size: 3rem;
+                }
+            }
+
+            @include respond(tab-port) {
+                justify-content: space-evenly;
             }
         }
 
-        &__btn {
-            justify-self: end;
-            margin-right: 12rem;
-            grid-row: btn-start / btn-end;
-            grid-column: main-start / main-end;
+        &-make-burger-cta {
+            flex-basis: 25%;
 
-            @include respond(tab-land) {
-                justify-self: center;
-            margin-right: 0;
+            @include respond(tab-port) {
+                justify-self: center;;
             }
         }
     }
+    
+    
 }

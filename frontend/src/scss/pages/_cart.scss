@@ -1,89 +1,89 @@
-.section-cart {
+.cart {
     min-height: 100vh;
+    padding: 10rem;
+
     display: grid;
-    grid-template-rows: 7rem [btn-goback-start] 5rem [btn-goback-end heading-start] 8rem [heading-end list-start] 1fr [list-end price-start] .5fr [price-end] ;
-    grid-template-columns: 1rem [full-start] 1fr  [price-start] .25fr  [full-end] 1rem;
-    grid-gap: 3rem;
-    background-color: $color-grey-light; 
+    grid-template-rows: [heading-start] max-content [heading-end] 1fr 1fr; 
+    grid-template-columns: repeat(12, minmax(10rem, 1fr));
+    grid-row-gap: 4rem;
 
     @include respond(tab-land) {
-        grid-template-rows: 11rem [btn-goback-start] 5rem [btn-goback-end heading-start] 8rem [heading-end list-start] 1fr [list-end price-start] .5fr [price-end] ;
+        padding: 10rem 5rem;
     }
-}
-
-.cart__goback-btn {
-    grid-row: btn-goback-start / btn-goback-end;
-    grid-column: full-start / full-end;
-    justify-self: start;
-}
-
-.cart__heading {
-    align-self: start;
-    justify-self: center;
-    grid-row: heading-start / heading-end;
-    grid-column: full-start / full-end;
-    color: $color-primary;
-}
-
-.cart__empty {
-    text-align: center;
-    align-self: start;
-    justify-self: center;
-    grid-row: list-start / list-end;
-    grid-column: full-start / full-end;   
-
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-gap: 2.5rem;
-
-    &-heading {
-        font-size: 4.5rem;
-        color: rgba($color-grey-dark, .35);
-
-    }
-
-    &-btn {
-        grid-row: list-start  / list-end;
-
-        @include respond(tab-port) {
-            justify-self: center;
-        }
-    }
-}
-
-.cart {
-    grid-row: list-start / list-end;
-    grid-column : full-start / full-end;
-    display: grid;
-    justify-items: center;
-    align-items: start;
-    align-content: start;
-    grid-gap: 3rem;
-
-    
-    &:last-child {
-        margin-bottom: 2rem;
-    }
-}
-
-
-.cart__checkout {
-    grid-row: price-start / price-end; 
-    grid-column: price-start / full-end;
 
     @include respond(tab-port) {
-        justify-self: center;
+        padding: 20rem 5rem 5rem 5rem;
+        grid-template-rows: [heading-start] max-content [heading-end] max-content 1fr ; 
+        grid-template-columns: repeat(6, minmax(8rem, 1fr));
+        grid-row-gap: 10rem;
+    }
+
+    @include respond(phone-xs) {
+        padding: 20rem 2rem 5rem 2rem;
+    }
+
+    &__heading {
+        grid-row: heading-start / heading-end;
+        grid-column: 1 / -1;
         text-align: center;
-        grid-column: full-start / full-end;
+    }
+
+    &__list {
+        grid-column: 1 / 8;
+        grid-row: 2 / 4;
+        padding: 5rem 10rem;
+        display: grid;
+        grid-row-gap: 3rem;
+        align-items: start;
+        overflow-y: scroll;
+        align-content: start;
+
+        @include respond(tab-port) {
+            grid-row: 3 / 4;
+            grid-column: 1 / -1;
+            padding: 5rem 2rem;
+        }
     }
 
 
-    &-price {
-        font-size: 3rem;
-        font-weight: 400;
-        color: rgba($color-primary, .6);
-        text-transform: uppercase;
-        font-family: $font-heading;
+    &__total {
+        grid-column: 9 / 12;
+        display: grid;
+        background-color: $color-secondary;
+        border-radius: 15px;
+        box-shadow: 0 1rem 2rem rgba($color-grey-dark, .54);
+        padding: 4rem;
+
+        &-price {
+            text-align: center;
+            font-size: 5rem;
+            font-weight: 700;
+            color: rgba($color-grey-dark, .85);
+        }
+
+        button {
+            padding: 1.5rem !important;
+            align-self: center;
+            justify-self: center;
+        }
+
+        @include respond(tab-port) {
+            grid-row: 2 / 3;
+            grid-column: 1 / -1;
+            padding: 2rem;
+        }
+
+        @include respond(phone) {
+            grid-row-gap: 2rem;
+        } 
+    }
+
+    &__empty {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 }

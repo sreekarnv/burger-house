@@ -1,135 +1,68 @@
-const Ingredient = require('./../models/ingredientModel');
-const multer = require('multer');
-const AppError = require('../errors/AppError');
-
+const multer = require("multer");
+const AppError = require("../utils/AppError");
+const Ingredient = require("./../models/ingredientModel");
+const factory = require("./_factory");
 
 const multerStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, `uploads/ingredients`)
-    },
-    filename: (req, file, cb) => {
-        const name = file.originalname.split('.')[0];
-        const ext = file.mimetype.split('/')[1].split('+')[0];
-        cb(null, `ingredient-${name}-${Date.now()}.${ext}`)
-    }
-})
-
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image/svg+xml')) {
-        cb(null, true);
-    } else {
-        cb(new AppError(
-            'Not an SVG Image. Please upload only images of type .svg', 400
-        ), false);
-    }
-}
-
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
+	destination: (req, file, cb) => {
+		cb(null, "uploads/ingredients");
+	},
+	filename: (req, file, cb) => {
+		let ext = file.mimetype.split("/")[1];
+		if (ext.startsWith("svg")) ext = ext.split("+")[0];
+		let name = `ingredient-${req.user._id}-${Date.now()}.${ext}`;
+		cb(null, name);
+	},
 });
 
-exports.uploadPhoto = upload.single('photo');
+const multerFilter = (req, file, cb) => {
+	if (
+		file.mimetype.startsWith("image") &&
+		file.mimetype.split("/")[1] === "svg+xml"
+	) {
+		cb(null, true);
+	} else {
+		cb(new AppError("Please only upload svg files", 400), false);
+	}
+};
 
-exports.getAllIngredients = async (req, res, next) => {
-    try {
-        const ing = await Ingredient.find();
+const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
+exports.uploadIngredientPhoto = upload.single("photo");
 
-        res.status(200).json({
-            status: 'success',
-            results: ing.length,
-            // data: {
-            ingredients: ing
-            // }
-        })
+exports.filterGetAllIngredients = (req, res, next) => {
+	let filter = { ...req.query };
 
+	if (req.query.name) {
+		filter = {
+			$text: { $search: req.query.name },
+		};
+		req.query.name = filter;
+	}
 
-    } catch (err) {
-        next(err);
-    }
-}
+	if (req.query.foodType) {
+		filter = {
+			foodType: [req.query.foodType, "none"],
+		};
+	}
 
-exports.createIngredient = async (req, res, next) => {
-    try {
-        if (req.file) req.body.photo = req.file.filename;
+	req.query = filter;
+	next();
+};
 
-        const ingredient = await Ingredient.create(req.body);
+exports.createIngredient = factory.create(Ingredient);
+exports.getAllIngredients = factory.getAll(Ingredient);
 
-        res.status(201).json({
-            status: 'success',
-            ingredient
-        })
+exports.getIngredient = factory.getOne(Ingredient, {
+	msg: "This ingredient does not exist",
+	statusCode: 404,
+});
 
+exports.updateIngredient = factory.updateOne(Ingredient, {
+	msg: "This ingredient does not exist",
+	statusCode: 404,
+});
 
-    } catch (err) {
-        next(err);
-    }
-}
-
-
-exports.getIngredient = async (req, res, next) => {
-    try {
-        const ing = await Ingredient.findById(req.params.id);
-
-        if (!ing) {
-            return new AppError('This ingredient does not exist', 404)
-        }
-
-        res.status(200).json({
-            status: 'success',
-            // data: {
-            ingredient: ing
-            // }
-        })
-
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.updateIngredient = async (req, res, next) => {
-    try {
-
-        if (req.file) req.body.photo = req.file.filename;
-
-        const ing = await Ingredient.findByIdAndUpdate(req.params.id, req.body, {
-            new: true, runValidators: true
-        });
-
-        if (!ing) {
-            return new AppError('This ingredient does not exist', 404)
-        }
-
-        res.status(200).json({
-            status: 'success',
-            // data: {
-            ingredient: ing
-            // }
-        })
-
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.deleteIngredient = async (req, res, next) => {
-    try {
-
-        const ing = await Ingredient.findByIdAndDelete(req.params.id);
-
-        if (!ing) {
-            return new AppError('This ingredient does not exist', 404)
-        }
-
-        res.status(204).json({
-            status: 'success',
-            data: null
-        })
-
-
-    } catch (err) {
-        next(err);
-    }
-}
+exports.deleteIngredient = factory.deleteOne(Ingredient, {
+	msg: "This ingredient does not exist",
+	statusCode: 404,
+});

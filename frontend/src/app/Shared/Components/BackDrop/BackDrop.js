@@ -1,8 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const backDrop = (props) => {
-    if (props.show) return <div onClick={props.close} className="backdrop"></div>
-    else return null;
+const Backdrop = (props) => {
+	const { show, closeHandler } = props;
+
+	return (
+		<div
+			onClick={closeHandler}
+			className={`backdrop ${show && "backdrop--show"}`}></div>
+	);
 };
 
-export default backDrop;
+export default Backdrop;

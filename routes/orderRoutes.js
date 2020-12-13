@@ -1,33 +1,70 @@
-const express = require('express');
+const express = require("express");
+const authController = require("./../controllers/authController");
+const orderController = require("../controllers/orderController");
+const status = require("./../controllers/_status");
 
-const authController = require('./../controllers/authController');
-const ordersController = require('./../controllers/ordersController');
+const router = express.Router();
 
+router
+	.route("/admin/orderStats")
+	.get(
+		authController.protectRoutes,
+		authController.restrictTo("admin"),
+		orderController.getAllOrdersStats
+	);
 
-const router = express.Router()
+router
+	.route("/")
+	.get(
+		authController.protectRoutes,
+		orderController.filterCurrentUserOrders,
+		orderController.getAllOrders,
+		status.HTTP_200_OK
+	)
+	.post(
+		authController.protectRoutes,
+		orderController.placeOrderFields,
+		orderController.placeOrder,
+		status.HTTP_201_CREATED
+	);
 
-router.route('/')
-    .post(authController.protectRoutes, ordersController.createOrder)
-    .get(
-        authController.protectRoutes,
-        authController.restrictRoutes('admin'),
-        ordersController.getAllOrders
-    )
+router
+	.route("/admin")
+	.get(
+		authController.protectRoutes,
+		authController.restrictTo("admin"),
+		orderController.getAllOrders,
+		status.HTTP_200_OK
+	);
 
-router.route('/me')
-    .get(
-        authController.protectRoutes,
-        ordersController.getAllUserOrders
-    )
+router
+	.route("/admin/:_id")
+	.get(
+		authController.protectRoutes,
+		authController.restrictTo("admin"),
+		orderController.getOrder,
+		status.HTTP_200_OK
+	)
+	.patch(
+		authController.protectRoutes,
+		authController.restrictTo("admin"),
+		orderController.updateOrderAdminFilter,
+		orderController.updateOrder,
+		status.HTTP_200_OK
+	);
 
-router.route('/:id')
-    .get(
-        authController.protectRoutes,
-        ordersController.getOrder
-    )
-    .patch(
-        authController.protectRoutes,
-        ordersController.updateOrder
-    )
+router
+	.route("/:_id")
+	.get(
+		authController.protectRoutes,
+		orderController.getOrder,
+		status.HTTP_200_OK
+	)
+	.patch(
+		authController.protectRoutes,
+		orderController.updateOrderUserFilter,
+		orderController.updateOrder,
+		status.HTTP_200_OK
+	);
 
 module.exports = router;

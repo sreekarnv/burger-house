@@ -32,7 +32,11 @@
         justify-self: start;
         object-position: center;
         object-fit: cover;
-    
+        
+        @include respond(phone) {
+            height: 8rem;
+            width: 8rem;
+        }
     }
 
     &__user-name {
@@ -40,7 +44,10 @@
         justify-self: start;
         color: $color-primary;
         justify-self: center;
-        
+
+        @include respond(phone) {
+            font-size: 3rem;
+        }
     }
 
     &__ratings {
@@ -48,11 +55,19 @@
         font-weight: lighter;
         color: $color-tertiary;
         justify-self: end;
+
+        @include respond(phone) {
+            font-size: 3rem;
+        }
     }
 
     &__text {
         font-size: 1.8rem;
         font-style: italic;
         color: rgba($color-primary, .75);
+
+        @include respond(phone) {
+            font-size: 2.2rem;
+        }
     }
 }

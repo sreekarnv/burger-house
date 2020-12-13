@@ -1,0 +1,43 @@
+.user-list-item {
+    background-color: $color-white;
+    display: grid;
+    grid-template-columns: 1fr 1fr .5fr .5fr;
+    justify-items: center;
+    align-items: center;
+    font-family: $font-heading;
+
+    @include respond(phone) {
+        justify-content: space-between;
+        padding: 2rem;
+    }
+
+    &__name {
+        font-size: 2.5rem;
+        color: $color-grey-dark;
+
+        @include respond(phone) {
+            font-size: 2.8rem;
+        }
+    }
+
+    &__role {
+        font-size: 1.8rem;
+
+        @include respond(phone) {
+            font-size: 2rem;
+        }
+
+        &--customer {
+            color: $color-tertiary;
+        }
+
+        &--admin {
+            color: $color-primary;
+        }
+    }
+
+    .icon-button {
+        height: 3.5rem !important;
+        width: 3.5rem !important;
+    }
+}

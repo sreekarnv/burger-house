@@ -1,61 +1,30 @@
 .modal {
+    background-color: $color-white;
+    z-index: 30;
     position: fixed;
-    left: 35.5%;
-    top: 40%;
-    z-index: 140;
-    width: 30%;
-    box-shadow: 0 1px 2px rgba($color-black, .45);
-    padding: 2rem;
-    border-radius: 3px;
-    transition: all .4s ease-out;
-    font-size: 2rem;
+    border-radius: 4px;
+    overflow: hidden;
+    top: 23%;
+    left: 33%;
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: all .6s ease-out;
 
-    text-transform: capitalize;
-
-    text-align: center;
-
-    justify-items: center;
-    align-items: center;
-
-    @include respond(tab-port) {
-        left: 25.5%;
-        width: 50%;
+    &__msg {
+        font-size: 2rem;
+        text-transform: capitalize;
+        margin-bottom: 4rem;
+        color: $color-grey-dark;
     }
 
-    &__true {
-        transform: translateY(0);
-        opacity: 1;
-    }
-  
-    &__false {
-        transform: translateY(-60vh);
-        opacity: 0;
-    }
-}
-
-
-.confirm__modal {
-    display: grid;
-    grid-template-rows: [msg-start] 1fr [msg-end btn-start] 1fr [btn-end];
-    grid-template-columns: [btn-success-start] 1fr [btn-success-end btn-danger-start] 1fr [btn-danger-end];
-    background-color: $color-secondary;
-    grid-gap: 2rem;
-
-    &-message {
-        grid-row: msg-start / msg-end;
-        grid-column: btn-success-start / btn-danger-end;
-        font-size: 3rem;
-        font-family: $font-heading;
-        color: $color-primary;
+    &__cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
     }
 
-    &-btn-success {
-        grid-row: btn-start / btn-end;
-        grid-column: btn-success-start / btn-success-end;
-    }
-
-    &-btn-danger {
-        grid-row: btn-start / btn-end;
-        grid-column: btn-danger-start / btn-danger-end;
+    &--show {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 }

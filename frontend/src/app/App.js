@@ -1,50 +1,44 @@
-import React, { Suspense, lazy } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
-import Body from './Layout/Body';
-import { Component } from 'react';
+import Body from "./layout/Body";
+import Footer from "./layout/Footer";
+import Header from "./layout/Header";
 
-import * as authActions from './Store/actions/auth';
-import Loader from './Shared/Components/Loader/Loader';
+import * as actionTypes from "./store/actions/authActions";
+import Loader from "./shared/components/Loader/Loader";
 
-const Header = lazy(() => import('./Layout/Header'));
-const Footer = lazy(() => import('./Layout/Footer'));
+const App = (props) => {
+	const { checkAuthUserInit, checkAuthUser } = props;
 
-class App extends Component {
+	useEffect(() => {
+		checkAuthUser();
+	}, [checkAuthUser]);
 
-    async componentDidMount() {
-        await this.props.checkAuthState();
-    }
+	if (checkAuthUserInit) {
+		return <Loader fullScreen />;
+	}
 
-    render() {
-        let loading = <div className="u-flex-center u-vh-100 u-bg-white">
-            <Loader />
-        </div>
-
-        return (
-            <BrowserRouter>
-                <Suspense fallback={loading}>
-                    <Header />
-                    <Body />
-                    <Footer />
-                </Suspense>
-            </BrowserRouter >
-        )
-    }
+	return (
+		<BrowserRouter>
+			<Header />
+			<Body />
+			<Footer />
+		</BrowserRouter>
+	);
 };
 
+const mapStateToProps = (state) => {
+	return {
+		checkAuthUserInit: state.auth.checkAuthUserInit,
+	};
+};
 
-const mapStateToProps = state => {
-    return {
-        user: state.auth.user
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        checkAuthState: () => dispatch(authActions.checkAuth()),
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+	return {
+		checkAuthUser: () => dispatch(actionTypes.checkAuthUser()),
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

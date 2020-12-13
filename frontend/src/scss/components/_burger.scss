@@ -1,107 +1,29 @@
 .burger {
-    width: 60%;
-    height: 60%;
-    margin: auto;
-    overflow: scroll;
-    font-weight: bold;
-    font-size: 1.2rem;  
-    
-    @include respond(tab-port) {
-        width: 80%;
+    overflow-y: scroll;
+    padding: 5rem;
+    height: 100%;
+
+    @include respond(phone-xs) {
+        padding: 5rem 2rem;
     }
 
-    & > * {
-        margin: auto;
-        &:not(:last-child) {
-            margin-bottom: 1.25rem;
-
-            @include respond(tab-port) {
-                margin-bottom: 1rem;
-            }
-        }
-    }
-}
-
-.tomatoes {
-    height: 3%;
-    background-image: linear-gradient(#C3150E, $color-danger);
-    width: 85%;
-    border-radius: 20rem;
-    position: relative;
-
-    @include respond(tab-port) {
-        height: 6%;
+    &-top-bun {
+        background-color: $color-primary-light;
+        height: 8rem;
+        width: 100%;
+        border-radius: 50% 50% 10px 10px;
+        margin-bottom: 1rem;
     }
 
-}
-
-
-
-.bread-top {
-    height: 24%;
-    width: 80%;
-    background-color: #e27b36 ;
-    border-radius: 50% 50% 1rem 1rem ;
-
-    @include respond(tab-port) {
-        height: 40%;
+    &-bottom-bun {
+        background-color: $color-primary-light ;
+        height: 6rem;
+        border-radius: 10px 10px 20px 20px;
+        width: 100%;;
     }
 
-    @include respond(phone) {
-        height: 30%;
+    &-ingredients {
+        margin-bottom: 1rem;
+        border-radius: 10px;
     }
-}
-
-.bread-bottom {
-    height: 15%;
-    width: 80%;
-    background-color: #e27b36 ;
-    border-radius: 1rem 1rem 3rem 3rem;
-
-    @include respond(tab-port) {
-        height: 20%;
-    }
-
-    @include respond(phone) {
-        height: 15%;
-    }
-}
-
-.chicken,
-.aloo{
-    width: 80%;
-    height: 7%;
-    background: #7f3608;
-    border-radius: 1.5rem;
-
-    @include respond(tab-port) {
-        height: 10%;
-    }
-}
-
-
-.lettuce {
-    width: 85%;
-    height: 3%;
-    background-image: linear-gradient(#88A750, #6F9930);
-    border-radius: 2rem;
-}
-
-
-.paneer{
-    width: 80%;
-    height: 7%;
-    background: #ccc;
-    border-radius: 1.5rem;
-
-    @include respond(tab-port) {
-        height: 10%;
-    }
-}
-
-.cheese {
-    width: 85%;
-    height: 4%;
-    background-image: linear-gradient(#F9EB7C, #FFCC29);
-    border-radius: 2rem;
 }

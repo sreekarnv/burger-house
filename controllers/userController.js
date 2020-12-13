@@ -1,216 +1,84 @@
-const User = require('./../models/userModel');
-const AppError = require('../errors/AppError');
-const multer = require('multer');
-const sharp = require('sharp');
-const Order = require('../models/orderModel');
+const User = require("./../models/userModel");
+const factory = require("./_factory");
+const sharp = require("sharp");
+// const AppError = require("../utils/AppError");
+const { MemoryUploadImage } = require("../utils/imageUpload");
+// const AppError = require("../utils/AppError");
 
+exports.uploadUserPhoto = MemoryUploadImage.single("photo");
 
-const multerStorage = multer.memoryStorage();
+exports.resizeUserImage = async (req, res, next) => {
+	if (!req.file) {
+		return next();
+	}
 
-const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith('image')) {
-        cb(null, true);
-    } else {
-        cb(new AppError(
-            'Not an Image. Please upload only images', 400
-        ), false);
-    }
-}
+	req.file.filename = `user-${req.user._id}.${Date.now()}.jpeg`;
 
-const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter
-});
+	await sharp(req.file.buffer)
+		.resize(500, 500)
+		.toFormat("jpeg")
+		.jpeg({ quality: 90 })
+		.toFile(`uploads/users/${req.file.filename}`);
 
-exports.uploadUserPhoto = upload.single('photo');
-
-exports.resizeUserPhoto = async (req, res, next) => {
-    try {
-        if (!req.file) return next();
-
-        req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-        await sharp(req.file.buffer)
-            .resize(1500, 1500)
-            .toFormat('jpeg')
-            .jpeg({ quality: 90 })
-            .toFile(`uploads/users/${req.file.filename}`);
-
-        next();
-    } catch (err) {
-        next(err);
-    }
+	next();
 };
 
-exports.getAllUsers = async (req, res, next) => {
-    try {
-        let filter = null;
-        if (req.query) filter = { ...req.query };
-
-        if (req.query.name) filter = { ...req.query, name: new RegExp(`${req.query.name}`, 'g') }
-
-        const users = await User.find(filter)
-        res.status(200).json({
-            status: 'success',
-            results: users.length,
-            users
-
-        })
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.getUser = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.params.id);
-
-        if (!user) {
-            return next(new AppError('User with specified id does not exist', 404))
-        }
-
-        res.status(200).json({
-            status: 'success',
-            data: {
-                user
-            }
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-
-exports.updateUser = async (req, res, next) => {
-    try {
-        const { role } = req.body;
-
-
-        if (req.user._id !== req.params.id && role === 'customer') {
-            return next(
-                new AppError('Cannot make an Admin to a customer', 400)
-            )
-        }
-
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-            runValidators: true, new: true
-        })
-
-        if (!user) {
-            return next(new AppError('User with specified id does not exist', 404))
-        }
-
-        res.status(200).json({
-            status: 'success',
-            data: {
-                user
-            }
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.deleteUser = async (req, res, next) => {
-    try {
-        const user = await User.findByIdAndDelete(req.params.id)
-
-        if (!user) {
-            return next(new AppError('User with specified id does not exist', 404))
-        }
-
-        res.status(204).json({
-            status: 'success',
-            data: null
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.getCurrentUserData = async (req, res, next) => {
-    try {
-
-        const user = await User.findById(req.user.id);
-
-        if (!user) {
-            return next(
-                new AppError('You are not logged in', 401)
-            )
-        }
-
-        res.status(200).json({
-            status: 'success',
-            user
-        })
-
-
-    } catch (err) {
-        next(err);
-    }
-}
+exports.filterUserUpdateFilter = (req, res, next) => {
+	Object.keys(req.body).forEach((el) => {
+		if (el === "password" || el === "passwordConfirm") {
+			delete req.body[el];
+		}
+	});
+	next();
+};
 
 exports.updateCurrentUserData = async (req, res, next) => {
-    try {
-        // 1. get updated data (payload)
-        const payload = {};
-        Object.keys(req.body).forEach(field => {
-            if (field === 'name' || field === 'email') payload[field] = req.body[field];
-        })
+	try {
+		const data = await User.findOneAndUpdate(
+			{ _id: req.user.id },
+			{ ...req.body },
+			{
+				new: true,
+				runValidators: true,
+			}
+		);
 
-        if (req.file) payload['photo'] = req.file.filename;
+		req.data = data;
+		next();
+	} catch (err) {
+		next(err);
+	}
+};
 
-        // 2. update user
-        user = await User.findByIdAndUpdate(req.user.id, payload, {
-            new: true, runValidators: true
-        })
+exports.getCurrentUserData = async (req, res, next) => {
+	const user = req.user;
 
-        // 3. check if user exists
-        if (!user) {
-            return next(new AppError('User does not exist', 404))
-        }
+	res.status(200).json({
+		status: "success",
+		user,
+	});
+};
 
-        res.status(200).json({
-            status: 'success',
-            user
-        })
-    } catch (err) {
-        next(err);
-    }
-}
+exports.getAllUsers = factory.getAll(User);
 
-exports.deleteCurrentUser = async (req, res, next) => {
-    try {
-        // 1. get auth token
-        const user = req.user
+exports.filterUserUpdateBody = (req, res, next) => {
+	let body = { ...req.body };
+	Object.keys(body).forEach((el) => {
+		if (el !== "role") {
+			delete body[el];
+		}
+	});
 
-        const orders = await Order.find({ user: user.id })
+	req.body = body;
+	next();
+};
 
-        let pendingOrders = [];
-        orders.map(el => {
-            if (el.status === 'pending') {
-                pendingOrders.push(el);
-            }
-            pendingOrders;
-        })
+exports.updateUserRole = factory.updateOne(User, {
+	msg: "this user does not exist",
+	statusCode: 404,
+});
 
-
-        if (pendingOrders.length > 0) {
-            return next(
-                new AppError('You still have pending orders. You can delete your account after your orders have been delivered', 400)
-            );
-        };
-
-        await User.findByIdAndDelete(user.id)
-
-        res.status(204).json({
-            status: 'success',
-            data: null
-        });
-
-    } catch (err) {
-        next(err);
-    }
-}
+exports.deleteUser = factory.deleteOne(User, {
+	msg: "this user does not exist",
+	statusCode: 404,
+});

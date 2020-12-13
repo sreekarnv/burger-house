@@ -1,19 +1,25 @@
-import React from 'react'
+import React from "react";
+import AddIcon from "../../icons/AddIcon";
+import SubtractIcon from "../../icons/SubtractIcon";
+import IconButton from "./IconButton";
 
-const AddorRemoveButton = props => {
-    let disabled = false;
-    let classes;
-    if (props.items === 0) {
-        disabled = true;
-        classes = "btn btn__primary-disabled";
-    }
-    return (
-        <div className={`btn__addOrRemove ${props.className}`}>
-            <button type="button" onClick={props.addItem} className={props.classes}>+</button>
-            <p className={`u-text-tertiary ${props.valueClass}`}>{props.items}</p>
-            <button type="button" onClick={props.removeItem} disabled={disabled} className={classes || props.classes}>-</button>
-        </div>
-    );
+const AddOrRemoveButton = (props) => {
+	const { lg, addItem, color, children, removeItem, className } = props;
+
+	return (
+		<div
+			className={`add-or-remove-btn ${
+				lg && "add-or-remove-btn__lg"
+			} ${className}`}>
+			<IconButton onClick={addItem} lg={lg} color={color}>
+				<AddIcon />
+			</IconButton>
+			<p>{children}</p>
+			<IconButton onClick={removeItem} lg={lg} color={color}>
+				<SubtractIcon />
+			</IconButton>
+		</div>
+	);
 };
 
-export default AddorRemoveButton;
+export default AddOrRemoveButton;

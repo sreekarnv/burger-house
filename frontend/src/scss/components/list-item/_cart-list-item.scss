@@ -1,0 +1,65 @@
+.cart__list-item {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: start;
+
+    &-sm {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond(phone) {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: .5fr 1fr .5fr;
+        grid-row-gap: 1.2rem;
+    }
+
+    &-image {
+        height: 15rem;
+        width: 15rem;
+        display: grid;
+        align-items: center;
+
+        @include respond(phone) {
+            grid-row: 1 / 3;
+        }
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;;
+            object-position: center;
+        }
+    }
+
+    &-ings {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: $color-grey-dark;
+
+        @include respond(phone) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &-name {
+        text-transform: uppercase;
+        font-size: 1.55rem;
+        color: $color-tertiary;
+
+        @include respond(phone) {
+            font-size: 2.25rem;
+        }
+    }
+
+    &-price {
+        font-size: 2rem;
+        color: rgba($color-primary, .74);
+
+        @include respond(phone) {
+            font-size: 2.6rem;
+        }
+    }
+}

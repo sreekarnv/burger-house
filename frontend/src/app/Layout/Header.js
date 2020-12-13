@@ -1,49 +1,89 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Logo from '../Shared/Icons/Logo';
-import Navbar from '../Shared/Components/Navigation/Navbar';
-import NavItem from '../Shared/Components/Navigation/NavItem';
-import { Link } from 'react-router-dom';
+import React from "react";
 
+import { useSelector } from "react-redux";
+import Logo from "../shared/icons/Logo";
+import Navbar from "../shared/components/Navigation/Navbar";
+import NavItem from "../shared/components/Navigation/NavItem";
+import { Link } from "react-router-dom";
 
-class Header extends Component {
-    render() {
-        return (
-            <header className="header">
-                <Link className="header__brand" to="/">
-                    <Logo className="header__logo" />
-                    <h1 className="header__brand-name">Burger house</h1>
-                </Link>
+const Header = (props) => {
+	const cart = useSelector((state) => state.cart.cartValue);
+	const user = useSelector((state) => state.auth.user);
 
-                <Navbar classNav="header__nav">
-                    <NavItem active="header__nav-link--active" exact classNavItem="header__nav-item" classNavLink="header__nav-link" path="/" >Home</NavItem>
+	return (
+		<header className='header'>
+			<Link className='header__brand' to='/'>
+				<Logo className='header__logo' />
+				<h1 className='header__brand-name'>Burger house</h1>
+			</Link>
 
-                    <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/menu" >Menu</NavItem>
-                    {/* <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/confirm-email" >Menu</NavItem> */}
+			<Navbar classNav='header__nav'>
+				<NavItem
+					active='header__nav-link--active'
+					exact
+					classNavItem='header__nav-item'
+					classNavLink='header__nav-link'
+					path='/'>
+					Home
+				</NavItem>
 
-                    {this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link"
-                        path={`/dashboard`} >Dashboard</NavItem>}
+				<NavItem
+					active='header__nav-link--active'
+					classNavItem='header__nav-item'
+					classNavLink='header__nav-link'
+					path='/menu'>
+					Menu
+				</NavItem>
+				{/* <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/confirm-email" >Menu</NavItem> */}
 
-                    {!this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/login" >Login</NavItem>}
+				{user && (
+					<NavItem
+						active='header__nav-link--active'
+						classNavItem='header__nav-item'
+						classNavLink='header__nav-link'
+						path={`/dashboard`}>
+						Dashboard
+					</NavItem>
+				)}
 
-                    {!this.props.user && <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" path="/register" >Register</NavItem>}
+				{!user && (
+					<NavItem
+						active='header__nav-link--active'
+						classNavItem='header__nav-item'
+						classNavLink='header__nav-link'
+						path='/login'>
+						Login
+					</NavItem>
+				)}
 
-                    <NavItem active="header__nav-link--active" classNavItem="header__nav-item" classNavLink="header__nav-link" badge path="/cart" badgeVal={this.props.cart}>Cart</NavItem>
+				{!user && (
+					<NavItem
+						active='header__nav-link--active'
+						classNavItem='header__nav-item'
+						classNavLink='header__nav-link'
+						path='/register'>
+						Register
+					</NavItem>
+				)}
 
-                    {this.props.user &&
-                        <Link to="/logout" className="btn btn__logout">logout</Link>}
+				<NavItem
+					active='header__nav-link--active'
+					classNavItem='header__nav-item'
+					classNavLink='header__nav-link'
+					badge
+					path='/cart'
+					badgeVal={cart || 0}>
+					Cart
+				</NavItem>
 
-                </Navbar>
-            </header>
-        )
-    }
-}
+				{user && (
+					<Link to='/logout' className='btn btn__logout '>
+						Logout
+					</Link>
+				)}
+			</Navbar>
+		</header>
+	);
+};
 
-const mapStateToProps = state => {
-    return {
-        cart: state.cart.cart,
-        user: state.auth.user
-    }
-}
-
-export default connect(mapStateToProps)(Header); 
+export default Header;

@@ -1,0 +1,362 @@
+.dashboard {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+
+    .sidebar {
+        width: 30rem;
+
+        @include respond(tab-port) {
+            padding-top: -8.5rem !important;
+            transform: translateX(-100vh);
+            opacity: 0;
+            visibility: hidden;
+            transition: all .7s ease-out;
+            width: 50rem;
+        }
+
+        &--show {
+            @include respond(tab-port) {
+                transform: translateX(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    .content {
+        grid-column: 2 / 3;
+        background-color: $color-grey-light;
+        
+        padding-top: 8.5rem;
+
+        @include respond(tab-port) {
+            grid-column: 1 / 3;
+        }
+
+        & > * {
+            padding: 5rem 10rem;
+
+            @include respond(tab-port) {
+                padding: 15rem 5rem;
+            }
+        }
+    }
+
+    
+    .sidebar__toggler {
+        svg {
+            fill: $color-primary;
+            display: none;
+
+            @include respond(tab-port) {
+                display: block;
+            }
+        }
+
+        @include respond(tab-port) {
+            display: block;
+            position: fixed;
+            top: 12rem;
+            left: 3rem;
+            height: 8rem;
+            border-radius: 50%;
+            width: 8rem;
+            background-color: $color-white;
+            z-index: 5;
+            box-shadow: 0 .5rem 1rem rgba($color-black, .65);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        } 
+
+        @include respond(tab-port) {
+            top: 18rem;
+        } 
+    }  
+}
+
+.user-settings {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-row-gap: 5rem;
+
+    background-image: linear-gradient(
+        rgba($color-grey-light, .8),
+        rgba($color-grey-light, .8),
+    ),url(../../assets/images/gallery-3.jpg);
+
+    background-size: cover;
+    background-position: center;
+
+    @include respond(tab-port) {
+        min-height: 100vh;
+        grid-row-gap: 3rem;
+    }
+
+
+    &__update-form {
+        grid-column : 2 / 9;
+
+        @include respond(tab-port) {
+            grid-column: 2 / 14;
+        }
+
+        &--1 {
+            grid-row: 1 / 2;
+        }
+
+        &--2 {
+            grid-row: 2 / 3;
+        }
+    }
+}
+
+.user-orders {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+
+    justify-items: center;
+    grid-row-gap: 5rem;
+
+    height: 90vh;
+
+    & > :last-child {
+        padding: 5rem;
+        overflow-y: scroll;
+
+        @include respond(phone) {
+            padding: 5rem 0;;
+        }
+    }    
+}
+
+// admin- manage orders page
+.admin-user-orders {
+    display: grid;
+    grid-template-rows: max-content max-content minmax(.125rem, 1fr) 1fr;
+    align-items: center;
+    height: 93vh;
+
+    background-image: linear-gradient(
+        rgba($color-grey-light, .8),
+        rgba($color-grey-light, .8),
+    ),url(../../assets/images/gallery-3.jpg);
+
+    background-size: cover;
+    background-position: center;
+
+    justify-items: center;
+    grid-row-gap: 5rem;
+
+    
+    @include respond(tab-port) {
+        grid-template-rows: max-content max-content 5rem 1fr;
+        height: auto;
+    }
+
+
+    &__stats {
+        justify-self: center;
+        width: 100%;;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, 20rem);
+        grid-column-gap: 3rem;
+        grid-row-gap: 3rem;
+
+        @include respond(phone) {
+            grid-template-columns: repeat(auto-fit, 40rem);
+        }
+    }
+
+    &__filter {
+        width: 60%;
+        align-self: center;
+
+        @include respond(phone) {
+            width: 80%;
+        }
+
+        @include respond(phone-xs) {
+            width: 100%;
+        }
+    }
+
+    &__list {
+        height: 40rem;
+        overflow-y: scroll;
+        padding: 3rem;
+
+        @include respond(phone-xs) {
+            padding: 3rem 0;
+            align-self: start;
+        }
+    }
+}
+
+// order details page
+.order-detail-page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: max-content repeat(2, 1fr);
+    height: 92vh;
+    grid-row-gap: 2rem;
+    background-size: cover;
+    background-position: center;
+
+    @include respond(phone) {
+        grid-template-rows: max-content repeat(2, .5fr) 1fr ;
+        grid-row-gap: 4rem;
+    }
+
+    &__list {
+        grid-row: 2 / 4;
+        grid-column: 1 / 7;
+        overflow-y: scroll;
+
+        @include respond(phone) {
+            grid-column: 1 / -1;
+            grid-row: 4 / 5;
+        }
+    }
+
+    .order-stats {
+        background-color: rgba($color-secondary, 1);
+        border-radius: 15px;
+        grid-row: 2 / 3;
+        grid-column: 8 / 12;
+        box-shadow: 0 .5rem 1rem rgba($color-grey-dark, 1);
+
+        display: grid;
+        align-content: center;
+        justify-content: center;
+
+        font-size: 2rem;
+        color: $color-grey-dark;
+        font-family: $font-heading;
+
+        @include respond(phone) {
+            grid-row: 3 / 4;
+            grid-row-gap: 2rem;
+            grid-column: 1 / -1 !important;
+            font-size: 2.75rem;
+            padding: 4rem;
+        }
+        
+        &-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2rem;
+        }
+    }
+
+    &__btn {
+        grid-row: 1 / 2;
+
+        @include respond(phone) {
+            grid-column: 1 / -1;
+        }
+    } 
+
+    &__cta {
+        grid-row: 3 / 4;
+        grid-column: 8 / 12;
+
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        align-items: center;
+        grid-row-gap: 3rem;
+        border-radius: 15px;
+
+        background-color: rgba($color-white, .6);
+
+        box-shadow: 0 .5rem 1rem rgba($color-grey-dark, .6);
+
+        @include respond(phone) {
+            grid-row: 2 / 3;
+            grid-row-gap: 2rem;
+            grid-column: 1 / -1 !important;
+            font-size: 2.75rem;
+            padding: 4rem;
+        }
+
+        & > * {
+            width: 50%;
+
+            @include respond(phone-xs) {
+                width: 90%;
+            }
+        }
+    }
+}
+
+// manage users
+
+.manage-users {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    text-align: center;
+    grid-row-gap: 3rem;
+    
+    &__list {
+        padding: 3rem;
+        height: 70vh;
+        width: 80%;
+        justify-self: center;
+
+        display: grid;
+        grid-row-gap: 2rem;
+        overflow-y: scroll;
+        
+        align-items: center;
+        align-content: start;
+
+        @include respond(phone) {
+            width: 100%;
+        }
+
+        @include respond(phone-xs) {
+            padding: 1rem;
+        }
+    }
+}
+
+// manage menu
+
+.manage-menu {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    text-align: center;
+    grid-row-gap: 3rem;
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+        justify-items: center;
+        grid-row-gap: 3rem;
+    }
+}
+
+// burger-detail
+
+.burger-detail {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+
+    background-image: linear-gradient(
+        rgba($color-grey-light, .8),
+        rgba($color-grey-light, .8),
+    ),url(../../assets/images/gallery-1.jpg);
+
+    background-size: cover;
+    background-position: center;
+
+ 
+    .form__group {
+        width: 100%;
+    }
+}

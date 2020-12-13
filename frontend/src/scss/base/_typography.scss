@@ -11,13 +11,12 @@ body {
     font-size: 5rem;
     font-family: $font-heading;
 
-    @include respond(tab-land) {
-        font-size: 4rem;
-    } 
+    @include respond(phone) {
+        font-size: 6rem;
+    }
 
-    @include respond(tab-port) {
-        font-size: 3.5rem;
-        text-align: center;
+    @include respond(phone-xs) {
+        font-size: 7.5rem;
     }
 }
 
@@ -27,8 +26,10 @@ body {
 
     @include respond(tab-land) {
         font-size: 2.75rem;
-        text-align: center;
-        
+    }
+
+    @include respond(phone-xs) {
+        font-size: 3.5rem;
     }
 }
 

@@ -1,23 +1,25 @@
 @import 'abstracts/mixins';
 @import 'abstracts/variables';
 
-
 @import 'base/base';
 @import 'base/typography';
 @import 'base/utilities';
 
 
 @import 'components/alert';
+@import 'components/avatar';
 @import 'components/backdrop';
-@import 'components/badge';
-@import 'components/controls';
-@import 'components/burger';
-@import 'components/buttons';
-@import 'components/cards/cards';
-@import 'components/forms';
-@import 'components/icons';
 @import 'components/gallery';
-@import 'components/list';
+@import 'components/badge';
+@import 'components/burger';
+@import 'components/button/button';
+@import 'components/cards/card-menu';
+@import 'components/cards/diet-card';
+@import 'components/cards/card-stats';
+@import 'components/cards/card-about';
+@import 'components/form/form';
+@import 'components/ingredient-controls';
+@import 'components/list-item/list-item';
 @import 'components/modal';
 @import 'components/review';
 
@@ -26,16 +28,15 @@
 @import 'layout/footer';
 @import 'layout/sidebar';
 
-
-@import 'pages/about';
 @import 'pages/cart';
+@import 'pages/track-order';
 @import 'pages/home';
+@import 'pages/about';
+@import 'pages/custom-burger';
 @import 'pages/menu';
-@import 'pages/register';
+@import 'pages/send-email-confirm';
 @import 'pages/login';
-@import 'pages/confirm-register';
-@import 'pages/error-page';
-@import 'pages/custom-burger/custom-burger.scss';
-@import 'pages/dashboard/dashboard';
+@import 'pages/dashboard';
+@import 'pages/register';
 
 @import 'vendors/loader';

@@ -1,0 +1,179 @@
+.btn {
+    &,&:link, &:visited {
+        font-size: 1.8rem;
+        cursor: pointer;
+        border: none;
+        padding: .75rem 2rem;
+        border-radius: 5px;
+        
+        transform: translateY(0);
+        transition: all .3s ease-out;
+        outline: none;
+
+    
+        @include respond(tab-port) {
+            font-size: 2.25rem;
+        }
+
+        @include respond(phone) {
+            font-size: 3rem;
+        }
+    }
+
+    &__sm {
+        font-size: 1.35rem;
+
+        @include respond(phone) {
+            font-size: 2rem;
+        }
+    }
+
+    &__primary {
+        @include btnRegular($color-white, $color-primary);
+
+        &--outline {
+            @include btnOutline($color-primary, $color-white);
+        }
+    }
+
+    &__secondary {
+        @include btnRegular($color-white, $color-secondary);
+        
+        &--outline {
+            @include btnOutline($color-secondary, $color-grey-light);
+        }
+    }
+
+    &__tertiary {
+        @include btnRegular($color-white, $color-tertiary);
+        
+        &--outline {
+            @include btnOutline($color-tertiary, $color-grey-light);
+        }
+    }
+
+    &__dark {
+        @include btnRegular($color-white, $color-grey-dark);
+
+        &--outline {
+            @include btnOutline($color-grey-dark, $color-white);
+        }
+    }
+
+    &__success {
+        @include btnRegular($color-white, $color-success);
+
+        &--outline {
+            @include btnOutline($color-success, $color-white);
+        }
+    }
+
+    &__danger {
+        @include btnRegular($color-white, $color-danger);
+
+        &--outline {
+            @include btnOutline($color-danger, $color-white);
+        }
+    }
+
+    
+    &__light {
+        &--outline {
+            @include btnOutline($color-grey-light, $color-grey-dark);
+        }
+    }
+
+
+    &__disabled {
+        cursor: not-allowed;
+        @include btnRegular(rgba($color-grey-dark, .65), $color-grey-light);
+        filter: brightness(90%);
+
+        &:hover,
+        &:focus {
+            filter:  brightness(90%) !important;
+        }
+
+        &--outline {
+            cursor: not-allowed;
+            @include btnOutline($color-grey-light, $color-grey-dark);
+            filter: brightness(90%);
+
+            &:hover,
+            &:focus {
+                color: $color-grey-light !important;
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    &__goto {
+        &,
+        &:active,
+        &:link,
+        &:visited {
+            text-decoration: none;
+            border-radius: 0 !important;
+            backface-visibility: hidden;
+            padding-right: 0;
+            padding-left: 0;
+            color: currentColor;
+            font-weight: 400;
+            background-color: transparent;
+            transition: all .2s;
+        }
+       
+        span {
+            margin-left: 1rem;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:focus {
+            transform: translateX(1rem);
+        }
+
+        &:hover span,
+        &:focus span {
+            margin-left: 2rem;
+        }
+    }
+
+    &__back {
+        &,
+        &:active,
+        &:link,
+        &:visited {
+            text-decoration: none;
+            border-radius: 0 !important;
+            backface-visibility: hidden;
+            padding-right: 0;
+            padding-left: 0;
+            color: currentColor;
+            font-weight: 400;
+            background-color: transparent;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:focus {
+            transform: translateX(-1rem);
+        }
+
+        &:hover span,
+        &:focus span {
+            margin-left: 2rem;
+        }
+    }
+
+    &__logout {
+        text-decoration: none;
+        color: $color-danger;
+
+        &:focus,
+        &:hover {
+            outline: none;
+            filter: brightness(85%);
+        }
+    }
+}

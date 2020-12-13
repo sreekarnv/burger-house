@@ -1,77 +1,111 @@
-import React, { Component } from 'react';
-import uniqid from 'uniqid';
-import { connect } from 'react-redux';
-import AddorRemoveBtn from '../Buttons/AddorRemoveButton';
+import React, { useEffect, useState } from "react";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
-class Card extends Component {
-    state = {
-        showAlert: false,
-        showAddorRemoveBtn: false,
-    };
+import Alert from "./../Alert/Alert";
+import AddOrRemoveButton from "./../Buttons/AddOrRemoveButton";
 
-    ingredients = Object.keys(this.props.ingredients).map(el => <p key={uniqid()}
-        className="card__menu-ingredient">
-        <span className="card__menu-ingredient-name">{this.props.ingredients[el].name}</span>&nbsp;&#10005;&nbsp;
-        <span>{this.props.ingredients[el].amount}</span></p>)
+const CardMenu = (props) => {
+	const { burger, addBurger, removeBurger, admin } = props;
+	const {
+		name,
+		photoUrl,
+		ingredients,
+		price,
+		isVegetarian,
+		slug,
+		itemsInCart,
+	} = burger;
 
-    render() {
-        let Burger = {
-            _id: this.props._id,
-            title: this.props.title,
-            initialprice: this.props.initialprice,
-            foodType: this.props.foodType,
-            ingredients: this.props.ingredients,
-            BurgerImage: this.props.burgerImage,
-            items: this.props.items,
-            price: this.props.price,
-        };
+	const [showAlert, setShowAlert] = useState(false);
+	const [alertType, setAlertType] = useState();
 
-        let card__btn;
-        Object.keys(this.props.menuBurgers).map(el => {
-            if (this.props.page === 'menu') {
-                if (!this.props.cartBurgers || !this.props.cartBurgers[this.props.title]) {
-                    return card__btn = <button onClick={() => this.props.addItemToCart(Burger)}
-                        className="btn btn__primary card__menu-btn">Add to Cart</button>
+	useEffect(() => {
+		if (showAlert) {
+			let timer = setTimeout(() => {
+				setShowAlert(false);
+				setAlertType(null);
+			}, 2000);
 
-                } else if (this.props.cartBurgers[this.props.title].items > 0) {
-                    Burger.items = this.props.cartBurgers[this.props.title].items
-                    return card__btn = <AddorRemoveBtn
-                        valueClass="u-fontSize-3rem"
-                        className="card__menu-btn"
-                        classes="btn btn__primary btn__primary-round btn--large "
-                        removeItem={() => this.props.removeItem(Burger)}
-                        addItem={() => this.props.addItem(Burger)} items={this.props.cartBurgers[this.props.title].items} />
+			return () => clearTimeout(timer);
+		}
+	}, [showAlert]);
 
-                }
-            } else {
-                return card__btn = <button
-                    onClick={() => this.props.chooseBurger(this.props._id)}
-                    className="btn btn__primary card__menu-btn">Update Settings</button>;;
-            }
-            return card__btn;
-        })
+	const route = useRouteMatch();
+	const history = useHistory();
 
-        return (
-            <div className="card__menu">
-                <img src={this.props.burgerImage} alt="burger" className="card__menu-img" />
-                <h3 className="card__menu-title">{this.props.title}</h3>
-                <p className={`u-text-${this.props.foodType} card__menu-foodType`}>{this.props.foodType}</p>
-                <div className="card__menu-ingredients">
-                    {this.ingredients}
-                </div>
-                <p className="card__menu-price">Rs {this.props.initialprice}</p>
-                {card__btn}
-            </div>
-        )
-    }
-}
+	return (
+		<>
+			{showAlert && (
+				<Alert variant={alertType}>
+					{alertType === "success" && "Added Burger To Cart"}
+					{alertType === "danger" && "Removed Burger From Cart"}
+				</Alert>
+			)}
+			<div className='card-menu'>
+				<div className='card-menu__image'>
+					<img src={photoUrl} alt={name} />
+				</div>
 
-const mapStateToProps = (state) => {
-    return {
-        cart: state.cart.cart,
-        cartBurgers: state.cart.Burgers,
-        menuBurgers: state.menu.Burgers,
-    };
+				<h4 className='card-menu__name'>{name}</h4>
+				<p
+					className={`card-menu__foodtype ${
+						isVegetarian ? "u-text-success" : "u-text-danger"
+					}`}>
+					{isVegetarian ? "vegetarian" : "non-vegetarian"}
+				</p>
+				<div className='card-menu__ingredients'>
+					{ingredients.map((el) => {
+						return (
+							<div key={el._id} className='card-menu__ingredient'>
+								<span>{el.ingredient.name}</span>&nbsp;
+								<span>X&nbsp; {el.amount}</span>
+							</div>
+						);
+					})}
+				</div>
+
+				<p className='card-menu__price'>Rs {price}</p>
+				{!admin && itemsInCart === 0 && (
+					<button
+						onClick={() => {
+							addBurger(burger);
+							setShowAlert(true);
+							setAlertType("success");
+						}}
+						className='btn btn__primary--outline card-menu__cta'>
+						add to cart
+					</button>
+				)}
+
+				{!admin && itemsInCart > 0 && (
+					<AddOrRemoveButton
+						addItem={() => {
+							addBurger(burger);
+							setShowAlert(true);
+							setAlertType("success");
+						}}
+						removeItem={() => {
+							removeBurger(burger);
+							setShowAlert(true);
+							setAlertType("danger");
+						}}
+						lg
+						color='secondary-50'
+						className='card-menu__cta'>
+						{itemsInCart}
+					</AddOrRemoveButton>
+				)}
+
+				{admin && (
+					<button
+						onClick={() => history.push(`${route.path}/${slug}`)}
+						className='btn btn__primary--outline card-menu__cta'>
+						Update Burger
+					</button>
+				)}
+			</div>
+		</>
+	);
 };
 
-export default connect(mapStateToProps)(Card);
+export default CardMenu;

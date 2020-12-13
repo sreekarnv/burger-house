@@ -1,8 +1,26 @@
-import React from 'react';
+import React from "react";
 
-const Loader = () => {
-    return <div className="loader"
-    >Loading...</div>
-}
+const Loader = (props) => {
+	const { fullScreen } = props;
 
-export default Loader
+	const loader = (
+		<div className='lds-ellipsis'>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	);
+
+	if (fullScreen) {
+		return (
+			<div style={{ gridColumn: "1 / -1" }} className='loader__full-screen'>
+				{loader}
+			</div>
+		);
+	}
+
+	return loader;
+};
+
+export default Loader;

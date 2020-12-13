@@ -1,29 +1,53 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const { default: validator } = require("validator");
 
-const ingredientSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Every ingredient must have a nanme'],
-        unique: [true, 'ingredient with this name already exists']
-    },
-    price: {
-        type: Number,
-        required: [true, 'Every ingredient must have a price'],
-    },
-    foodType: {
-        type: String,
-        default: 'none',
-        enum: {
-            values: ['none', 'vegetarian', 'non-vegetarian'],
-            message: 'foodType can only have none , vegetarian, non-vegetarian'
-        }
-    },
-    photo: {
-        type: String,
-        required: true
-    }
-})
+const ingredientSchema = new mongoose.Schema(
+	{
+		name: {
+			type: String,
+			trim: true,
+			lowercase: true,
+			unique: [true, "ingredient with this name already exists"],
+			required: [true, "ingredient must have a valid name"],
+		},
+		price: {
+			type: Number,
+			required: [true, "ingredient must have a price"],
+		},
+		foodType: {
+			type: String,
+			enum: ["vegetarian", "non-vegetarian", "none"],
+			default: "none",
+		},
+		photo: {
+			type: String,
+			default: "ingredient.jpg",
+		},
+		display: {
+			height: {
+				type: Number,
+				default: 2,
+			},
+			color: {
+				type: String,
+				validate:
+					validator.isHexColor || validator.isRgbColor || validator.isHSL,
+				required: [true, "ingredient display property must have a valid color"],
+			},
+		},
+	},
+	{
+		toJSON: { virtuals: true },
+		toObject: { virtuals: true },
+	}
+);
 
-const Ingredient = mongoose.model('Ingredient', ingredientSchema);
+ingredientSchema.virtual("photoUrl").get(function () {
+	return `/uploads/ingredients/${this.photo}`;
+});
+
+ingredientSchema.index({ name: "text" });
+
+const Ingredient = mongoose.model("Ingredient", ingredientSchema);
 
 module.exports = Ingredient;

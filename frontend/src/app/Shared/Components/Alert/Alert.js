@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Alert = props => {
-    return (
-        <div className={`alert alert__${props.show} alert--${props.status} ${props.className}`}>
-            {props.message}
-        </div>
-    );
+const Alert = (props) => {
+	const { children, variant } = props;
+
+	return <div className={`alert alert--${variant}`}>{children}</div>;
 };
 
 export default Alert;

@@ -1,42 +1,53 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: "./config.env" });
 
-const app = require('./app');
+const app = require("./app");
 
-const DATABASE = 'mongodb+srv://sreekarnv:<PASSWORD>@cluster0.kad9x.mongodb.net/burger-house?retryWrites=true&w=majority'
+const DATABASE =
+	"mongodb+srv://sreekarnv:<PASSWORD>@cluster0.kad9x.mongodb.net/burger-house-2?retryWrites=true&w=majority";
 
-const DB = `${DATABASE}`.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
+const DB = `${DATABASE}`
+	.replace("<PASSWORD>", process.env.DB_PASSWORD)
+	.replace("<NAME>", process.env.DB_NAME)
+	.replace("<USER>", process.env.DB_USER);
 
-mongoose.connect(DB, {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log(`Connected to ${DB} successfully`))
-    .catch((err) => console.log(`Error regarding connection with database. Shutting down...`, err))
+// const DB = "mongodb://localhost:27017/burger-house";
 
+mongoose
+	.connect(DB, {
+		useCreateIndex: true,
+		useFindAndModify: false,
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log(`Connected to DB successfully`))
+	.catch((err) =>
+		console.log(
+			`Error regarding connection with database. Shutting down...`,
+			err
+		)
+	);
 
 const server = app.listen(process.env.PORT, () => {
-    console.log(process.env.NODE_ENV);
-    console.log(`App running on port ${process.env.PORT}`);
-})
+	console.log(process.env.NODE_ENV);
+	console.log(`App running on port ${process.env.PORT}`);
+});
 
 // For Unhandeled Rejections
-process.on('unhandledRejection', err => {
-    console.log('UNHANDLED REJECTION, SHUTTING DOWN......');
-    console.log(err);
-    server.close(() => {
-        process.exit(1);
-    })
-})
+process.on("unhandledRejection", (err) => {
+	console.log("UNHANDLED REJECTION, SHUTTING DOWN......");
+	console.log(err);
+	server.close(() => {
+		process.exit(1);
+	});
+});
 
-// For Heroku 
-process.on('SIGTERM', () => {
-    console.log('SIGTERM RECEIEVED. Shutting down....')
-    server.close(() => {
-        console.log('Process terminated...')
-    })
-})
+// For Heroku
+process.on("SIGTERM", () => {
+	console.log("SIGTERM RECEIEVED. Shutting down....");
+	server.close(() => {
+		console.log("Process terminated...");
+	});
+});

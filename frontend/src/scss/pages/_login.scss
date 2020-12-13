@@ -1,65 +1,16 @@
 .login {
-    height: 100vh;
+    background-image: linear-gradient(
+        rgba($color-black, .75),
+        rgba($color-black, .75)
+    ),
+    url(./../../assets/images/gallery-3.jpg);
+   
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    background-image: linear-gradient(rgba($color-black, .7 ), rgba($color-black, .7 )),
-    url(../../assets/images/gallery-3.jpg);
-    align-content: center;
-    justify-content: center;
-    
-    background-position: center;
-    background-size: cover;
-
-    @include respond(tab-port) {
-        background-image: linear-gradient(rgba($color-white, .7 ), rgba($color-white, .7 )),
-    url(../../assets/images/gallery-3.jpg);
-    }
-
-
-    &__form {
-        margin-top: 5rem ;
-        width : 20%;
-        padding-right: 4rem;
-        padding-left: 2rem;
-        height: 60vh;
-        background-color: rgba($color-white, .7 );
-        border-radius: 3px;
-        box-shadow: $shadow-light;
-
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        flex-direction: column;
-
-        @include respond(tab-land) {
-            width: 30%;
-        }
-
-        @include respond(tab-port) {
-            width: 55%;
-            background-color: transparent;
-            box-shadow: none;
-            border-radius: none;
-            padding: 0 0 0 4rem;
-            transform: translateX(-2.75rem);
-            background-position: left;
-        }
-
-        @include respond(phone) {
-            width: 80%;
-        }
-    }
-
-    &__form-link {
-        color: $color-black;
-        font-size: 1.4rem;
-        transition: all .2s ease;
-
-        &:hover {
-            color: $color-tertiary;
-        }
+    @include respond(phone) {
+        background-image: linear-gradient(
+            rgba($color-white, .75),
+            rgba($color-white, .75)
+        ),
+        url(./../../assets/images/gallery-3.jpg);
     }
 }

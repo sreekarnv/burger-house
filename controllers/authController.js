@@ -1,301 +1,289 @@
-const User = require('./../models/userModel');
-const jwt = require('jsonwebtoken');
-const AppError = require('../errors/AppError');
-const sendEmail = require('./../utils/sendEmail');
-
-// To sign and return a token
-const signToken = id => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE_TIME });
-}
-
-// verify token and return decoded data
-const verifyToken = token => {
-    return jwt.verify(token, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE_TIME })
-}
-
-// generate cookie
-const generateCookie = (req, res, token) => {
-    res.cookie('burgerHouse', token, {
-        expires: new Date(
-            Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 60 * 60 * 1000
-        ),
-        secure: process.env.NODE_ENV === 'production' ? (req.secure || req.headers('x-forwarded-proto') === 'https') : false,
-        httpOnly: true,
-    })
-}
+const User = require("./../models/userModel");
+const AppError = require("./../utils/AppError");
+const sendEmail = require("./../utils/sendEmail");
+const { signToken, decodeToken } = require("./../utils/jwt");
 
 // send verify email
 
 const sendVerificationEmail = async (req, user) => {
-    const verificationUrl = `
-    ${req.protocol}://${req.get('host')}/verified/${user.userVerificationToken}
-    `
-    const message = `Please activate your account by going to: ${verificationUrl}`;
+	// const verificationUrl = `
+	// ${req.protocol}://${req.get("host")}/verify-user/${user.userVerificationToken}
+	// `;
 
-    await sendEmail({
-        email: user.email,
-        subject: 'Please verify your email',
-        message,
-    })
-}
+	const verificationUrl = `
+    ${req.protocol}://${`localhost:3000`}/verify-user/${
+		user.userVerificationToken
+	}
+    `;
+	const message = `Please activate your account by going to: ${verificationUrl}`;
 
-exports.LogoutUsers = async (req, res, next) => {
-    try {
-        generateCookie(req, res, null);
+	await sendEmail({
+		email: user.email,
+		subject: "Please verify your email",
+		message,
+	});
+};
 
-        res.status(200).json({
-            status: 'success',
-            user: null
-        })
+/////////////////////////////////////////////////////
+// register user
+exports.registerUser = async (req, res, next) => {
+	try {
+		const { name, email, password, passwordConfirm, location } = req.body;
 
-    } catch (err) {
-        next(err);
-    }
-}
+		if (!location || !location.coordinates.length) {
+			return next(new AppError("users must provide their location", 400));
+		}
 
-exports.RegisterUsers = async (req, res, next) => {
-    try {
-        // 1.  Create User
-        const { name, email, password, passwordConfirm, location } = req.body;
+		const user = await User.create({
+			name,
+			email,
+			password,
+			passwordConfirm,
+			location,
+		});
 
-        const user = await User.create({ name, email, password, passwordConfirm, location })
+		user.hideSensitiveData(user);
 
-        // 3. remove password from output
-        user.password = undefined;
-        user.passwordChangedAt = undefined;
+		// let token = await signToken({ id: user._id }, req, res);
 
+		await sendVerificationEmail(req, user);
 
-        await sendVerificationEmail(req, user);
+		res.status(201).json({
+			// token,
+			status: "success",
+			user,
+		});
+	} catch (err) {
+		next(err);
+	}
+};
 
-        res.status(201).json({
-            status: 'success',
-            user
-        })
+///////////////////////////////////////////////////////
+// login user
 
-    } catch (err) {
-        next(err);
-    }
-}
+exports.loginUser = async (req, res, next) => {
+	try {
+		const { email, password } = req.body;
 
+		if (!email || !password) {
+			return next(new AppError("please enter your credentials", 400));
+		}
 
-exports.LoginUsers = async (req, res, next) => {
-    try {
-        // 1. get login details
-        const { email, password } = req.body;
+		const user = await User.findOne({ email }).select("+password");
 
-        // 2. check if email / password are provided
-        if (!email || !password) {
-            return next(new AppError('Please Provide Email or Password'))
-        }
+		if (!user || !(await user.checkPassword(password, user.password))) {
+			return next(new AppError("invalid credentials", 400));
+		}
 
-        const user = await User.findOne({ email }).select('+password')
+		if (!user.isVerified) {
+			return next(new AppError("Please verify your email address", 401));
+		}
 
-        // 2. check password
-        if (!user || !(await user.checkPassword(password, user.password))) {
-            return next(new AppError('Invalid Email or Password', 401))
-        }
+		let token = await signToken({ id: user._id }, req, res);
 
-        console.log(user);
+		user.hideSensitiveData(user);
 
-        if (!user.isVerified) {
-            return next(new AppError('Please verify your email address', 401))
-        }
+		res.status(200).json({
+			// token,
+			status: "success",
+			user,
+		});
+	} catch (err) {
+		next(err);
+	}
+};
 
-        // 3. send JWT token
-        const token = await signToken(user._id);
+/////////////////////////////////////////////////////////////////////
+// Logout User
 
-        generateCookie(req, res, token);
+exports.logoutUsers = async (req, res, next) => {
+	try {
+		res.cookie("burgerHouse", null, {
+			expires: new Date(Date.now()),
+			secure: false,
+			httpOnly: true,
+		});
 
-        user.password = undefined;
-        user.passwordChangedAt = undefined;
+		res.status(200).json({
+			status: "success",
+			user: null,
+		});
+	} catch (err) {
+		next(err);
+	}
+};
 
-        // 4. login user
-        res.status(200).json({
-            token,
-            status: 'success',
-            user
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.checkIsLoggedIn = async (req, res, next) => {
-    try {
-        // 1. get Authtoken and check if it exists
-        let token = req.cookies.burgerHouse;
-        if (token) {
-            if (!token) {
-                return next();
-            }
-            // 2. Verfiy and get decoded values
-            const decodedToken = await verifyToken(token);
-
-            // 3. Get User and check if user exists
-            const user = await User.findById(decodedToken.id);
-
-            if (!user) {
-                return next()
-            }
-
-            // 4. Check if payload was changed after token was issued
-            if (await user.changedPassword(decodedToken.iat)) {
-                return next();
-            }
-
-            user.__v = undefined;
-            user.password = undefined;
-            user.passwordChangedAt = undefined;
-
-            // 5. Grant access
-            res.status(200).json({
-                status: 'success',
-                user
-            })
-        }
-    } catch (err) {
-        next()
-    }
-}
-
-
+/////////////////////////////////////////////////////////////////////
+// Protect Api routes
 
 exports.protectRoutes = async (req, res, next) => {
-    try {
-        // 1. get Authtoken and check if it exists
-        let token;
-        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-            token = req.headers.authorization.split(' ')[1];
-        } else if (req.cookies.burgerHouse) {
-            token = req.cookies.burgerHouse
-        }
+	try {
+		let authToken;
+		if (req.cookies.burgerHouse) {
+			authToken = req.cookies.burgerHouse;
+		} else if (
+			req.headers.authorization &&
+			req.headers.authorization.startsWith("Bearer")
+		) {
+			authToken = req.headers.authorization.split(" ")[1];
+		}
 
-        if (!token) {
-            return next(
-                new AppError('You are not logged in! Please login to get access', 401)
-            )
-        }
+		const { id, iat, exp } = await decodeToken(authToken);
 
-        // 2. Verfiy and get decoded values
-        const decodedToken = await verifyToken(token);
+		const user = await User.findById(id).select("+passwordChangedAt");
 
-        // 3. Get User and check if user exists
-        const user = await User.findById(decodedToken.id).select('+password').select('+passwordChangedAt');
+		if (!user || !user.checkJwtExpires(iat, exp)) {
+			return next(
+				new AppError("you are not authorized. please login to continue", 401)
+			);
+		}
 
-        if (!user) {
-            return next(new AppError('User does Not Exists', 404))
-        }
+		if (user.checkPasswordChangedAt(iat, exp, user.passwordChangedAt)) {
+			return next(
+				new AppError(
+					"you recently changed your password. please login to continue",
+					401
+				)
+			);
+		}
 
-        // 4. Check if payload was changed after token was issued
-        if (await user.changedPassword(decodedToken.iat)) {
-            return next(new AppError('User recently changed password! Please Login again!', 401));
-        }
+		user.hideSensitiveData(user);
 
-        // 5. Grant access
-        req.user = user;
-        next();
+		req.user = user;
 
-    } catch (err) {
-        next(err)
-    }
-}
+		next();
+	} catch (err) {
+		next(err);
+	}
+};
 
+/////////////////////////////////////////////////////////////////////
+// restrict routes based on roles
 
-exports.restrictRoutes = (...roles) => {
-    return (req, res, next) => {
-        try {
-            if (!roles.find(role => role === req.user.role)) {
-                return next(new AppError('You are not authorized', 403))
-            }
-            next();
+exports.restrictTo = (role) => {
+	return (req, res, next) => {
+		const user = req.user;
 
-        } catch (err) {
-            next(err);
-        }
-    }
-}
+		if (user.role !== role) {
+			return next(
+				new AppError("you are not authorized to perform this action", 403)
+			);
+		}
 
+		next();
+	};
+};
 
-exports.updateCurrentUserPassword = async (req, res, next) => {
-    try {
-        // 1. get user
-        const user = req.user;
+/////////////////////////////////////////////////////////////////////
+// Check if user is logged in
 
-        // 2. get payload => passwordCurrent, password, passwordConfirm
-        const payload = {};
-        Object.keys(req.body).forEach(field => {
-            if (field === 'passwordCurrent' || field === 'password' || field === 'passwordConfirm') {
-                payload[field] = req.body[field]
-            }
-            return payload;
-        })
+const noUser = (req, res, next) => {
+	res.status(200).json({
+		status: "success",
+		user: null,
+	});
+};
 
-        // 6. verify prev password
-        if (!await user.checkPassword(payload.passwordCurrent, user.password)) {
-            return next(new AppError('Invalid Password. Please try again', 400))
-        }
+exports.checkIsLoggedIn = async (req, res, next) => {
+	try {
+		// 1. get Authtoken and check if it exists
+		let token = req.cookies.burgerHouse;
 
-        // 7. update password
-        user.password = payload.password;
-        user.passwordConfirm = payload.passwordConfirm;
-        user.passwordChangedAt = Date.now();
-        await user.save();
+		if (!token) {
+			return noUser(req, res, next);
+		}
 
-        user.password = undefined;
+		// 2. Verfiy and get decoded values
+		const { id } = await decodeToken(token);
 
-        res.status(200).json({
-            status: 'success'
-        })
+		// 3. Get User and check if user exists
+		const user = await User.findById(id);
 
-    } catch (err) {
-        next(err);
-    }
-}
+		if (!user) {
+			return noUser(req, res, next);
+		}
+
+		user.hideSensitiveData(user);
+
+		// 5. Grant access
+		res.status(200).json({
+			status: "success",
+			user,
+		});
+	} catch (err) {
+		next();
+	}
+};
+
+/////////////////////////////////////////////////////////////////////
+// Update Current User Password
+
+exports.updateUserPassword = async (req, res, next) => {
+	try {
+		let id = req.user.id;
+
+		const { currentPassword, password, passwordConfirm } = req.body;
+
+		const user = await User.findById(id).select("+password");
+
+		if (!(await user.checkPassword(currentPassword, user.password))) {
+			return next(new AppError("invalid password", 400));
+		}
+
+		user.password = password;
+		user.passwordConfirm = passwordConfirm;
+		await user.save();
+
+		user.hideSensitiveData(user);
+
+		res.status(200).json({
+			status: "success",
+			user,
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+/////////////////////////////////////////////////////////////////////
 
 exports.sendUserVerification = async (req, res, next) => {
-    try {
+	try {
+		const { email } = req.body;
+		const user = await User.findOne({ isVerified: false, email });
 
-        const { email } = req.body;
-        const user = await User.findOne({ isVerified: false, email })
+		if (!user) {
+			return next(new AppError("Please enter a valid email", 400));
+		}
 
-        if (!user) {
-            return next(new AppError('Please enter a valid email', 400));
-        }
+		await sendVerificationEmail(req, user);
 
-        await sendVerificationEmail(req, user);
-
-        res.status(200).json({
-            status: 'success',
-            message: 'Email Sent...'
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
+		res.status(200).json({
+			status: "success",
+			message: "Email Sent...",
+		});
+	} catch (err) {
+		next(err);
+	}
+};
 
 exports.verifyUserEmail = async (req, res, next) => {
-    try {
+	try {
+		const user = await User.findOneAndUpdate(
+			{ userVerificationToken: req.params.id, isVerified: false },
+			{ isVerified: true, userVerificationToken: undefined },
+			{ runValidators: true, new: true }
+		);
 
-        const user = await User.findOneAndUpdate(
-            { userVerificationToken: req.params.id, isVerified: false },
-            { isVerified: true, userVerificationToken: undefined },
-            { runValidators: true, new: true }
-        )
+		if (!user) {
+			return next();
+		}
 
-        if (!user) {
-            return next();
-        }
-
-        res.status(200).json({
-            status: 'success',
-            verified: user.isVerified
-        })
-
-    } catch (err) {
-        next(err);
-    }
-}
-
+		res.status(200).json({
+			status: "success",
+			verified: user.isVerified,
+		});
+	} catch (err) {
+		next(err);
+	}
+};

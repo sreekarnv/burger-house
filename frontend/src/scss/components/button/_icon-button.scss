@@ -1,0 +1,24 @@
+.icon-button {
+    height: 3rem;
+    width: 3rem;
+    background-color: $color-grey-light;
+    box-shadow: 0 .25rem .5rem rgba($color-grey-dark, .45);
+    border-radius: 50%;
+    padding: .5rem;;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease-out;
+
+    &:hover,
+    &:focus {
+        filter: brightness(90%);
+    }
+
+    &__lg {
+        height: 4rem;
+        width: 4rem;
+    }
+}
