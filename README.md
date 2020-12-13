@@ -7,13 +7,12 @@ Burger house is a fast-food e-commerce site similar to mcdonalds or burger king 
 ![](preview-images/home.jpg)
 
 # Menu Page
-
 ![](preview-images/menu.jpg)
 
 # Make your own burger !
 In case you don't like the menu you can make your own burger.
-![](preview-images/make-1.jpg)
 
+![](preview-images/make-1.jpg)
 ![](preview-images/make-2.jpg)
 
 # Customer Dashboard
@@ -27,9 +26,9 @@ Customers (admins also) can update their details, view their order status, cance
 # Admin Dashboard
 Admins can update existing burgers, manage orders and users
 
-![](preview-images/admin-dashboard-1.jpg)
+![](preview-images/admin-dashboard.jpg)
 ![](preview-images/admin-dashboard-2.jpg)
-![](preview-images/admin-dashboard-2.jpg)
+![](preview-images/admin-dashboard-3.jpg)
 
 
 # Techonlogies Used
