@@ -7,7 +7,7 @@ Burger house is a fast-food e-commerce site similar to mcdonalds or burger king 
 ![](preview-images/home.jpg)
 
 # Menu Page
-![](preview-images/menu.jpg)
+![](preview-images/home.jpg)
 
 # Make your own burger !
 In case you don't like the menu you can make your own burger.
