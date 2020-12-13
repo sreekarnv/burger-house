@@ -20,7 +20,7 @@ Customers (admins also) can update their details, view their order status, cance
 
 ![](preview-images/customer-dashboard-1.jpg)
 ![](preview-images/customer-dashboard-2.jpg)
-![](preview-images/customer-dashboard-2.jpg)
+![](preview-images/customer-dashboard-3.jpg)
 
 
 # Admin Dashboard
