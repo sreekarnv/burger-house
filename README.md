@@ -34,8 +34,12 @@ Admins can update existing burgers, manage orders and users
 
 
 # Techonlogies Used
-This website was built using ReactJs for the frontend and ExpressJs and mongoDB for the backend
-
+    1. Reactjs
+    2. Expressjs
+    3. MongoDB
+    4. MapBox
+    5. Gmail smpt
+        
 # credentials 
     Admin:  email: admin@email.com
             Pass: Pass123#
