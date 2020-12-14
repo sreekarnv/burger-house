@@ -1,6 +1,6 @@
 const User = require("./../models/userModel");
 const AppError = require("./../utils/AppError");
-// const sendEmail = require("./../utils/sendEmail");
+const sendEmail = require("./../utils/sendEmail");
 const { signToken, decodeToken } = require("./../utils/jwt");
 
 // send verify email
