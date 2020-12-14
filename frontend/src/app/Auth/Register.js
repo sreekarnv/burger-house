@@ -15,7 +15,7 @@ const Register = (props) => {
 		registerUserInit,
 		registerUser,
 		registerUserError,
-		sendEmailInit,
+		// sendEmailInit,
 		registerUserStatus,
 	} = props;
 	const { replace } = useHistory();
@@ -137,7 +137,7 @@ const Register = (props) => {
 
 					<div className='form__group'>
 						<button className='btn btn__tertiary auth-form__cta' type='submit'>
-							{registerUserInit || sendEmailInit ? "Loading..." : "Register"}
+							{registerUserInit ? "Loading..." : "Register"}
 						</button>
 					</div>
 				</form>
@@ -149,7 +149,7 @@ const Register = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		user: state.auth.user,
-		sendEmailInit: state.auth.sendEmailInit,
+		// sendEmailInit: state.auth.sendEmailInit,
 		registerUserInit: state.auth.registerUserInit,
 		registerUserError: state.auth.registerUserError,
 		registerUserStatus: state.auth.registerUserStatus,
