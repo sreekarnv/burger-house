@@ -41,7 +41,7 @@ exports.registerUser = async (req, res, next) => {
 
 		// let token = await signToken({ id: user._id }, req, res);
 
-		// await sendVerificationEmail(req, user);
+		await sendVerificationEmail(req, user);
 
 		res.status(201).json({
 			// token,

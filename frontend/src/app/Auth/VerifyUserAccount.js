@@ -11,7 +11,7 @@ const VerifyUserAccount = (props) => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (accountVerifiedStatus && accountVerifiedStatus === "success") {
+		if (!accountVerifiedStatus || accountVerifiedStatus !== "success") {
 			verfiyAccount(params.tokenId);
 		}
 	}, [params, verfiyAccount, accountVerifiedStatus]);
