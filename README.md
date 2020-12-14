@@ -38,7 +38,7 @@ Admins can update existing burgers, manage orders and users
     2. Expressjs
     3. MongoDB
     4. MapBox
-    5. Gmail smpt
+    5. Gmail smtp
         
 # credentials 
     Admin:  email: admin@email.com
