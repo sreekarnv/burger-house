@@ -5,9 +5,7 @@ import mapboxgl from "mapbox-gl";
 
 class Map extends React.Component {
 	async componentDidMount() {
-		const accessToken =
-			"pk.eyJ1Ijoic3JlZWthcm52IiwiYSI6ImNrY2Vsem4xZzA3MmYycG53NDR6eWJidWUifQ.tnWqUEjgrrsKkfuhDzOBJQ";
-		//  process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN;
+		const accessToken = process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN;
 		mapboxgl.accessToken = accessToken;
 
 		const res = await axios({
