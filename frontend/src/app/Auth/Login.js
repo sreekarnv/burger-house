@@ -83,7 +83,8 @@ const Login = (props) => {
 				<Alert
 					show={registerUserStatus === "success" ? true : false}
 					variant='success'>
-					Account Created Successfully. Please login to continue
+					Account Created Successfully. Check your email to activate your
+					account
 				</Alert>
 			)}
 			<section className='auth-form login'>

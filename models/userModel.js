@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-// const crypto = require("crypto");
+const crypto = require("crypto");
 const { default: validator } = require("validator");
 
 const userSchema = new mongoose.Schema(
@@ -62,13 +62,13 @@ const userSchema = new mongoose.Schema(
 				required: [true, "users must provide their location"],
 			},
 		},
-		// isVerified: {
-		// 	type: Boolean,
-		// 	default: false,
-		// },
-		// userVerificationToken: {
-		// 	type: String,
-		// },
+		isVerified: {
+			type: Boolean,
+			default: false,
+		},
+		userVerificationToken: {
+			type: String,
+		},
 	},
 	{
 		toObject: { virtuals: true },
@@ -93,12 +93,12 @@ userSchema.pre("save", async function (next) {
 	next();
 });
 
-// userSchema.pre("save", async function (next) {
-// 	if (!this.isNew) return next();
+userSchema.pre("save", async function (next) {
+	if (!this.isNew) return next();
 
-// 	this.userVerificationToken = crypto.randomBytes(32).toString("hex");
-// 	next();
-// });
+	this.userVerificationToken = crypto.randomBytes(32).toString("hex");
+	next();
+});
 
 userSchema.pre("save", function (next) {
 	if (!this.isModified("password") || this.isNew) return next();
@@ -107,14 +107,14 @@ userSchema.pre("save", function (next) {
 	next();
 });
 
-// userSchema.methods.createUserVerificationToken = function () {
-// 	const verificationToken = crypto.randomBytes(32).toString("hex");
-// 	this.userVerificationToken = crypto
-// 		.createHash("sha256")
-// 		.update(verificationToken)
-// 		.digest("hex");
-// 	return verificationToken;
-// };
+userSchema.methods.createUserVerificationToken = function () {
+	const verificationToken = crypto.randomBytes(32).toString("hex");
+	this.userVerificationToken = crypto
+		.createHash("sha256")
+		.update(verificationToken)
+		.digest("hex");
+	return verificationToken;
+};
 
 userSchema.methods.checkPassword = async function (
 	enteredPassword,

@@ -13,10 +13,10 @@ const About = React.lazy(() => import("./../About/About"));
 const Login = React.lazy(() => import("./../Auth/Login"));
 const Logout = React.lazy(() => import("./../Auth/Logout"));
 const Register = React.lazy(() => import("./../Auth/Register"));
-// const SendEmailConfirmation = React.lazy(() =>
-// 	import("../Auth/SendEmailConfirmation")
-// );
-// const VerifyUserAccount = React.lazy(() => import("../Auth/VerifyUserAccount"));
+const SendEmailConfirmation = React.lazy(() =>
+	import("../Auth/SendEmailConfirmation")
+);
+const VerifyUserAccount = React.lazy(() => import("../Auth/VerifyUserAccount"));
 
 const Body = (props) => {
 	return (
@@ -58,13 +58,13 @@ const Body = (props) => {
 					<DashboardRoutes />
 				</Route>
 
-				{/* <Route path='/send-email-confirmation' exact>
+				<Route path='/send-email-confirmation' exact>
 					<SendEmailConfirmation />
 				</Route>
 
 				<Route path='/verify-user/:tokenId' exact>
 					<VerifyUserAccount />
-				</Route> */}
+				</Route>
 			</Switch>
 		</Suspense>
 	);
