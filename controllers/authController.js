@@ -6,15 +6,10 @@ const { signToken, decodeToken } = require("./../utils/jwt");
 // send verify email
 
 const sendVerificationEmail = async (req, user) => {
-	// const verificationUrl = `
-	// ${req.protocol}://${req.get("host")}/verify-user/${user.userVerificationToken}
-	// `;
-
 	const verificationUrl = `
-    ${req.protocol}://${`localhost:3000`}/verify-user/${
-		user.userVerificationToken
-	}
-    `;
+	${req.protocol}://${req.get("host")}/verify-user/${user.userVerificationToken}
+	`;
+
 	const message = `Please activate your account by going to: ${verificationUrl}`;
 
 	await sendEmail({
