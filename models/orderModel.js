@@ -54,6 +54,11 @@ const orderSchema = new mongoose.Schema({
 	},
 });
 
+orderSchema.pre(/^find/, function (next) {
+	this.populate("user");
+	return next();
+});
+
 const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;

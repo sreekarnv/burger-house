@@ -16,7 +16,6 @@ const UserOrderDetail = (props) => {
 	const order = useSelector((state) => state.user.userOrder);
 	const orderInit = useSelector((state) => state.user.userOrderInit);
 	const params = useParams();
-	const user = useSelector((state) => state.auth.user);
 	const history = useHistory();
 
 	const [showMap, setShowMap] = useState(false);
@@ -67,7 +66,7 @@ const UserOrderDetail = (props) => {
 						<div className='order-stats-item'>
 							<span className='order-stats-item__field'>Customer: </span>
 							<span className='order-stats-item__value u-text-capitalize'>
-								{user.name}
+								{order && order.user.name}
 							</span>
 						</div>
 					)}
