@@ -67,9 +67,9 @@ const Home = (props) => {
 					{newBurgers.map((burger) => {
 						return (
 							<CardMenu
+								key={burger._id}
 								addBurger={addBurgerToCart}
 								removeBurger={removeBurgerFromCart}
-								key={burger._id}
 								burger={burger}
 							/>
 						);

@@ -54,9 +54,9 @@ const CardMenu = (props) => {
 					{isVegetarian ? "vegetarian" : "non-vegetarian"}
 				</p>
 				<div className='card-menu__ingredients'>
-					{ingredients.map((el) => {
+					{ingredients.map((el, i) => {
 						return (
-							<div key={el._id} className='card-menu__ingredient'>
+							<div key={el._id + `${i}`} className='card-menu__ingredient'>
 								<span>{el.ingredient.name}</span>&nbsp;
 								<span>X&nbsp; {el.amount}</span>
 							</div>
