@@ -161,7 +161,13 @@ const BurgerDetail = () => {
 					);
 				})}
 				<div className='burger-detail-burger form__group'>
-					<CustomBurger hideCta ingredients={burgerIngredients} />
+					<CustomBurger
+						hideCta
+						foodType={
+							burger && burger.isVegetarian ? "vegetarian" : "non-vegetarian"
+						}
+						ingredients={burgerIngredients}
+					/>
 				</div>
 
 				<div className='form__group'>

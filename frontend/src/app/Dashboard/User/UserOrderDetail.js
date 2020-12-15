@@ -112,6 +112,7 @@ const UserOrderDetail = (props) => {
 					)}
 					{!admin && (
 						<button
+							disabled={order && order.status === "pending" ? false : true}
 							onClick={() => setShowMap(true)}
 							type='button'
 							className={`btn btn__tertiary--outline

@@ -62,8 +62,8 @@ const ManageUsers = () => {
 				setShow={setShowModal}
 				confirmMessage={
 					modalActionType === "edit"
-						? "Are you sure you wan to make this user an admin ?"
-						: "are you sure you want to delete this user"
+						? "Are you sure you want to make this user an admin ?"
+						: "are you sure you want to delete this user ?"
 				}
 				successHandler={
 					modalActionType === "edit" ? updateUserRole : deleteUser
