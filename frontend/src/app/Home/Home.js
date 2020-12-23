@@ -32,9 +32,9 @@ const Home = (props) => {
 		<div className='home'>
 			<div className='home__header'>
 				<div className='home__header-display'>
-					<h3 className='heading-1 u-text-capitalize u-text-light u-ftwt-400'>
+					<h1 className='heading-1 u-text-capitalize u-text-light u-ftwt-400'>
 						We make Burgers
-					</h3>
+					</h1>
 					<button
 						onClick={() => history.push("/menu")}
 						className='btn btn__tertiary'>

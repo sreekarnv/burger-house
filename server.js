@@ -6,7 +6,7 @@ dotenv.config({ path: "./config.env" });
 const app = require("./app");
 
 const DATABASE =
-	"mongodb+srv://sreekarnv:<PASSWORD>@cluster0.kad9x.mongodb.net/burger-house-2?retryWrites=true&w=majority";
+	"mongodb+srv://<USER>:<PASSWORD>@cluster0.kad9x.mongodb.net/<NAME>?retryWrites=true&w=majority";
 
 const DB = `${DATABASE}`
 	.replace("<PASSWORD>", process.env.DB_PASSWORD)
