@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { useDispatch, useSelector } from "react-redux";
-import OrderListItem from "../components/OrderListItem/OrderListItem";
-import Loader from "./../../shared/components/Loader/Loader";
+import { useDispatch, useSelector } from 'react-redux';
+import OrderListItem from '../components/OrderListItem/OrderListItem';
+import Loader from './../../shared/components/Loader/Loader';
 
-import * as adminActions from "./../../store/actions/adminActions";
+import * as adminActions from './../../store/actions/adminActions';
 
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const ManageUserOrders = () => {
 	const dispatch = useDispatch();
@@ -16,14 +16,15 @@ const ManageUserOrders = () => {
 	const orderStats = useSelector((state) => state.admin.orderStats);
 	const orderStatsInit = useSelector((state) => state.admin.orderStatsInit);
 	const ordersInit = useSelector((state) => state.admin.allOrdersInit);
-	const [totalOrders, setTotalOrders] = useState("calculating...");
+	const [totalOrders, setTotalOrders] = useState('calculating...');
+	const [totalPrice, setTotalPrice] = useState('calculating...');
 
 	const user = useSelector((state) => state.auth.user);
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user && user.role !== "admin") {
-			return history.replace("/dashboard");
+		if (user && user.role !== 'admin') {
+			return history.replace('/dashboard');
 		}
 	}, [history, user]);
 
@@ -38,11 +39,22 @@ const ManageUserOrders = () => {
 
 	useEffect(() => {
 		if (orderStats) {
-			let total = 0;
-			if (orderStats.delivered.length) total += orderStats.delivered[0].total;
-			if (orderStats.pending.length) total += orderStats.pending[0].total;
-			if (orderStats.cancelled.length) total += orderStats.cancelled[0].total;
-			setTotalOrders(total);
+			let totalOrders = 0;
+			let totalAmount = 0;
+			if (orderStats.delivered.length) {
+				totalOrders += orderStats.delivered[0].total;
+				totalAmount += orderStats.delivered[0].price;
+			}
+			if (orderStats.pending.length) {
+				totalOrders += orderStats.pending[0].total;
+				totalAmount += orderStats.pending[0].price;
+			}
+			if (orderStats.cancelled.length) {
+				totalOrders += orderStats.cancelled[0].total;
+				totalAmount += orderStats.cancelled[0].price;
+			}
+			setTotalOrders(totalOrders);
+			setTotalPrice(totalAmount);
 		}
 	}, [orderStats]);
 
@@ -58,7 +70,7 @@ const ManageUserOrders = () => {
 				<div className='user-orders-stats'>
 					<div className='card-stats'>
 						<h3 className='u-text-tertiary'>Total</h3>
-						<p>Rs 1250</p>
+						<p>Rs {totalPrice}</p>
 					</div>
 				</div>
 

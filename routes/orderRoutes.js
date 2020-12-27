@@ -1,20 +1,20 @@
-const express = require("express");
-const authController = require("./../controllers/authController");
-const orderController = require("../controllers/orderController");
-const status = require("./../controllers/_status");
+const express = require('express');
+const authController = require('./../controllers/authController');
+const orderController = require('../controllers/orderController');
+const status = require('./../controllers/_status');
 
 const router = express.Router();
 
 router
-	.route("/admin/orderStats")
+	.route('/admin/orderStats')
 	.get(
 		authController.protectRoutes,
-		authController.restrictTo("admin"),
+		authController.restrictTo('admin'),
 		orderController.getAllOrdersStats
 	);
 
 router
-	.route("/")
+	.route('/')
 	.get(
 		authController.protectRoutes,
 		orderController.filterCurrentUserOrders,
@@ -29,32 +29,32 @@ router
 	);
 
 router
-	.route("/admin")
+	.route('/admin')
 	.get(
 		authController.protectRoutes,
-		authController.restrictTo("admin"),
+		authController.restrictTo('admin'),
 		orderController.getAllOrders,
 		status.HTTP_200_OK
 	);
 
 router
-	.route("/admin/:_id")
+	.route('/admin/:_id')
 	.get(
 		authController.protectRoutes,
-		authController.restrictTo("admin"),
+		authController.restrictTo('admin'),
 		orderController.getOrder,
 		status.HTTP_200_OK
 	)
 	.patch(
 		authController.protectRoutes,
-		authController.restrictTo("admin"),
+		authController.restrictTo('admin'),
 		orderController.updateOrderAdminFilter,
 		orderController.updateOrder,
 		status.HTTP_200_OK
 	);
 
 router
-	.route("/:_id")
+	.route('/:_id')
 	.get(
 		authController.protectRoutes,
 		orderController.getOrder,

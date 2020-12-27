@@ -1,6 +1,6 @@
-const AppError = require("../utils/AppError");
-const Order = require("./../models/orderModel");
-const factory = require("./_factory");
+const AppError = require('../utils/AppError');
+const Order = require('./../models/orderModel');
+const factory = require('./_factory');
 
 exports.placeOrderFields = (req, res, next) => {
 	if (!req.body.user) {
@@ -20,23 +20,23 @@ exports.filterCurrentUserOrders = async (req, res, next) => {
 };
 
 exports.getOrder = factory.getOne(Order, {
-	msg: "this order does not exist",
+	msg: 'this order does not exist',
 	statusCode: 404,
 });
 
 exports.updateOrder = factory.updateOne(Order, {
-	msg: "this order does not exist",
+	msg: 'this order does not exist',
 	statusCode: 404,
 });
 
 exports.updateOrderUserFilter = (req, res, next) => {
 	let body = { ...req.body };
 	Object.keys(body).map((el) => {
-		if (el !== "status") {
+		if (el !== 'status') {
 			delete body[el];
 		}
 	});
-	req.body.status = "cancelled";
+	req.body.status = 'cancelled';
 	req.body = body;
 	next();
 };
@@ -44,10 +44,10 @@ exports.updateOrderUserFilter = (req, res, next) => {
 exports.updateOrderAdminFilter = (req, res, next) => {
 	let body = { ...req.body };
 	if (!req.body.status) {
-		return next(new AppError("can only update status which is missing", 404));
+		return next(new AppError('can only update status which is missing', 404));
 	}
 	Object.keys(body).map((el) => {
-		if (el !== "status") {
+		if (el !== 'status') {
 			delete body[el];
 		}
 	});
@@ -58,18 +58,36 @@ exports.updateOrderAdminFilter = (req, res, next) => {
 exports.getAllOrdersStats = async (req, res, next) => {
 	try {
 		const pendingOrders = await Order.aggregate([
-			{ $match: { status: "pending" } },
-			{ $group: { _id: "$status", total: { $sum: 1 } } },
+			{ $match: { status: 'pending' } },
+			{
+				$group: {
+					_id: '$status',
+					total: { $sum: 1 },
+					price: { $sum: '$price' },
+				},
+			},
 		]);
 
 		const delieverdOrders = await Order.aggregate([
-			{ $match: { status: "delivered" } },
-			{ $group: { _id: "$status", total: { $sum: 1 } } },
+			{ $match: { status: 'delivered' } },
+			{
+				$group: {
+					_id: '$status',
+					total: { $sum: 1 },
+					price: { $sum: '$price' },
+				},
+			},
 		]);
 
 		const cancelledOrders = await Order.aggregate([
-			{ $match: { status: "cancelled" } },
-			{ $group: { _id: "$status", total: { $sum: 1 } } },
+			{ $match: { status: 'cancelled' } },
+			{
+				$group: {
+					_id: '$status',
+					total: { $sum: 1 },
+					price: { $sum: '$price' },
+				},
+			},
 		]);
 
 		const orderStats = {
@@ -81,7 +99,7 @@ exports.getAllOrdersStats = async (req, res, next) => {
 		req.orderStats = orderStats;
 
 		res.status(200).json({
-			status: "success",
+			status: 'success',
 			orderStats,
 		});
 	} catch (err) {

@@ -1,17 +1,17 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: './config.env' });
 
-const app = require("./app");
+const app = require('./app');
 
 const DATABASE =
-	"mongodb+srv://<USER>:<PASSWORD>@cluster0.kad9x.mongodb.net/<NAME>?retryWrites=true&w=majority";
+	'mongodb+srv://<USER>:<PASSWORD>@cluster0.kad9x.mongodb.net/<NAME>?retryWrites=true&w=majority';
 
 const DB = `${DATABASE}`
-	.replace("<PASSWORD>", process.env.DB_PASSWORD)
-	.replace("<NAME>", process.env.DB_NAME)
-	.replace("<USER>", process.env.DB_USER);
+	.replace('<PASSWORD>', process.env.DB_PASSWORD)
+	.replace('<NAME>', process.env.DB_NAME)
+	.replace('<USER>', process.env.DB_USER);
 
 // const DB = "mongodb://localhost:27017/burger-house";
 
@@ -36,8 +36,8 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 // For Unhandeled Rejections
-process.on("unhandledRejection", (err) => {
-	console.log("UNHANDLED REJECTION, SHUTTING DOWN......");
+process.on('unhandledRejection', (err) => {
+	console.log('UNHANDLED REJECTION, SHUTTING DOWN......');
 	console.log(err);
 	server.close(() => {
 		process.exit(1);
@@ -45,9 +45,9 @@ process.on("unhandledRejection", (err) => {
 });
 
 // For Heroku
-process.on("SIGTERM", () => {
-	console.log("SIGTERM RECEIEVED. Shutting down....");
+process.on('SIGTERM', () => {
+	console.log('SIGTERM RECEIEVED. Shutting down....');
 	server.close(() => {
-		console.log("Process terminated...");
+		console.log('Process terminated...');
 	});
 });
