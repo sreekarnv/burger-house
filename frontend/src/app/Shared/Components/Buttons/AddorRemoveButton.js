@@ -1,7 +1,7 @@
-import React from "react";
-import AddIcon from "../../icons/AddIcon";
-import SubtractIcon from "../../icons/SubtractIcon";
-import IconButton from "./IconButton";
+import React from 'react';
+import AddIcon from '../../Icons/AddIcon';
+import SubtractIcon from '../../Icons/SubtractIcon';
+import IconButton from './IconButton';
 
 const AddOrRemoveButton = (props) => {
 	const { lg, addItem, color, children, removeItem, className } = props;
@@ -9,7 +9,7 @@ const AddOrRemoveButton = (props) => {
 	return (
 		<div
 			className={`add-or-remove-btn ${
-				lg && "add-or-remove-btn__lg"
+				lg && 'add-or-remove-btn__lg'
 			} ${className}`}>
 			<IconButton onClick={addItem} lg={lg} color={color}>
 				<AddIcon />

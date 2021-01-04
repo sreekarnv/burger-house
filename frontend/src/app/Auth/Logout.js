@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Loader from "../shared/components/Loader/Loader";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Loader from '../Shared/Components/Loader/Loader';
 
-import * as authActions from "./../store/actions/authActions";
+import * as authActions from './../store/actions/authActions';
 
 const Logout = () => {
 	const user = useSelector((state) => state.auth.user);
@@ -16,7 +16,7 @@ const Logout = () => {
 
 	useEffect(() => {
 		if (!user) {
-			return replace("/login");
+			return replace('/login');
 		}
 	}, [user, replace]);
 

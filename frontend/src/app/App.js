@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import Body from "./layout/Body";
-import Footer from "./layout/Footer";
-import Header from "./layout/Header";
+import Body from './Layout/Body';
+import Footer from './Layout/Footer';
+import Header from './Layout/Header';
 
-import * as actionTypes from "./store/actions/authActions";
-import Loader from "./shared/components/Loader/Loader";
+import * as actionTypes from './store/actions/authActions';
+import Loader from './Shared/Components/Loader/Loader';
 
 const App = (props) => {
 	const { checkAuthUserInit, checkAuthUser } = props;

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import CardMenu from "./../shared/components/Card/CardMenu";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import CardMenu from '../Shared/Components/Card/CardMenu';
 
-import ToggleSwitch from "../shared/components/Buttons/ToggleSwitch";
+import ToggleSwitch from '../Shared/Components/Buttons/ToggleSwitch';
 
-import LettuceIcon from "./../../assets/icons/ingredients/lettuce.svg";
-import SearchForm from "../shared/components/Form/SearchForm";
+import LettuceIcon from './../../assets/icons/ingredients/lettuce.svg';
+import SearchForm from '../Shared/Components/Form/SearchForm';
 
-import * as burgerActions from "./../store/actions/burgerActions";
-import * as cartActions from "./../store/actions/cartActions";
-import { useHistory } from "react-router-dom";
-import Loader from "../shared/components/Loader/Loader";
+import * as burgerActions from './../store/actions/burgerActions';
+import * as cartActions from './../store/actions/cartActions';
+import { useHistory } from 'react-router-dom';
+import Loader from '../Shared/Components/Loader/Loader';
 
 const Menu = (props) => {
 	const {
@@ -27,10 +27,10 @@ const Menu = (props) => {
 	const history = useHistory();
 
 	const [showVeg, setShowVeg] = useState(false);
-	const [searchValue, setSearchValue] = useState("");
+	const [searchValue, setSearchValue] = useState('');
 
 	useEffect(() => {
-		if (cartValue === 0 && burgers.length === 0 && searchValue.trim() === "") {
+		if (cartValue === 0 && burgers.length === 0 && searchValue.trim() === '') {
 			getBurgers();
 		}
 
@@ -55,22 +55,22 @@ const Menu = (props) => {
 
 	const onSearchSubmit = (e) => {
 		e.preventDefault();
-		if (searchValue.trim() === "") return;
+		if (searchValue.trim() === '') return;
 
 		let filter = { name: searchValue };
 
 		if (showVeg) {
-			filter["isVegetarian"] = true;
+			filter['isVegetarian'] = true;
 		}
 
 		getBurgers(filter);
-		setSearchValue("");
+		setSearchValue('');
 	};
 
 	const resetForm = () => {
 		getBurgers();
 		setShowVeg(false);
-		setSearchValue("");
+		setSearchValue('');
 	};
 
 	return (
@@ -101,7 +101,7 @@ const Menu = (props) => {
 				/>
 
 				<button
-					onClick={() => history.push("/make-my-burger")}
+					onClick={() => history.push('/make-my-burger')}
 					type='button'
 					className='btn u-text-primary menu__subnav-make-burger-cta btn__goto'>
 					Click Here! To make your own burger
@@ -122,13 +122,13 @@ const Menu = (props) => {
 					})}
 
 				{getBurgersInit && (
-					<div style={{ height: "55rem" }}>
+					<div style={{ height: '55rem' }}>
 						<Loader />
 					</div>
 				)}
 
 				{!getBurgersInit && burgers.length === 0 && (
-					<div style={{ height: "55rem" }}>
+					<div style={{ height: '55rem' }}>
 						<h3 className='heading-2 u-text-danger'>
 							No results for your search.
 						</h3>

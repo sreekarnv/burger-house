@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import HeroFeatures from "./components/HeroFeatures";
+import HeroFeatures from './components/HeroFeatures';
 
-import CardMenu from "./../shared/components/Card/CardMenu";
-import Review from "./components/Review";
+import CardMenu from '../Shared/Components/Card/CardMenu';
+import Review from './components/Review';
 
-import * as burgerActions from "./../store/actions/burgerActions";
+import * as burgerActions from './../store/actions/burgerActions';
 
-import * as cartActions from "./../store/actions/cartActions";
+import * as cartActions from './../store/actions/cartActions';
 
 const Home = (props) => {
 	const {
@@ -36,7 +36,7 @@ const Home = (props) => {
 						We make Burgers
 					</h1>
 					<button
-						onClick={() => history.push("/menu")}
+						onClick={() => history.push('/menu')}
 						className='btn btn__tertiary'>
 						Order Now
 					</button>
@@ -53,7 +53,7 @@ const Home = (props) => {
 					Don't like our menu? Then make your own burger!
 				</h3>
 				<button
-					onClick={() => history.push("/make-my-burger")}
+					onClick={() => history.push('/make-my-burger')}
 					className='btn btn__tertiary'>
 					Make My Burger
 				</button>

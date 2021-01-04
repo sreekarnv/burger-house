@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import FormInput from "../shared/components/Form/FormInput";
-import Alert from "../shared/components/Alert/Alert";
+import FormInput from '../Shared/Components/Form/FormInput';
+import Alert from '../Shared/Components/Alert/Alert';
 
-import ToggleSwitch from "./../shared/components/Buttons/ToggleSwitch";
+import ToggleSwitch from '../Shared/Components/Buttons/ToggleSwitch';
 
-import * as actionTypes from "./../store/actions/authActions";
+import * as actionTypes from './../store/actions/authActions';
 
 const Register = (props) => {
 	const {
@@ -24,13 +24,13 @@ const Register = (props) => {
 
 	useEffect(() => {
 		if (user) {
-			return replace("/menu");
+			return replace('/menu');
 		}
 	}, [user, replace]);
 
 	useEffect(() => {
-		if (registerUserStatus === "success") {
-			return replace("/login");
+		if (registerUserStatus === 'success') {
+			return replace('/login');
 		}
 	}, [registerUserStatus, replace]);
 
@@ -38,28 +38,28 @@ const Register = (props) => {
 
 	const [formState, setformState] = useState({
 		name: {
-			type: "text",
-			label: "Name",
+			type: 'text',
+			label: 'Name',
 			required: true,
-			value: "",
+			value: '',
 		},
 		email: {
-			type: "email",
-			label: "Email",
+			type: 'email',
+			label: 'Email',
 			required: true,
-			value: "",
+			value: '',
 		},
 		password: {
-			type: "password",
-			label: "Password",
+			type: 'password',
+			label: 'Password',
 			required: true,
-			value: "",
+			value: '',
 		},
 		passwordConfirm: {
-			type: "password",
-			label: "Password Confirm",
+			type: 'password',
+			label: 'Password Confirm',
 			required: true,
-			value: "",
+			value: '',
 		},
 	});
 
@@ -75,7 +75,7 @@ const Register = (props) => {
 		registerUser(data);
 
 		Object.keys(formState).forEach((el) => {
-			formState[el].value = "";
+			formState[el].value = '';
 		});
 
 		setLocation({ coordinates: [] });
@@ -137,7 +137,7 @@ const Register = (props) => {
 
 					<div className='form__group'>
 						<button className='btn btn__tertiary auth-form__cta' type='submit'>
-							{registerUserInit || sendEmailInit ? "Loading..." : "Register"}
+							{registerUserInit || sendEmailInit ? 'Loading...' : 'Register'}
 						</button>
 					</div>
 				</form>

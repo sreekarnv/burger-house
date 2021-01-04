@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import Ingredient from "./../Ingredients/Ingredient";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Ingredient from '../Ingredients/Ingredient';
 
 const Burger = (props) => {
 	const { ingredients } = props;
@@ -21,7 +21,7 @@ const Burger = (props) => {
 							key={el.ingId + `${i}`}
 							color={el.display.color}
 							height={`${el.display.height}rem`}
-							width={el.display.width || "100%"}
+							width={el.display.width || '100%'}
 						/>
 					);
 				})

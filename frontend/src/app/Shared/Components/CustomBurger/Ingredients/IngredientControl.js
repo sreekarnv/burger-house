@@ -1,5 +1,5 @@
-import React from "react";
-import AddOrRemoveButton from "./../../Buttons/AddOrRemoveButton";
+import React from 'react';
+import AddOrRemoveButton from '../../Buttons/AddOrRemoveButton';
 
 const IngredientControl = (props) => {
 	const { ingredient, removeIngredient, addIngredient } = props;

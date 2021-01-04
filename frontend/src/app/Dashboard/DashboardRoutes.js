@@ -1,22 +1,22 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Route, useHistory } from "react-router-dom";
-import { useRouteMatch } from "react-router-dom";
+import React, { Suspense, useEffect, useState } from 'react';
+import { Route, useHistory } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import HamburgerIcon from "./../shared/icons/HamburgerMenu";
+import HamburgerIcon from '../Shared/Icons/HamburgerMenu';
 
-import Loader from "../shared/components/Loader/Loader";
+import Loader from '../Shared/Components/Loader/Loader';
 
-const Sidebar = React.lazy(() => import("./components/Sidebar/Sidebar"));
-const UserOrders = React.lazy(() => import("./User/UserOrders"));
-const UserSettings = React.lazy(() => import("./User/UserSettings"));
-const UserOrderDetail = React.lazy(() => import("./User/UserOrderDetail"));
+const Sidebar = React.lazy(() => import('./components/Sidebar/Sidebar'));
+const UserOrders = React.lazy(() => import('./User/UserOrders'));
+const UserSettings = React.lazy(() => import('./User/UserSettings'));
+const UserOrderDetail = React.lazy(() => import('./User/UserOrderDetail'));
 
-const ManageUserOrders = React.lazy(() => import("./Admin/ManageUserOrders"));
-const ManageUsers = React.lazy(() => import("./Admin/ManageUsers"));
-const ManageMenu = React.lazy(() => import("./Admin/ManageMenu"));
-const BurgerDetail = React.lazy(() => import("./Admin/BurgerDetail"));
+const ManageUserOrders = React.lazy(() => import('./Admin/ManageUserOrders'));
+const ManageUsers = React.lazy(() => import('./Admin/ManageUsers'));
+const ManageMenu = React.lazy(() => import('./Admin/ManageMenu'));
+const BurgerDetail = React.lazy(() => import('./Admin/BurgerDetail'));
 
 const DashboardRoutes = () => {
 	const route = useRouteMatch();

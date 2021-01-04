@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
-import Alert from "./../Alert/Alert";
-import AddOrRemoveButton from "./../Buttons/AddOrRemoveButton";
+import Alert from '../Alert/Alert';
+import AddOrRemoveButton from '../Buttons/AddOrRemoveButton';
 
 const CardMenu = (props) => {
 	const { burger, addBurger, removeBurger, admin } = props;
@@ -37,8 +37,8 @@ const CardMenu = (props) => {
 		<>
 			{showAlert && (
 				<Alert variant={alertType}>
-					{alertType === "success" && "Added Burger To Cart"}
-					{alertType === "danger" && "Removed Burger From Cart"}
+					{alertType === 'success' && 'Added Burger To Cart'}
+					{alertType === 'danger' && 'Removed Burger From Cart'}
 				</Alert>
 			)}
 			<div className='card-menu'>
@@ -49,9 +49,9 @@ const CardMenu = (props) => {
 				<h4 className='card-menu__name'>{name}</h4>
 				<p
 					className={`card-menu__foodtype ${
-						isVegetarian ? "u-text-success" : "u-text-danger"
+						isVegetarian ? 'u-text-success' : 'u-text-danger'
 					}`}>
-					{isVegetarian ? "vegetarian" : "non-vegetarian"}
+					{isVegetarian ? 'vegetarian' : 'non-vegetarian'}
 				</p>
 				<div className='card-menu__ingredients'>
 					{ingredients.map((el, i) => {
@@ -70,7 +70,7 @@ const CardMenu = (props) => {
 						onClick={() => {
 							addBurger(burger);
 							setShowAlert(true);
-							setAlertType("success");
+							setAlertType('success');
 						}}
 						className='btn btn__primary--outline card-menu__cta'>
 						add to cart
@@ -82,12 +82,12 @@ const CardMenu = (props) => {
 						addItem={() => {
 							addBurger(burger);
 							setShowAlert(true);
-							setAlertType("success");
+							setAlertType('success');
 						}}
 						removeItem={() => {
 							removeBurger(burger);
 							setShowAlert(true);
-							setAlertType("danger");
+							setAlertType('danger');
 						}}
 						lg
 						color='secondary-50'

@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import CartListItem from "./components/CartListItem";
+import CartListItem from './components/CartListItem';
 
-import * as cartActions from "./../store/actions/cartActions";
-import { useHistory } from "react-router-dom";
-import * as orderActions from "../store/actions/orderActions";
+import * as cartActions from './../store/actions/cartActions';
+import { useHistory } from 'react-router-dom';
+import * as orderActions from '../store/actions/orderActions';
 
-import Loader from "./../shared/components/Loader/Loader";
+import Loader from '../Shared/Components/Loader/Loader';
 
 const Cart = (props) => {
 	const {
@@ -28,7 +28,7 @@ const Cart = (props) => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (placeOrderStatus === "success" && newOrder) {
+		if (placeOrderStatus === 'success' && newOrder) {
 			clearCart(cart);
 			return history.replace(`/dashboard/orders/${newOrder._id}`);
 		}
@@ -89,7 +89,7 @@ const Cart = (props) => {
 
 					{!user && (
 						<button
-							onClick={() => history.push("/login")}
+							onClick={() => history.push('/login')}
 							className='btn btn__dark--outline btn__sm u-text-uppercase'>
 							Please login to place your Order
 						</button>
@@ -103,7 +103,7 @@ const Cart = (props) => {
 						Your Cart is Empty.
 					</h5>
 					<button
-						onClick={() => history.push("/menu")}
+						onClick={() => history.push('/menu')}
 						className='btn btn__primary--outline'>
 						Order Now
 					</button>

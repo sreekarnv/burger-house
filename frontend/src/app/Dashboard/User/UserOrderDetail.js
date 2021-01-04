@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import CartListItem from "../../Cart/components/CartListItem";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import CartListItem from '../../Cart/components/CartListItem';
 
-import Loader from "./../../shared/components/Loader/Loader";
-import * as userActions from "./../../store/actions/userActions";
-import * as orderActions from "./../../store/actions/orderActions";
-import * as adminActions from "./../../store/actions/adminActions";
-import TrackOrder from "./TrackOrder";
+import Loader from '../../Shared/Components/Loader/Loader';
+import * as userActions from './../../store/actions/userActions';
+import * as orderActions from './../../store/actions/orderActions';
+import * as adminActions from './../../store/actions/adminActions';
+import TrackOrder from './TrackOrder';
 
 const UserOrderDetail = (props) => {
 	const { admin } = props;
@@ -31,13 +31,13 @@ const UserOrderDetail = (props) => {
 
 	const markAsDelivered = () => {
 		dispatch(
-			adminActions.updateOrderStatusAdmin(params.id, { status: "delivered" })
+			adminActions.updateOrderStatusAdmin(params.id, { status: 'delivered' })
 		);
 	};
 
 	const markAsPending = () => {
 		dispatch(
-			adminActions.updateOrderStatusAdmin(params.id, { status: "pending" })
+			adminActions.updateOrderStatusAdmin(params.id, { status: 'pending' })
 		);
 	};
 
@@ -73,7 +73,7 @@ const UserOrderDetail = (props) => {
 					<div className='order-stats-item'>
 						<span className='order-stats-item__field'>Ordered On:</span>
 						<span className='order-stats-item__value'>
-							{order && `${order.createdAt}`.split("T")[0]}
+							{order && `${order.createdAt}`.split('T')[0]}
 						</span>
 					</div>
 					<div className='order-stats-item'>
@@ -86,9 +86,9 @@ const UserOrderDetail = (props) => {
 						<span className='order-stats-item__field'>Order Status: </span>
 						<span
 							className={`order-stats-item__value u-text-uppercase 
-					${order && order.status === "pending" && "u-text-danger"}
-					${order && order.status === "delivered" && "u-text-success"}
-					${order && order.status === "cancelled" && "u-text-dark"}
+					${order && order.status === 'pending' && 'u-text-danger'}
+					${order && order.status === 'delivered' && 'u-text-success'}
+					${order && order.status === 'cancelled' && 'u-text-dark'}
 				`}>
 							{order && order.status}
 						</span>
@@ -98,13 +98,13 @@ const UserOrderDetail = (props) => {
 					{!admin && (
 						<button
 							onClick={cancelUserOrder}
-							disabled={order && order.status === "pending" ? false : true}
+							disabled={order && order.status === 'pending' ? false : true}
 							type='button'
 							className={`btn btn__danger--outline 
 					${
-						((order && order.status) === "cancelled" ||
-							(order && order.status) === "delivered") &&
-						"btn__disabled--outline"
+						((order && order.status) === 'cancelled' ||
+							(order && order.status) === 'delivered') &&
+						'btn__disabled--outline'
 					}
 					`}>
 							Cancel Order
@@ -112,14 +112,14 @@ const UserOrderDetail = (props) => {
 					)}
 					{!admin && (
 						<button
-							disabled={order && order.status === "pending" ? false : true}
+							disabled={order && order.status === 'pending' ? false : true}
 							onClick={() => setShowMap(true)}
 							type='button'
 							className={`btn btn__tertiary--outline
 				 	${
-						((order && order.status === "cancelled") ||
-							(order && order.status === "delivered")) &&
-						"btn__disabled--outline"
+						((order && order.status === 'cancelled') ||
+							(order && order.status === 'delivered')) &&
+						'btn__disabled--outline'
 					}
 				 `}>
 							Track Order
@@ -129,13 +129,13 @@ const UserOrderDetail = (props) => {
 					{admin && (
 						<button
 							onClick={markAsDelivered}
-							disabled={order && order.status === "pending" ? false : true}
+							disabled={order && order.status === 'pending' ? false : true}
 							type='button'
 							className={`btn btn__success--outline 
 					${
-						((order && order.status) === "cancelled" ||
-							(order && order.status) === "delivered") &&
-						"btn__disabled--outline"
+						((order && order.status) === 'cancelled' ||
+							(order && order.status) === 'delivered') &&
+						'btn__disabled--outline'
 					}
 					`}>
 							Mark As Delivered
@@ -145,12 +145,12 @@ const UserOrderDetail = (props) => {
 						<button
 							onClick={markAsPending}
 							type='button'
-							disabled={order && order.status === "delivered" ? false : true}
+							disabled={order && order.status === 'delivered' ? false : true}
 							className={`btn btn__danger--outline
 				 	${
-						((order && order.status === "cancelled") ||
-							(order && order.status === "pending")) &&
-						"btn__disabled--outline"
+						((order && order.status === 'cancelled') ||
+							(order && order.status === 'pending')) &&
+						'btn__disabled--outline'
 					}
 				 `}>
 							Mark As Pending

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import Alert from "../shared/components/Alert/Alert";
-import FormInput from "../shared/components/Form/FormInput";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import Alert from '../Shared/Components/Alert/Alert';
+import FormInput from '../Shared/Components/Form/FormInput';
 
-import * as actionTypes from "./../store/actions/authActions";
+import * as actionTypes from './../store/actions/authActions';
 
 const Login = (props) => {
 	const {
@@ -39,26 +39,26 @@ const Login = (props) => {
 
 	useEffect(() => {
 		if (user && cartValue > 0) {
-			return replace("/cart");
+			return replace('/cart');
 		}
 
 		if (user) {
-			return replace("/menu");
+			return replace('/menu');
 		}
 	}, [user, replace, cartValue]);
 
 	const [formState, setformState] = useState({
 		email: {
-			type: "email",
-			label: "Email",
+			type: 'email',
+			label: 'Email',
 			required: true,
-			value: "",
+			value: '',
 		},
 		password: {
-			type: "password",
-			label: "Password",
+			type: 'password',
+			label: 'Password',
 			required: true,
-			value: "",
+			value: '',
 		},
 	});
 
@@ -81,7 +81,7 @@ const Login = (props) => {
 
 			{showAlert && registerUserStatus && (
 				<Alert
-					show={registerUserStatus === "success" ? true : false}
+					show={registerUserStatus === 'success' ? true : false}
 					variant='success'>
 					Account Created Successfully. Check your email to activate your
 					account
@@ -109,7 +109,7 @@ const Login = (props) => {
 
 					<div className='form__group'>
 						<button className='btn btn__tertiary auth-form__cta' type='submit'>
-							{loginUserInit ? "Loading..." : "Login"}
+							{loginUserInit ? 'Loading...' : 'Login'}
 						</button>
 					</div>
 

@@ -1,18 +1,18 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import Backdrop from "../../shared/components/Backdrop/Backdrop";
-import Map from "../components/Map/Map";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import Backdrop from '../../Shared/Components/Backdrop/Backdrop';
+import Map from '../components/Map/Map';
 
-import * as userActions from "./../../store/actions/userActions";
+import * as userActions from './../../store/actions/userActions';
 
 const TrackOrder = (props) => {
 	const { showMap, setShowMap, order } = props;
 	const dispatch = useDispatch();
 
 	const changeStatusHandler = () => {
-		let status = "pending";
+		let status = 'pending';
 
-		if (order.status === "pending") status = "delivered";
+		if (order.status === 'pending') status = 'delivered';
 
 		dispatch(userActions.updateUserOrder(order._id, status));
 	};
@@ -22,7 +22,7 @@ const TrackOrder = (props) => {
 			<Backdrop show={showMap} closeHandler={() => setShowMap(false)} />
 			<div
 				className={`track-order ${
-					showMap ? "track-order--show" : "track-order--hide"
+					showMap ? 'track-order--show' : 'track-order--hide'
 				}`}>
 				{showMap && (
 					<Map order={order} onChangeStatusHandler={changeStatusHandler} />

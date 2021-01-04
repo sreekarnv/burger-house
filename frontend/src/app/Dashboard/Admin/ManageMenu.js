@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../shared/components/Loader/Loader";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../Shared/Components/Loader/Loader';
 
-import CardMenu from "./../../shared/components/Card/CardMenu";
+import CardMenu from '../../Shared/Components/Card/CardMenu';
 
-import * as burgerActions from "./../../store/actions/burgerActions";
-import { useHistory } from "react-router-dom";
+import * as burgerActions from './../../store/actions/burgerActions';
+import { useHistory } from 'react-router-dom';
 
 const ManageMenu = () => {
 	const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const ManageMenu = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user && user.role !== "admin") {
-			return history.replace("/dashboard");
+		if (user && user.role !== 'admin') {
+			return history.replace('/dashboard');
 		}
 	}, [history, user]);
 

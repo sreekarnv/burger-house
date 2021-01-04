@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { useSelector } from "react-redux";
-import Logo from "../shared/icons/Logo";
-import Navbar from "../shared/components/Navigation/Navbar";
-import NavItem from "../shared/components/Navigation/NavItem";
-import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import Logo from '../Shared/Icons/Logo';
+import Navbar from '../Shared/Components/Navigation/Navbar';
+import NavItem from '../Shared/Components/Navigation/NavItem';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
 	const cart = useSelector((state) => state.cart.cartValue);

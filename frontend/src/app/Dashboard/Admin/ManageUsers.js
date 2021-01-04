@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "./../../shared/components/Loader/Loader";
-import * as adminActions from "./../../store/actions/adminActions";
-import UserListItem from "../components/UserListItem.js/UserListItem";
-import Modal from "../../shared/components/Modal/Modal";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../Shared/Components/Loader/Loader';
+import * as adminActions from './../../store/actions/adminActions';
+import UserListItem from '../components/UserListItem.js/UserListItem';
+import Modal from '../../Shared/Components/Modal/Modal';
+import { useHistory } from 'react-router-dom';
 
 const ManageUsers = () => {
 	const dispatch = useDispatch();
@@ -20,8 +20,8 @@ const ManageUsers = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user && user.role !== "admin") {
-			return history.replace("/dashboard");
+		if (user && user.role !== 'admin') {
+			return history.replace('/dashboard');
 		}
 	}, [history, user]);
 
@@ -41,7 +41,7 @@ const ManageUsers = () => {
 
 	const updateUserRole = async () => {
 		await dispatch(
-			adminActions.updateUserRole(selectedUser, { role: "admin" })
+			adminActions.updateUserRole(selectedUser, { role: 'admin' })
 		);
 		dispatch(adminActions.getAllUsers());
 		setShowModal(false);
@@ -61,12 +61,12 @@ const ManageUsers = () => {
 				show={showModal}
 				setShow={setShowModal}
 				confirmMessage={
-					modalActionType === "edit"
-						? "Are you sure you want to make this user an admin ?"
-						: "are you sure you want to delete this user ?"
+					modalActionType === 'edit'
+						? 'Are you sure you want to make this user an admin ?'
+						: 'are you sure you want to delete this user ?'
 				}
 				successHandler={
-					modalActionType === "edit" ? updateUserRole : deleteUser
+					modalActionType === 'edit' ? updateUserRole : deleteUser
 				}
 				dangerHandler={() => setShowModal(false)}
 			/>

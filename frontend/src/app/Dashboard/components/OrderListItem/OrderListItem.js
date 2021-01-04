@@ -1,19 +1,19 @@
-import React from "react";
-import BaseListItem from "./../../../shared/components/BaseListItem/BaseListItem";
+import React from 'react';
+import BaseListItem from '../../../Shared/Components/BaseListItem/BaseListItem';
 
 const MONTHS = [
-	"Jan",
-	"Feb",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"Augu",
-	"Sept",
-	"Oct",
-	"Nov",
-	"Dec",
+	'Jan',
+	'Feb',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'Augu',
+	'Sept',
+	'Oct',
+	'Nov',
+	'Dec',
 ];
 
 const OrderListItem = (props) => {

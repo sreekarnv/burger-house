@@ -1,11 +1,11 @@
-import React from "react";
-import Logo from "../shared/icons/Logo";
+import React from 'react';
+import Logo from '../Shared/Icons/Logo';
 
-import aboutImg from "../../assets/images/about-1.jpg";
+import aboutImg from '../../assets/images/about-1.jpg';
 
-import BurgerImage1 from "../../assets/images/gallery-1.jpg";
-import BurgerImage2 from "../../assets/images/gallery-2.jpg";
-import BurgerImage3 from "../../assets/images/gallery-3.jpg";
+import BurgerImage1 from '../../assets/images/gallery-1.jpg';
+import BurgerImage2 from '../../assets/images/gallery-2.jpg';
+import BurgerImage3 from '../../assets/images/gallery-3.jpg';
 
 const About = () => {
 	return (

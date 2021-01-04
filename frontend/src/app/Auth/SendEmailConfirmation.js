@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import FormInput from "../shared/components/Form/FormInput";
-import Loader from "../shared/components/Loader/Loader";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import FormInput from '../Shared/Components/Form/FormInput';
+import Loader from '../Shared/Components/Loader/Loader';
 
-import * as authActions from "./../store/actions/authActions";
+import * as authActions from './../store/actions/authActions';
 
 const SendEmailConfirmation = (props) => {
 	const { sendEmailInit, sendEmailStatus, sendEmailConfirmation } = props;
 
 	const [formState, setformState] = useState({
 		email: {
-			type: "email",
-			label: "Email",
+			type: 'email',
+			label: 'Email',
 			required: true,
-			value: "",
+			value: '',
 		},
 	});
 
@@ -23,7 +23,7 @@ const SendEmailConfirmation = (props) => {
 
 	const onSubmitEmail = (e) => {
 		e.preventDefault();
-		if (formState.email.value !== "") {
+		if (formState.email.value !== '') {
 			sendEmailConfirmation(formState.email.value);
 		}
 	};
@@ -57,13 +57,13 @@ const SendEmailConfirmation = (props) => {
 			</form>
 			<br />
 
-			{sendEmailStatus === "failed" && (
+			{sendEmailStatus === 'failed' && (
 				<p className='send-email-confirm__error u-text-danger'>
 					Something went wrong. Please try again later
 				</p>
 			)}
 
-			{props.sendEmailStatus === "success" && (
+			{props.sendEmailStatus === 'success' && (
 				<p className='send-email-confirm__error u-text-success'>
 					Email sent successfully! Please check your email.
 				</p>

@@ -1,26 +1,26 @@
-import React, { Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import CustomBurgerRoutes from "../CustomBurger/CustomBurgerRoutes";
-import DashboardRoutes from "../Dashboard/DashboardRoutes";
+import CustomBurgerRoutes from '../CustomBurger/CustomBurgerRoutes';
+import DashboardRoutes from '../Dashboard/DashboardRoutes';
 
-import Loader from "../shared/components/Loader/Loader";
+import Loader from '../Shared/Components/Loader/Loader';
 
-const Home = React.lazy(() => import("./../Home/Home"));
-const Menu = React.lazy(() => import("./../Menu/Menu"));
+const Home = React.lazy(() => import('../Home/Home'));
+const Menu = React.lazy(() => import('../Menu/Menu'));
 
-const About = React.lazy(() => import("./../About/About"));
-const Cart = React.lazy(() => import("./../Cart/Cart"));
+const About = React.lazy(() => import('../About/About'));
+const Cart = React.lazy(() => import('../Cart/Cart'));
 
-const Login = React.lazy(() => import("./../Auth/Login"));
+const Login = React.lazy(() => import('../Auth/Login'));
 
-const Logout = React.lazy(() => import("./../Auth/Logout"));
-const Register = React.lazy(() => import("./../Auth/Register"));
+const Logout = React.lazy(() => import('../Auth/Logout'));
+const Register = React.lazy(() => import('../Auth/Register'));
 
 const SendEmailConfirmation = React.lazy(() =>
-	import("../Auth/SendEmailConfirmation")
+	import('../Auth/SendEmailConfirmation')
 );
-const VerifyUserAccount = React.lazy(() => import("../Auth/VerifyUserAccount"));
+const VerifyUserAccount = React.lazy(() => import('../Auth/VerifyUserAccount'));
 
 const Body = (props) => {
 	return (

@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Loader from "../../shared/components/Loader/Loader";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Loader from '../../Shared/Components/Loader/Loader';
 
-import Alert from "./../../shared/components/Alert/Alert";
-import FormInput from "./../../shared/components/Form/FormInput";
+import Alert from '../../Shared/Components/Alert/Alert';
+import FormInput from '../../Shared/Components/Form/FormInput';
 
-import * as userActions from "./../../store/actions/userActions";
+import * as userActions from './../../store/actions/userActions';
 
 const UserSettings = () => {
 	const user = useSelector((state) => state.auth.user);
@@ -32,43 +32,43 @@ const UserSettings = () => {
 
 	const [updateDetailsFormState, setUpdateDetailsFormState] = useState({
 		email: {
-			type: "email",
-			label: "Email",
+			type: 'email',
+			label: 'Email',
 			required: true,
 			value: user.email,
 		},
 		name: {
-			type: "text",
-			label: "Name",
+			type: 'text',
+			label: 'Name',
 			required: true,
 			value: user.name,
 		},
 		photo: {
-			type: "file",
-			label: "photo",
-			value: "",
+			type: 'file',
+			label: 'photo',
+			value: '',
 			preview: user.photoUrl,
 		},
 	});
 
 	const [updatePasswordFormState, setUpdatePasswordFormState] = useState({
 		currentPassword: {
-			type: "password",
-			label: "Password Current",
+			type: 'password',
+			label: 'Password Current',
 			required: true,
-			value: "",
+			value: '',
 		},
 		password: {
-			type: "password",
-			label: "Password New",
+			type: 'password',
+			label: 'Password New',
 			required: true,
-			value: "",
+			value: '',
 		},
 		passwordConfirm: {
-			type: "password",
-			label: "Password Confirm",
+			type: 'password',
+			label: 'Password Confirm',
 			required: true,
-			value: "",
+			value: '',
 		},
 	});
 
@@ -77,15 +77,15 @@ const UserSettings = () => {
 		let data = new FormData();
 
 		if (user.name !== updateDetailsFormState.name.value) {
-			data.append("name", updateDetailsFormState.name.value);
+			data.append('name', updateDetailsFormState.name.value);
 		}
 
 		if (user.email !== updateDetailsFormState.email.value) {
-			data.append("email", updateDetailsFormState.email.value);
+			data.append('email', updateDetailsFormState.email.value);
 		}
 
-		if (updateDetailsFormState.photo.value !== "") {
-			data.append("photo", updateDetailsFormState.photo.value);
+		if (updateDetailsFormState.photo.value !== '') {
+			data.append('photo', updateDetailsFormState.photo.value);
 		}
 
 		dispatch(userActions.updateUserData(data));
@@ -101,14 +101,14 @@ const UserSettings = () => {
 		};
 		try {
 			let res = await axios({
-				method: "POST",
-				url: "/api/v2/users/updateCurrentUserPassword",
+				method: 'POST',
+				url: '/api/v2/users/updateCurrentUserPassword',
 				data,
 			});
 
 			if (res) {
 				setLoading(false);
-				return history.replace("/logout");
+				return history.replace('/logout');
 			}
 		} catch (err) {
 			setShowAlert(true);
@@ -153,7 +153,7 @@ const UserSettings = () => {
 
 					<div className='form__group'>
 						<button className='btn btn__tertiary auth-form__cta' type='submit'>
-							{"Update Details"}
+							{'Update Details'}
 						</button>
 					</div>
 				</form>
@@ -181,7 +181,7 @@ const UserSettings = () => {
 
 					<div className='form__group'>
 						<button className='btn btn__tertiary auth-form__cta' type='submit'>
-							{"Update Password"}
+							{'Update Password'}
 						</button>
 					</div>
 				</form>

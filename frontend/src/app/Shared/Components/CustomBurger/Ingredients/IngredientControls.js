@@ -1,9 +1,9 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import IngredientControl from "./IngredientControl";
+import IngredientControl from './IngredientControl';
 
-import * as customBurgerActions from "./../../../../store/actions/customBurgerActions";
+import * as customBurgerActions from '../../../../store/actions/customBurgerActions';
 
 const IngredientControls = (props) => {
 	const { ingredients } = props;

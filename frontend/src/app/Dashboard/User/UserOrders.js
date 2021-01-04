@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import OrderListItem from "../components/OrderListItem/OrderListItem";
-import Loader from "./../../shared/components/Loader/Loader";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import OrderListItem from '../components/OrderListItem/OrderListItem';
+import Loader from '../../Shared/Components/Loader/Loader';
 
-import * as userActions from "./../../store/actions/userActions";
+import * as userActions from './../../store/actions/userActions';
 
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const UserOrders = (props) => {
 	const dispatch = useDispatch();

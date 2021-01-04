@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
-import FormInput from "./../../shared/components/Form/FormInput";
+import FormInput from '../../Shared/Components/Form/FormInput';
 
-import axios from "axios";
-import Loader from "../../shared/components/Loader/Loader";
+import axios from 'axios';
+import Loader from '../../Shared/Components/Loader/Loader';
 
-import CustomBurger from "./../../shared/components/CustomBurger/CustomBurger";
-import { useSelector } from "react-redux";
+import CustomBurger from '../../Shared/Components/CustomBurger/CustomBurger';
+import { useSelector } from 'react-redux';
 
 const BurgerDetail = () => {
 	const params = useParams();
@@ -15,29 +15,29 @@ const BurgerDetail = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		if (user && user.role !== "admin") {
-			return history.replace("/dashboard");
+		if (user && user.role !== 'admin') {
+			return history.replace('/dashboard');
 		}
 	}, [history, user]);
 
 	const [burgerInputstate, setBurgerInputState] = useState({
 		name: {
-			type: "text",
-			label: "Name",
+			type: 'text',
+			label: 'Name',
 			required: true,
-			value: "",
+			value: '',
 		},
 		price: {
-			type: "text",
-			label: "Price",
+			type: 'text',
+			label: 'Price',
 			required: true,
-			value: "",
+			value: '',
 		},
 		photo: {
-			type: "file",
-			label: "photo",
-			value: "",
-			preview: "",
+			type: 'file',
+			label: 'photo',
+			value: '',
+			preview: '',
 		},
 	});
 
@@ -52,7 +52,7 @@ const BurgerDetail = () => {
 			const getBurger = async () => {
 				try {
 					const res = await axios({
-						method: "GET",
+						method: 'GET',
 						url: `/api/v2/burgers/${params.slug}`,
 					});
 
@@ -94,15 +94,15 @@ const BurgerDetail = () => {
 		let body = new FormData();
 
 		if (burger.name !== burgerInputstate.name.value) {
-			body.append("name", burgerInputstate.name.value);
+			body.append('name', burgerInputstate.name.value);
 		}
 
 		if (burger.price !== burgerInputstate.price.value) {
-			body.append("price", burgerInputstate.price.value);
+			body.append('price', burgerInputstate.price.value);
 		}
 
-		if (burgerInputstate.photo.value !== "") {
-			body.append("photo", burgerInputstate.photo.value);
+		if (burgerInputstate.photo.value !== '') {
+			body.append('photo', burgerInputstate.photo.value);
 		}
 
 		let updatedIngs = [];
@@ -111,11 +111,11 @@ const BurgerDetail = () => {
 		});
 
 		let updatedIngredients = JSON.stringify(updatedIngs);
-		body.append("ingredients", updatedIngredients);
+		body.append('ingredients', updatedIngredients);
 
 		try {
 			const res = await axios({
-				method: "PATCH",
+				method: 'PATCH',
 				url: `/api/v2/burgers/${params.slug}`,
 				data: body,
 			});
@@ -164,7 +164,7 @@ const BurgerDetail = () => {
 					<CustomBurger
 						hideCta
 						foodType={
-							burger && burger.isVegetarian ? "vegetarian" : "non-vegetarian"
+							burger && burger.isVegetarian ? 'vegetarian' : 'non-vegetarian'
 						}
 						ingredients={burgerIngredients}
 					/>

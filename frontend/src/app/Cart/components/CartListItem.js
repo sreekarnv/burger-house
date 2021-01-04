@@ -1,19 +1,19 @@
-import React from "react";
-import IconButton from "../../shared/components/Buttons/IconButton";
-import AddOrRemoveButton from "./../../shared/components/Buttons/AddOrRemoveButton";
+import React from 'react';
+import IconButton from '../../Shared/Components/Buttons/IconButton';
+import AddOrRemoveButton from '../../Shared/Components/Buttons/AddOrRemoveButton';
 
-import TrashIcon from "./../../shared/icons/Trash";
+import TrashIcon from '../../Shared/Icons/Trash';
 
-import BaseListItem from "./../../shared/components/BaseListItem/BaseListItem";
+import BaseListItem from '../../Shared/Components/BaseListItem/BaseListItem';
 
-import Logo from "./../../shared/icons/Logo";
+import Logo from '../../Shared/Icons/Logo';
 
 const CartListItem = (props) => {
 	const { burger, addBurger, removeBurger, removeAll, hidebtn } = props;
 
 	return (
 		<BaseListItem
-			className={`cart__list-item ${hidebtn && "cart__list-item-sm"}`}>
+			className={`cart__list-item ${hidebtn && 'cart__list-item-sm'}`}>
 			<div className='cart__list-item-image'>
 				{burger.photoUrl && <img src={burger.photoUrl} alt='item' />}
 				{!burger.photoUrl && <Logo />}
@@ -43,7 +43,7 @@ const CartListItem = (props) => {
 				</IconButton>
 			)}
 
-			{burger.name.startsWith("Custom") &&
+			{burger.name.startsWith('Custom') &&
 				burger.ingredients.map((el) => {
 					if (el.items > 0) {
 						return (

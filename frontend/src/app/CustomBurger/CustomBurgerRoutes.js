@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
 	Redirect,
 	Route,
 	Switch,
 	useHistory,
 	useRouteMatch,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import CustomBurgerDiet from "./pages/CustomBurgerDiet";
-import { useDispatch, useSelector } from "react-redux";
+import CustomBurgerDiet from './pages/CustomBurgerDiet';
+import { useDispatch, useSelector } from 'react-redux';
 
-import * as customBurgerActions from "./../store/actions/customBurgerActions";
-import CustomBurger from "../shared/components/CustomBurger/CustomBurger";
-import Loader from "../shared/components/Loader/Loader";
+import * as customBurgerActions from './../store/actions/customBurgerActions';
+import CustomBurger from '../Shared/Components/CustomBurger/CustomBurger';
+import Loader from '../Shared/Components/Loader/Loader';
 
 const CustomBurgerRoutes = (props) => {
 	const route = useRouteMatch();

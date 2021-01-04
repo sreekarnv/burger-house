@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import OrderListItem from '../components/OrderListItem/OrderListItem';
-import Loader from './../../shared/components/Loader/Loader';
+import Loader from '../../Shared/Components/Loader/Loader';
 
 import * as adminActions from './../../store/actions/adminActions';
 
