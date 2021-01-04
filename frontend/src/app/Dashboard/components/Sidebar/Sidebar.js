@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Backdrop from '../../../Shared/Components/Backdrop/Backdrop';
+import Backdrop from '../../../Shared/Components/BackDrop/BackDrop';
 import Avatar from '../Avatar/Avatar';
 
 import SidebarNavItem from './SidebarNavItem';

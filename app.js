@@ -68,6 +68,11 @@ app.use(
 	express.static(path.join(__dirname, 'uploads', 'users'))
 );
 
+app.use(
+	'/dashboard/uploads/users',
+	express.static(path.join(__dirname, 'uploads', 'users'))
+);
+
 app.use('/api/v2/ingredients', ingredientRoutes);
 app.use('/api/v2/users', userRoutes);
 app.use('/api/v2/burgers', burgerRoutes);

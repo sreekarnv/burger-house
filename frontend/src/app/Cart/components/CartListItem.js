@@ -1,6 +1,6 @@
 import React from 'react';
 import IconButton from '../../Shared/Components/Buttons/IconButton';
-import AddOrRemoveButton from '../../Shared/Components/Buttons/AddOrRemoveButton';
+import AddOrRemoveButton from '../../Shared/Components/Buttons/AddorRemoveButton';
 
 import TrashIcon from '../../Shared/Icons/Trash';
 

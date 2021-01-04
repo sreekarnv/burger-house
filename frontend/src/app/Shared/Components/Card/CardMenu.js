@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import Alert from '../Alert/Alert';
-import AddOrRemoveButton from '../Buttons/AddOrRemoveButton';
+import AddOrRemoveButton from '../Buttons/AddorRemoveButton';
 
 const CardMenu = (props) => {
 	const { burger, addBurger, removeBurger, admin } = props;
@@ -48,9 +48,8 @@ const CardMenu = (props) => {
 
 				<h4 className='card-menu__name'>{name}</h4>
 				<p
-					className={`card-menu__foodtype ${
-						isVegetarian ? 'u-text-success' : 'u-text-danger'
-					}`}>
+					className={`card-menu__foodtype ${isVegetarian ? 'u-text-success' : 'u-text-danger'
+						}`}>
 					{isVegetarian ? 'vegetarian' : 'non-vegetarian'}
 				</p>
 				<div className='card-menu__ingredients'>

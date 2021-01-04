@@ -1,5 +1,5 @@
 import React from "react";
-import Backdrop from "../Backdrop/Backdrop";
+import Backdrop from "../BackDrop/BackDrop";
 
 const Modal = (props) => {
 	const {

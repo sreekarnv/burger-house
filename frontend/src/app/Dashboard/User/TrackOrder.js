@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Backdrop from '../../Shared/Components/Backdrop/Backdrop';
+import Backdrop from '../../Shared/Components/BackDrop/BackDrop';
 import Map from '../components/Map/Map';
 
 import * as userActions from './../../store/actions/userActions';
@@ -21,9 +21,8 @@ const TrackOrder = (props) => {
 		<>
 			<Backdrop show={showMap} closeHandler={() => setShowMap(false)} />
 			<div
-				className={`track-order ${
-					showMap ? 'track-order--show' : 'track-order--hide'
-				}`}>
+				className={`track-order ${showMap ? 'track-order--show' : 'track-order--hide'
+					}`}>
 				{showMap && (
 					<Map order={order} onChangeStatusHandler={changeStatusHandler} />
 				)}

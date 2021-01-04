@@ -123,11 +123,10 @@ const NewCustomBurger = (props) => {
 								disabled={burgerPrice > 250 ? false : true}
 								onClick={resetIngredients}
 								type='reset'
-								className={`btn ${
-									burgerPrice === 250
+								className={`btn ${burgerPrice === 250
 										? "btn__disabled--outline"
 										: "btn__dark--outline"
-								}`}>
+									}`}>
 								Reset
 							</button>
 						)}
@@ -136,11 +135,10 @@ const NewCustomBurger = (props) => {
 								onClick={addToCart}
 								disabled={burgerPrice > 250 ? false : true}
 								type='submit'
-								className={`btn ${
-									burgerPrice === 250
+								className={`btn ${burgerPrice === 250
 										? "btn__disabled--outline"
 										: "btn__success--outline"
-								}`}>
+									}`}>
 								Add to Cart
 							</button>
 						)}
