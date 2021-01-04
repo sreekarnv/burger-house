@@ -5,12 +5,12 @@ import CustomBurgerRoutes from "../CustomBurger/CustomBurgerRoutes";
 import DashboardRoutes from "../Dashboard/DashboardRoutes";
 
 import Loader from "../shared/components/Loader/Loader";
-// import Login from "./../Auth/Login";
 
 const Home = React.lazy(() => import("./../Home/Home"));
 const Menu = React.lazy(() => import("./../Menu/Menu"));
-const Cart = React.lazy(() => import("./../Cart/Cart"));
+
 const About = React.lazy(() => import("./../About/About"));
+const Cart = React.lazy(() => import("./../Cart/Cart"));
 
 const Login = React.lazy(() => import("./../Auth/Login"));
 

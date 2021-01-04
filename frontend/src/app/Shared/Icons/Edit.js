@@ -1,10 +1,8 @@
 import React from 'react';
-import { ReactComponent as Edit } from '../../../assets/icons/edit.svg';
+import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
-const tick = props => {
-    return (
-        <Edit className={props.className} />
-    )
-}
+const tick = (props) => {
+	return <EditIcon className={props.className} />;
+};
 
 export default tick;
