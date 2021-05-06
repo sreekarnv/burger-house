@@ -20,31 +20,6 @@
 	grid-gap: 2rem;
 	align-content: center;
 	justify-content: center;
-
-	&-link {
-		&:link,
-		&:visited {
-			font-size: 1.4rem;
-			color: $color-primary;
-			text-decoration: none;
-			font-family: $font-heading;
-			text-transform: uppercase;
-			text-align: center;
-			padding: 1.5rem;
-			display: block;
-			background-color: rgba($color-black, 0.05);
-			transition: all 0.2s;
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			outline: none;
-			color: $color-white;
-			background-color: rgba($color-black, 0.5);
-			transform: translate(-3px);
-		}
-	}
 }
 
 .copyright {

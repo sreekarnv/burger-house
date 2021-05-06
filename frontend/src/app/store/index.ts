@@ -4,12 +4,10 @@ import burgerReducer from './reducers/burgerReducer';
 import cartReducer from './reducers/cartReducers';
 import customBurgerReducer from './reducers/customBurgerReducer';
 import geoLocationReducer from './reducers/geoLocationReducer';
-import reviewReducer from './reducers/reviewReducer';
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
 	location: geoLocationReducer,
-	reviews: reviewReducer,
 	burgers: burgerReducer,
 	cart: cartReducer,
 	customBurger: customBurgerReducer,
