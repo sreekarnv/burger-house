@@ -1,0 +1,65 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.burger-list-item {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	align-content: start;
+	padding: 1rem;
+	border-radius: 5px;
+	background-color: $color-light;
+
+	&-sm {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include respond(tab-land) {
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 0.5fr 1fr 0.5fr;
+		grid-row-gap: 1.2rem;
+	}
+
+	&__image {
+		height: 15rem;
+		width: 15rem;
+		display: grid;
+		align-items: center;
+
+		@include respond(tab-land) {
+			grid-row: 1 / 3;
+		}
+
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+			object-position: center;
+		}
+	}
+
+	&__ings {
+		grid-row: 2 / 3;
+		grid-column: 1 / -1;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		color: $color-dark;
+		display: flex;
+		gap: 3rem;
+		justify-self: start;
+		padding: 0 1rem;
+	}
+
+	&__name {
+		text-transform: uppercase;
+		font-size: 1.55rem;
+		color: $color-tertiary;
+	}
+
+	&__price {
+		font-size: 2rem;
+		color: rgba($color-primary, 0.74);
+	}
+}

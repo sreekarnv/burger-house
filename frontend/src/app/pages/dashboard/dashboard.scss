@@ -1,0 +1,50 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.dashboard {
+	display: flex;
+	min-height: 91.5vh;
+	width: 100%;
+
+	@include respond(tab-land) {
+		min-height: auto;
+		position: relative;
+	}
+
+	&__sidebar {
+		flex: 0 0 17%;
+
+		@include respond(desktop-sm) {
+			flex: 0 0 20%;
+		}
+
+		@include respond(laptop-lg) {
+			flex: 0 0 23%;
+		}
+
+		@include respond(laptop-md) {
+			flex: 0 0 25%;
+		}
+
+		@include respond(laptop-sm) {
+			flex: 0 0 28%;
+		}
+
+		@include respond(phone-lg) {
+			width: 60%;
+		}
+
+		@include respond(phone-md) {
+			width: 80%;
+		}
+	}
+
+	&__content {
+		flex: 1;
+		min-height: 91.5vh;
+
+		@include respond(tab-land) {
+			position: relative;
+		}
+	}
+}

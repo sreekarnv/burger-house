@@ -1,0 +1,55 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.order-stats {
+	background-color: rgba($color-secondary, 1);
+	border-radius: 15px;
+	grid-row: 2 / 3;
+	grid-column: 8 / 12;
+	box-shadow: 0 0.5rem 1rem rgba($color-dark, 1);
+
+	display: grid;
+	align-content: center;
+	justify-content: center;
+
+	padding: 5rem;
+
+	font-size: 2rem;
+	color: $color-dark;
+	font-family: $font-heading;
+
+	@include respond(laptop-lg) {
+		grid-column: 9 / 13;
+	}
+
+	@include respond(laptop-md) {
+		grid-column: 8 / 13;
+	}
+
+	@include respond(laptop-sm) {
+		background-color: transparent;
+		box-shadow: none;
+		grid-row: 2 / 3;
+		grid-column: 1 / 8;
+	}
+
+	@include respond(phone-md) {
+		grid-row: 2 / 3;
+		grid-column: 1 / -1;
+	}
+
+	&--admin {
+		@include respond(tab-port) {
+			padding: 1rem !important;
+		}
+
+		.order-stats-item {
+			&__field,
+			&__value {
+				@include respond(tab-port) {
+					font-size: 2rem !important;
+				}
+			}
+		}
+	}
+}

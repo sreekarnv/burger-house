@@ -1,68 +1,11 @@
-///////////////////////////////////////////////////////////////////
-// Media Queries
+@use './../variables' as *;
 
 @mixin respond($breakpoint) {
-    @if ($breakpoint == laptop) {
-        @media only screen and (max-width: 93.75em) { @content };
-    }
-
-    @if ($breakpoint == tab-land) {
-        @media only screen and (max-width: 78.125em) { @content };
-    }
-
-    @if ($breakpoint == tab-port) {
-        @media only screen and (max-width: 65.625em) { @content };
-    }
-
-    @if ($breakpoint == phone) {
-        @media only screen and (max-width: 48.875em) { @content };
-    }
-
-    @if ($breakpoint == phone-xs) {
-        @media only screen and (max-width: 28.125em) { @content };
-    }
-
-    @if ($breakpoint == big-desktop) {
-        @media only screen and (min-width: 125em) { @content };
-    }
-}
-
-/////////////////////////////////////////////////////////////////
-// Buttons
-
-@mixin svgButton($fill, $bg, $brightness) {
-    fill : $fill;
-    background-color: $bg;
-    transition: all .2s ease-out;
-
-    &:hover,
-    &:focus,
-    &:active {
-        outline: none;
-        filter: brightness($brightness);
-    }
-}
-
-@mixin btnRegular ($color-text, $color-bg) {
-    color: $color-text;
-    background-color: $color-bg;
-    border: 2px solid $color-bg;
-
-    &:hover,
-    &:focus {
-        filter: brightness(80%);
-    }
-}
-
-
-@mixin btnOutline ($color-text, $color-text-hover) {
-    color: $color-text;
-    background-color: transparent;
-    border: 2px solid $color-text;
-
-    &:focus,
-    &:hover {
-        color: $color-text-hover;
-        background-color: $color-text;
-    }
+	@each $key, $value in $breakpoints {
+		@if $breakpoint == $key {
+			@media only screen and (max-width: $value + em) {
+				@content;
+			}
+		}
+	}
 }

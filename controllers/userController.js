@@ -1,11 +1,11 @@
-const User = require("./../models/userModel");
-const factory = require("./_factory");
-const sharp = require("sharp");
+const User = require('./../models/userModel');
+const factory = require('./_factory');
+const sharp = require('sharp');
 // const AppError = require("../utils/AppError");
-const { MemoryUploadImage } = require("../utils/imageUpload");
+const { MemoryUploadImage } = require('../utils/imageUpload');
 // const AppError = require("../utils/AppError");
 
-exports.uploadUserPhoto = MemoryUploadImage.single("photo");
+exports.uploadUserPhoto = MemoryUploadImage.single('photo');
 
 exports.resizeUserImage = async (req, res, next) => {
 	if (!req.file) {
@@ -16,7 +16,7 @@ exports.resizeUserImage = async (req, res, next) => {
 
 	await sharp(req.file.buffer)
 		.resize(500, 500)
-		.toFormat("jpeg")
+		.toFormat('jpeg')
 		.jpeg({ quality: 90 })
 		.toFile(`uploads/users/${req.file.filename}`);
 
@@ -25,7 +25,7 @@ exports.resizeUserImage = async (req, res, next) => {
 
 exports.filterUserUpdateFilter = (req, res, next) => {
 	Object.keys(req.body).forEach((el) => {
-		if (el === "password" || el === "passwordConfirm") {
+		if (el === 'password' || el === 'passwordConfirm') {
 			delete req.body[el];
 		}
 	});
@@ -34,6 +34,9 @@ exports.filterUserUpdateFilter = (req, res, next) => {
 
 exports.updateCurrentUserData = async (req, res, next) => {
 	try {
+		if (req.file) {
+			req.body.photo = req.file.filename;
+		}
 		const data = await User.findOneAndUpdate(
 			{ _id: req.user.id },
 			{ ...req.body },
@@ -54,7 +57,7 @@ exports.getCurrentUserData = async (req, res, next) => {
 	const user = req.user;
 
 	res.status(200).json({
-		status: "success",
+		status: 'success',
 		user,
 	});
 };
@@ -64,7 +67,7 @@ exports.getAllUsers = factory.getAll(User);
 exports.filterUserUpdateBody = (req, res, next) => {
 	let body = { ...req.body };
 	Object.keys(body).forEach((el) => {
-		if (el !== "role") {
+		if (el !== 'role') {
 			delete body[el];
 		}
 	});
@@ -74,11 +77,11 @@ exports.filterUserUpdateBody = (req, res, next) => {
 };
 
 exports.updateUserRole = factory.updateOne(User, {
-	msg: "this user does not exist",
+	msg: 'this user does not exist',
 	statusCode: 404,
 });
 
 exports.deleteUser = factory.deleteOne(User, {
-	msg: "this user does not exist",
+	msg: 'this user does not exist',
 	statusCode: 404,
 });

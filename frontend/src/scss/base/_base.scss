@@ -1,39 +1,37 @@
+@use '../variables' as *;
+@use '../abstracts' as *;
+
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 html {
-    font-size: 62.5%;
+	font-size: 62.5%;
 
-    @include respond(laptop) {
-        font-size: 56.25%; // 1rem = 9px
-    }
+	@include respond(desktop) {
+		font-size: 56.25%;
+	}
 
-    @include respond(tab-land) {
-        font-size: 50%; // 1rem = 8px
-    }
+	@include respond(tab-land) {
+		font-size: 50%;
+	}
 
-    @include respond(tab-port) {
-        font-size: 43.75%; // 1rem = 7px
-    } 
+	@include respond(phone-md) {
+		font-size: 43.75%;
+	}
 
-    @include respond(phone) {
-        font-size: 37.5%; // 1rem = 6px
-    }
-    
-    @include respond(phone-xs) {
-        font-size: 31.25%; // 1rem = 5px
-    }
-
-    @include respond(big-desktop) {
-        font-size: 75%; // 1rem = 12px
-    }
+	.ReactQueryDevtoolsPanel {
+		* {
+			font-size: 1.4rem !important;
+		}
+	}
 }
 
 body {
-    box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: $font-default;
 }

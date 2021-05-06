@@ -1,0 +1,62 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.login {
+	height: 92vh;
+	background-image: linear-gradient(
+			rgba($color-black, 0.75),
+			rgba($color-black, 0.75)
+		),
+		url(./../../../../images/gallery-3.jpg);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@include respond(tab-port) {
+		background-image: linear-gradient(
+				rgba($color-white, 0.75),
+				rgba($color-white, 0.75)
+			),
+			url(./../../../../images/gallery-3.jpg);
+	}
+
+	&__form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		min-height: 65vh;
+		padding: 4rem 0;
+		width: 25vw;
+		background-color: rgba($color-white, 0.7);
+		border-radius: 5px;
+
+		@include respond(desktop-sm) {
+			min-height: 55vh;
+		}
+
+		@include respond(laptop-md) {
+			width: 30vw;
+		}
+
+		@include respond(laptop-sm) {
+			width: 40vw;
+		}
+
+		@include respond(tab-land) {
+			width: 55vw;
+		}
+
+		@include respond(tab-port) {
+			width: 100%;
+			height: auto;
+			background-color: transparent;
+		}
+	}
+
+	&__form-content {
+		width: 100%;
+		padding: 0.75rem 4rem;
+	}
+}

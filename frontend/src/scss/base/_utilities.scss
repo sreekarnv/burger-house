@@ -1,23 +1,92 @@
-.u-text-capitalize { text-transform: capitalize !important; }
-.u-text-uppercase { text-transform: uppercase !important; }
-.u-text-white { color: $color-white !important; }
+@use '../variables' as *;
 
-.u-text-secondary { color: $color-secondary !important; }
-.u-text-tertiary { color: $color-tertiary !important; }
-.u-text-primary { color: $color-primary !important; }
-.u-text-light { color: $color-grey-light !important; }
+@each $name, $font-weight in $font-weights {
+	.u-ftwt-#{'' + $name} {
+		font-weight: $font-weight !important;
+	}
+}
 
-.u-ftwt-400 { font-weight: 400 !important; }
+@each $name, $color in $colors {
+	.u-text-#{'' + $name} {
+		color: $color !important;
+	}
 
-.u-text-center { text-align: center; }
+	.u-bg-#{'' + $name} {
+		background-color: $color !important;
+	}
+}
 
-.u-fill-danger-60 { fill: rgba($color-danger, .6) !important; }
-.u-fill-primary-60 { fill: rgba($color-primary, .6) !important; }
+@each $name, $text-transform in $text-tranforms {
+	.u-text-#{'' + $name} {
+		text-transform: $text-transform !important;
+	}
+}
 
-.u-text-danger { color: $color-danger !important; }
-.u-text-success { color: $color-success !important; }
+@each $name, $align in $text-align {
+	.u-text-#{'' + $name} {
+		text-align: $align;
+	}
+}
 
-.u-text-dark { color: $color-grey-dark !important; }
+@for $space from 0 through 20 {
+	// margins
+	.u-ml-#{'' + $space} {
+		margin-left: 0.25 * $space + rem !important;
+	}
 
-.u-bg-secondary-50 { background-color: rgba($color-secondary, .4) !important; }
+	.u-mr-#{$space} {
+		margin-right: 0.25 * $space + rem !important;
+	}
 
+	.u-mt-#{$space} {
+		margin-top: 0.25 * $space + rem !important;
+	}
+
+	.u-mb-#{$space} {
+		margin-bottom: 0.25 * $space + rem !important;
+	}
+
+	.u-m-#{$space} {
+		margin: 0.25 * $space + rem !important;
+	}
+
+	// padding
+	.u-pl-#{$space} {
+		padding-left: 0.25 * $space + rem !important;
+	}
+
+	.u-pr-#{$space} {
+		padding-right: 0.25 * $space + rem !important;
+	}
+
+	.u-pt-#{$space} {
+		padding-top: 0.25 * $space + rem !important;
+	}
+
+	.u-pb-#{$space} {
+		padding-bottom: 0.25 * $space + rem !important;
+	}
+
+	.u-p-#{$space} {
+		padding: 0.25 * $space + rem !important;
+	}
+}
+
+@for $width from 0 through 20 {
+	.u-w-#{5 * $width} {
+		width: #{(5 * $width) + '%'} !important;
+	}
+}
+
+.u-jc-center {
+	justify-content: center !important;
+}
+
+.u-hide-scrollbar {
+	&::-webkit-scrollbar,
+	& > *::-webkit-scrollbar {
+		display: none;
+	}
+
+	scrollbar-width: none;
+}

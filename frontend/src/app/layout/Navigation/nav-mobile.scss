@@ -1,0 +1,16 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.nav-mobile {
+	visibility: hidden;
+
+	@include respond(tab-land) {
+		visibility: visible;
+
+		& > * {
+			display: grid;
+			gap: 1rem;
+			padding: 1rem 0;
+		}
+	}
+}

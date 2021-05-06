@@ -1,0 +1,17 @@
+@use 'src/scss/variables' as *;
+
+.avatar {
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba($color-black, 0.34);
+	width: max-content;
+
+	&__sm {
+		height: 4rem;
+		width: 4rem;
+	}
+
+	&__md {
+		height: 8rem;
+		width: 8rem;
+	}
+}

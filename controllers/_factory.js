@@ -1,4 +1,4 @@
-const AppError = require("../utils/AppError");
+const AppError = require('../utils/AppError');
 
 exports.updateOne = (Model, errObj) => {
 	return async (req, res, next) => {
@@ -29,7 +29,7 @@ exports.updateOne = (Model, errObj) => {
 };
 
 exports.create = (Model) => {
-	return async (req, res, next) => {
+	return async (req, _, next) => {
 		try {
 			const data = await Model.create(req.body);
 			req.data = data;

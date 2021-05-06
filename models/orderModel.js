@@ -1,24 +1,24 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.ObjectId,
-		ref: "User",
-		required: [true, "every order must belong to a user"],
+		ref: 'User',
+		required: [true, 'every order must belong to a user'],
 	},
 	price: {
 		type: Number,
-		required: [true, "every order must have a total price"],
+		required: [true, 'every order must have a total price'],
 	},
 	items: [
 		{
 			name: {
 				type: String,
-				default: "custom burger",
+				default: 'custom burger',
 			},
 			price: {
 				type: Number,
-				required: [true, "every burger must have a price"],
+				required: [true, 'every burger must have a price'],
 			},
 			ingredients: [
 				{
@@ -49,16 +49,17 @@ const orderSchema = new mongoose.Schema({
 	},
 	status: {
 		type: String,
-		enum: ["pending", "cancelled", "delivered"],
-		default: "pending",
+		enum: ['pending', 'cancelled', 'delivered'],
+		default: 'pending',
 	},
 });
 
 orderSchema.pre(/^find/, function (next) {
-	this.populate("user");
+	this.populate('user');
+	this.sort('-createdAt');
 	return next();
 });
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;

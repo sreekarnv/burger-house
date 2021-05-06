@@ -91,12 +91,10 @@ exports.getAllOrdersStats = async (req, res, next) => {
 		]);
 
 		const orderStats = {
-			pending: pendingOrders,
-			delivered: delieverdOrders,
-			cancelled: cancelledOrders,
+			pending: pendingOrders[0] || null,
+			delivered: delieverdOrders[0],
+			cancelled: cancelledOrders[0],
 		};
-
-		req.orderStats = orderStats;
 
 		res.status(200).json({
 			status: 'success',

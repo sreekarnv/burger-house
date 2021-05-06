@@ -1,0 +1,46 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.form-input {
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+
+		@include respond(phone-md) {
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	label {
+		display: block;
+		font-size: 1.6rem;
+		margin-bottom: 1rem;
+
+		@include respond(tab-land) {
+			font-size: 1.75rem;
+		}
+
+		@include respond(phone-lg) {
+			font-size: 1.95rem;
+		}
+	}
+
+	small {
+		font-size: 1.35rem;
+		color: $color-danger;
+
+		@include respond(tab-land) {
+			font-size: 1.55rem;
+		}
+
+		@include respond(phone-md) {
+			font-size: 1.65rem;
+		}
+	}
+
+	&--error {
+		input {
+			border: 2px solid $color-danger !important;
+			background-color: rgba($color-danger, 0.2) !important;
+		}
+	}
+}

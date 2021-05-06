@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 exports.signToken = async (payload, req, res) => {
 	const token = await jwt.sign(payload, process.env.JWT_SECRET, {
@@ -6,11 +6,11 @@ exports.signToken = async (payload, req, res) => {
 	});
 
 	let secure = false;
-	if (process.env.NODE_ENV === "production") {
-		secure = req.secure || req.headers("x-forwarded-proto") === "https";
+	if (process.env.NODE_ENV === 'production') {
+		secure = req.secure || req.headers('x-forwarded-proto') === 'https';
 	}
 
-	res.cookie("burgerHouse", token, {
+	res.cookie('burgerHouse', token, {
 		expires: new Date(
 			Date.now() + process.env.JWT_COOKIE_EXPIRE_TIME * 60 * 60 * 1000
 		),
@@ -18,7 +18,7 @@ exports.signToken = async (payload, req, res) => {
 		httpOnly: true,
 	});
 
-	if (process.env.NODE_ENV === "development") {
+	if (process.env.NODE_ENV === 'development') {
 		return token;
 	}
 

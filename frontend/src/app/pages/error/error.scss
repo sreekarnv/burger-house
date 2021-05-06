@@ -1,0 +1,19 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.error {
+	height: 100vh;
+	background-image: linear-gradient(
+			rgba($color-black, 0.76),
+			rgba($color-black, 0.76)
+		),
+		url(../../../images/contact.jpg);
+
+	&__message {
+		height: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}

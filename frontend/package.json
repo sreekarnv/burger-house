@@ -1,48 +1,52 @@
 {
   "name": "burger-house-frontend",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.5.0",
-    "axios": "^0.21.0",
-    "mapbox-gl": "^1.13.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-redux": "^7.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "web-vitals": "^0.2.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "rimraf ./public && parcel serve src/index.html --port 3000 -d public --open",
+    "build": "rimraf ./build && parcel build src/index.html -d build --no-source-maps"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "author": "Sreekar Venkata Nutulapati",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.0.0-beta.2",
+    "@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
+    "@types/mapbox-gl": "^2.1.1",
+    "@types/node": "^15.0.1",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "autoprefixer": "9",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^7",
+    "sass": "^1.32.11",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "formik": "^2.2.6",
+    "framer-motion": "^4.1.11",
+    "mapbox-gl": "1.13.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.13.11",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.32.9"
   },
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not ie 11",
+      "not chrome < 51", 
+      "not safari < 10"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "node-sass": "^4.14.1"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }

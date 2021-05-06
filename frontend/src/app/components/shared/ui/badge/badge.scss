@@ -1,0 +1,50 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.badge {
+	font-weight: 600;
+	border-radius: 25px;
+	width: max-content;
+	font-family: $font-heading;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@each $name, $color in $colors {
+		&--#{'' + $name} {
+			color: $color;
+			border: 2px solid $color;
+			background-color: rgba($color, 0.1);
+		}
+	}
+
+	&--md {
+		font-size: 1.35rem;
+		padding: 0.45rem 1rem;
+
+		@include respond(tab-port) {
+			padding: 0.75rem;
+		}
+	}
+
+	&--sm {
+		font-size: 1.2rem;
+		padding: 0.45rem;
+
+		@include respond(tab-port) {
+			font-size: 1.5rem;
+			padding: 1rem;
+		}
+	}
+
+	&--rounded {
+		border-radius: 50% !important;
+	}
+
+	&--sm,
+	&--rounded {
+		height: 2rem;
+		width: 2rem;
+	}
+}

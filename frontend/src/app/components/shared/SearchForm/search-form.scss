@@ -1,0 +1,18 @@
+@use 'src/scss/abstracts' as *;
+
+.search-form {
+	display: flex;
+	align-items: center;
+
+	&__cta {
+		display: flex;
+		align-items: center;
+		flex: 1;
+
+		@include respond(tab-land) {
+			& > * {
+				width: 100%;
+			}
+		}
+	}
+}

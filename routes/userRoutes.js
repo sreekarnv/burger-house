@@ -6,10 +6,6 @@ const status = require('./../controllers/_status');
 
 const router = express.Router();
 
-router.get('/verifyAccount/:id', authController.verifyUserEmail);
-
-router.post('/sendUserVerification', authController.sendUserVerification);
-
 router.get('/checkAuth', authController.checkIsLoggedIn);
 router.post('/register', authController.registerUser);
 router.post('/login', authController.loginUser);

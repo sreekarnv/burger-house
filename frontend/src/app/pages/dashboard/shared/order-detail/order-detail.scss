@@ -1,0 +1,42 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.order-detail {
+	display: grid;
+	height: 100%;
+	padding: 4rem;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: max-content repeat(2, 1fr);
+	grid-row-gap: 2rem;
+	background-size: cover;
+	background-position: center;
+
+	@include respond(laptop-sm) {
+		grid-template-rows: max-content repeat(2, 0.5fr) 1fr;
+		grid-row-gap: 4rem;
+	}
+
+	&__list {
+		grid-row: 2 / 5;
+		grid-column: 1 / 7;
+		overflow-y: scroll;
+
+		@include respond(laptop-sm) {
+			grid-row: 3 / 5;
+			grid-column: 1 / -1;
+		}
+
+		@include respond(phone-md) {
+			grid-row: 4 / 5;
+		}
+	}
+
+	&__btn {
+		grid-row: 1 / 2;
+
+		@include respond(laptop-sm) {
+			margin-top: 5rem;
+			grid-column: 1 / 4;
+		}
+	}
+}

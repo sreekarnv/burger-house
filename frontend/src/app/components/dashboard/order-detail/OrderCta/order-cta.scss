@@ -1,0 +1,45 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.order-detail__cta {
+	grid-row: 3 / 4;
+	grid-column: 8 / 12;
+
+	display: grid;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-row-gap: 3rem;
+	border-radius: 15px;
+
+	background-color: rgba($color-white, 0.6);
+
+	box-shadow: 0 0.5rem 1rem rgba($color-dark, 0.6);
+
+	@include respond(laptop-lg) {
+		grid-column: 9 / 13;
+	}
+
+	@include respond(laptop-md) {
+		grid-column: 8 / 13;
+	}
+
+	@include respond(laptop-sm) {
+		background-color: transparent;
+		box-shadow: none;
+		grid-row: 2 / 3;
+	}
+
+	@include respond(phone-md) {
+		grid-row: 3 / 4;
+		grid-column: 1 / -1;
+	}
+
+	& > * {
+		width: 50%;
+
+		@include respond(tab-land) {
+			width: 90%;
+		}
+	}
+}

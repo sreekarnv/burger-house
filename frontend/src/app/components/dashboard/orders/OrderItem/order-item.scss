@@ -1,0 +1,81 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.order-item {
+	background-color: $color-white;
+	padding: 1rem;
+	border-radius: 5px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	justify-content: space-between;
+	justify-items: center;
+	align-items: center;
+	cursor: pointer;
+	box-shadow: 0 0.5rem 1rem rgba($color-dark, 0.4);
+	font-size: 2rem;
+	transition: all 0.3s ease-out;
+
+	@include respond(laptop-md) {
+		padding: 2rem 0.5rem;
+	}
+
+	@include respond(laptop-sm) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include respond(tab-land) {
+		font-size: 2.25rem;
+	}
+
+	@include respond(phone-lg) {
+		font-size: 1.8rem;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 1.5rem;
+	}
+
+	&__date {
+		font-size: 1.5rem;
+
+		@include respond(tab-land) {
+			font-size: 1.75rem;
+		}
+	}
+
+	&__id {
+		color: rgba($color-dark, 0.7);
+
+		@include respond(laptop-sm) {
+			display: none;
+		}
+	}
+
+	&__date {
+		color: rgba($color-dark, 0.7);
+	}
+
+	&__price {
+		color: rgba($color-tertiary, 0.75);
+	}
+
+	&__status {
+		text-transform: uppercase;
+
+		&--pending {
+			color: $color-danger;
+		}
+
+		&--cancelled {
+			color: $color-dark;
+		}
+
+		&--delivered {
+			color: $color-success;
+		}
+	}
+
+	&:hover {
+		transform: translateX(-1rem);
+	}
+}

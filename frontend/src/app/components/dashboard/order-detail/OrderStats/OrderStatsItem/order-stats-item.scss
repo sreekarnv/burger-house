@@ -1,0 +1,27 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.order-stats-item {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2rem;
+
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	@include respond(phone-md) {
+		grid-gap: 3.5rem;
+
+		&:not(:last-child) {
+			margin-bottom: 1.2rem;
+		}
+	}
+
+	&__value,
+	&__field {
+		@include respond(phone-md) {
+			font-size: 2.5rem !important;
+		}
+	}
+}

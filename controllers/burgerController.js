@@ -1,9 +1,9 @@
-const Burger = require("./../models/burgerModel");
-const { MemoryUploadImage } = require("./../utils/imageUpload");
-const sharp = require("sharp");
-const factory = require("./_factory");
+const Burger = require('./../models/burgerModel');
+const { MemoryUploadImage } = require('./../utils/imageUpload');
+const sharp = require('sharp');
+const factory = require('./_factory');
 
-exports.uploadBurgerPhoto = MemoryUploadImage.single("photo");
+exports.uploadBurgerPhoto = MemoryUploadImage.single('photo');
 
 exports.resizeBurgerPhoto = async (req, res, next) => {
 	if (!req.file) return next();
@@ -11,8 +11,8 @@ exports.resizeBurgerPhoto = async (req, res, next) => {
 	req.file.filename = `burger-${req.user._id}-${Date.now()}.jpeg`;
 
 	await sharp(req.file.buffer)
-		.resize(1000, 1000)
-		.toFormat("jpeg")
+		.resize(250, 250)
+		.toFormat('jpeg')
 		.jpeg({ quality: 90 })
 		.toFile(`uploads/burgers/${req.file.filename}`);
 
@@ -24,7 +24,7 @@ exports.createBurger = factory.create(Burger);
 // Filter
 exports.filterGetAllBurgers = (req, res, next) => {
 	let filter = { ...req.query };
-	const excludedFields = ["limit", "sort"];
+	const excludedFields = ['limit', 'sort'];
 
 	excludedFields.forEach((el) => {
 		if (filter[el]) {
@@ -58,7 +58,7 @@ exports.filterGetAllBurgers = (req, res, next) => {
 exports.getAllBurgers = factory.getAll(Burger);
 
 exports.getBurger = factory.getOne(Burger, {
-	msg: "this burger does not exist",
+	msg: 'this burger does not exist',
 	statusCode: 404,
 });
 
@@ -71,16 +71,16 @@ exports.parseIngredientsArray = (req, res, next) => {
 };
 
 exports.updateBurger = factory.updateOne(Burger, {
-	msg: "this burger does not exist",
+	msg: 'this burger does not exist',
 	statusCode: 404,
 });
 
 exports.deleteBurger = factory.deleteOne(Burger, {
-	msg: "this burger does not exist",
+	msg: 'this burger does not exist',
 	statusCode: 404,
 });
 
 exports.getNewBurgers = async (req, res, next) => {
-	req.query = { limit: 3, sort: "-createdAt" };
+	req.query = { limit: 3, sort: '-createdAt' };
 	next();
 };

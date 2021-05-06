@@ -14,7 +14,12 @@ const app = express();
 
 app.enable('trust proxy');
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'http://localhost:3000',
+		credentials: true,
+	})
+);
 
 app.use(
 	helmet({
@@ -86,7 +91,7 @@ app.use(xss());
 
 // react
 app.use((req, res, next) => {
-	res.sendFile(path.resolve(__dirname, 'frontend/build/index.html'));
+	res.sendFile(path.join(__dirname, 'frontend/build/index.html'));
 });
 
 app.use(errorController);

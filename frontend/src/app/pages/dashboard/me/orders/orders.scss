@@ -1,0 +1,44 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.orders-me {
+	height: 90vh;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	@include respond(tab-land) {
+		height: 100%;
+		& > * {
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			scrollbar-width: none;
+		}
+	}
+
+	&__list {
+		flex: 0 0 90%;
+
+		padding: 2rem 4rem;
+		overflow-y: scroll;
+
+		@include respond(laptop-sm) {
+			padding: 1rem;
+		}
+
+		& > * {
+			width: 80%;
+			margin: 0 auto;
+
+			@include respond(laptop-md) {
+				width: 95%;
+			}
+
+			@include respond(laptop-sm) {
+				width: 100%;
+			}
+		}
+	}
+}

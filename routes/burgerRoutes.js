@@ -38,7 +38,7 @@ router
 	)
 	.patch(
 		authController.protectRoutes,
-		authController.restrictTo('admin'),
+		// authController.restrictTo('admin'),
 		burgerController.uploadBurgerPhoto,
 		burgerController.resizeBurgerPhoto,
 		burgerController.parseIngredientsArray,

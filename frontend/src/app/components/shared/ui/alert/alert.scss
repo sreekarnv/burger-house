@@ -1,0 +1,22 @@
+@use 'src/scss/variables' as *;
+
+.alert {
+	position: fixed;
+	min-width: 50rem;
+	border-radius: 2px;
+	z-index: 5;
+
+	&--bottom-right {
+		bottom: 4rem;
+		right: 4rem;
+	}
+
+	&--top-center {
+		top: 10rem;
+		left: 36.75%;
+	}
+
+	p {
+		font-size: 1.5rem;
+	}
+}

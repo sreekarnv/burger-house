@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es5",                         
+    "module": "esnext",                     
+    "lib": [
+      "DOM",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018.AsyncIterable",
+      "ESNEXT"
+    ],                            
+    "jsx": "react",   
+    "allowJs": true,                  
+    "rootDir": "./src",                      
+    "noEmit": true,                        
+    "strict": true,        
+    "noImplicitAny": true,                
+    "strictNullChecks": true,              
+    "strictFunctionTypes": true,           
+    "strictBindCallApply": true,           
+    "strictPropertyInitialization": true, 
+    "noImplicitThis": true,               
+    "alwaysStrict": true,                  
+
+    "noImplicitReturns": true,            
+    "noFallthroughCasesInSwitch": true,   
+
+    "moduleResolution": "node",           
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./src/*"]
+    },
+    "typeRoots": ["./src/@types/assets", "./node_modules/@types"],                   
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true  
+    
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules/**/*"
+  ]
+}

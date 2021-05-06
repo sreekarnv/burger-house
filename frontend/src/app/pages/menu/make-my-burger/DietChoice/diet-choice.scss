@@ -1,0 +1,38 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.diet-choice {
+	padding: 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 10rem;
+	min-height: 91.5vh;
+
+	@include respond(phone-lg) {
+		padding: 2rem;
+	}
+
+	&__card-container {
+		align-self: center;
+		width: 80%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10rem;
+
+		@include respond(laptop-sm) {
+			width: 90%;
+		}
+
+		@include respond(tab-land) {
+			width: 95%;
+			gap: 5rem;
+		}
+
+		@include respond(tab-port) {
+			width: 100%;
+			gap: 5rem;
+			flex-direction: column;
+		}
+	}
+}
