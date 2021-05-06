@@ -9,6 +9,7 @@ import { Burger } from '~@types/burger';
 import BurgerListItem from '~app/components/shared/BurgerListItem/BurgerListItem';
 import Button from '~app/components/shared/ui/button/Button';
 import { ReduxState } from '~@types/store';
+import { User } from '~@types/user';
 import useCreateOrderMutation from '~app/hooks/api/mutations/useCreateOrderMutation';
 import { useHistory } from 'react-router';
 import { useQueryClient } from 'react-query';
@@ -17,7 +18,7 @@ const Cart = () => {
 	const { push } = useHistory();
 	const client = useQueryClient();
 	const { placeOrder, isLoading, data: orderData } = useCreateOrderMutation({});
-	const user = client.getQueryData('user');
+	const user = client.getQueryData<User>('user');
 	const dispatch = useDispatch();
 	const cartItems = useSelector((state: ReduxState) => state.cart.cart);
 	const cartPrice = useSelector((state: ReduxState) => state.cart.cartPrice);
@@ -83,10 +84,32 @@ const Cart = () => {
 						)}
 					</div>
 					<div className='cart__mobile-cta'>
-						<h1 className='u-text-tertiary'>Total Rs {cartPrice}</h1>
-						<Button variant='solid' size='sm'>
-							Order
-						</Button>
+						<h1 className='u-text-tertiary u-text-center'>
+							Total Rs {cartPrice}
+						</h1>
+						{user ? (
+							<Button
+								onClick={() => {
+									const data = {
+										price: cartPrice,
+										items: [...cartItems],
+									};
+									placeOrder(data);
+								}}
+								className='u-text-uppercase'
+								size='sm'
+								variant='outlined'>
+								{isLoading ? 'Loading....' : 'Place Order'}
+							</Button>
+						) : (
+							<Button
+								onClick={() => push('/auth/login')}
+								className='u-text-uppercase'
+								size='sm'
+								variant='outlined'>
+								Please Login to order
+							</Button>
+						)}
 					</div>
 				</>
 			)}

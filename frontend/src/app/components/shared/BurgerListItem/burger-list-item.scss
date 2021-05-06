@@ -30,6 +30,7 @@
 
 		@include respond(tab-land) {
 			grid-row: 1 / 3;
+			grid-column: 1 / 2;
 		}
 
 		img {
@@ -50,6 +51,11 @@
 		gap: 3rem;
 		justify-self: start;
 		padding: 0 1rem;
+
+		@include respond(tab-land) {
+			grid-row: 3 / 4;
+			grid-column: 1 / -1;
+		}
 	}
 
 	&__name {

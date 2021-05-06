@@ -69,8 +69,7 @@ const NavMobile: React.FC<Props> = ({ showMobileNav, closeNav }) => {
 							onClick={() => {
 								closeNav();
 							}}
-							to='/menu'
-							exact>
+							to='/menu'>
 							Menu
 						</NavItem>
 						{!user && (
