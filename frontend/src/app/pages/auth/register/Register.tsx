@@ -77,6 +77,7 @@ const Register = () => {
 					{alertMessage}
 				</Alert>
 			)}
+
 			<div className='register'>
 				<Formik
 					onSubmit={(values, actions) => {

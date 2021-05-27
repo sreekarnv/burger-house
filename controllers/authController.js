@@ -6,18 +6,13 @@ const { signToken, decodeToken } = require('./../utils/jwt');
 // register user
 exports.registerUser = async (req, res, next) => {
 	try {
-		const { name, email, password, passwordConfirm, location } = req.body;
-
-		if (!location || !location.coordinates.length) {
-			return next(new AppError('users must provide their location', 400));
-		}
+		const { name, email, password, passwordConfirm } = req.body;
 
 		const user = await User.create({
 			name,
 			email,
 			password,
 			passwordConfirm,
-			location,
 		});
 
 		user.hideSensitiveData(user);

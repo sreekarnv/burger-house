@@ -1,4 +1,5 @@
 @use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
 
 .alert {
 	position: fixed;
@@ -6,17 +7,47 @@
 	border-radius: 2px;
 	z-index: 5;
 
+	@include respond(tab-land) {
+		min-width: 100%;
+	}
+
 	&--bottom-right {
 		bottom: 4rem;
 		right: 4rem;
+
+		@include respond(tab-land) {
+			bottom: 0;
+			right: 0;
+		}
 	}
 
 	&--top-center {
 		top: 10rem;
 		left: 36.75%;
+
+		@include respond(laptop-lg) {
+			left: 34.5%;
+		}
+
+		@include respond(laptop-md) {
+			left: 31.5%;
+		}
+
+		@include respond(laptop-sm) {
+			left: 30%;
+		}
+
+		@include respond(tab-land) {
+			left: 0;
+			top: 8rem;
+		}
 	}
 
 	p {
 		font-size: 1.5rem;
+
+		@include respond(laptop-sm) {
+			font-size: 2rem;
+		}
 	}
 }

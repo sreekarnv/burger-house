@@ -24,6 +24,10 @@ html {
 		font-size: 43.75%;
 	}
 
+	@include respond(desktop-xl) {
+		font-size: 75%;
+	}
+
 	.ReactQueryDevtoolsPanel {
 		* {
 			font-size: 1.4rem !important;
