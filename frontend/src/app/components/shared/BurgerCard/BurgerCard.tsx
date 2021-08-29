@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import useAlert from 'src/app/hooks/useAlert';
 import { useDispatch } from 'react-redux';
 import useDynamicImage from 'src/app/hooks/useDynamicImage';
+import Logo from 'src/app/components/shared/ui/logo/Logo';
 
 interface Props {
 	burger: Burger;
@@ -21,7 +22,7 @@ interface Props {
 const BurgerCard: React.FC<Props> = ({ burger }) => {
 	const dispatch = useDispatch();
 	const { showAlert, setAlert, alertMessage, alertType } = useAlert();
-	const { imageRef } = useDynamicImage(
+	const { imageRef, isLoading } = useDynamicImage(
 		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
 	);
 
@@ -30,7 +31,17 @@ const BurgerCard: React.FC<Props> = ({ burger }) => {
 			{showAlert && <Alert type={alertType}>{alertMessage}</Alert>}
 			<motion.div initial={false} layout className='burger-card'>
 				<div className='burger-card__img-wrapper'>
-					<img ref={imageRef} alt={burger.name} className='burger-card__img' />
+					{isLoading ? (
+						<div className='u-text-center'>
+							<Logo className='burger-card__img-placeholder' />
+						</div>
+					) : (
+						<img
+							ref={imageRef}
+							alt={burger.name}
+							className='burger-card__img'
+						/>
+					)}
 
 					<Badge size='md' color={burger.isVegetarian ? 'success' : 'danger'}>
 						{burger.isVegetarian ? 'VEG' : 'N-VEG'}
