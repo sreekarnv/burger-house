@@ -1,4 +1,5 @@
 @use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
 
 .diet-card {
 	border-radius: 20px;
@@ -39,6 +40,14 @@
 				rgba($color-dark, 0.6)
 			),
 			url(./../../../../images/veg.jpg);
+
+		@include respond(tab-port) {
+			background-image: linear-gradient(
+					rgba($color-dark, 0.6),
+					rgba($color-dark, 0.6)
+				),
+				url(./../../../../images/veg-sm.jpg);
+		}
 	}
 
 	&--non-veg {
@@ -47,5 +56,13 @@
 				rgba($color-dark, 0.6)
 			),
 			url(./../../../../images/non-veg.jpg);
+
+		@include respond(tab-port) {
+			background-image: linear-gradient(
+					rgba($color-dark, 0.6),
+					rgba($color-dark, 0.6)
+				),
+				url(./../../../../images/non-veg-sm.jpg);
+		}
 	}
 }

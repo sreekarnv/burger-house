@@ -4,11 +4,29 @@
 .orders-admin {
 	min-height: 91.5vh;
 	padding: 2rem;
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-image: linear-gradient(
 			rgba($color-light, 0.8),
 			rgba($color-light, 0.8)
 		),
-		url(../../../../../images/gallery-3.jpg);
+		url(../../../../../images/dashboard.jpg);
+
+	@include respond(laptop-md) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../../images/dashboard-md.jpg);
+	}
+
+	@include respond(phone-lg) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../../images/dashboard-sm.jpg);
+	}
 
 	&__stats {
 		justify-self: center;

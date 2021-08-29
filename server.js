@@ -15,9 +15,10 @@ const DB = `${DATABASE}`
 
 mongoose
 	.connect(
-		process.env.NODE_ENV === 'development'
-			? 'mongodb://localhost:27017/burger-house'
-			: DB,
+		// process.env.NODE_ENV === 'development'
+		// 	? 'mongodb://localhost:27017/burger-house'
+		// :
+		DB,
 		{
 			useCreateIndex: true,
 			useFindAndModify: false,

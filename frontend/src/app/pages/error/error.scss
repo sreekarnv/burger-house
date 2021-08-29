@@ -7,7 +7,23 @@
 			rgba($color-black, 0.76),
 			rgba($color-black, 0.76)
 		),
-		url(../../../images/contact.jpg);
+		url(../../../images/error.jpg);
+
+	@include respond(laptop-sm) {
+		background-image: linear-gradient(
+				rgba($color-black, 0.76),
+				rgba($color-black, 0.76)
+			),
+			url(../../../images/error-md.jpg);
+	}
+
+	@include respond(phone-lg) {
+		background-image: linear-gradient(
+				rgba($color-black, 0.76),
+				rgba($color-black, 0.76)
+			),
+			url(../../../images/error-sm.jpg);
+	}
 
 	&__message {
 		height: 50%;

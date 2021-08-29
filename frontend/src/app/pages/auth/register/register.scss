@@ -8,21 +8,36 @@
 			rgba($color-black, 0.75),
 			rgba($color-black, 0.75)
 		),
-		url(./../../../../images/gallery-1.jpg);
+		url(./../../../../images/register.jpg);
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	@include respond(laptop-sm) {
+		background-image: linear-gradient(
+				rgba($color-black, 0.75),
+				rgba($color-black, 0.75)
+			),
+			url(./../../../../images/register-md.jpg);
+	}
 
 	@include respond(tab-land) {
 		background-image: linear-gradient(
 				rgba($color-white, 0.75),
 				rgba($color-white, 0.75)
 			),
-			url(./../../../../images/gallery-1.jpg);
+			url(./../../../../images/register-md.jpg);
 	}
 
 	@include respond(phone-lg) {
+		background-image: linear-gradient(
+				rgba($color-white, 0.75),
+				rgba($color-white, 0.75)
+			),
+			url(./../../../../images/register-sm.jpg);
 		padding: 2rem;
 	}
 

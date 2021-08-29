@@ -16,7 +16,7 @@
 				rgba($color-white, 0.4),
 				rgba($color-white, 0.3)
 			),
-			url(../../../images/home-bg-small.jpg);
+			url(../../../images/home.jpg);
 		background-size: cover;
 		background-attachment: fixed;
 
@@ -25,6 +25,14 @@
 				repeat(1, 1fr)
 				[start-display] repeat(6, 1fr) [end-display]
 				repeat(5, 1fr);
+		}
+
+		@include respond(laptop-sm) {
+			background-image: linear-gradient(
+					rgba($color-white, 0.4),
+					rgba($color-white, 0.3)
+				),
+				url(../../../images/home-md.jpg);
 		}
 
 		@include respond(tab-land) {
@@ -36,6 +44,11 @@
 
 		@include respond(phone-lg) {
 			grid-template-columns: [start-display] repeat(6, 1fr) [end-display];
+			background-image: linear-gradient(
+					rgba($color-white, 0.4),
+					rgba($color-white, 0.3)
+				),
+				url(../../../images/home-sm.jpg);
 		}
 
 		&-display--1 {
@@ -67,7 +80,7 @@
 	&-make-burger {
 		height: 40vh;
 		background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-			url(../../../images/gallery-2.jpg);
+			url(../../../images/make-burger.jpg);
 		background-size: cover;
 		background-position: 50%;
 		display: grid;
@@ -77,14 +90,27 @@
 		justify-items: center;
 		grid-row-gap: 1.5rem;
 
+		@include respond(laptop-sm) {
+			background-image: linear-gradient(
+					rgba(0, 0, 0, 0.75),
+					rgba(0, 0, 0, 0.75)
+				),
+				url(../../../images/make-burger-md.jpg);
+		}
+
 		@include respond(tab-land) {
 			padding: 2rem;
 			grid-row-gap: 2.5rem;
 		}
 
-		@include respond(tab-land) {
+		@include respond(tab-port) {
 			padding: 2rem;
 			grid-row-gap: 3rem;
+			background-image: linear-gradient(
+					rgba(0, 0, 0, 0.75),
+					rgba(0, 0, 0, 0.75)
+				),
+				url(../../../images/make-burger-sm.jpg);
 		}
 	}
 

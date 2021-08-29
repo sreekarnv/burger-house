@@ -8,13 +8,30 @@
 		1fr [form-start] repeat(8, 1fr)
 		[form-end] repeat(6, 1fr);
 
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-image: linear-gradient(
 			rgba($color-light, 0.8),
 			rgba($color-light, 0.8)
 		),
-		url(../../../../../images/gallery-3.jpg);
+		url(../../../../../images/dashboard.jpg);
 
-	background-size: cover;
+	@include respond(laptop-md) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../../images/dashboard-md.jpg);
+	}
+
+	@include respond(phone-lg) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../../images/dashboard-sm.jpg);
+	}
+
 	background-position: center;
 	gap: 2rem;
 	padding: 2.5rem;

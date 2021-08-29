@@ -29,7 +29,7 @@ const BurgerCard: React.FC<Props> = ({ burger }) => {
 		<>
 			{showAlert && <Alert type={alertType}>{alertMessage}</Alert>}
 			<motion.div initial={false} layout className='burger-card'>
-				<div id='myImg' className='burger-card__img-wrapper'>
+				<div className='burger-card__img-wrapper'>
 					<img ref={imageRef} alt={burger.name} className='burger-card__img' />
 
 					<Badge size='md' color={burger.isVegetarian ? 'success' : 'danger'}>

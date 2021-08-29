@@ -18,7 +18,7 @@ const Error: React.FC = () => {
 		<div className='error'>
 			<div className='error__message u-mb-10'>
 				<h1 className='heading-2 u-text-white u-mb-6'>Oops...</h1>
-				<h5 className='heading-1 u-text-capitalize u-text-white u-mb-20'>
+				<h5 className='u-text-center heading-1 u-text-capitalize u-text-white u-mb-20'>
 					{location?.state?.message || 'Something Went Wrong'}
 				</h5>
 				<Button
