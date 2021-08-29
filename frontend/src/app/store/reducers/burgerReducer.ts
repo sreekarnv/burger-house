@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 import { AnyAction } from 'redux';
-import { Burger } from '~@types/burger';
+import { Burger } from 'src/@types/burger';
 
 interface State {
 	burgers: Burger[];

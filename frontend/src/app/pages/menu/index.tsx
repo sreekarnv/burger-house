@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 
 // Components
-import MenuList from '~app/pages/menu/menu-list/MenuList';
+import MenuList from 'src/app/pages/menu/menu-list/MenuList';
 
 const DietChoice = React.lazy(
-	() => import('~app/pages/menu/make-my-burger/DietChoice/DietChoice')
+	() => import('src/app/pages/menu/make-my-burger/DietChoice/DietChoice')
 );
 const MakeBurger = React.lazy(
-	() => import('~app/pages/menu/make-my-burger/MakeBurger/MakeBurger')
+	() => import('src/app/pages/menu/make-my-burger/MakeBurger/MakeBurger')
 );
 
 const Menu: React.FC = () => {

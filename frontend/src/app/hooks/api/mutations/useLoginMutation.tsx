@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { useMutation, useQueryClient } from 'react-query';
 
-import { User } from '~@types/user';
-import axios from '~app/axios';
+import { User } from 'src/@types/user';
+import axios from 'src/app/axios';
 import { useHistory } from 'react-router';
 
 type ApiCustomHookProps = {
@@ -21,9 +21,7 @@ export const login = async (data: any) => {
 	return res.data.user;
 };
 
-const useLoginMutation: (
-	props: ApiCustomHookProps
-) => {
+const useLoginMutation: (props: ApiCustomHookProps) => {
 	login: any;
 	data: User;
 	isLoading: boolean;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as customBurgerActions from '~app/store/actions/customBurgerActions';
+import * as customBurgerActions from 'src/app/store/actions/customBurgerActions';
 
-import { Ingredient } from '~@types/ingredient';
+import { Ingredient } from 'src/@types/ingredient';
 import IngredientControl from './IngredientControl/IngredientControl';
 import { useDispatch } from 'react-redux';
 

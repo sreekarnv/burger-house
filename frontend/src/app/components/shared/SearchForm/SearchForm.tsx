@@ -2,8 +2,8 @@ import './search-form.scss';
 
 import * as React from 'react';
 
-import Button from '~app/components/shared/ui/button/Button';
-import SearchInput from '~app/components/shared/ui/form/SearchInput/SearchInput';
+import Button from 'src/app/components/shared/ui/button/Button';
+import SearchInput from 'src/app/components/shared/ui/form/SearchInput/SearchInput';
 
 type Props = React.DetailedHTMLProps<
 	React.FormHTMLAttributes<HTMLFormElement>,

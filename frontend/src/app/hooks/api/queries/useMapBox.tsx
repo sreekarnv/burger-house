@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useQuery, useQueryClient } from 'react-query';
-import { User } from '~@types/user';
+import { User } from 'src/@types/user';
 
 const getData = async (user: User) => {
 	const res = await axios({

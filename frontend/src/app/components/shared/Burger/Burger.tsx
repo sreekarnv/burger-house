@@ -2,8 +2,8 @@ import './burger.scss';
 
 import * as React from 'react';
 
-import Ingredient from '~app/components/shared/Ingredient/Ingredient';
-import { Ingredient as IngredientType } from '~@types/ingredient';
+import Ingredient from 'src/app/components/shared/Ingredient/Ingredient';
+import { Ingredient as IngredientType } from 'src/@types/ingredient';
 
 interface Props {
 	ingredients: IngredientType[];

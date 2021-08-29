@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useRouteMatch } from 'react-router';
 
 // components
-import DietCard from '~app/components/custom-burger/DietCard/DietCard';
+import DietCard from 'src/app/components/custom-burger/DietCard/DietCard';
 
 // styles
 import './diet-choice.scss';

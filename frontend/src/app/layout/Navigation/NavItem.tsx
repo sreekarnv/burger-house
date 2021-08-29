@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import Badge from '~app/components/shared/ui/badge/Badge';
+import Badge from 'src/app/components/shared/ui/badge/Badge';
 
 import './nav-item.scss';
 

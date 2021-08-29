@@ -2,23 +2,23 @@ import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 
 // types
-import { Burger } from '~@types/burger';
+import { Burger } from 'src/@types/burger';
 
 // Components
-import BurgerCard from '~app/components/shared/BurgerCard/BurgerCard';
-import IconButton from '~app/components/shared/ui/icon-button/IconButton';
-import FilterIcon from '~app/components/shared/ui/icons/FilterIcon';
-import CrossIcon from '~app/components/shared/ui/icons/CrossIcon';
-import SearchForm from '~app/components/shared/SearchForm/SearchForm';
-import Switch from '~app/components/shared/ui/switch/Switch';
-import LeafIcon from '~app/components/shared/ui/icons/LeafIcon';
-import Button from '~app/components/shared/ui/button/Button';
-import BurgerCardSkeleton from '~app/components/shared/ui/skeletons/BurgerCardSkeleton';
+import BurgerCard from 'src/app/components/shared/BurgerCard/BurgerCard';
+import IconButton from 'src/app/components/shared/ui/icon-button/IconButton';
+import FilterIcon from 'src/app/components/shared/ui/icons/FilterIcon';
+import CrossIcon from 'src/app/components/shared/ui/icons/CrossIcon';
+import SearchForm from 'src/app/components/shared/SearchForm/SearchForm';
+import Switch from 'src/app/components/shared/ui/switch/Switch';
+import LeafIcon from 'src/app/components/shared/ui/icons/LeafIcon';
+import Button from 'src/app/components/shared/ui/button/Button';
+import BurgerCardSkeleton from 'src/app/components/shared/ui/skeletons/BurgerCardSkeleton';
 
 // hooks
-import useBurgersQuery from '~app/hooks/api/queries/useBurgersQuery';
-import useNewBurgersQuery from '~app/hooks/api/queries/useNewBurgersQuery';
-import useDisclosure from '~app/hooks/useDisclosure';
+import useBurgersQuery from 'src/app/hooks/api/queries/useBurgersQuery';
+import useNewBurgersQuery from 'src/app/hooks/api/queries/useNewBurgersQuery';
+import useDisclosure from 'src/app/hooks/useDisclosure';
 
 // styles
 import './menu.scss';

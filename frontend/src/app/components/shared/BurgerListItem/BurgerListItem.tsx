@@ -1,14 +1,15 @@
 import './burger-list-item.scss';
 
 import * as React from 'react';
-import * as cartActions from '~app/store/actions/cartActions';
+import * as cartActions from 'src/app/store/actions/cartActions';
 
-import AddRemoveBtn from '~app/components/shared/ui/add-remove-btn/AddRemoveBtn';
-import { Burger } from '~@types/burger';
-import IconButton from '~app/components/shared/ui/icon-button/IconButton';
-import Logo from '~app/components/shared/ui/logo/Logo';
-import TrashIcon from '~app/components/shared/ui/icons/TrashIcon';
+import AddRemoveBtn from 'src/app/components/shared/ui/add-remove-btn/AddRemoveBtn';
+import { Burger } from 'src/@types/burger';
+import IconButton from 'src/app/components/shared/ui/icon-button/IconButton';
+import Logo from 'src/app/components/shared/ui/logo/Logo';
+import TrashIcon from 'src/app/components/shared/ui/icons/TrashIcon';
 import { useDispatch } from 'react-redux';
+import useDynamicImage from 'src/app/hooks/useDynamicImage';
 
 interface Props {
 	burger: Burger;
@@ -16,15 +17,15 @@ interface Props {
 
 const BurgerListItem: React.FC<Props> = ({ burger }) => {
 	const dispatch = useDispatch();
+	const { imageRef } = useDynamicImage(
+		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
+	);
 
 	return (
 		<div className='burger-list-item'>
 			<div className='burger-list-item__image'>
 				{burger.photoUrl ? (
-					<img
-						src={process.env.REACT_APP_SERVER_URL + burger.photoUrl}
-						alt='item'
-					/>
+					<img ref={imageRef} alt={burger.name} />
 				) : (
 					<Logo size='lg' />
 				)}

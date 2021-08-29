@@ -1,12 +1,12 @@
-import * as burgerActions from '~app/store/actions/burgerActions';
+import * as burgerActions from 'src/app/store/actions/burgerActions';
 
 import { QueryObserverResult, RefetchOptions, useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Burger } from '~@types/burger';
+import { Burger } from 'src/@types/burger';
 import React from 'react';
-import { ReduxState } from '~@types/store';
-import axios from '~app/axios';
+import { ReduxState } from 'src/@types/store';
+import axios from 'src/app/axios';
 
 type ApiCustomHookProps = {
 	onError?: ((err: unknown) => void) | undefined;
@@ -24,9 +24,7 @@ const getBurgers = async (params: any) => {
 	return res.data.data;
 };
 
-const useBurgersQuery: (
-	props: ApiCustomHookProps
-) => {
+const useBurgersQuery: (props: ApiCustomHookProps) => {
 	data: Burger[];
 	isLoading: boolean;
 	error: unknown;

@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { useQuery, useQueryClient } from 'react-query';
 
-import { Order } from '~@types/orders';
-import axios from '~app/axios';
+import { Order } from 'src/@types/orders';
+import axios from 'src/app/axios';
 import { useHistory } from 'react-router';
 
 const getOrder = async (id: string) => {
@@ -14,9 +14,7 @@ const getOrder = async (id: string) => {
 	return res.data.data;
 };
 
-const useAdminOrderQuery: (
-	id: string
-) => {
+const useAdminOrderQuery: (id: string) => {
 	isLoading: boolean;
 	error: any;
 	data: Order[];

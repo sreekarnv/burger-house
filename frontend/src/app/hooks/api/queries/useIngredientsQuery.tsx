@@ -1,10 +1,10 @@
-import * as customBurgerActions from '~app/store/actions/customBurgerActions';
+import * as customBurgerActions from 'src/app/store/actions/customBurgerActions';
 
 import { QueryObserverResult, RefetchOptions, useQuery } from 'react-query';
 
-import { Ingredient } from '~@types/ingredient';
+import { Ingredient } from 'src/@types/ingredient';
 import React from 'react';
-import axios from '~app/axios';
+import axios from 'src/app/axios';
 import { useDispatch } from 'react-redux';
 
 type ApiCustomHookProps = {
@@ -23,9 +23,7 @@ const getIngredients = async (params: any) => {
 	return res.data.data;
 };
 
-const useIngredientsQuery: (
-	props: ApiCustomHookProps
-) => {
+const useIngredientsQuery: (props: ApiCustomHookProps) => {
 	data: Ingredient[];
 	isLoading: boolean;
 	error: unknown;

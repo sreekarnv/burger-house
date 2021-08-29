@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useRouteMatch } from 'react-router';
-import Loader from '~app/components/shared/ui/loader/loader';
-import useMeOrderQuery from '~app/hooks/api/queries/useMeOrderQuery';
+import Loader from 'src/app/components/shared/ui/loader/loader';
+import useMeOrderQuery from 'src/app/hooks/api/queries/useMeOrderQuery';
 import OrderDetail from '../../shared/order-detail/OrderDetail';
 
 interface Props {}

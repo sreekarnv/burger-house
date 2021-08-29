@@ -3,3 +3,5 @@ config.env
 node_modules
 
 public
+
+*.log

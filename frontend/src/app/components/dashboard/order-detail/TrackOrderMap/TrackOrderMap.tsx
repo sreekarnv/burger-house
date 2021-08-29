@@ -5,16 +5,16 @@ import * as React from 'react';
 
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-import Backdrop from '~app/components/shared/ui/backdrop/Backdrop';
-import Button from '~app/components/shared/ui/button/Button';
-import CrossIcon from '~app/components/shared/ui/icons/CrossIcon';
-import IconButton from '~app/components/shared/ui/icon-button/IconButton';
-import { Order } from '~@types/orders';
-import { User } from '~@types/user';
+import Backdrop from 'src/app/components/shared/ui/backdrop/Backdrop';
+import Button from 'src/app/components/shared/ui/button/Button';
+import CrossIcon from 'src/app/components/shared/ui/icons/CrossIcon';
+import IconButton from 'src/app/components/shared/ui/icon-button/IconButton';
+import { Order } from 'src/@types/orders';
+import { User } from 'src/@types/user';
 import mapboxgl from 'mapbox-gl';
-import useMapBox from '~app/hooks/api/queries/useMapBox';
+import useMapBox from 'src/app/hooks/api/queries/useMapBox';
 import { useQueryClient } from 'react-query';
-import useUpdateOrderMutation from '~app/hooks/api/mutations/useUpdateOrderMutation';
+import useUpdateOrderMutation from 'src/app/hooks/api/mutations/useUpdateOrderMutation';
 
 interface Props {
 	order: Order;
@@ -23,8 +23,7 @@ interface Props {
 }
 
 const CENTER_COORDINATES: mapboxgl.LngLatLike | undefined = [
-	78.267961,
-	17.4126274,
+	78.267961, 17.4126274,
 ];
 
 const variants: Variants = {

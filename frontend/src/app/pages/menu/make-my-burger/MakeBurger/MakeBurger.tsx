@@ -1,20 +1,20 @@
 import './make-burger.scss';
 
 import * as React from 'react';
-import * as cartActions from '~app/store/actions/cartActions';
-import * as customBurgerActions from '~app/store/actions/customBurgerActions';
+import * as cartActions from 'src/app/store/actions/cartActions';
+import * as customBurgerActions from 'src/app/store/actions/customBurgerActions';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Alert from '~app/components/shared/ui/alert/Alert';
-import Burger from '~app/components/shared/Burger/Burger';
-import Button from '~app/components/shared/ui/button/Button';
-import { Ingredient } from '~@types/ingredient';
-import IngredientControls from '~app/components/shared/IngredientControls/IngredientControls';
-import Loader from '~app/components/shared/ui/loader/loader';
-import { ReduxState } from '~@types/store';
-import useAlert from '~app/hooks/useAlert';
-import useIngredientsQuery from '~app/hooks/api/queries/useIngredientsQuery';
+import Alert from 'src/app/components/shared/ui/alert/Alert';
+import Burger from 'src/app/components/shared/Burger/Burger';
+import Button from 'src/app/components/shared/ui/button/Button';
+import { Ingredient } from 'src/@types/ingredient';
+import IngredientControls from 'src/app/components/shared/IngredientControls/IngredientControls';
+import Loader from 'src/app/components/shared/ui/loader/loader';
+import { ReduxState } from 'src/@types/store';
+import useAlert from 'src/app/hooks/useAlert';
+import useIngredientsQuery from 'src/app/hooks/api/queries/useIngredientsQuery';
 import { useRouteMatch } from 'react-router';
 
 const MakeBurger: React.FC = () => {

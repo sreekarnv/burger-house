@@ -2,7 +2,7 @@ import './order-stats.scss';
 
 import * as React from 'react';
 
-import { Order } from '~@types/orders';
+import { Order } from 'src/@types/orders';
 import OrderStatsItem from './OrderStatsItem/OrderStatsItem';
 
 interface Props {

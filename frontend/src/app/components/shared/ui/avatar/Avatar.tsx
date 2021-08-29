@@ -3,6 +3,7 @@ import './avatar.scss';
 import * as React from 'react';
 
 import UserRoundIcon from '../icons/UserRoundIcon';
+import useDynamicImage from 'src/app/hooks/useDynamicImage';
 
 interface Props {
 	src?: string;
@@ -17,10 +18,12 @@ const Avatar: React.FC<Props> = ({
 	size = 'md',
 	color = 'primary',
 }) => {
+	const { imageRef } = useDynamicImage(src ? src : '');
+
 	return (
 		<div className='avatar'>
 			{src ? (
-				<img className={`avatar avatar__${size}`} src={src} alt={alt} />
+				<img ref={imageRef} className={`avatar avatar__${size}`} alt={alt} />
 			) : (
 				<>
 					<UserRoundIcon

@@ -1,4 +1,4 @@
-import { Ingredient } from '~@types/ingredient';
+import { Ingredient } from 'src/@types/ingredient';
 import * as actionTypes from '../actionTypes';
 
 export const initCustomBurgerIngredients = (ingredients: Ingredient[]) => {

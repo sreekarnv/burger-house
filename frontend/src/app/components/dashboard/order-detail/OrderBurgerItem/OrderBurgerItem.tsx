@@ -1,23 +1,25 @@
 import './order-burger-item.scss';
 
-import { Burger, OrderIngredient } from '~@types/burger';
+import { Burger, OrderIngredient } from 'src/@types/burger';
 
-import Logo from '~app/components/shared/ui/logo/Logo';
+import Logo from 'src/app/components/shared/ui/logo/Logo';
 import React from 'react';
+import useDynamicImage from 'src/app/hooks/useDynamicImage';
 
 interface Props {
 	burger: Burger;
 }
 
 const OrderBurgerItem: React.FC<Props> = ({ burger }) => {
+	const { imageRef } = useDynamicImage(
+		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
+	);
+
 	return (
 		<div className='order-burger-item'>
 			<div className='order-burger-item__image'>
 				{burger.photoUrl ? (
-					<img
-						src={process.env.REACT_APP_SERVER_URL! + burger.photoUrl}
-						alt='item'
-					/>
+					<img ref={imageRef} alt={burger.name} />
 				) : (
 					<Logo size='lg' />
 				)}

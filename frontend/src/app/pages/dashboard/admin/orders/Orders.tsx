@@ -2,14 +2,14 @@ import './orders.scss';
 
 import * as React from 'react';
 
-import Loader from '~app/components/shared/ui/loader/loader';
-import Option from '~app/components/shared/ui/form/Select/Option';
-import { Order } from '~@types/orders';
-import OrderAdminStatCard from '~app/components/dashboard/orders/OrderAdminStatCard/OrderAdminStatCard';
-import OrderItem from '~app/components/dashboard/orders/OrderItem/OrderItem';
-import Select from '~app/components/shared/ui/form/Select/Select';
-import useAdminOrdersQuery from '~app/hooks/api/queries/useAdminOrdersQuery';
-import useAdminOrderstatsQuery from '~app/hooks/api/queries/useAdminOrderStatsQuery';
+import Loader from 'src/app/components/shared/ui/loader/loader';
+import Option from 'src/app/components/shared/ui/form/Select/Option';
+import { Order } from 'src/@types/orders';
+import OrderAdminStatCard from 'src/app/components/dashboard/orders/OrderAdminStatCard/OrderAdminStatCard';
+import OrderItem from 'src/app/components/dashboard/orders/OrderItem/OrderItem';
+import Select from 'src/app/components/shared/ui/form/Select/Select';
+import useAdminOrdersQuery from 'src/app/hooks/api/queries/useAdminOrdersQuery';
+import useAdminOrderstatsQuery from 'src/app/hooks/api/queries/useAdminOrderStatsQuery';
 import { useHistory } from 'react-router';
 
 interface Props {}

@@ -7,17 +7,19 @@ import {
 	useHistory,
 	useRouteMatch,
 } from 'react-router';
-import { User } from '~@types/user';
+import { User } from 'src/@types/user';
 
-import Loader from '~app/components/shared/ui/loader/loader';
-import useRoute from '~app/hooks/useRoute';
+import Loader from 'src/app/components/shared/ui/loader/loader';
+import useRoute from 'src/app/hooks/useRoute';
 
 import './dashboard.scss';
 
 const Sidebar = React.lazy(
-	() => import('~app/components/dashboard/Sidebar/Sidebar')
+	() => import('src/app/components/dashboard/Sidebar/Sidebar')
 );
-const DashboardMeRoutes = React.lazy(() => import('~app/pages/dashboard/me'));
+const DashboardMeRoutes = React.lazy(
+	() => import('src/app/pages/dashboard/me')
+);
 const AdminOrderRoutes = React.lazy(() => import('./admin'));
 
 const DashboardRoutes = () => {

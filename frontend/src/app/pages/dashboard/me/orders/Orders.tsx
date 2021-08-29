@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useHistory } from 'react-router';
 
 // components
-import OrderItem from '~app/components/dashboard/orders/OrderItem/OrderItem';
-import Button from '~app/components/shared/ui/button/Button';
-import Loader from '~app/components/shared/ui/loader/loader';
+import OrderItem from 'src/app/components/dashboard/orders/OrderItem/OrderItem';
+import Button from 'src/app/components/shared/ui/button/Button';
+import Loader from 'src/app/components/shared/ui/loader/loader';
 
 // hooks
-import useMeOrdersQuery from '~app/hooks/api/queries/useMeOrdersQuery';
+import useMeOrdersQuery from 'src/app/hooks/api/queries/useMeOrdersQuery';
 
 import './orders.scss';
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as locationActions from '~app/store/actions/geoLocationActions';
+import * as locationActions from 'src/app/store/actions/geoLocationActions';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Loader from '~app/components/shared/ui/loader/loader';
-import { ReduxState } from '~@types/store';
-import useCheckAuth from '~app/hooks/api/queries/useCheckAuth';
+import Loader from 'src/app/components/shared/ui/loader/loader';
+import { ReduxState } from 'src/@types/store';
+import useCheckAuth from 'src/app/hooks/api/queries/useCheckAuth';
 
 const Body = React.lazy(() => import('./Body'));
 const Footer = React.lazy(() => import('./Footer/Footer'));

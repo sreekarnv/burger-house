@@ -4,13 +4,13 @@ import * as React from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
 
-import CrossIcon from '~app/components/shared/ui/icons/CrossIcon';
+import CrossIcon from 'src/app/components/shared/ui/icons/CrossIcon';
 import Logo from '../../components/shared/ui/logo/Logo';
-import MenuIcon from '~app/components/shared/ui/icons/MenuIcon';
+import MenuIcon from 'src/app/components/shared/ui/icons/MenuIcon';
 import NavItem from './NavItem';
 import NavMobile from './NavMobile';
-import { ReduxState } from '~@types/store';
-import useDisclosure from '~app/hooks/useDisclosure';
+import { ReduxState } from 'src/@types/store';
+import useDisclosure from 'src/app/hooks/useDisclosure';
 import { useQueryClient } from 'react-query';
 import { useSelector } from 'react-redux';
 

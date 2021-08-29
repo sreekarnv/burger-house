@@ -3,14 +3,14 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 
 // Components
-import Button from '~/app/components/shared/ui/button/Button';
-import FormInput from '~/app/components/shared/ui/form/FormInput/FormInput';
-import Alert from '~app/components/shared/ui/alert/Alert';
+import Button from 'src/app/components/shared/ui/button/Button';
+import FormInput from 'src/app/components/shared/ui/form/FormInput/FormInput';
+import Alert from 'src/app/components/shared/ui/alert/Alert';
 
 // Hooks
-import useLoginMutation from '~app/hooks/api/mutations/useLoginMutation';
-import useAlert from '~app/hooks/useAlert';
-import useRoute from '~app/hooks/useRoute';
+import useLoginMutation from 'src/app/hooks/api/mutations/useLoginMutation';
+import useAlert from 'src/app/hooks/useAlert';
+import useRoute from 'src/app/hooks/useRoute';
 
 // styles
 import './login.scss';

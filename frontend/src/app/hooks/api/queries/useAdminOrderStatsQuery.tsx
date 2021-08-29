@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import axios from '~app/axios';
+import axios from 'src/app/axios';
 import { useHistory } from 'react-router';
 import { useQuery } from 'react-query';
 
@@ -18,43 +18,41 @@ const getOrders = async () => {
 	return res.data.orderStats;
 };
 
-const useAdminOrderstatsQuery: (
-	props: ApiCustomHookProps
-) => {
+const useAdminOrderstatsQuery: (props: ApiCustomHookProps) => {
 	data: any;
 	isLoading: boolean;
 	error: unknown;
 } = ({ onError, onSuccess, onSettled }) => {
 	const { replace } = useHistory();
-	const { data: orders, error, isLoading } = useQuery(
-		'order-admin-stats',
-		getOrders,
-		{
-			onSuccess: (data) => {
-				if (onSuccess) {
-					onSuccess(data);
-				}
-			},
-			onError: (error: any) => {
-				if (error.response.status === 403) {
-					replace({
-						pathname: '/error',
-						state: {
-							message: error.response.data.message,
-						},
-					});
-				}
-				if (onError) {
-					onError(error);
-				}
-			},
-			onSettled: (data, error) => {
-				if (onSettled) {
-					onSettled(data, error);
-				}
-			},
-		}
-	);
+	const {
+		data: orders,
+		error,
+		isLoading,
+	} = useQuery('order-admin-stats', getOrders, {
+		onSuccess: (data) => {
+			if (onSuccess) {
+				onSuccess(data);
+			}
+		},
+		onError: (error: any) => {
+			if (error.response.status === 403) {
+				replace({
+					pathname: '/error',
+					state: {
+						message: error.response.data.message,
+					},
+				});
+			}
+			if (onError) {
+				onError(error);
+			}
+		},
+		onSettled: (data, error) => {
+			if (onSettled) {
+				onSettled(data, error);
+			}
+		},
+	});
 
 	return {
 		data: orders,

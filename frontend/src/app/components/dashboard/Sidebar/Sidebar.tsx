@@ -4,18 +4,18 @@ import * as React from 'react';
 
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-import Avatar from '~app/components/shared/ui/avatar/Avatar';
-import Backdrop from '~app/components/shared/ui/backdrop/Backdrop';
-import BurgerIcon from '~app/components/shared/ui/icons/BurgerIcon';
-import Divider from '~app/components/shared/ui/divider/Divider';
-import IconButton from '~app/components/shared/ui/icon-button/IconButton';
-import OrderIcon from '~app/components/shared/ui/icons/OrderIcon';
-import OrdersIcon from '~app/components/shared/ui/icons/OrdersIcon';
+import Avatar from 'src/app/components/shared/ui/avatar/Avatar';
+import Backdrop from 'src/app/components/shared/ui/backdrop/Backdrop';
+import BurgerIcon from 'src/app/components/shared/ui/icons/BurgerIcon';
+import Divider from 'src/app/components/shared/ui/divider/Divider';
+import IconButton from 'src/app/components/shared/ui/icon-button/IconButton';
+import OrderIcon from 'src/app/components/shared/ui/icons/OrderIcon';
+import OrdersIcon from 'src/app/components/shared/ui/icons/OrdersIcon';
 import SidebarNavItem from '../SidbarNavItem/SidebarNavItem';
-import { User } from '~@types/user';
-import UserRoundIcon from '~app/components/shared/ui/icons/UserRoundIcon';
-import useDisclosure from '~app/hooks/useDisclosure';
-import useMediaQuery from '~app/hooks/useMediaQuery';
+import { User } from 'src/@types/user';
+import UserRoundIcon from 'src/app/components/shared/ui/icons/UserRoundIcon';
+import useDisclosure from 'src/app/hooks/useDisclosure';
+import useMediaQuery from 'src/app/hooks/useMediaQuery';
 import { useQueryClient } from 'react-query';
 
 // types

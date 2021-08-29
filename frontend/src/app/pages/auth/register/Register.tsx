@@ -2,20 +2,20 @@ import './register.scss';
 
 import * as React from 'react';
 import * as Yup from 'yup';
-import * as locationActions from '~app/store/actions/geoLocationActions';
+import * as locationActions from 'src/app/store/actions/geoLocationActions';
 
 import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Alert from '~app/components/shared/ui/alert/Alert';
-import Button from '~/app/components/shared/ui/button/Button';
-import FormInput from '~/app/components/shared/ui/form/FormInput/FormInput';
-import { ReduxState } from '~@types/store';
-import Switch from '~app/components/shared/ui/switch/Switch';
-import useAlert from '~app/hooks/useAlert';
-import useDisclosure from '~app/hooks/useDisclosure';
-import useRegisterMutation from '~app/hooks/api/mutations/useRegisterMutation';
-import useRoute from '~app/hooks/useRoute';
+import Alert from 'src/app/components/shared/ui/alert/Alert';
+import Button from 'src/app/components/shared/ui/button/Button';
+import FormInput from 'src/app/components/shared/ui/form/FormInput/FormInput';
+import { ReduxState } from 'src/@types/store';
+import Switch from 'src/app/components/shared/ui/switch/Switch';
+import useAlert from 'src/app/hooks/useAlert';
+import useDisclosure from 'src/app/hooks/useDisclosure';
+import useRegisterMutation from 'src/app/hooks/api/mutations/useRegisterMutation';
+import useRoute from 'src/app/hooks/useRoute';
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string().required('user must provide their name').trim(),

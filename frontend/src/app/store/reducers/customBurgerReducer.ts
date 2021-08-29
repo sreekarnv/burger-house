@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 
 import { AnyAction } from 'redux';
-import { Ingredient } from '~@types/ingredient';
+import { Ingredient } from 'src/@types/ingredient';
 import { Reducer } from 'react';
 
 interface State {

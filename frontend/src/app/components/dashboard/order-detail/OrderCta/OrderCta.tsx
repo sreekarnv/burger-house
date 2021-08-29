@@ -2,9 +2,9 @@ import './order-cta.scss';
 
 import * as React from 'react';
 
-import Button from '~app/components/shared/ui/button/Button';
-import { Order } from '~@types/orders';
-import useUpdateOrderMutation from '~app/hooks/api/mutations/useUpdateOrderMutation';
+import Button from 'src/app/components/shared/ui/button/Button';
+import { Order } from 'src/@types/orders';
+import useUpdateOrderMutation from 'src/app/hooks/api/mutations/useUpdateOrderMutation';
 
 interface Props {
 	order: Order;

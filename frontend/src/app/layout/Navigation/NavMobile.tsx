@@ -5,7 +5,7 @@ import * as React from 'react';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
 import NavItem from './NavItem';
-import { ReduxState } from '~@types/store';
+import { ReduxState } from 'src/@types/store';
 import { useQueryClient } from 'react-query';
 import { useSelector } from 'react-redux';
 

@@ -1,6 +1,6 @@
 import * as actionTypes from '../actionTypes';
 
-import { Burger } from '~@types/burger';
+import { Burger } from 'src/@types/burger';
 import { updateBurgerItemsInCart } from './burgerActions';
 
 // increment itemsInCart

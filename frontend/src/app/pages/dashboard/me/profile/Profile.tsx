@@ -4,17 +4,17 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 
 import { useQueryClient } from 'react-query';
-import { User } from '~@types/user';
-import Button from '~app/components/shared/ui/button/Button';
-import FormInput from '~app/components/shared/ui/form/FormInput/FormInput';
+import { User } from 'src/@types/user';
+import Button from 'src/app/components/shared/ui/button/Button';
+import FormInput from 'src/app/components/shared/ui/form/FormInput/FormInput';
 
 import './profile.scss';
-import Avatar from '~app/components/shared/ui/avatar/Avatar';
-import useAlert from '~app/hooks/useAlert';
-import Alert from '~app/components/shared/ui/alert/Alert';
-import useImageUpload from '~app/hooks/useImageUpload';
-import useUpdateUserDetailsMutation from '~app/hooks/api/mutations/useUpdateUserDetailsMutation';
-import useUpdateUserPasswordMutation from '~app/hooks/api/mutations/useUpdateUserPasswordMutation';
+import Avatar from 'src/app/components/shared/ui/avatar/Avatar';
+import useAlert from 'src/app/hooks/useAlert';
+import Alert from 'src/app/components/shared/ui/alert/Alert';
+import useImageUpload from 'src/app/hooks/useImageUpload';
+import useUpdateUserDetailsMutation from 'src/app/hooks/api/mutations/useUpdateUserDetailsMutation';
+import useUpdateUserPasswordMutation from 'src/app/hooks/api/mutations/useUpdateUserPasswordMutation';
 import { useHistory } from 'react-router-dom';
 
 interface Props {}
@@ -52,39 +52,35 @@ const Profile: React.FC<Props> = () => {
 	const user = queryClient.getQueryData<User>('user')!;
 	const imageRef = React.useRef<any>();
 
-	const {
-		isLoading: updateDetailsLoading,
-		updateDetails,
-	} = useUpdateUserDetailsMutation({
-		onSuccess: () => {
-			setAlert('success', 'your details have been updated!');
-		},
-		onError: () => {
-			setAlert('danger', 'could not update yout details');
-		},
-	});
+	const { isLoading: updateDetailsLoading, updateDetails } =
+		useUpdateUserDetailsMutation({
+			onSuccess: () => {
+				setAlert('success', 'your details have been updated!');
+			},
+			onError: () => {
+				setAlert('danger', 'could not update yout details');
+			},
+		});
 
-	const {
-		isLoading: updatePasswordLoading,
-		updatePassword,
-	} = useUpdateUserPasswordMutation({
-		onSuccess: () => {
-			setAlert(
-				'success',
-				'your password has been updated! You will be logged out'
-			);
-		},
-		onError: (err) => {
-			setAlert('danger', 'could not update yout details');
-		},
-		onSettled: (data, _) => {
-			if (data) {
-				setTimeout(() => {
-					history.replace('/auth/logout');
-				}, 1500);
-			}
-		},
-	});
+	const { isLoading: updatePasswordLoading, updatePassword } =
+		useUpdateUserPasswordMutation({
+			onSuccess: () => {
+				setAlert(
+					'success',
+					'your password has been updated! You will be logged out'
+				);
+			},
+			onError: (err) => {
+				setAlert('danger', 'could not update yout details');
+			},
+			onSettled: (data, _) => {
+				if (data) {
+					setTimeout(() => {
+						history.replace('/auth/logout');
+					}, 1500);
+				}
+			},
+		});
 
 	React.useEffect(() => {
 		if (error) {

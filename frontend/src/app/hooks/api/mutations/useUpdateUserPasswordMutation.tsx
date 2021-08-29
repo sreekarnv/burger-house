@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { User } from '~@types/user';
-import axios from '~app/axios';
+import { User } from 'src/@types/user';
+import axios from 'src/app/axios';
 import { useMutation } from 'react-query';
 
 type ApiCustomHookProps = {
@@ -19,9 +19,7 @@ export const updatePassword = async (data: any) => {
 	return res.data.user;
 };
 
-const useUpdateUserPasswordMutation: (
-	props: ApiCustomHookProps
-) => {
+const useUpdateUserPasswordMutation: (props: ApiCustomHookProps) => {
 	updatePassword: any;
 	data: User;
 	isLoading: boolean;

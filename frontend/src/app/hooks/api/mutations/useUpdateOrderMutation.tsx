@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { useMutation, useQueryClient } from 'react-query';
 
-import { Order } from '~@types/orders';
-import axios from '~app/axios';
+import { Order } from 'src/@types/orders';
+import axios from 'src/app/axios';
 
 type ApiCustomHookProps = {
 	onError?: ((err: unknown) => void) | undefined;
@@ -25,9 +25,7 @@ export const updateDetails = async (
 	return res.data.data;
 };
 
-const useUpdateOrderMutation: (
-	props: ApiCustomHookProps
-) => {
+const useUpdateOrderMutation: (props: ApiCustomHookProps) => {
 	updateOrderStatus: any;
 	data: Order;
 	isLoading: boolean;

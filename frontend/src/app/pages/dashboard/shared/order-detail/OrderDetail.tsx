@@ -4,14 +4,14 @@ import * as React from 'react';
 
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-import Backdrop from '~app/components/shared/ui/backdrop/Backdrop';
-import { Burger } from '~@types/burger';
-import Button from '~app/components/shared/ui/button/Button';
-import OrderBurgerItem from '~app/components/dashboard/order-detail/OrderBurgerItem/OrderBurgerItem';
-import OrderCta from '~app/components/dashboard/order-detail/OrderCta/OrderCta';
-import OrderStats from '~app/components/dashboard/order-detail/OrderStats/OrderStats';
-import TrackOrderMap from '~app/components/dashboard/order-detail/TrackOrderMap/TrackOrderMap';
-import useDisclosure from '~app/hooks/useDisclosure';
+import Backdrop from 'src/app/components/shared/ui/backdrop/Backdrop';
+import { Burger } from 'src/@types/burger';
+import Button from 'src/app/components/shared/ui/button/Button';
+import OrderBurgerItem from 'src/app/components/dashboard/order-detail/OrderBurgerItem/OrderBurgerItem';
+import OrderCta from 'src/app/components/dashboard/order-detail/OrderCta/OrderCta';
+import OrderStats from 'src/app/components/dashboard/order-detail/OrderStats/OrderStats';
+import TrackOrderMap from 'src/app/components/dashboard/order-detail/TrackOrderMap/TrackOrderMap';
+import useDisclosure from 'src/app/hooks/useDisclosure';
 import { useHistory } from 'react-router-dom';
 
 interface Props {

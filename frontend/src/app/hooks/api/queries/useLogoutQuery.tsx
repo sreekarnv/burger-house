@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useHistory } from 'react-router';
-import axios from '~app/axios';
+import axios from 'src/app/axios';
 
 export const logout = async () => {
 	const res = await axios({

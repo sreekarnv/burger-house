@@ -1,4 +1,4 @@
-import * as actionTypes from '~app/store/actionTypes';
+import * as actionTypes from 'src/app/store/actionTypes';
 
 export const updateLocationCoordinates = (
 	coordinates: [] | [number, number]

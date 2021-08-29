@@ -1,16 +1,16 @@
 import './cart.scss';
 
 import * as React from 'react';
-import * as cartActions from '~app/store/actions/cartActions';
+import * as cartActions from 'src/app/store/actions/cartActions';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Burger } from '~@types/burger';
-import BurgerListItem from '~app/components/shared/BurgerListItem/BurgerListItem';
-import Button from '~app/components/shared/ui/button/Button';
-import { ReduxState } from '~@types/store';
-import { User } from '~@types/user';
-import useCreateOrderMutation from '~app/hooks/api/mutations/useCreateOrderMutation';
+import { Burger } from 'src/@types/burger';
+import BurgerListItem from 'src/app/components/shared/BurgerListItem/BurgerListItem';
+import Button from 'src/app/components/shared/ui/button/Button';
+import { ReduxState } from 'src/@types/store';
+import { User } from 'src/@types/user';
+import useCreateOrderMutation from 'src/app/hooks/api/mutations/useCreateOrderMutation';
 import { useHistory } from 'react-router';
 import { useQueryClient } from 'react-query';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { User } from '~@types/user';
-import axios from '~app/axios';
+import { User } from 'src/@types/user';
+import axios from 'src/app/axios';
 import { useHistory } from 'react-router';
 import { useMutation } from 'react-query';
 
@@ -20,9 +20,7 @@ export const register = async (data: any) => {
 	return res.data.user;
 };
 
-const useRegisterMutation: (
-	props: ApiCustomHookProps
-) => {
+const useRegisterMutation: (props: ApiCustomHookProps) => {
 	register: any;
 	data: User;
 	isLoading: boolean;

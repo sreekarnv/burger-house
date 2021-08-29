@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { useMutation, useQueryClient } from 'react-query';
 
-import { User } from '~@types/user';
-import axios from '~app/axios';
+import { User } from 'src/@types/user';
+import axios from 'src/app/axios';
 
 type ApiCustomHookProps = {
 	onError?: ((err: unknown) => void) | undefined;
@@ -20,9 +20,7 @@ export const updateDetails = async (data: any) => {
 	return res.data.data;
 };
 
-const useUpdateUserDetailsMutation: (
-	props: ApiCustomHookProps
-) => {
+const useUpdateUserDetailsMutation: (props: ApiCustomHookProps) => {
 	updateDetails: any;
 	data: User;
 	isLoading: boolean;

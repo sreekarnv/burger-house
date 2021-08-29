@@ -2,5 +2,7 @@
 *.env
 *.env.development
 *.env.production
+*.log
 node_modules
 ./public
+.parcel-cache

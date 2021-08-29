@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useQueryClient } from 'react-query';
 import { useHistory, useLocation } from 'react-router-dom';
-import { User } from '~@types/user';
-import Button from '~app/components/shared/ui/button/Button';
+import { User } from 'src/@types/user';
+import Button from 'src/app/components/shared/ui/button/Button';
 
 import './error.scss';
 
 interface Props {}
 
-const Error = (props: any) => {
+const Error: React.FC = () => {
 	const queryClient = useQueryClient();
 	const user = queryClient.getQueryData<User>('user')!;
 	const location = useLocation<{ message: string }>();

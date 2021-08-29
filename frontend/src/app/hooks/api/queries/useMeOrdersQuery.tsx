@@ -1,6 +1,6 @@
-import { Order } from '~@types/orders';
+import { Order } from 'src/@types/orders';
 import React from 'react';
-import axios from '~app/axios';
+import axios from 'src/app/axios';
 import { useHistory } from 'react-router';
 import { useQuery } from 'react-query';
 
@@ -18,42 +18,40 @@ const getMeOrders = async () => {
 	return res.data.data;
 };
 
-const useMeOrdersQuery: (
-	props: ApiCustomHookProps
-) => {
+const useMeOrdersQuery: (props: ApiCustomHookProps) => {
 	data: Order[];
 	isLoading: boolean;
 	error: unknown;
 } = ({ onError, onSuccess, onSettled }) => {
 	const { replace } = useHistory();
-	const { data: orders, error, isLoading } = useQuery(
-		'me-orders',
-		getMeOrders,
-		{
-			onSuccess: (data) => {
-				if (onSuccess) {
-					onSuccess(data);
-				}
-			},
-			onError: (error: any) => {
-				replace({
-					pathname: '/error',
-					state: {
-						message: error.response.data.message,
-					},
-				});
+	const {
+		data: orders,
+		error,
+		isLoading,
+	} = useQuery('me-orders', getMeOrders, {
+		onSuccess: (data) => {
+			if (onSuccess) {
+				onSuccess(data);
+			}
+		},
+		onError: (error: any) => {
+			replace({
+				pathname: '/error',
+				state: {
+					message: error.response.data.message,
+				},
+			});
 
-				if (onError) {
-					onError(error);
-				}
-			},
-			onSettled: (data, error) => {
-				if (onSettled) {
-					onSettled(data, error);
-				}
-			},
-		}
-	);
+			if (onError) {
+				onError(error);
+			}
+		},
+		onSettled: (data, error) => {
+			if (onSettled) {
+				onSettled(data, error);
+			}
+		},
+	});
 
 	return {
 		data: orders,

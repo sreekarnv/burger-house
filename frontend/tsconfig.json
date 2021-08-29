@@ -29,7 +29,7 @@
     "moduleResolution": "node",           
     "baseUrl": ".",
     "paths": {
-      "~*": ["./src/*"]
+      "*": ["*"]
     },
     "typeRoots": ["./src/@types/assets", "./node_modules/@types"],                   
     "esModuleInterop": true,                  

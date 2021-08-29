@@ -1,17 +1,18 @@
 import './burger-card.scss';
 
 import * as React from 'react';
-import * as cartActions from '~app/store/actions/cartActions';
+import * as cartActions from 'src/app/store/actions/cartActions';
 
-import { Burger, BurgerIngredient } from '~@types/burger';
+import { Burger, BurgerIngredient } from 'src/@types/burger';
 
-import AddRemoveBtn from '~app/components/shared/ui/add-remove-btn/AddRemoveBtn';
-import Alert from '~app/components/shared/ui/alert/Alert';
-import Badge from '~app/components/shared/ui/badge/Badge';
-import Button from '~app/components/shared/ui/button/Button';
+import AddRemoveBtn from 'src/app/components/shared/ui/add-remove-btn/AddRemoveBtn';
+import Alert from 'src/app/components/shared/ui/alert/Alert';
+import Badge from 'src/app/components/shared/ui/badge/Badge';
+import Button from 'src/app/components/shared/ui/button/Button';
 import { motion } from 'framer-motion';
-import useAlert from '~app/hooks/useAlert';
+import useAlert from 'src/app/hooks/useAlert';
 import { useDispatch } from 'react-redux';
+import useDynamicImage from 'src/app/hooks/useDynamicImage';
 
 interface Props {
 	burger: Burger;
@@ -20,17 +21,17 @@ interface Props {
 const BurgerCard: React.FC<Props> = ({ burger }) => {
 	const dispatch = useDispatch();
 	const { showAlert, setAlert, alertMessage, alertType } = useAlert();
+	const { imageRef } = useDynamicImage(
+		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
+	);
 
 	return (
 		<>
 			{showAlert && <Alert type={alertType}>{alertMessage}</Alert>}
-			<motion.div layout className='burger-card'>
-				<div className='burger-card__img-wrapper'>
-					<img
-						src={process.env.REACT_APP_SERVER_URL! + burger.photoUrl}
-						alt=''
-						className='burger-card__img'
-					/>
+			<motion.div initial={false} layout className='burger-card'>
+				<div id='myImg' className='burger-card__img-wrapper'>
+					<img ref={imageRef} alt={burger.name} className='burger-card__img' />
+
 					<Badge size='md' color={burger.isVegetarian ? 'success' : 'danger'}>
 						{burger.isVegetarian ? 'VEG' : 'N-VEG'}
 					</Badge>

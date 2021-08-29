@@ -2,14 +2,14 @@ import * as React from 'react';
 import { useHistory } from 'react-router';
 
 // components
-import Gurantee from '~app/components/home/Gurantee/Gurantee';
-import Button from '~app/components/shared/ui/button/Button';
-import BurgerCard from '~/app/components/shared/BurgerCard/BurgerCard';
-import BurgerCardSkeleton from '~app/components/shared/ui/skeletons/BurgerCardSkeleton';
+import Gurantee from 'src/app/components/home/Gurantee/Gurantee';
+import Button from 'src/app/components/shared/ui/button/Button';
+import BurgerCard from 'src//app/components/shared/BurgerCard/BurgerCard';
+import BurgerCardSkeleton from 'src/app/components/shared/ui/skeletons/BurgerCardSkeleton';
 
 // hooks
-import useBurgersQuery from '~app/hooks/api/queries/useBurgersQuery';
-import useNewBurgersQuery from '~app/hooks/api/queries/useNewBurgersQuery';
+import useBurgersQuery from 'src/app/hooks/api/queries/useBurgersQuery';
+import useNewBurgersQuery from 'src/app/hooks/api/queries/useNewBurgersQuery';
 
 // styles
 import './home.scss';
@@ -18,10 +18,8 @@ const Home: React.FC = () => {
 	const { push } = useHistory();
 
 	const { isLoading: isBurgersLoading } = useBurgersQuery({});
-	const {
-		isLoading: isNewBurgersLoading,
-		data: newBurgers,
-	} = useNewBurgersQuery({});
+	const { isLoading: isNewBurgersLoading, data: newBurgers } =
+		useNewBurgersQuery({});
 
 	return (
 		<>
