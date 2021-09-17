@@ -3,13 +3,27 @@ import './avatar.scss';
 import * as React from 'react';
 
 import UserRoundIcon from '../icons/UserRoundIcon';
-import useDynamicImage from 'src/app/hooks/useDynamicImage';
+import useImage from 'src/app/hooks/useImage';
+
+const colors = {
+	primary: 'u-text-primary',
+	secondary: 'u-text-secondary',
+	tertiary: 'u-text-tertiary',
+	success: 'u-text-success',
+	danger: 'u-text-danger',
+	dark: 'u-text-dark',
+};
+
+const sizes = {
+	sm: 'avatar__sm',
+	md: 'avatar__md',
+};
 
 interface Props {
 	src?: string;
 	alt?: string;
-	size?: 'sm' | 'md';
-	color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'danger' | 'dark';
+	size?: keyof typeof sizes;
+	color?: keyof typeof colors;
 }
 
 const Avatar: React.FC<Props> = ({
@@ -18,16 +32,16 @@ const Avatar: React.FC<Props> = ({
 	size = 'md',
 	color = 'primary',
 }) => {
-	const { imageRef } = useDynamicImage(src ? src : '');
+	const { imageRef } = useImage(src ? src : '');
 
 	return (
 		<div className='avatar'>
 			{src ? (
-				<img ref={imageRef} className={`avatar avatar__${size}`} alt={alt} />
+				<img ref={imageRef} className={`avatar ${sizes[size]}`} alt={alt} />
 			) : (
 				<>
 					<UserRoundIcon
-						className={`u-bg-light u-p-2 avatar avatar__${size} u-text-${color}`}
+						className={`u-bg-light u-p-2 avatar ${sizes[size]} ${colors[color]}`}
 					/>
 				</>
 			)}

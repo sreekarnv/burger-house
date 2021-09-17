@@ -1,19 +1,15 @@
-import './burger-card.scss';
-
+import { motion } from 'framer-motion';
 import * as React from 'react';
-import * as cartActions from 'src/app/store/actions/cartActions';
-
+import { useDispatch } from 'react-redux';
 import { Burger, BurgerIngredient } from 'src/@types/burger';
-
 import AddRemoveBtn from 'src/app/components/shared/ui/add-remove-btn/AddRemoveBtn';
 import Alert from 'src/app/components/shared/ui/alert/Alert';
 import Badge from 'src/app/components/shared/ui/badge/Badge';
 import Button from 'src/app/components/shared/ui/button/Button';
-import { motion } from 'framer-motion';
 import useAlert from 'src/app/hooks/useAlert';
-import { useDispatch } from 'react-redux';
-import useDynamicImage from 'src/app/hooks/useDynamicImage';
-import Logo from 'src/app/components/shared/ui/logo/Logo';
+import useDynamicImage from 'src/app/hooks/useImage';
+import * as cartActions from 'src/app/store/actions/cartActions';
+import './burger-card.scss';
 
 interface Props {
 	burger: Burger;
@@ -22,7 +18,7 @@ interface Props {
 const BurgerCard: React.FC<Props> = ({ burger }) => {
 	const dispatch = useDispatch();
 	const { showAlert, setAlert, alertMessage, alertType } = useAlert();
-	const { imageRef, isLoading } = useDynamicImage(
+	const { imageRef } = useDynamicImage(
 		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
 	);
 
@@ -31,17 +27,13 @@ const BurgerCard: React.FC<Props> = ({ burger }) => {
 			{showAlert && <Alert type={alertType}>{alertMessage}</Alert>}
 			<motion.div initial={false} layout className='burger-card'>
 				<div className='burger-card__img-wrapper'>
-					{isLoading ? (
-						<div className='u-text-center'>
-							<Logo className='burger-card__img-placeholder' />
-						</div>
-					) : (
-						<img
-							ref={imageRef}
-							alt={burger.name}
-							className='burger-card__img'
-						/>
-					)}
+					<img
+						height='100px'
+						width='100px'
+						ref={imageRef}
+						alt={burger.name}
+						className='burger-card__img'
+					/>
 
 					<Badge size='md' color={burger.isVegetarian ? 'success' : 'danger'}>
 						{burger.isVegetarian ? 'VEG' : 'N-VEG'}

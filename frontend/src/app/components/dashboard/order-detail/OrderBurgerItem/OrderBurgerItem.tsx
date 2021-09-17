@@ -4,14 +4,14 @@ import { Burger, OrderIngredient } from 'src/@types/burger';
 
 import Logo from 'src/app/components/shared/ui/logo/Logo';
 import React from 'react';
-import useDynamicImage from 'src/app/hooks/useDynamicImage';
+import useImage from 'src/app/hooks/useImage';
 
 interface Props {
 	burger: Burger;
 }
 
 const OrderBurgerItem: React.FC<Props> = ({ burger }) => {
-	const { imageRef } = useDynamicImage(
+	const { imageRef } = useImage(
 		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
 	);
 

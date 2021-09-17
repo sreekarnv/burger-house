@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import AddRemoveBtn from 'src/app/components/shared/ui/add-remove-btn/AddRemoveBtn';
 import { Ingredient } from 'src/@types/ingredient';
-import useDynamicImage from 'src/app/hooks/useDynamicImage';
+import useImage from 'src/app/hooks/useImage';
 
 interface Props {
 	ingredient: Ingredient;
@@ -14,7 +14,7 @@ interface Props {
 
 const IngredientControl: React.FC<Props> = (props) => {
 	const { ingredient, removeIngredient, addIngredient } = props;
-	const { imageRef } = useDynamicImage(
+	const { imageRef } = useImage(
 		process.env.REACT_APP_SERVER_URL! + ingredient.photoUrl
 	);
 

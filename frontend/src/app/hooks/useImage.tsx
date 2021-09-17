@@ -1,12 +1,10 @@
 import * as React from 'react';
 import useLoading from './useLoading';
 
-const useDynamicImage = (image: string) => {
+const useImage = (image: string) => {
 	const imageRef = React.useRef<any>();
-	const { isLoading, startLoading, stopLoading } = useLoading();
 
 	React.useEffect(() => {
-		startLoading();
 		if (image.length) {
 			fetch(image)
 				.then((res) => res.blob())
@@ -15,13 +13,11 @@ const useDynamicImage = (image: string) => {
 					imageRef.current.src = objectURL;
 				});
 		}
-		stopLoading();
 	}, [image]);
 
 	return {
 		imageRef,
-		isLoading,
 	};
 };
 
-export default useDynamicImage;
+export default useImage;

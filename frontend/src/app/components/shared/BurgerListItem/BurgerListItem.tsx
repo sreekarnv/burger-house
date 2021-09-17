@@ -9,7 +9,7 @@ import IconButton from 'src/app/components/shared/ui/icon-button/IconButton';
 import Logo from 'src/app/components/shared/ui/logo/Logo';
 import TrashIcon from 'src/app/components/shared/ui/icons/TrashIcon';
 import { useDispatch } from 'react-redux';
-import useDynamicImage from 'src/app/hooks/useDynamicImage';
+import useImage from 'src/app/hooks/useImage';
 
 interface Props {
 	burger: Burger;
@@ -17,7 +17,7 @@ interface Props {
 
 const BurgerListItem: React.FC<Props> = ({ burger }) => {
 	const dispatch = useDispatch();
-	const { imageRef } = useDynamicImage(
+	const { imageRef } = useImage(
 		process.env.REACT_APP_SERVER_URL! + burger.photoUrl
 	);
 
