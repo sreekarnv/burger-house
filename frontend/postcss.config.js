@@ -1,3 +1,8 @@
 module.exports = {
-	plugins: [require('autoprefixer')],
+	plugins: [
+		require('autoprefixer'),
+		require('@fullhuman/postcss-purgecss')({
+			content: ['./**/*.tsx', './**/*.html', './**/*.ts'],
+		}),
+	],
 };

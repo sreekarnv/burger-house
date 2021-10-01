@@ -2,6 +2,14 @@ import './switch.scss';
 
 import * as React from 'react';
 
+const colors = {
+	primary: 'u-bg-primary',
+	secondary: 'u-bg-secondary',
+	tertiary: 'u-bg-tertiary',
+	success: 'u-bg-success',
+	danger: 'u-bg-danger',
+};
+
 interface Props {
 	onToggle: () => void;
 	color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'danger';
@@ -15,7 +23,7 @@ const Switch: React.FC<Props> = React.memo(
 			<>
 				<label
 					className={`switch ${
-						active ? `switch__active  u-bg-${color}` : ''
+						active ? `switch__active  ${colors[color]}` : ''
 					} ${className}`}
 					onClick={() => {
 						onToggle();

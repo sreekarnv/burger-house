@@ -2,6 +2,11 @@ import './icon-button.scss';
 
 import * as React from 'react';
 
+const sizes = {
+	sm: 'icon-btn__size--sm',
+	lg: 'icon-btn__size-lg',
+};
+
 type Props = React.DetailedHTMLProps<
 	React.ButtonHTMLAttributes<HTMLButtonElement>,
 	HTMLButtonElement
@@ -17,9 +22,7 @@ const IconButton: React.FC<Props> = ({
 }) => {
 	return (
 		<button
-			className={`icon-btn icon-btn__size--${size} ${
-				className ? className : ''
-			}`}
+			className={`icon-btn ${sizes[size]} ${className ? className : ''}`}
 			{...props}>
 			{children}
 		</button>

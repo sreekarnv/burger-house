@@ -3,8 +3,11 @@
   "version": "2.0.0",
   "description": "",
   "main": "server.js",
+  "private": true,
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "postinstall": "cd frontend && yarn build",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

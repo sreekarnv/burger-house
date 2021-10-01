@@ -9,6 +9,7 @@
   "author": "Sreekar Venkata Nutulapati",
   "license": "ISC",
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@parcel/packager-raw-url": "2.0.0-rc.0",
     "@parcel/transformer-image": "2.0.0-rc.0",
     "@parcel/transformer-sass": "2.0.0-rc.0",
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "clsx": "^1.1.1",
     "formik": "^2.2.6",
     "framer-motion": "^4.1.11",
     "mapbox-gl": "1.13.0",
