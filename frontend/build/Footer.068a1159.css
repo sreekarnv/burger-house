@@ -1,0 +1,1 @@
+.footer{grid-row-gap:2rem;background-color:#ffd59c;display:grid;grid-column:full-start/full-end;grid-template-columns:1fr;grid-template-rows:[nav-start] 1fr [nav-end copy-start] 1fr [copy-end];padding:4rem 8rem}.copyright{align-self:end;color:rgba(0,107,199,.55);font-size:1.7rem;grid-column:1/2;grid-row:copy-start/copy-end;justify-self:center}

@@ -5,9 +5,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "dev": "nodemon server.js",
-    "postinstall": "cd frontend && yarn build",
-    "start": "node server.js"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

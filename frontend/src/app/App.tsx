@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import Layout from './layout';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -11,9 +11,9 @@ const queryClient = new QueryClient();
 const App = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<BrowserRouter>
+			<HashRouter>
 				<Layout />
-			</BrowserRouter>
+			</HashRouter>
 			{process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
 		</QueryClientProvider>
 	);
