@@ -1,0 +1,113 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.profile {
+	height: 100%;
+	display: grid;
+	grid-template-columns:
+		1fr [form-start] repeat(8, 1fr)
+		[form-end] repeat(6, 1fr);
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(
+			rgba($color-light, 0.8),
+			rgba($color-light, 0.8)
+		),
+		url(../../../../images/dashboard.jpg);
+
+	background-position: center;
+	gap: 2rem;
+	padding: 2.5rem;
+
+	@include respond(laptop-md) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../images/dashboard-md.jpg);
+	}
+
+	@include respond(phone-lg) {
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(../../../../images/dashboard-sm.jpg);
+	}
+
+	@include respond(desktop-sm) {
+		grid-template-columns:
+			1fr [form-start] repeat(10, 1fr)
+			[form-end] repeat(4, 1fr);
+	}
+
+	@include respond(laptop-sm) {
+		grid-template-columns:
+			1fr [form-start] repeat(10, 1fr)
+			[form-end] 1fr;
+	}
+
+	@include respond(tab-land) {
+		height: auto;
+		padding: 8rem 2.5rem;
+		grid-template-columns:
+			1rem [form-start] repeat(6, 1fr)
+			[form-end] 1rem;
+		row-gap: 8rem;
+		display: block;
+		min-height: 100vh;
+	}
+
+	@include respond(phone-md) {
+		grid-template-columns: [form-start] repeat(4, 1fr) [form-end];
+		gap: 4rem;
+		padding: 8rem 3rem;
+	}
+
+	&__form {
+		grid-column: form-start / form-end;
+
+		&--1,
+		&--2 {
+			h2 {
+				@include respond(phone-lg) {
+					font-size: 3.5rem;
+					text-align: center;
+				}
+			}
+		}
+
+		&--1 {
+			grid-row: 1 / 2;
+		}
+
+		&--2 {
+			grid-row: 2 / 3;
+		}
+
+		&-photo {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-photo-media {
+			height: 5rem;
+			width: 5rem;
+			position: relative;
+			border-radius: 50%;
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+			}
+		}
+	}
+}

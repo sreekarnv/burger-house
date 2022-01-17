@@ -1,0 +1,65 @@
+@use 'src/scss/abstracts' as *;
+@use 'src/scss/variables' as *;
+
+.order-data-table {
+	@include respond(tab-land) {
+		overflow-x: auto;
+		display: block;
+	}
+
+	&__heading {
+		font-size: 1.8rem;
+		padding: 1.5rem;
+	}
+
+	&__heading__row {
+		color: $color-light;
+		background-color: $color-dark;
+
+		th {
+			padding: 1.5rem;
+			min-width: 14.8rem;
+		}
+	}
+
+	&__body {
+		background-color: $color-light;
+	}
+
+	&__body__row {
+		font-size: 1.5rem;
+		text-align: center;
+		font-weight: 600;
+
+		td {
+			padding: 1.5rem;
+		}
+	}
+
+	&__body__status {
+		text-transform: capitalize;
+
+		&--pending {
+			color: $color-light;
+			background-color: $color-danger;
+		}
+
+		&--delivered {
+			color: $color-light;
+			background-color: $color-success;
+		}
+
+		&--cancelled {
+			color: rgba($color-dark, 0.5);
+			background-color: rgba($color-dark, 0.3);
+		}
+	}
+
+	&--glass &__heading__row {
+		background-color: rgba($color-dark, 0.75);
+	}
+
+	&--glass &__body {
+		background-color: rgba($color-light, 0.54);
+	}
+}

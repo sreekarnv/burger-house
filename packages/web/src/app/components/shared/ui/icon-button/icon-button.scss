@@ -1,0 +1,40 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.icon-btn {
+	background-color: $color-light;
+	box-shadow: 0 0.25rem 0.5rem rgba($color-dark, 0.45);
+	border-radius: 50%;
+	padding: 0.5rem;
+	cursor: pointer;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease-out;
+
+	&:hover,
+	&:focus {
+		filter: brightness(90%);
+	}
+
+	&__size--sm {
+		height: 3rem;
+		width: 3rem;
+
+		@include respond(tab-land) {
+			height: 3rem;
+			width: 3rem;
+		}
+	}
+
+	&__size--lg {
+		height: 6rem;
+		width: 6rem;
+
+		@include respond(phone-lg) {
+			height: 5rem;
+			width: 5rem;
+		}
+	}
+}

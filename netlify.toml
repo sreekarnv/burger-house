@@ -1,0 +1,7 @@
+[build]
+
+  publish = "./packages/web/build"
+
+  command = "yarn build:web"
+
+  ignore = "git diff --quiet $COMMIT_REF $CACHED_COMMIT_REF -- packages/web packages/models"

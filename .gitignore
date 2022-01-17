@@ -1,7 +1,7 @@
-config.env
-
+.parcel-cache
 node_modules
+temp
+*.env
 
-public
-
-*.log
+dist
+build

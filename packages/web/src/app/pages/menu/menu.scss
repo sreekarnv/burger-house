@@ -1,0 +1,48 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.menu {
+	padding: 2rem;
+	padding-bottom: 6rem;
+
+	html & {
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		scrollbar-width: none;
+
+		@media (max-width: laptop-sm) {
+			scrollbar-width: thin;
+		}
+	}
+
+	&__container {
+		max-width: calc(100vw - 60rem);
+		margin: 0 auto;
+
+		@include respond(laptop-lg) {
+			max-width: calc(100vw - 40rem);
+		}
+
+		@include respond(laptop-sm) {
+			max-width: calc(100vw - 20rem);
+		}
+
+		@include respond(tab-land) {
+			max-width: 100%;
+		}
+	}
+
+	&__items {
+		min-height: 49.5rem;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+		gap: 1.5rem;
+
+		@include respond(phone-sm) {
+			min-height: 100vh;
+			grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+		}
+	}
+}

@@ -1,0 +1,65 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.btn {
+	border: none;
+	outline: none;
+	font-family: inherit;
+	cursor: pointer;
+	border-radius: 8px;
+	font-weight: 600;
+	transition: all 0.35s ease-out;
+
+	&--sm {
+		font-size: 1.35rem;
+		padding: 0.75rem 1rem;
+	}
+
+	&--md {
+		font-size: 1.5rem;
+		padding: 1.2rem 1.5rem;
+	}
+
+	&--lg {
+		font-size: 1.8rem;
+		padding: 1.325rem 2rem;
+	}
+
+	@each $name, $color in $colors {
+		&__#{'' + $name} {
+			&--solid {
+				border: 2px solid $color;
+				background-color: $color;
+				color: $color-white;
+
+				&:hover,
+				&:focus {
+					filter: brightness(70%);
+				}
+
+				&:disabled {
+					cursor: not-allowed;
+					opacity: 0.5;
+					filter: brightness(70%);
+				}
+			}
+
+			&--outline {
+				border: 2px solid $color;
+				background-color: transparent;
+				color: $color;
+
+				&:hover,
+				&:focus {
+					color: $color-white;
+					background-color: $color;
+				}
+			}
+		}
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}

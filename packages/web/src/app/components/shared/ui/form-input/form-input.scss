@@ -1,0 +1,49 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/abstracts' as *;
+
+.form-input {
+	margin-bottom: 1rem;
+
+	&__label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 1.4rem;
+		font-weight: 600;
+		color: $color-dark;
+	}
+
+	&__field {
+		border: 2px solid $color-gray;
+		outline: none;
+		padding: 0.8rem;
+		width: 100%;
+		font-size: 1.75rem;
+		border-radius: 8px;
+		font-weight: 400;
+		color: $color-dark;
+		transition: all 0.3s ease-out;
+		margin-bottom: 0.5rem;
+
+		&:focus {
+			border-color: $color-primary;
+		}
+	}
+
+	&__error-message {
+		font-size: 1.4rem;
+		text-transform: capitalize;
+		color: $color-danger;
+	}
+
+	&--error {
+		margin-bottom: 1.3rem !important;
+	}
+
+	&--error &__label {
+		color: $color-danger !important;
+	}
+
+	&--error &__field {
+		border-color: $color-danger !important;
+	}
+}
