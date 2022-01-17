@@ -64,7 +64,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({}) => {
 	return (
 		<>
 			<Seo title='Burger House | Register' />
-			{showAlert && <Alert type={alertType}>{alertMessage}</Alert>}
+			{showAlert && (
+				<Alert position='top-center' type={alertType}>
+					{alertMessage}
+				</Alert>
+			)}
 			<>
 				<div className='register'>
 					<Formik

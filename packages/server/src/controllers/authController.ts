@@ -60,7 +60,17 @@ export const loginUser: ExpressResponse = async (req, res, next) => {
 };
 
 export const logoutUser: ExpressResponse = async (req, res, next) => {
-	res.clearCookie('burgerHouse');
+	let secure = false;
+	if (process.env.NODE_ENV === 'production') {
+		secure =
+			req.secure || (req as any).headers('x-forwarded-proto') === 'https';
+	}
+
+	res.clearCookie('burgerHouse', {
+		sameSite: 'none',
+		secure,
+		httpOnly: true,
+	});
 
 	res.status(200).json({
 		status: 'success',

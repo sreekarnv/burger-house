@@ -9,6 +9,8 @@ interface NavLinkProps {
 	children: any;
 	label: string;
 	variant?: 'default' | 'logout';
+	showBadge?: boolean;
+	badgeValue?: string | number;
 }
 
 const NavLink: React.FC<NavLinkProps> = ({
@@ -16,9 +18,11 @@ const NavLink: React.FC<NavLinkProps> = ({
 	children: Icon,
 	label,
 	variant = 'default',
+	showBadge,
+	badgeValue,
 }) => {
 	return (
-		<li>
+		<li className='nav-item'>
 			<RNavLink
 				to={to}
 				className={({ isActive }) =>
@@ -43,6 +47,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 					{label}
 				</small>
 			</RNavLink>
+			{showBadge && <span className='nav-link__badge'>{badgeValue}</span>}
 		</li>
 	);
 };

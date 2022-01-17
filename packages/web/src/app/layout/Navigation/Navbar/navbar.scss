@@ -96,6 +96,22 @@
 		}
 	}
 
+	&__nav--mobile {
+		display: none;
+
+		@include respond(tab-land) {
+			display: grid;
+			gap: 1.5rem;
+			grid-column: 1 / -1;
+			grid-row: 2 / 3;
+			padding: 0 2rem;
+			list-style: none;
+			visibility: hidden;
+			pointer-events: none;
+			height: 0;
+		}
+	}
+
 	&__toggle {
 		display: none;
 
@@ -104,13 +120,6 @@
 			grid-column: start-nav / end-nav;
 			justify-self: end;
 			display: block;
-			height: 3rem;
-			width: 3rem;
-		}
-
-		@include respond(phone-md) {
-			height: 3.5rem;
-			width: 3.5rem;
 		}
 	}
 

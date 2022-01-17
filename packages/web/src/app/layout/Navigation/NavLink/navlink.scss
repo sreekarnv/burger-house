@@ -1,6 +1,10 @@
 @use 'src/scss/variables' as *;
 @use 'src/scss/abstracts' as *;
 
+.nav-item {
+	position: relative;
+}
+
 .nav-link {
 	color: $color-dark;
 	text-decoration: none;
@@ -69,5 +73,22 @@
 		&--logout {
 			@include activeIcon($color-danger);
 		}
+	}
+
+	&__badge {
+		border-radius: 50%;
+		background-color: $color-primary-light;
+		padding: 0.75rem;
+		height: 1.8rem;
+		width: 1.8rem;
+		border: 2px solid $color-primary;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $color-black;
+		font-weight: 700;
+		position: absolute;
+		top: 0;
+		right: -2px;
 	}
 }

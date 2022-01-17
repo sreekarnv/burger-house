@@ -1,6 +1,3 @@
-import { User } from '@burger-house/models';
-import * as React from 'react';
-
 import { useMutation } from 'react-query';
 import { axios } from '../../../../config/axios';
 
