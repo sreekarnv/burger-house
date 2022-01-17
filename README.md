@@ -2,7 +2,7 @@
 
 Burger house is a fast-food e-commerce site similar to mcdonalds or burger king which sells burgers. This website allows you to choose burgers from a menu or you are free to make your own burger with the given ingredients. To place an order you must be logged in.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f8a66259-7e40-43f8-8a7e-ecdd87f1808f/deploy-status)](https://app.netlify.com/sites/burger-house-sreekar/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2bbf0a00-133e-4a5e-8c69-df21038a8185/deploy-status)](https://app.netlify.com/sites/burger-house-sreekar/deploys)
 
 live-preview: https://burger-house-sreekar.netlify.app/
 
