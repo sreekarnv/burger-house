@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import Logo from '../../logo/Logo';
+import Loader from '../default/loader';
 import './page-loader.scss';
 
 const variants = {
@@ -18,7 +19,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ variant = 'full' }) => {
 			<div className={clsx('page-loader', variants[variant])}>
 				<Logo size='lg' />
 				<div className='u-text-center u-mt-10'>
-					<h1 className='page-loader__text'>Loading....</h1>
+					<Loader />
 				</div>
 			</div>
 		</>
