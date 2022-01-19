@@ -30,6 +30,7 @@
 	grid-column-gap: 0.75rem;
 	justify-content: center;
 	background-color: $color-white;
+	min-height: $page-height;
 
 	@include respond(laptop-md) {
 		grid-template-columns:

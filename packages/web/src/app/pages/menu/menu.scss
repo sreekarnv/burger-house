@@ -4,6 +4,7 @@
 .menu {
 	padding: 2rem;
 	padding-bottom: 6rem;
+	min-height: $page-height;
 
 	html & {
 		&::-webkit-scrollbar {
