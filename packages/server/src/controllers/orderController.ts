@@ -8,8 +8,9 @@ export const createOrder: ExpressResponse = async (req, res, next) => {
 		const { items, price } = req.body;
 
 		items.forEach((item: any) => {
-			item.photoUrl = item.photo.url;
+			item.photoUrl = item?.photo?.url ?  item.photo.url : `/uploads/burgers/default.svg`;
 			item.photo = undefined;
+			item._id = undefined;
 		});
 
 		const order = await OrderModel.create({

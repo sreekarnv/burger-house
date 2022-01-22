@@ -1,7 +1,7 @@
 import { OrderItem } from '@burger-house/models';
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { SERVER_URL } from  '../../config/constants'
 import './order-list-item.scss';
 
 interface OrderListItemProps {
@@ -16,7 +16,7 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ orderItem }) => {
 					<figure>
 						<LazyLoadImage
 							effect='blur'
-							src={orderItem.photoUrl}
+							src={orderItem.photoUrl.startsWith('/uploads') ? `${SERVER_URL}${orderItem.photoUrl}` : orderItem.photoUrl}
 							alt={orderItem.name}
 							loading='lazy'
 						/>
