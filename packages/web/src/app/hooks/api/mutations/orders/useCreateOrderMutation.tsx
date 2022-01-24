@@ -8,10 +8,11 @@ const useCreateOrderMutation = () => {
 			const orderItems = items.map((item) => {
 				const ingredients: any = [];
 				item.ingredients.forEach((ing) => {
-					console.log({ing});
 					ingredients.push({
 						amount: ing.amount,
-						name:  ing?.ingredient ? (ing.ingredient as any).name : ing.name,
+						name: ing?.ingredient
+							? (ing.ingredient as any).name
+							: (ing as any).name,
 					});
 				});
 

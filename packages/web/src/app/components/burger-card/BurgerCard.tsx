@@ -39,6 +39,13 @@ const BurgerCard: React.FC<BurgerCardProps> = ({ burger, size = 'md' }) => {
 				</Alert>
 			)}
 			<div className={clsx(['burger-card', sizes[size]])}>
+				<div
+					className={clsx([
+						'burger-card__badge',
+						burger.isVegetarian ? 'u-text-success' : 'u-text-danger',
+					])}>
+					<span></span>
+				</div>
 				<figure className='burger-card__media'>
 					<LazyLoadImage
 						src={burger.photo.url}

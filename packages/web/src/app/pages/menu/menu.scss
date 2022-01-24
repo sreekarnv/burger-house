@@ -32,7 +32,49 @@
 
 		@include respond(tab-land) {
 			max-width: 100%;
+			text-align: right;
 		}
+	}
+
+	&__filter {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+
+		@include respond(tab-land) {
+			gap: 1rem;
+		}
+
+		@include respond(tab-port) {
+			flex-direction: column;
+		}
+	}
+
+	&__search {
+		position: relative;
+		width: 30%;
+
+		@include respond(laptop-sm) {
+			width: 60%;
+		}
+
+		@include respond(tab-port) {
+			width: 90%;
+			margin: 0 auto;
+		}
+
+		.form-input {
+			@include respond(tab-port) {
+				margin-bottom: -5px;
+			}
+		}
+	}
+
+	&__search__icon {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: $color-gray;
 	}
 
 	&__items {

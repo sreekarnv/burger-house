@@ -13,6 +13,7 @@ const FormInput: React.FC<Props> = ({
 	label,
 	type = 'text',
 	required = true,
+	className,
 	...props
 }) => {
 	const [field, { touched, error }] = useField<
@@ -22,17 +23,20 @@ const FormInput: React.FC<Props> = ({
 	return (
 		<div
 			className={`form-input ${touched && error ? 'form-input--error' : ''}`}>
-			<label className='form-input__label' htmlFor={field.name}>
-				{label}{' '}
-				{required ? (
-					<span
-						className={clsx([
-							touched && error ? 'u-text-danger' : 'u-text-tertiary',
-						])}>
-						*
-					</span>
-				) : null}
-			</label>
+			{label && (
+				<label className='form-input__label' htmlFor={field.name}>
+					{label}{' '}
+					{required ? (
+						<span
+							className={clsx([
+								touched && error ? 'u-text-danger' : 'u-text-tertiary',
+								className,
+							])}>
+							*
+						</span>
+					) : null}
+				</label>
+			)}
 			<Field
 				className='form-input__field'
 				type={type}

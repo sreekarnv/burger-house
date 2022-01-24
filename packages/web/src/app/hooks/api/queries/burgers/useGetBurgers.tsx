@@ -1,13 +1,13 @@
-import React from 'react';
 import { useQuery } from 'react-query';
+import { useSearchParams } from 'react-router-dom';
 import { axios } from '../../../../config/axios';
 import usePagination from '../../../helpers/usePagination';
 import { PaginatedBurgers } from '../../types';
 
 const useGetBurgers = (limit = 4, initialPage = 1) => {
+	const [searchParams] = useSearchParams();
 	const { page, nextPage, previousPage } = usePagination(initialPage);
-
-	const { data, error, isLoading, isFetched, isFetching } =
+	const { data, error, isLoading, isFetched, isFetching, refetch } =
 		useQuery<PaginatedBurgers>(
 			['burgers', page],
 			async () => {
@@ -17,6 +17,7 @@ const useGetBurgers = (limit = 4, initialPage = 1) => {
 					params: {
 						page,
 						limit,
+						search: searchParams.get('search') || '',
 					},
 				});
 
@@ -36,6 +37,7 @@ const useGetBurgers = (limit = 4, initialPage = 1) => {
 		nextPage,
 		previousPage,
 		isFetching,
+		refetch,
 	};
 };
 

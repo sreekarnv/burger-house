@@ -21,7 +21,17 @@ export const getNewBurgers: ExpressResponse = async (req, res, next) => {
 
 export const getAllBurgers: ExpressResponse = async (req, res, next) => {
 	try {
-		let { page, limit } = req.query as { page: string; limit: string };
+		let { page, limit, search } = req.query as {
+			page: string;
+			limit: string;
+			search?: string;
+		};
+
+		let query: any = {};
+
+		if (search) {
+			query.$text = { $search: search };
+		}
 
 		if (!page || isNaN(parseInt(page))) page = '1';
 		if (!limit || isNaN(parseInt(limit))) limit = '6';
@@ -29,13 +39,13 @@ export const getAllBurgers: ExpressResponse = async (req, res, next) => {
 		const numPage = parseInt(page);
 		const numLimit = parseInt(limit);
 
-		const burgers = await BurgerModel.find()
+		const burgers = await BurgerModel.find(query)
 			.skip((numPage - 1) * numLimit)
 			.limit(numLimit + 1);
 
 		res.status(200).json({
 			status: 'success',
-			results: burgers.length - 1,
+			results: burgers.slice(0, numLimit).length,
 			data: {
 				hasMore: burgers.length === numLimit + 1,
 				burgers: burgers.slice(0, numLimit),
