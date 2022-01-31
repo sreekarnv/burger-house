@@ -14,7 +14,7 @@
 			rgba($color-light, 0.8),
 			rgba($color-light, 0.8)
 		),
-		url(../../../../images/dashboard.jpg);
+		url(../../../../images/dashboard.jpg?as=webp&width=1440&quality=90);
 
 	background-position: center;
 	gap: 2rem;
@@ -25,7 +25,7 @@
 				rgba($color-light, 0.8),
 				rgba($color-light, 0.8)
 			),
-			url(../../../../images/dashboard-md.jpg);
+			url(../../../../images/dashboard-md.jpg?as=webp&width=800&quality=90);
 	}
 
 	@include respond(phone-lg) {
@@ -33,7 +33,7 @@
 				rgba($color-light, 0.8),
 				rgba($color-light, 0.8)
 			),
-			url(../../../../images/dashboard-sm.jpg);
+			url(../../../../images/dashboard-sm.jpg?as=webp&width=550&quality=85);
 	}
 
 	@include respond(desktop-sm) {

@@ -8,7 +8,7 @@
 			rgba($color-black, 0.75),
 			rgba($color-black, 0.75)
 		),
-		url(./../../../../images/register.jpg);
+		url(./../../../../images/register.jpg?as=webp&quality=90);
 
 	display: flex;
 	justify-content: center;
@@ -21,7 +21,7 @@
 				rgba($color-black, 0.75),
 				rgba($color-black, 0.75)
 			),
-			url(./../../../../images/register-md.jpg);
+			url(./../../../../images/register-md.jpg?as=webp&quality=90);
 	}
 
 	@include respond(tab-land) {
@@ -29,7 +29,7 @@
 				rgba($color-white, 0.75),
 				rgba($color-white, 0.75)
 			),
-			url(./../../../../images/register-md.jpg);
+			url(./../../../../images/register-md.jpg?as=webp&quality=90&width=800);
 	}
 
 	@include respond(phone-lg) {
@@ -37,7 +37,7 @@
 				rgba($color-white, 0.75),
 				rgba($color-white, 0.75)
 			),
-			url(./../../../../images/register-sm.jpg);
+			url(./../../../../images/register-sm.jpg?as=webp&quality=90&width=540);
 		padding: 2rem;
 		align-items: flex-start;
 	}

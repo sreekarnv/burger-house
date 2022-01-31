@@ -91,7 +91,6 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
 					</ul>
 
 					<HiMenuAlt2
-						aria-role='button'
 						className='navbar__toggle'
 						size={20}
 						onClick={() => onToggle()}

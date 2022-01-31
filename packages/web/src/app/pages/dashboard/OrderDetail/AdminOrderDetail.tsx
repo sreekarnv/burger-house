@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import OrderInfoCard from '../../../components/order-info-card/OrderInfoCard';
 import OrderListItem from '../../../components/order-list-item/OrderListItem';
+import Seo from '../../../components/shared/meta/Seo';
 import Button from '../../../components/shared/ui/button/Button';
 import PageLoader from '../../../components/shared/ui/loaders/PageLoader/PageLoader';
 import useAdminUpdateOrderMutation from '../../../hooks/api/mutations/orders/useAdminUpdateOrderStatus';
@@ -23,6 +24,10 @@ const MyOrderDetailPage: React.FC<MyOrderDetailPageProps> = ({}) => {
 
 	return (
 		<>
+			<Seo
+				title={`Burger House | Admin | Order #${data?._id} `}
+				crawl={false}
+			/>
 			<div className='u-pt-8 u-pb-8 u-pr-8 u-pl-8'>
 				<h1 className='u-text-center u-mb-10 u-text-primary heading-3'>
 					Order &nbsp;#{data?._id}

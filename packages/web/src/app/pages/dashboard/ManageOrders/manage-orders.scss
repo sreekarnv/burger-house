@@ -7,7 +7,7 @@
 			rgba($color-white, 0.7),
 			rgba($color-white, 0.5)
 		),
-		url('../../../../images/dashboard.jpg');
+		url(../../../../images/dashboard.jpg?as=webp&width=1440&quality=90);
 	min-height: calc(100vh - $navbar-height);
 	padding: 2rem 3rem;
 
@@ -17,10 +17,24 @@
 	@include respond(tab-land) {
 		padding-top: 6rem;
 		min-height: 100vh;
+
+		background-image: linear-gradient(
+				to right,
+				rgba($color-white, 0.7),
+				rgba($color-white, 0.5)
+			),
+			url(../../../../images/dashboard-md.jpg?as=webp&width=800&quality=90);
 	}
 
 	@include respond(phone-md) {
 		padding: 8rem 1.85rem;
+
+		background-image: linear-gradient(
+				to right,
+				rgba($color-white, 0.7),
+				rgba($color-white, 0.5)
+			),
+			url(../../../../images/dashboard-md.jpg?as=webp&width=450&quality=85);
 	}
 
 	&__stats {

@@ -34,7 +34,10 @@ const MenuPage: React.FC<MenuPageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo title='Burger House | Menu' />
+			<Seo
+				title='Burger House | Menu'
+				description='Check out our diverse menu'
+			/>
 			<div className='menu'>
 				<div className='menu__container'>
 					<div className='u-mb-10'>

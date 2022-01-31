@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import './profile.scss';
 import Alert from '../../../components/shared/ui/alert/Alert';
 import useAlert from '../../../hooks/helpers/useAlert';
+import Seo from '../../../components/shared/meta/Seo';
 
 interface MyProfilePageProps {}
 
@@ -64,6 +65,7 @@ const MyProfilePage: React.FC<MyProfilePageProps> = ({}) => {
 
 	return (
 		<>
+			<Seo title='Burger House | Profile' crawl={false} />
 			{showAlert && (
 				<Alert position='top-center' type={alertType}>
 					{alertMessage}

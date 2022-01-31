@@ -55,7 +55,7 @@ const BurgerCard: React.FC<BurgerCardProps> = ({ burger, size = 'md' }) => {
 					/>
 				</figure>
 				<div className='burger-card__content'>
-					<h3 className='burger-card__title'>{burger.name}</h3>
+					<p className='burger-card__title'>{burger.name}</p>
 					<ul className='burger-card__ingredients'>
 						{burger.ingredients.map(({ amount, ingredient }, i) => {
 							return (
@@ -100,7 +100,7 @@ const BurgerCard: React.FC<BurgerCardProps> = ({ burger, size = 'md' }) => {
 							)}
 						</div>
 
-						<h6 className='burger-card__price'>Rs {burger.price}</h6>
+						<p className='burger-card__price'>Rs {burger.price}</p>
 					</div>
 				</div>
 			</div>

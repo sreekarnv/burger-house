@@ -1,5 +1,6 @@
 import React from 'react';
 import OrderDataTable from '../../../components/order-data-table/OrderDataTable';
+import Seo from '../../../components/shared/meta/Seo';
 import Button from '../../../components/shared/ui/button/Button';
 import PageLoader from '../../../components/shared/ui/loaders/PageLoader/PageLoader';
 import useGetOrders from '../../../hooks/api/queries/orders/useGetOrders';
@@ -19,6 +20,7 @@ const MyOrdersPage: React.FC<MyOrdersPageProps> = ({}) => {
 
 	return (
 		<>
+			<Seo title={`Burger House | Your Orders`} crawl={false} />
 			<div className='my-orders'>
 				<h2 className='my-orders__heading heading-2'>My Orders</h2>
 				{data && data?.orders.length > 0 ? (
