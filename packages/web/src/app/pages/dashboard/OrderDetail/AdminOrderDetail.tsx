@@ -24,10 +24,7 @@ const MyOrderDetailPage: React.FC<MyOrderDetailPageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo
-				title={`Burger House | Admin | Order #${data?._id} `}
-				crawl={false}
-			/>
+			<Seo title={`Burger House | Admin | Order #${data?._id} `} />
 			<div className='u-pt-8 u-pb-8 u-pr-8 u-pl-8'>
 				<h1 className='u-text-center u-mb-10 u-text-primary heading-3'>
 					Order &nbsp;#{data?._id}

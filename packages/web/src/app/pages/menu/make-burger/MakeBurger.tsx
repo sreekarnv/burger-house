@@ -73,10 +73,7 @@ const MakeBurger: React.FC = () => {
 					{alertMessage}
 				</Alert>
 			)}
-			<Seo
-				title='Burger House | Menu | Make Your Burger'
-				description="Don't like our menu. Make your own burger"
-			/>
+			<Seo title='Burger House | Menu | Make Your Burger' />
 			<div className='make-burger'>
 				<Burger ingredients={displayIngredients} />
 				<IngredientControls type={params.foodType} ingredients={ingredients} />

@@ -20,7 +20,7 @@ const MyOrdersPage: React.FC<MyOrdersPageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo title={`Burger House | Your Orders`} crawl={false} />
+			<Seo title={`Burger House | Your Orders`} />
 			<div className='my-orders'>
 				<h2 className='my-orders__heading heading-2'>My Orders</h2>
 				{data && data?.orders.length > 0 ? (

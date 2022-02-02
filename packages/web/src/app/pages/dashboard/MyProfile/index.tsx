@@ -65,7 +65,7 @@ const MyProfilePage: React.FC<MyProfilePageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo title='Burger House | Profile' crawl={false} />
+			<Seo title='Burger House | Profile' />
 			{showAlert && (
 				<Alert position='top-center' type={alertType}>
 					{alertMessage}

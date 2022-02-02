@@ -27,7 +27,7 @@ const MyOrderDetailPage: React.FC<MyOrderDetailPageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo title={`Burger House | Order #${data?._id} `} crawl={false} />
+			<Seo title={`Burger House | Order #${data?._id} `} />
 			<TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
 			<div className='u-pt-8 u-pb-8 u-pr-8 u-pl-8'>
 				<h1 className='order-detail__heading u-text-center u-mb-10 u-text-primary heading-3'>

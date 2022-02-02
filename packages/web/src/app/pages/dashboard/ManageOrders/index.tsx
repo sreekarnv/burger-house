@@ -26,7 +26,7 @@ const ManageOrdersPage: React.FC<ManageOrdersPageProps> = ({}) => {
 
 	return (
 		<>
-			<Seo title={`Burger House | Admin | Manage Orders `} crawl={false} />
+			<Seo title={`Burger House | Admin | Manage Orders `} />
 
 			<div className='manage-orders'>
 				<div className='manage-orders__stats'>
