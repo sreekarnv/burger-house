@@ -33,7 +33,7 @@
 				color: $color-white;
 
 				&:hover,
-				&:focus {
+				&:focus-visible {
 					filter: brightness(70%);
 				}
 
@@ -50,7 +50,7 @@
 				color: $color;
 
 				&:hover,
-				&:focus {
+				&:focus-visible {
 					color: $color-white;
 					background-color: $color;
 				}

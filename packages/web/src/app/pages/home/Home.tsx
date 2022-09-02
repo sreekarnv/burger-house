@@ -41,7 +41,9 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
 					<h2 className='u-text-secondary heading-3'>
 						Don't Like Our Menu? Then Make Your Own Burger!
 					</h2>
-					<Button variant='tertiary'>Make My Burger</Button>
+					<Button isLink to='/menu/make-burger' variant='tertiary'>
+						Make My Burger
+					</Button>
 				</section>
 
 				<section className='home-popular-burgers'>

@@ -15,11 +15,11 @@ export const resizeImage = (folderName: string) => {
 		req.file.filename = `${uuidv4()}.jpeg`;
 
 		try {
-			await sharp(req.file.buffer)
+			const image = await sharp(req.file.buffer)
 				.resize(2000, 2000)
 				.toFormat('jpeg')
 				.jpeg({ quality: 90 })
-				.toFile(path.join(__dirname, '../../uploads', req.file.filename));
+				.toBuffer();
 
 			cloudinary.v2.config({
 				cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -27,26 +27,31 @@ export const resizeImage = (folderName: string) => {
 				api_secret: process.env.CLOUDINARY_API_SECRET,
 			});
 
-			const uploadedImg = await cloudinary.v2.uploader.upload(
-				`uploads/${req.file.filename}`,
-				{
-					resource_type: 'image',
-					use_filename: true,
-					folder: `burger-house/${folderName}`,
-					allowed_formats: ['jpeg'],
-				}
-			);
+			cloudinary.v2.uploader
+				.upload_stream(
+					{
+						resource_type: 'image',
+						use_filename: true,
+						folder: `burger-house/${folderName}`,
+						allowed_formats: ['jpeg'],
+					},
+					(error, result) => {
+						if (error) {
+							return next(new AppError(error.message, 500));
+						}
 
-			console.log(uploadedImg);
+						if (result) {
+							req.photo = {
+								publicId: result.public_id,
+								url: result.secure_url,
+								name: result.original_filename,
+							};
 
-			req.photo = {
-				publicId: uploadedImg.public_id,
-				url: uploadedImg.secure_url,
-				name: uploadedImg.original_filename,
-				signature: uploadedImg.signature,
-			};
-
-			next();
+							next();
+						}
+					}
+				)
+				.end(image);
 		} catch (_) {
 			return next(
 				new AppError('error uploading your image. Please try later', 400)
