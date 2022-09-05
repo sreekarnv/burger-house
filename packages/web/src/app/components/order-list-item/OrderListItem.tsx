@@ -26,7 +26,7 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ orderItem }) => {
 				<p className='order-list-item__price'>
 					Rs {orderItem.price} ({orderItem.itemsInCart})
 				</p>
-				<div className='burger-list-item__ingredients'>
+				<div className='order-list-item__ingredients'>
 					{orderItem?.ingredients?.map((item: any, i) => {
 						if (item.amount > 0) {
 							return (

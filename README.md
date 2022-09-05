@@ -8,18 +8,18 @@ live-preview: https://burger-house-sreekar.netlify.app/
 
 # Home Page
 
-![](preview-images/home.jpg)
+![](preview-images/home.png)
 
 # Menu Page
 
-![](preview-images/menu.jpg)
+![](preview-images/menu.png)
 
 # Make your own burger !
 
 In case you don't like the menu you can make your own burger.
 
-![](preview-images/make-1.jpg)
-![](preview-images/make-2.jpg)
+![](preview-images/make-1.png)
+![](preview-images/make-2.png)
 
 # Customer Dashboard
 
@@ -38,12 +38,14 @@ Admins can update existing manage orders
 
 # Techonlogies Used
 
-    1. Reactjs
-    2. Expressjs
-    3. MongoDB
-    4. MapBox
+1. [React](https://reactjs.org/)
+2. [Parcel](https://parceljs.org/)
+3. [Express](https://expressjs.com/)
+4. [MongoDB](https://mongodb.com/)
+5. [MapBox](https://www.mapbox.com/)
+6. [Sass](https://sass-lang.com/)
 
-# credentials
+# Credentials
 
     Admin:  email: admin@email.com
             Pass: Pass123#
