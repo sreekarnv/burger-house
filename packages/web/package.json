@@ -3,8 +3,8 @@
     "private": true,
     "version": "1.0.0",
     "scripts": {
-        "dev": "rimraf ./dist && parcel serve src/index.html --port 3000 --dist-dir dist --open",
-        "build": "rimraf ./dist && rimraf ./build && parcel build src/index.html --dist-dir build --no-source-maps"
+        "dev": "rimraf ./public/dist && parcel serve src/index.tsx --port 3000 --dist-dir public/dist --open",
+        "build": "rimraf ./public/dist && parcel build src/index.tsx --dist-dir public/dist --no-source-maps"
     },
     "dependencies": {
         "@burger-house/models": "1.0.0",
@@ -36,7 +36,7 @@
         "@types/react-lazy-load-image-component": "^1.5.2",
         "@types/sharp": "^0.29.5",
         "autoprefixer": "^10.4.1",
-        "parcel": "^2.1.1",
+        "parcel": "^2.7.0",
         "postcss": "^8.4.5",
         "rimraf": "^3.0.2",
         "sass": "^1.45.2",
@@ -47,9 +47,7 @@
         "production": [
             ">0.2%",
             "not dead",
-            "not ie 11",
-            "not chrome < 51",
-            "not safari < 10"
+            "not ie 11"
         ],
         "development": [
             "last 1 chrome version",
