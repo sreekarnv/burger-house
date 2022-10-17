@@ -11,6 +11,7 @@
         "predev": "yarn build:models",
         "dev": "npm-run-all --parallel dev:server dev:web",
         "build:server": "yarn workspace @burger-house/server build",
+        "build": "npm-run-all build:models build:server",
         "start": "yarn workspace @burger-house/server start"
     },
     "workspaces": {
