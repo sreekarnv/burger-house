@@ -7,14 +7,14 @@
 			rgba($color-black, 0.76),
 			rgba($color-black, 0.76)
 		),
-		url(../../../images/error.jpg?as=webp&width=1440&quality=90);
+		url(../../../images/error.webp);
 
 	@include respond(laptop-sm) {
 		background-image: linear-gradient(
 				rgba($color-black, 0.76),
 				rgba($color-black, 0.76)
 			),
-			url(../../../images/error-md.jpg?as=webp&width=800&quality=90);
+			url(../../../images/error-md.webp);
 	}
 
 	@include respond(phone-lg) {
@@ -22,7 +22,7 @@
 				rgba($color-black, 0.76),
 				rgba($color-black, 0.76)
 			),
-			url(../../../images/error-sm.jpg?as=webp&width=550&quality=85);
+			url(../../../images/error-sm.webp);
 	}
 
 	&__message {

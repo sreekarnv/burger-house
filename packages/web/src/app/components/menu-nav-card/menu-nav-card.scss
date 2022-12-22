@@ -39,14 +39,14 @@
 				rgba($color-dark, 0.6),
 				rgba($color-dark, 0.6)
 			),
-			url(./../../../images/veg.jpg?as=webp&quality=90&width=600);
+			url(./../../../images/veg.webp);
 
 		@include respond(tab-port) {
 			background-image: linear-gradient(
 					rgba($color-dark, 0.6),
 					rgba($color-dark, 0.6)
 				),
-				url(./../../../images/veg-sm.jpg?as=webp&quality=90&width=400);
+				url(./../../../images/veg-sm.webp);
 		}
 	}
 
@@ -55,14 +55,14 @@
 				rgba($color-dark, 0.6),
 				rgba($color-dark, 0.6)
 			),
-			url(./../../../images/non-veg.jpg?as=webp&quality=90&width=600);
+			url(./../../../images/non-veg.webp);
 
 		@include respond(tab-port) {
 			background-image: linear-gradient(
 					rgba($color-dark, 0.6),
 					rgba($color-dark, 0.6)
 				),
-				url(./../../../images/non-veg-sm.jpg?as=webp&quality=90&width=400);
+				url(./../../../images/non-veg-sm.webp);
 		}
 	}
 }

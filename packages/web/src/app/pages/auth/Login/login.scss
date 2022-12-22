@@ -7,7 +7,7 @@
 			rgba($color-black, 0.75),
 			rgba($color-black, 0.75)
 		),
-		url(./../../../../images/login.jpg?as=webp&quality=90);
+		url(./../../../../images/login.webp);
 
 	display: flex;
 	justify-content: center;
@@ -18,7 +18,7 @@
 				rgba($color-black, 0.75),
 				rgba($color-black, 0.75)
 			),
-			url(./../../../../images/login-md.jpg?as=webp&quality=90);
+			url(./../../../../images/login-md.webp);
 	}
 
 	@include respond(tab-port) {
@@ -26,7 +26,7 @@
 				rgba($color-white, 0.75),
 				rgba($color-white, 0.75)
 			),
-			url(./../../../../images/login-md.jpg?as=webp&quality=90&width=650);
+			url(./../../../../images/login-md.webp);
 	}
 
 	@include respond(phone-lg) {
@@ -34,7 +34,7 @@
 				rgba($color-white, 0.75),
 				rgba($color-white, 0.75)
 			),
-			url(./../../../../images/login-sm.jpg?as=webp&quality=85&width=540);
+			url(./../../../../images/login-sm.webp);
 		padding: 2rem;
 		align-items: flex-start;
 	}

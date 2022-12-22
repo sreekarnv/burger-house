@@ -7,7 +7,7 @@
 			rgba($color-white, 0.7),
 			rgba($color-white, 0.5)
 		),
-		url(../../../../images/dashboard.jpg?as=webp&width=1440&quality=90);
+		url(../../../../images/dashboard.webp);
 	min-height: calc(100vh - $navbar-height);
 	padding: 2rem 3rem;
 
@@ -23,7 +23,7 @@
 				rgba($color-white, 0.7),
 				rgba($color-white, 0.5)
 			),
-			url(../../../../images/dashboard-md.jpg?as=webp&width=800&quality=90);
+			url(../../../../images/dashboard-md.webp);
 	}
 
 	@include respond(phone-md) {
@@ -34,7 +34,7 @@
 				rgba($color-white, 0.7),
 				rgba($color-white, 0.5)
 			),
-			url(../../../../images/dashboard-md.jpg?as=webp&width=450&quality=85);
+			url(../../../../images/dashboard-md.webp);
 	}
 
 	&__stats {

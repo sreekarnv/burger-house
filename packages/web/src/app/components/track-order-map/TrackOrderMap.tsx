@@ -19,6 +19,7 @@ interface Props {
 	order: Order;
 	show: boolean;
 	closeMap: () => void;
+	children?: any
 }
 
 const CENTER_COORDINATES: mapboxgl.LngLatLike | undefined = [
@@ -58,7 +59,7 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
 
 	const loadMap = () => {
 		mapRef.current = new mapboxgl.Map({
-			accessToken: process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN!,
+			accessToken: import.meta.env.VITE_MAP_BOX_ACCESS_TOKEN,
 			container: mapContainerRef.current,
 			style: MAP_STYLES,
 			center: CENTER_COORDINATES,

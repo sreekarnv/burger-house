@@ -130,7 +130,11 @@ const MyProfilePage: React.FC<MyProfilePageProps> = ({}) => {
 							<div>
 								<figure className='profile__form-photo-media'>
 									<LazyLoadImage
-										src={imageUrl || user?.photo?.url || ''}
+										src={
+											imageUrl || user?.photo?.url.startsWith('/uploads/')
+												? `${import.meta.env.SERVER_URL}${user?.photo?.url}`
+												: user?.photo?.url ?? ''
+										}
 										alt={user?.name}
 									/>
 								</figure>

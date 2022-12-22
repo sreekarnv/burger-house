@@ -11,6 +11,7 @@ type Props = React.DetailedHTMLProps<
 	show: boolean;
 	onClose: () => void;
 	className?: string;
+	children?: any;
 };
 
 const variants: Variants = {

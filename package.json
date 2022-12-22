@@ -1,38 +1,23 @@
 {
-    "private": true,
-    "version": "1.0.0",
-    "author": "Sreekar Venkata Nutulapati",
-    "scripts": {
-        "build:models": "yarn workspace @burger-house/models build",
-        "prebuild:web": "yarn build:models",
-        "build:web": "yarn workspace @burger-house/web build",
-        "dev:server": "yarn workspace @burger-house/server dev",
-        "dev:web": "yarn workspace @burger-house/web dev",
-        "predev": "yarn build:models",
-        "dev": "npm-run-all --parallel dev:server dev:web",
-        "prebuild:server": "yarn build:models",
-        "build:server": "yarn workspace @burger-house/server build",
-        "start": "yarn workspace @burger-house/server start"
-    },
-    "workspaces": {
-        "packages": [
-            "packages/*"
-        ],
-        "nohoist": [
-            "**/parcel",
-            "**/parcel/**"
-        ]
-    },
-    "devDependencies": {
-        "@parcel/core": "^2.7.0",
-        "@parcel/packager-raw-url": "2.7.0",
-        "@parcel/packager-xml": "2.7.0",
-        "@parcel/transformer-sass": "2.7.0",
-        "@parcel/transformer-webmanifest": "2.7.0",
-        "@parcel/transformer-xml": "2.7.0",
-        "npm-run-all": "^4.1.5",
-        "process": "^0.11.10",
-        "rimraf": "^3.0.2"
-    },
-    "dependencies": {}
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "build:models": "npx lerna run build --scope @burger-house/models",
+    "prebuild:web": "npm run build:models",
+    "build:web": "npx lerna run build --scope @burger-house/web",
+    "dev:server": "npx lerna run dev --scope @burger-house/server",
+    "dev:web": "npx lerna run dev --scope @burger-house/web", 
+    "predev": "npm run build:models",
+    "dev": "npm-run-all --parallel dev:server dev:web",
+    "prebuild:server": "npm run build:models",
+    "build:server": "npx lerna run build --scope @burger-house/server",
+    "build": "npm-run-all build:server",
+    "start": "npx lerna run start --scope @burger-house/server "
+  },
+  "devDependencies": {
+    "lerna": "^5.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

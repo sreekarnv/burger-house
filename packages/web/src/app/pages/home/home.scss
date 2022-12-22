@@ -16,7 +16,7 @@
 				rgba($color-white, 0.4),
 				rgba($color-white, 0.3)
 			),
-			url(../../../images/home.jpg?as=webp&width=1440&quality=90);
+			url(../../../images/home.webp);
 		background-size: cover;
 		background-attachment: fixed;
 
@@ -32,7 +32,7 @@
 					rgba($color-white, 0.4),
 					rgba($color-white, 0.3)
 				),
-				url(../../../images/home-md.jpg?as=webp&width=800&quality=90);
+				url(../../../images/home-md.webp);
 		}
 
 		@include respond(tab-land) {
@@ -48,7 +48,7 @@
 					rgba($color-white, 0.4),
 					rgba($color-white, 0.3)
 				),
-				url(../../../images/home-sm.jpg?as=webp&width=550&quality=85);
+				url(../../../images/home-sm.webp);
 		}
 
 		&-display--1 {
@@ -80,7 +80,7 @@
 	&-make-burger {
 		height: 40vh;
 		background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-			url(../../../images/make-burger.jpg?as=webp&width=1440&quality=90);
+			url(../../../images/make-burger.webp);
 		background-size: cover;
 		background-position: 50%;
 		display: grid;
@@ -95,7 +95,7 @@
 					rgba(0, 0, 0, 0.75),
 					rgba(0, 0, 0, 0.75)
 				),
-				url(../../../images/make-burger-md.jpg?as=webp&width=800&quality=90);
+				url(../../../images/make-burger-md.webp);
 		}
 
 		@include respond(tab-land) {
@@ -110,7 +110,7 @@
 					rgba(0, 0, 0, 0.75),
 					rgba(0, 0, 0, 0.75)
 				),
-				url(../../../images/make-burger-sm.jpg?as=webp&width=550&quality=85);
+				url(../../../images/make-burger-sm.webp);
 		}
 	}
 

@@ -18,7 +18,9 @@ const pageVariants: Variants = {
 	},
 };
 
-interface PageFade {}
+interface PageFade {
+	children: any;
+}
 
 const PageFade: React.FC<PageFade> = ({ children }) => {
 	return (

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 interface SeoProps {
 	title?: string;
+	children?: any;
 }
 
 const Seo: React.FC<SeoProps> = ({ title, children }) => {

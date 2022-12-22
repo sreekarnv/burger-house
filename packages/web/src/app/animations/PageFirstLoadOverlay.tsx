@@ -60,7 +60,7 @@ const loadVariants: Variants = {
 
 const PageFirstLoadOverlay: React.FC<PageFirstLoadOverlayProps> = ({
 	children,
-}) => {
+}: any) => {
 	return (
 		<>
 			<motion.div initial='initial' animate='in' variants={overlayVariants} />

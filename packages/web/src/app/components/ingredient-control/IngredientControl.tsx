@@ -20,7 +20,7 @@ const IngredientControl: React.FC<Props> = (props) => {
 			<span className='ingredient-control-details'>
 				<img
 					className='ingredient-control-details--photo'
-					src={process.env.REACT_APP_SERVER_URL + ingredient.photo}
+					src={import.meta.env.VITE_SERVER_URL + ingredient.photo}
 					alt={ingredient.name}
 				/>
 				<p className='ingredient-control-details--name'>

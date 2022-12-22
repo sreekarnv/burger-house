@@ -2,4 +2,4 @@
 
   publish = "./packages/web/public"
 
-  command = "yarn build:web"
+  command = "npm run build:web"
