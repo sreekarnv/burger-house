@@ -1,5 +1,5 @@
 [build]
 
-  publish = "./packages/web/public"
+  publish = "./packages/web/dist"
 
   command = "npm run build:web"
