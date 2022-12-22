@@ -6,6 +6,20 @@ Burger house is a fast-food e-commerce site similar to mcdonalds or burger king 
 
 live-preview: https://burger-house-sreekar.netlify.app/
 
+# Getting Started
+
+### Make sure you have installed Node JS and yarn
+
+Running dev server
+
+        yarn install 
+        yarn lerna run dev 
+
+Building the app
+
+        yarn lerna run build
+
+
 # Home Page
 
 ![](preview-images/home.png)
@@ -44,6 +58,8 @@ Admins can update existing manage orders
 4. [MongoDB](https://mongodb.com/)
 5. [MapBox](https://www.mapbox.com/)
 6. [Sass](https://sass-lang.com/)
+
+
 
 # Credentials
 
