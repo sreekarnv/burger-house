@@ -6,14 +6,14 @@ $color-black: hsl(0, 0%, 0%);
 
 $color-primary: hsl(24, 100%, 25%);
 $color-secondary: hsl(35, 100%, 81%);
-$color-tertiary: hsl(208, 100%, 39%);
+$color-tertiary: #006ac7;
 
 $color-primary-light: hsl(22, 54%, 47%);
 
-$color-success: hsl(96, 100%, 33%);
-$color-success-light: hsl(138, 39%, 57%);
+$color-success: #00efc3;
 
-$color-danger: hsl(352, 91%, 44%);
+$color-danger-light: #ce5a78;
+$color-danger: #bd385b;
 
 $color-dark: hsl(0, 0%, 20%);
 $color-light: hsl(0, 0%, 97%);
@@ -29,7 +29,7 @@ $colors: (
 	secondary: $color-secondary,
 	tertiary: $color-tertiary,
 	success: $color-success,
-	'success-light': $color-success-light,
+	'danger-light': $color-danger-light,
 	danger: $color-danger,
 	dark: $color-dark,
 	light: $color-light,

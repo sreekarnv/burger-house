@@ -122,6 +122,15 @@
 		padding: 3rem 1rem;
 	}
 
+	&__heading {
+		text-align: center;
+		padding: 2rem;
+
+		@include respond(phone-lg) {
+			padding: 0;
+		}
+	}
+
 	&__cards {
 		display: grid;
 		gap: 1.5rem;

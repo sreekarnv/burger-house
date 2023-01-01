@@ -1,0 +1,6 @@
+@use 'src/scss/variables' as *;
+
+$alert-colors: (
+	'success': $color-success,
+	'danger': $color-danger,
+);

@@ -1,16 +1,4 @@
-@use 'src/scss/variables' as *;
 @use 'src/scss/mixins' as *;
-
-.root {
-	position: fixed;
-	min-width: 50rem;
-	border-radius: 2px;
-	z-index: 5;
-
-	@include respond(tab-land) {
-		min-width: 100%;
-	}
-}
 
 .bottom-right {
 	bottom: 4rem;
@@ -41,13 +29,5 @@
 	@include respond(tab-land) {
 		left: 0;
 		top: 8rem;
-	}
-}
-
-.text {
-	font-size: 1.5rem;
-
-	@include respond(laptop-sm) {
-		font-size: 2rem;
 	}
 }

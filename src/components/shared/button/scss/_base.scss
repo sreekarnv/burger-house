@@ -1,0 +1,14 @@
+.root {
+	user-select: none;
+	border: none;
+	outline: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}

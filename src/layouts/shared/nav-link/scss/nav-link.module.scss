@@ -88,3 +88,13 @@
 	top: 0;
 	right: -2px;
 }
+
+.active {
+	.icon {
+		@include activeIcon($color-tertiary);
+	}
+
+	.label {
+		@include activeLabel($color-tertiary);
+	}
+}

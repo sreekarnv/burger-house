@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link, { LinkProps } from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
+import useActiveLink from '../../../hooks/use-active-link';
 
 import classes from './scss/nav-link.module.scss';
 
@@ -11,6 +11,7 @@ interface NavLinkProps extends LinkProps {
 	variant?: 'default' | 'logout';
 	showBadge?: boolean;
 	badgeValue?: string | number;
+	exact?: boolean;
 }
 
 const NavLink: React.FC<NavLinkProps> = ({
@@ -19,10 +20,10 @@ const NavLink: React.FC<NavLinkProps> = ({
 	variant = 'default',
 	showBadge,
 	badgeValue,
+	exact,
 	...props
 }) => {
-	const router = useRouter();
-	const isActive = router.pathname === props.href;
+	const { isActive } = useActiveLink(props.href, exact);
 
 	return (
 		<li className={classes.item}>

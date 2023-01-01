@@ -5,6 +5,7 @@ import HomeGurantee from '../components/home-gurantee';
 import Button from '../components/shared/button';
 import { trpc } from '../utils/trpc';
 import Heading from '../components/shared/heading';
+import clsx from 'clsx';
 
 const IndexPage: NextPage = ({}) => {
 	const { data, isLoading } = trpc.burger.all.useQuery({ limit: 3 });
@@ -42,7 +43,10 @@ const IndexPage: NextPage = ({}) => {
 				<Heading
 					variant='h1'
 					color='primary'
-					className='u-text-center u-text-uppercase'>
+					className={clsx(
+						classes['popular-burgers__heading'],
+						'u-text-uppercase'
+					)}>
 					newly added to menu
 				</Heading>
 				<div className={classes['popular-burgers__cards']}>

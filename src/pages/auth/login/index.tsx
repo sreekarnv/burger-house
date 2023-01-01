@@ -1,15 +1,16 @@
 import { Form, Formik } from 'formik';
 import type { NextPage } from 'next';
-import Alert from '../../components/shared/alert';
-import Button from '../../components/shared/button';
-import FormInput from '../../components/shared/form-input';
-import Heading from '../../components/shared/heading';
-import useAlert from '../../hooks/use-alert';
+import Alert from '../../../components/shared/alert';
+import Button from '../../../components/shared/button';
+import FormInput from '../../../components/shared/form-input';
+import Heading from '../../../components/shared/heading';
+import useAlert from '../../../hooks/use-alert';
 import classes from './login.module.scss';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { loginInputSchema } from '../../utils/schemas/auth/login';
+import { loginInputSchema } from '../../../utils/schemas/auth/login';
 import { useRouter } from 'next/router';
-import { trpc } from '../../utils/trpc';
+import { trpc } from '../../../utils/trpc';
+import clsx from 'clsx';
 
 const LoginPage: NextPage = ({}) => {
 	const context = trpc.useContext();
@@ -55,7 +56,10 @@ const LoginPage: NextPage = ({}) => {
 					<Form className={classes.form} autoComplete='off'>
 						<div className={classes['form-content']}>
 							<Heading
-								className='u-mb-7 u-text-capitalize u-ftwt-400'
+								className={clsx([
+									classes.heading,
+									'u-text-capitalize u-fw-400',
+								])}
 								color='primary'
 								variant='h2'>
 								Login
