@@ -1,0 +1,51 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	font-family: inherit;
+}
+
+html {
+	font-size: 62.5%;
+
+	@include respond(desktop) {
+		font-size: 56.25%;
+	}
+
+	@include respond(desktop-xl) {
+		font-size: 75%;
+	}
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	scrollbar-width: none;
+
+	.ReactQueryDevtoolsPanel {
+		* {
+			font-size: 1.4rem !important;
+		}
+	}
+}
+
+body {
+	box-sizing: border-box;
+	font-family: $font-default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-heading;
+}
