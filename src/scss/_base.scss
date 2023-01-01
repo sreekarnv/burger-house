@@ -28,12 +28,6 @@ html {
 	}
 
 	scrollbar-width: none;
-
-	.ReactQueryDevtoolsPanel {
-		* {
-			font-size: 1.4rem !important;
-		}
-	}
 }
 
 body {
@@ -48,4 +42,12 @@ h4,
 h5,
 h6 {
 	font-family: $font-heading;
+}
+
+html {
+	.ReactQueryDevtoolsPanel {
+		* {
+			font-size: 1.4rem !important;
+		}
+	}
 }

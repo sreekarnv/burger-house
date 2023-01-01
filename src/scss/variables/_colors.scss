@@ -1,24 +1,24 @@
 /////////////////////////////////
 // Colors
 
-$color-white: #fff;
-$color-black: #000;
+$color-white: hsl(0, 0%, 100%);
+$color-black: hsl(0, 0%, 0%);
 
-$color-primary: #803300;
-$color-secondary: #ffd59c;
-$color-tertiary: #006bc7;
+$color-primary: hsl(24, 100%, 25%);
+$color-secondary: hsl(35, 100%, 81%);
+$color-tertiary: hsl(208, 100%, 39%);
 
-$color-primary-light: #b96738;
+$color-primary-light: hsl(22, 54%, 47%);
 
-$color-success: #44aa00;
-$color-success-light: #67bc80;
+$color-success: hsl(96, 100%, 33%);
+$color-success-light: hsl(138, 39%, 57%);
 
-$color-danger: #d80a27;
+$color-danger: hsl(352, 91%, 44%);
 
-$color-dark: #333;
-$color-light: #f7f7f7;
+$color-dark: hsl(0, 0%, 20%);
+$color-light: hsl(0, 0%, 97%);
 
-$color-gray: #b6b1b1;
+$color-gray: hsl(0, 3%, 70%);
 
 // color map
 $colors: (

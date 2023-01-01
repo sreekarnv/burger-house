@@ -1,0 +1,24 @@
+@use 'src/scss/variables' as *;
+
+.root {
+	width: 7rem;
+	height: 4rem;
+	background-color: #ccc;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+
+	&--active {
+		justify-content: flex-end;
+	}
+}
+
+.slider {
+	height: 2.5rem;
+	width: 2.5rem;
+	background-color: $color-white;
+	border-radius: 50%;
+	margin: 0 0.5rem;
+}

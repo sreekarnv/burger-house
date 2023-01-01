@@ -1,5 +1,5 @@
 import { loginInputSchema } from './../../../utils/schemas/auth/login';
-import { registerInputSchema } from '../../../utils/schemas/auth/register';
+import { registerSchema } from '../../../utils/schemas/auth/register';
 import * as jwt from '../../lib/jwt';
 import UserModel from '../../models/user.model';
 import { Cookie } from 'next-cookie';
@@ -9,14 +9,17 @@ import { TRPCError } from '@trpc/server';
 
 export const authRouter = router({
 	register: publicProcedure
-		.input(registerInputSchema)
-		.mutation(async ({ input }) => {
+		.input(registerSchema)
+		.mutation(async ({ input, ctx }) => {
 			const { name, email, password } = input;
 			const user = await UserModel.create({
 				name,
 				email,
 				password,
+				location: input.location,
 			});
+
+			await jwt.signToken({ user }, ctx.req, ctx.res);
 
 			return user;
 		}),

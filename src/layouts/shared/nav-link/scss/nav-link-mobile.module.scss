@@ -1,0 +1,39 @@
+@use 'src/scss/variables' as *;
+@use './mixins' as *;
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+
+	&:last-child {
+		margin-bottom: 1rem;
+	}
+}
+
+.root {
+	color: $color-black;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.text {
+	font-size: 1.8rem;
+	font-family: $font-heading;
+}
+
+.badge {
+	border-radius: 50%;
+	background-color: $color-primary-light;
+	padding: 0.75rem;
+	height: 1.8rem;
+	width: 1.8rem;
+	border: 2px solid $color-primary;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $color-black;
+	font-weight: 700;
+}
