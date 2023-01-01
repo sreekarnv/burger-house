@@ -1,0 +1,13 @@
+@use 'src/scss/variables' as *;
+
+.root {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.text {
+	font-size: 2rem;
+	color: $color-success;
+	width: 25rem;
+}

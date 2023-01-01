@@ -1,0 +1,4 @@
+next.config.mjs
+.next
+node_modules
+public

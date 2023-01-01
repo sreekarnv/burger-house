@@ -1,0 +1,11 @@
+@use '/src/scss/variables' as *;
+
+@mixin activeLabel($color) {
+	color: $color;
+}
+
+@mixin activeIcon($color) {
+	background-color: $color;
+	border-color: $color;
+	color: $color-light;
+}

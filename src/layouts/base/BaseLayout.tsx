@@ -2,9 +2,7 @@ import React from 'react';
 import Footer from '../shared/footer';
 import Navbar from '../shared/navbar';
 
-interface BaseLayoutProps extends React.PropsWithChildren {}
-
-const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
+const BaseLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
 	return (
 		<>
 			<Navbar />
