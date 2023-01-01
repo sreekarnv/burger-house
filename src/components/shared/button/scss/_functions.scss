@@ -1,0 +1,5 @@
+@use '/src/scss/variables' as *;
+
+@function contrast-color($color) {
+	@return if(lightness($color) < 50%, $color-white, $color-black);
+}

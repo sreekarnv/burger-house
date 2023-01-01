@@ -4,10 +4,10 @@
 	display: flex;
 	align-items: center;
 	gap: 2rem;
+	color: darken($color-success, 15%);
 }
 
 .text {
 	font-size: 2rem;
-	color: $color-success;
 	width: 25rem;
 }

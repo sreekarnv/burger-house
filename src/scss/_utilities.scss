@@ -6,75 +6,15 @@
 	}
 }
 
-@each $name, $color in $colors {
-	.u-text-#{'' + $name} {
-		color: $color !important;
-	}
-
-	.u-bg-#{'' + $name} {
-		background-color: $color !important;
-	}
-}
-
 @each $name, $text-transform in $text-tranforms {
 	.u-text-#{'' + $name} {
 		text-transform: $text-transform !important;
 	}
 }
 
-@each $name, $align in $text-align {
+@each $name, $color in $colors {
 	.u-text-#{'' + $name} {
-		text-align: $align;
-	}
-}
-
-@for $space from 0 through 20 {
-	// margins
-	.u-ml-#{'' + $space} {
-		margin-left: 0.25 * $space + rem !important;
-	}
-
-	.u-mr-#{$space} {
-		margin-right: 0.25 * $space + rem !important;
-	}
-
-	.u-mt-#{$space} {
-		margin-top: 0.25 * $space + rem !important;
-	}
-
-	.u-mb-#{$space} {
-		margin-bottom: 0.25 * $space + rem !important;
-	}
-
-	.u-m-#{$space} {
-		margin: 0.25 * $space + rem !important;
-	}
-
-	// padding
-	.u-pl-#{$space} {
-		padding-left: 0.25 * $space + rem !important;
-	}
-
-	.u-pr-#{$space} {
-		padding-right: 0.25 * $space + rem !important;
-	}
-
-	.u-pt-#{$space} {
-		padding-top: 0.25 * $space + rem !important;
-	}
-
-	.u-pb-#{$space} {
-		padding-bottom: 0.25 * $space + rem !important;
-	}
-
-	.u-p-#{$space} {
-		padding: 0.25 * $space + rem !important;
-	}
-}
-
-@for $width from 0 through 20 {
-	.u-w-#{5 * $width} {
-		width: #{(5 * $width) + '%'} !important;
+		color: $color !important;
 	}
 }
 

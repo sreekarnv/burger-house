@@ -7,13 +7,11 @@ import type { Ingredient } from '../../server/models/ingredient.model';
 import AddRemoveButton from '../shared/add-remove-button';
 import Alert from '../shared/alert';
 import Button from '../shared/button';
-// import { useDispatch } from 'react-redux';
-// import useAlert from '../../hooks/helpers/useAlert';
-// import { useAppSelector } from '../../store/hooks';
-// import {
-// 	addBurgerToCart,
-// 	removeBurgerFromCart,
-// } from '../../store/modules/cart';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+	addBurgerToCart,
+	removeBurgerFromCart,
+} from '../../store/modules/cart';
 import classes from './burger-card.module.scss';
 
 const sizes = {
@@ -30,11 +28,10 @@ const BurgerCard: React.FC<BurgerCardProps> = ({
 	burger,
 	size = 'default',
 }) => {
-	// const dispatch = useDispatch();
-	// const cartBurger = useAppSelector((state) => state.cart.items).find(
-	// 	(el) => el._id === burger._id
-	// );
-	const cartBurger = true;
+	const dispatch = useAppDispatch();
+	const cartBurger = useAppSelector((state) => state.cart.items).find(
+		(item) => item._id === burger._id
+	);
 	const { alertType, setAlert, showAlert, alertMessage } = useAlert();
 
 	return (
@@ -85,19 +82,19 @@ const BurgerCard: React.FC<BurgerCardProps> = ({
 								<AddRemoveButton
 									className='u-jc-center'
 									leftOnClick={() => {
-										// dispatch(addBurgerToCart({ burger }));
+										dispatch(addBurgerToCart({ burger }));
 										setAlert('success', 'Added burger to cart');
 									}}
 									rightOnClick={() => {
-										// dispatch(removeBurgerFromCart({ burger }));
+										dispatch(removeBurgerFromCart({ burger }));
 										setAlert('danger', 'Removed burger from cart');
 									}}>
-									{/* {cartBurger?.itemsInCart} */}1
+									{cartBurger?.itemsInCart}
 								</AddRemoveButton>
 							) : (
 								<Button
 									onClick={() => {
-										// dispatch(addBurgerToCart({ burger }));
+										dispatch(addBurgerToCart({ burger }));
 										setAlert('success', 'Added burger to cart');
 									}}
 									size='sm'

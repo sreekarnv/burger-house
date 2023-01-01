@@ -1,0 +1,10 @@
+@use '../mixins' as *;
+@use 'src/scss/variables' as *;
+
+.success {
+	@include alertVariant($color-success);
+}
+
+.danger {
+	@include alertVariant($color-danger);
+}

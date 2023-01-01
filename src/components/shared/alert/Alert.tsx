@@ -1,5 +1,6 @@
-import classes from './alert.module.scss';
+import classes from './scss/alert.module.scss';
 
+import { HiOutlineXCircle } from 'react-icons/hi';
 import * as React from 'react';
 import clsx from 'clsx';
 
@@ -9,8 +10,8 @@ const positions = {
 };
 
 const types = {
-	success: 'u-bg-success',
-	danger: 'u-bg-danger',
+	success: classes.success,
+	danger: classes.danger,
 };
 
 type Props = React.DetailedHTMLProps<
@@ -33,10 +34,11 @@ const Alert: React.FC<Props> = ({
 				classes.root,
 				positions[position],
 				types[type],
-				'u-p-5 u-text-center u-text-capitalize',
+				'u-text-capitalize',
 			])}
 			{...props}>
-			<p className={clsx([classes.text, 'u-text-light'])}>{children}</p>
+			<HiOutlineXCircle className={classes.icon} />
+			<p className={clsx([classes.text])}>{children}</p>
 		</div>
 	);
 };

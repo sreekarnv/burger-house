@@ -1,0 +1,8 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/mixins' as *;
+
+@mixin alertVariant($color-bg, $alpha: 0.3) {
+	background-color: rgba($color-bg, $alpha);
+	color: $color-dark;
+	border-top-color: darken($color-bg, 15%);
+}

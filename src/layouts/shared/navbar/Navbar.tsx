@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
 				</Link>
 				<>
 					<ul className={classes.nav}>
-						<NavLink label='home' href='/'>
+						<NavLink exact label='home' href='/'>
 							{FiHome}
 						</NavLink>
 						<NavLink label='menu' href='/menu'>
@@ -67,10 +67,10 @@ const Navbar: React.FC = () => {
 						</NavLink>
 						{!user && (
 							<>
-								<NavLink label='login' href='/auth/login'>
+								<NavLink exact label='login' href='/auth/login'>
 									{FiLogIn}
 								</NavLink>
-								<NavLink label='register' href='/auth/register'>
+								<NavLink exact label='register' href='/auth/register'>
 									{FiUserPlus}
 								</NavLink>
 							</>
@@ -80,7 +80,12 @@ const Navbar: React.FC = () => {
 								{FiGrid}
 							</NavLink>
 						)}
-						<NavLink showBadge badgeValue={cartValue} label='cart' href='/cart'>
+						<NavLink
+							exact
+							showBadge
+							badgeValue={cartValue}
+							label='cart'
+							href='/cart'>
 							{FiShoppingCart}
 						</NavLink>
 						{user && (
@@ -103,6 +108,7 @@ const Navbar: React.FC = () => {
 						className={classes['nav--mobile']}>
 						<NavLinkMobile
 							icon={FiHome}
+							exact
 							label='Home'
 							href='/'
 							onClick={() => {
@@ -124,6 +130,7 @@ const Navbar: React.FC = () => {
 								<NavLinkMobile
 									icon={FiLogIn}
 									label='Login'
+									exact
 									href='/auth/login'
 									onClick={() => {
 										onClose();
@@ -132,6 +139,7 @@ const Navbar: React.FC = () => {
 								<NavLinkMobile
 									icon={FiUserPlus}
 									label='Register'
+									exact
 									href='/auth/register'
 									onClick={() => {
 										onClose();
@@ -153,6 +161,7 @@ const Navbar: React.FC = () => {
 							icon={FiShoppingCart}
 							label='Cart'
 							showBadge
+							exact
 							badgeValue={cartValue}
 							href='/cart'
 							onClick={() => {

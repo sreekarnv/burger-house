@@ -1,20 +1,20 @@
 import { Formik, Form } from 'formik';
 import { NextPage } from 'next';
-import Alert from '../../components/shared/alert';
-import Button from '../../components/shared/button';
-import FormInput from '../../components/shared/form-input';
-import Heading from '../../components/shared/heading';
-import useAlert from '../../hooks/use-alert';
-import Switch from '../../layouts/shared/switch';
-import { useAppSelector } from '../../store/hooks';
-import { registerFormSchema } from '../../utils/schemas/auth/register';
+import Alert from '../../../components/shared/alert';
+import Button from '../../../components/shared/button';
+import FormInput from '../../../components/shared/form-input';
+import Heading from '../../../components/shared/heading';
+import useAlert from '../../../hooks/use-alert';
+import Switch from '../../../layouts/shared/switch';
+import { useAppSelector } from '../../../store/hooks';
+import { registerFormSchema } from '../../../utils/schemas/auth/register';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { trpc } from '../../utils/trpc';
+import { trpc } from '../../../utils/trpc';
 
 import classes from './register.module.scss';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import useGeolocation from '../../hooks/use-geolocation';
+import useGeolocation from '../../../hooks/use-geolocation';
 
 const RegisterPage: NextPage = () => {
 	const router = useRouter();
@@ -80,7 +80,10 @@ const RegisterPage: NextPage = () => {
 								<Heading
 									variant='h2'
 									color='primary'
-									className='u-mb-7 u-ftwt-400 u-text-capitalize'>
+									className={clsx([
+										classes.heading,
+										'u-text-capitalize u-fw-400',
+									])}>
 									Register
 								</Heading>
 								<FormInput label='Name' name='name' />

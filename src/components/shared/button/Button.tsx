@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import Link from 'next/link';
-import classes from './button.module.scss';
+import classes from './scss/button.module.scss';
 
 const variants = {
 	primary: classes.primary,
