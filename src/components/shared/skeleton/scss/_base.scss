@@ -1,0 +1,14 @@
+@use '/src/scss/variables' as *;
+
+.root {
+	background-color: $color-gray-light;
+	overflow: hidden;
+	margin: 10px 0;
+	border-radius: 8px;
+}
+
+.wrapper {
+	margin: 20px auto;
+	padding: 10px 15px;
+	border-radius: 8px;
+}
