@@ -6,11 +6,10 @@ import Button from '../components/shared/button';
 import { trpc } from '../utils/trpc';
 import Heading from '../components/shared/heading';
 import clsx from 'clsx';
+import BurgerCardSkeleton from '../components/burger-card/BurgerCardSkeleton';
 
 const IndexPage: NextPage = ({}) => {
 	const { data, isLoading } = trpc.burger.all.useQuery({ limit: 3 });
-
-	if (isLoading) return <div>Loading...</div>;
 
 	return (
 		<>
@@ -50,9 +49,14 @@ const IndexPage: NextPage = ({}) => {
 					newly added to menu
 				</Heading>
 				<div className={classes['popular-burgers__cards']}>
-					{data?.burgers?.map((burger) => {
-						return <BurgerCard key={burger._id} burger={burger} />;
-					})}
+					{!isLoading &&
+						data?.burgers?.map((burger) => {
+							return <BurgerCard key={burger._id} burger={burger} />;
+						})}
+					{isLoading &&
+						Array(3)
+							.fill(0)
+							.map((_, i) => <BurgerCardSkeleton key={i} />)}
 				</div>
 			</section>
 		</>

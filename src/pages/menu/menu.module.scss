@@ -1,0 +1,111 @@
+@use 'src/scss/variables' as *;
+@use 'src/scss/mixins' as *;
+
+.root {
+	padding: 2rem;
+	padding-bottom: 6rem;
+	min-height: $page-height;
+
+	html & {
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		scrollbar-width: none;
+
+		@media (max-width: laptop-sm) {
+			scrollbar-width: thin;
+		}
+	}
+}
+
+.container {
+	max-width: calc(100vw - 60rem);
+	margin: 0 auto;
+
+	@include respond(laptop-lg) {
+		max-width: calc(100vw - 40rem);
+	}
+
+	@include respond(laptop-sm) {
+		max-width: calc(100vw - 20rem);
+	}
+
+	@include respond(tab-land) {
+		max-width: 100%;
+		text-align: right;
+	}
+}
+
+.heading {
+	text-align: center;
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+}
+
+.filter {
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
+	margin-bottom: 2rem;
+
+	@include respond(tab-land) {
+		gap: 1rem;
+	}
+
+	@include respond(tab-port) {
+		flex-direction: column;
+	}
+}
+
+.search {
+	position: relative;
+	width: 30%;
+
+	@include respond(laptop-sm) {
+		width: 60%;
+	}
+
+	@include respond(tab-port) {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.form-input {
+		@include respond(tab-port) {
+			margin-bottom: -5px;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: $color-gray;
+	}
+}
+
+.items {
+	min-height: 49.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 4rem;
+
+	@include respond(phone-sm) {
+		min-height: 100vh;
+		grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.cta {
+	display: flex;
+	column-gap: 1rem;
+	align-items: flex-start;
+}

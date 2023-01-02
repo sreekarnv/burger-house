@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="177.46mm" height="130.64mm" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 17746 13064" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+    .fil3 {fill:#FEFEFE}
+    .fil4 {fill:#FFF688}
+    .fil0 {fill:#FCF4A7}
+    .fil11 {fill:url(#b)}
+    .fil10 {fill:url(#m)}
+    .fil1 {fill:url(#p)}
+    .fil12 {fill:url(#q)}
+    .fil13 {fill:url(#r)}
+    .fil9 {fill:url(#a)}
+    .fil14 {fill:url(#s)}
+    .fil6 {fill:url(#t)}
+    .fil7 {fill:url(#u)}
+    .fil5 {fill:url(#v)}
+    .fil8 {fill:url(#n)}
+    .fil2 {fill:url(#o)}
+  </style>
+  <linearGradient id="b" x1="11857" x2="13808" y1="12552" y2="12552" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#EACD40" offset="0"/>
+   <stop stop-color="#EFD635" offset=".43922"/>
+   <stop stop-color="#F9E867" offset="1"/>
+  </linearGradient>
+  <linearGradient id="m" x1="9655.1" x2="12688" y1="2093" y2="1579.8" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#F3E038" offset="0"/>
+   <stop stop-color="#FCF4A3" offset=".47059"/>
+   <stop stop-color="#FCF29A" offset="1"/>
+  </linearGradient>
+  <linearGradient id="p" x1="333.23" x2="16741" y1="4309.8" y2="1489.4" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#FFCC29" offset="0"/>
+   <stop stop-color="#FFFDAD" offset=".61176"/>
+   <stop stop-color="#FFDD53" offset="1"/>
+  </linearGradient>
+  <linearGradient id="q" x1="6618.6" x2="6596.5" y1="12387" y2="11744" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#F3E689" offset="0"/>
+   <stop stop-color="#F7EA89" offset="1"/>
+  </linearGradient>
+  <linearGradient id="r" x1="7512.3" x2="10150" y1="5198.5" y2="6225.7" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#F8E44F" offset="0"/>
+   <stop stop-color="#F9EA72" offset=".43922"/>
+   <stop stop-color="#FBF095" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a" x1="14480" x2="13169" y1="4058" y2="3804.8" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#F9E85B" offset="0"/>
+   <stop stop-color="#ECD631" offset=".47059"/>
+   <stop stop-color="#D2B42F" offset="1"/>
+  </linearGradient>
+  <linearGradient id="s" x1="1099" x2="2089.3" y1="7927.2" y2="7748.1" gradientUnits="userSpaceOnUse" xlink:href="#b">
+  </linearGradient>
+  <linearGradient id="t" x1="12208" x2="11623" y1="7722.2" y2="6501.6" gradientUnits="userSpaceOnUse" xlink:href="#a">
+  </linearGradient>
+  <linearGradient id="u" x1="15719" x2="14985" y1="10524" y2="8990.8" gradientUnits="userSpaceOnUse" xlink:href="#a">
+  </linearGradient>
+  <linearGradient id="v" x1="6799.6" x2="5339.9" y1="9054.5" y2="8103.8" gradientUnits="userSpaceOnUse" xlink:href="#a">
+  </linearGradient>
+  <linearGradient id="n" x1="5163" x2="3537.4" y1="4901.2" y2="4273.1" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#F9E96B" offset="0"/>
+   <stop stop-color="#F9E652" offset=".47059"/>
+   <stop stop-color="#D2B42F" offset="1"/>
+  </linearGradient>
+  <radialGradient id="o" cx="9%" cy="40%">
+   <stop stop-color="#F9E95C" offset="0"/>
+   <stop stop-color="#FBF5AA" offset=".25882"/>
+   <stop stop-color="#FFF688" offset=".50196"/>
+   <stop stop-color="#FDF552" offset=".6902"/>
+   <stop stop-color="#FFCC29" offset="1"/>
+  </radialGradient>
+ </defs>
+   <path class="fil0" d="m9010 1857c-2740 1067-5559 2022-8728 2491-208 38-282 218-282 477 187 2049 685 4001 1211 5945 518 940 4425 1462 5527 1659 1012 117 2024 234 3036 350 473-40 929-14 1362 102 2097 181 4176 185 6247 107 225-35 447-115 331-589-243-2566-425-5150-764-7687-294-762-587-1524-881-2287-96-175-210-331-384-428-335-259-699-492-584-1148-32-410-171-717-501-842-619-112-3641 928-5590 1849z"/>
+   <path class="fil1" d="m393 4636c3711-551 7595-2089 10599-3505 1209-570 2495-801 3581-990 216 90 273 359 372 656-323 370 94 856 784 1382l954 2277c-2053 499-4204 835-6412 1075-764-367-1437-927-2870 126-2739-110-5098-459-7006-1022z"/>
+   <path class="fil2" d="m16813 4782l774 7770c5 180-78 273-248 277-4801 270-11914-426-15262-1620-394-186-728-437-837-934l-1041-5352c-28-212 8-366 331-253 2210 621 4504 937 6870 988 572 721 1755 984 2890 15 2074-331 4148-662 6223-992 179-24 290-31 302 102z"/>
+   <ellipse class="fil3" transform="matrix(1.2713 1.1973 -1.0478 1.2828 15458 9821.8)" rx="532" ry="415"/>
+   <ellipse class="fil4" transform="matrix(.90018 -.16281 .35044 1.8335 1637.9 7978.7)" rx="532" ry="415"/>
+   <path class="fil3" d="m5467 4396c-55 851-1705 962-1878 170-122-713 1500-749 1878-170z"/>
+   <ellipse class="fil3" transform="matrix(1.2881 -.23151 .08609 1.3339 13922 3928.3)" rx="532" ry="415"/>
+   <ellipse class="fil4" transform="matrix(1.7381 .36791 -.32329 1.641 6230.6 8691.4)" rx="532" ry="415"/>
+   <path class="fil3" d="m9981 1895c586 951 2700 186 2233-895-516-280-2358 633-2233 895z"/>
+   <path class="fil5" d="m6248 7903c511 108 864 501 790 877s-548 594-1059 486-864-501-790-877 548-594 1059-486z"/>
+   <ellipse class="fil3" transform="matrix(1.0124 .95346 -.83436 1.0215 12014 7214.1)" rx="532" ry="415"/>
+   <path class="fil6" d="m12292 6692c297 280 383 697 192 931s-588 197-885-83-383-697-192-931 588-197 885 83z"/>
+   <path class="fil7" d="m15826 9231c373 352 481 875 241 1170-240 294-738 248-1111-104s-481-875-241-1170c240-294 738-248 1111 104z"/>
+   <ellipse class="fil3" transform="matrix(.90018 -.16281 .35044 1.8335 1628.2 7930.1)" rx="532" ry="415"/>
+   <path class="fil8" d="m5350 4396c-55 851-1705 962-1878 170-122-713 1500-749 1878-170z"/>
+   <path class="fil9" d="m13821 3381c378-68 701 125 721 431s-271 609-649 677-701-125-721-431 271-609 649-677z"/>
+   <path class="fil10" d="m9884 1948c586 951 2700 186 2233-895-516-280-2358 633-2233 895z"/>
+   <path class="fil3" d="m6867 8246c192 171 292 394 249 612-74 376-548 594-1059 486-258-55-476-182-619-343 139 124 326 220 541 265 511 108 984-110 1059-486 37-186-31-377-171-534z"/>
+   <path class="fil3" d="m11950 12913c742-902 1280-699 1951 122-662-131-1314-185-1951-122z"/>
+   <path class="fil11" d="m11857 12942c742-902 1280-699 1951 122-662-131-1314-185-1951-122z"/>
+   <path class="fil0" d="m5636 12084c9-11 1771 279 1942 298 4-10-3 5 0-6-258-675-1662-644-1942-292z"/>
+   <path class="fil12" d="m5725 12100c-4 9 1611 255 1765 271 3-9-10-20-7-29-233-581-1505-544-1758-242z"/>
+   <ellipse class="fil0" cx="8953" cy="5712" rx="1413" ry="706"/>
+   <ellipse class="fil13" cx="8831" cy="5712" rx="1413" ry="705"/>
+   <path class="fil14" d="m1449 7076c264-48 544 254 624 675s-69 800-333 848-544-254-624-675 69-800 333-848z"/>
+</svg>

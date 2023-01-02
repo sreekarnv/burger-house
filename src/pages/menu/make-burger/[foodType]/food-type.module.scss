@@ -1,0 +1,132 @@
+@use 'src/scss/mixins' as *;
+@use 'src/scss/variables' as *;
+
+.back {
+	padding-top: 2rem;
+	max-width: 182rem;
+	margin: 0 auto;
+
+	@include respond(laptop-lg) {
+		padding-left: 1rem;
+	}
+}
+
+.make-burger {
+	display: grid;
+	min-height: 91.5vh;
+	grid-template-columns:
+		5rem [full-col-start] repeat(2, [col-start] 1fr [col-end])
+		[full-col-start] 5rem;
+	align-content: center;
+	justify-content: center;
+
+	@include respond(phone-lg) {
+		grid-template-columns: [full-col-start] repeat(2, [col-start] 1fr [col-end]) [full-col-start];
+		grid-row-gap: 4rem;
+	}
+
+	&-burger {
+		grid-column: full-col-start / col-end 1;
+		width: 80%;
+		margin: 0 auto;
+		height: 45rem;
+
+		@include respond(desktop-sm) {
+			width: 90%;
+		}
+
+		@include respond(tab-land) {
+			grid-column: full-col-start / full-col-end;
+		}
+
+		@include respond(tab-port) {
+			height: auto;
+			max-height: 40rem;
+		}
+
+		@include respond(phone-md) {
+			width: 100%;
+		}
+	}
+
+	&-controls {
+		display: flex;
+		flex-direction: column;
+		grid-column: col-start 2 / full-col-end;
+		align-items: center;
+		justify-content: center;
+
+		.add-remove-btn {
+			flex: 0;
+		}
+
+		@include respond(tab-land) {
+			grid-row: 2 / 3;
+			grid-column: full-col-start / full-col-end;
+
+			height: auto;
+		}
+	}
+
+	&-cta {
+		grid-column: col-start 2 / full-col-end;
+		width: 100%;
+		display: grid;
+		justify-content: stretch;
+		grid-row-gap: 1rem;
+		padding: 2rem;
+
+		@include respond(tab-land) {
+			grid-column: full-col-start / full-col-end;
+		}
+
+		@include respond(phone-lg) {
+			grid-row-gap: 1.5rem;
+		}
+
+		&-price {
+			text-align: center;
+			font-size: 1.8rem;
+			margin-bottom: 2rem;
+
+			@include respond(tab-land) {
+				font-size: 2.25rem;
+			}
+
+			@include respond(phone-lg) {
+				font-size: 3rem;
+			}
+		}
+
+		&-btns {
+			width: 45%;
+			display: flex;
+			justify-content: space-around;
+			margin: 0 auto;
+
+			@include respond(tab-land) {
+				width: 65%;
+			}
+
+			@include respond(phone-lg) {
+				width: 100%;
+			}
+
+			@include respond(phone-md) {
+				flex-direction: column;
+			}
+
+			& > * {
+				width: 15rem;
+
+				@include respond(tab-land) {
+					width: 20rem;
+				}
+
+				@include respond(phone-md) {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
