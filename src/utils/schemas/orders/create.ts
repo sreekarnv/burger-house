@@ -1,5 +1,11 @@
 import { z } from 'zod';
-import { Ingredient } from '../../../server/models/ingredient.model';
+
+const itemIngredient = z.object({
+	_id: z.string(),
+	amount: z.number(),
+	name: z.string(),
+	photo: z.string(),
+});
 
 const itemSchema = z.object({
 	itemsInCart: z.number().min(1),
@@ -7,7 +13,7 @@ const itemSchema = z.object({
 	name: z.string(),
 	isVegetarian: z.boolean(),
 	price: z.number(),
-	ingredients: z.array(z.instanceof(Ingredient)).nullable(),
+	ingredients: z.array(itemIngredient).nullable(),
 });
 
 export const orderInputSchema = z.object({
