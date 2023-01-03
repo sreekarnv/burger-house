@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import classes from './home.module.scss';
 import BurgerCard from '../components/burger-card';
 import HomeGurantee from '../components/home-gurantee';
@@ -7,8 +6,10 @@ import { trpc } from '../utils/trpc';
 import Heading from '../components/shared/heading';
 import clsx from 'clsx';
 import BurgerCardSkeleton from '../components/burger-card/BurgerCardSkeleton';
+import { NextPageWithLayout } from './_app';
+import BaseLayout from '../layouts/base-layout';
 
-const IndexPage: NextPage = ({}) => {
+const IndexPage: NextPageWithLayout = ({}) => {
 	const { data, isLoading } = trpc.burger.all.useQuery({ limit: 3 });
 
 	return (
@@ -61,6 +62,10 @@ const IndexPage: NextPage = ({}) => {
 			</section>
 		</>
 	);
+};
+
+IndexPage.getLayout = (page) => {
+	return <BaseLayout>{page}</BaseLayout>;
 };
 
 export default IndexPage;

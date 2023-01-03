@@ -19,6 +19,7 @@
     "@typegoose/typegoose": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "framer-motion": "^8.0.2",
     "jsonwebtoken": "^9.0.0",

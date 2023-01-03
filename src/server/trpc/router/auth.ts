@@ -1,11 +1,13 @@
+import { updateDetailsSchema } from './../../../utils/schemas/user/update-details';
 import { loginInputSchema } from './../../../utils/schemas/auth/login';
 import { registerSchema } from '../../../utils/schemas/auth/register';
 import * as jwt from '../../lib/jwt';
 import UserModel from '../../models/user.model';
 import { Cookie } from 'next-cookie';
 
-import { router, publicProcedure } from '../trpc';
+import { router, publicProcedure, privateProcedure } from '../trpc';
 import { TRPCError } from '@trpc/server';
+import { updatePasswordSchema } from '../../../utils/schemas/auth/new-password';
 
 export const authRouter = router({
 	register: publicProcedure
@@ -17,6 +19,10 @@ export const authRouter = router({
 				email,
 				password,
 				location: input.location,
+				photo: {
+					publicId: 'default',
+					url: '/users/default.png',
+				},
 			});
 
 			await jwt.signToken({ user }, ctx.req, ctx.res);
@@ -51,4 +57,46 @@ export const authRouter = router({
 	user: publicProcedure.query(async ({ ctx }) => {
 		return ctx.user || null;
 	}),
+	details: privateProcedure
+		.input(updateDetailsSchema)
+		.mutation(async ({ input, ctx }) => {
+			const { name, email } = input;
+
+			const user = await UserModel.findByIdAndUpdate(
+				ctx.user?._id,
+				{
+					name,
+					email,
+				},
+				{
+					new: true,
+					runValidators: true,
+				}
+			);
+
+			return user;
+		}),
+	newPassword: privateProcedure
+		.input(updatePasswordSchema)
+		.mutation(async ({ ctx, input }) => {
+			const { password, oldPassword } = input;
+
+			const user = await UserModel.findById(ctx.user?._id).select('+password');
+
+			// if (!user || !(await user.checkPassword(oldPassword, user.password))) {
+			// 	throw new TRPCError({
+			// 		code: 'BAD_REQUEST',
+			// 		message: 'Invalid Credentials',
+			// 	});
+			// }
+
+			if (!user) return false;
+
+			user.password = password;
+
+			console.log(user);
+			await user.save({ validateBeforeSave: false });
+
+			return true;
+		}),
 });

@@ -1,0 +1,75 @@
+@use 'src/scss/mixins' as *;
+@use 'src/scss/variables' as *;
+
+.sidebar {
+	background-image: linear-gradient(
+		to right bottom,
+		$color-primary-light,
+		$color-primary
+	);
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+	height: 100%;
+	position: fixed;
+	top: $navbar-height;
+
+	@include respond(phone-lg) {
+		top: 8.2rem;
+	}
+
+	&__user {
+		align-items: center;
+		display: flex;
+		flex: 0 0 10%;
+		gap: 2rem;
+		padding: 1.25rem;
+		margin-right: 1.25rem;
+
+		@include respond(phone-lg) {
+			margin-bottom: 4rem;
+		}
+	}
+
+	&__user__media {
+		height: 8rem;
+		width: 8rem;
+		border-radius: 50%;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
+		border-radius: 50%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	&__user__image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	&__user__name {
+		text-align: center;
+		font-size: 2.3rem;
+		font-weight: 600;
+		line-height: 1.1;
+		width: 18rem;
+
+		@include respond(laptop-lg) {
+			width: 15rem;
+		}
+
+		@include respond(tab-land) {
+			width: auto;
+			flex: 1;
+		}
+	}
+
+	&__user__email {
+		font-size: 1.5rem;
+		opacity: 0.65;
+	}
+}

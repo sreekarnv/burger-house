@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import { NextPage } from 'next';
 import MenuNavCard from '../../../components/menu-nav-card';
 import Heading from '../../../components/shared/heading';
+import BaseLayout from '../../../layouts/base-layout';
+import { NextPageWithLayout } from '../../_app';
 import classes from './diet-choice.module.scss';
 
-const DietChoice: NextPage = () => {
+const DietChoice: NextPageWithLayout = () => {
 	return (
 		<>
 			<div className={classes.root}>
@@ -21,6 +22,10 @@ const DietChoice: NextPage = () => {
 			</div>
 		</>
 	);
+};
+
+DietChoice.getLayout = (page) => {
+	return <BaseLayout>{page}</BaseLayout>;
 };
 
 export default DietChoice;

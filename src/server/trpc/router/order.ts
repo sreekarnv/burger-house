@@ -30,12 +30,12 @@ export const orderRouter = router({
 	userAll: privateProcedure
 		.input(
 			z.object({
-				page: z.number().nullish(),
+				cursor: z.number().nullish(),
 				limit: z.number().nullish(),
 			})
 		)
 		.query(async ({ ctx, input }) => {
-			let { page, limit } = input;
+			let { cursor: page, limit } = input;
 
 			if (!page) page = 1;
 			if (!limit) limit = 10;
@@ -56,7 +56,7 @@ export const orderRouter = router({
 
 			const order = await OrderModel.findOne({
 				$and: [{ user: ctx.user._id }, { _id }],
-			}).populate('ingredients._id');
+			});
 
 			if (!order) {
 				throw new TRPCError({

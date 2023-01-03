@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
+import PageLoader from '../../components/shared/loaders/page-loader/PageLoader';
 import { trpc } from '../../utils/trpc';
 
 const LogoutPage: NextPage = ({}) => {
@@ -17,9 +18,7 @@ const LogoutPage: NextPage = ({}) => {
 
 	return (
 		<>
-			<div>
-				<h1>Loading....</h1>
-			</div>
+			<PageLoader variant='full' />
 		</>
 	);
 };

@@ -1,5 +1,4 @@
 import { Formik, Form } from 'formik';
-import { NextPage } from 'next';
 import Alert from '../../../components/shared/alert';
 import Button from '../../../components/shared/button';
 import FormInput from '../../../components/shared/form-input';
@@ -15,8 +14,10 @@ import classes from './register.module.scss';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import useGeolocation from '../../../hooks/use-geolocation';
+import BaseLayout from '../../../layouts/base-layout';
+import { NextPageWithLayout } from '../../_app';
 
-const RegisterPage: NextPage = () => {
+const RegisterPage: NextPageWithLayout = () => {
 	const router = useRouter();
 	const context = trpc.useContext();
 	const location = useAppSelector((state) => state.geolocation.location);
@@ -119,5 +120,7 @@ const RegisterPage: NextPage = () => {
 		</>
 	);
 };
+
+RegisterPage.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
 export default RegisterPage;

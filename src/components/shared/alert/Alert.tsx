@@ -14,18 +14,25 @@ const types = {
 	danger: classes.danger,
 };
 
+const darkTypes = {
+	success: classes['success--dark'],
+	danger: classes['danger--dark'],
+};
+
 type Props = React.DetailedHTMLProps<
 	React.HTMLAttributes<HTMLDivElement>,
 	HTMLDivElement
 > & {
 	type?: keyof typeof types;
 	position?: keyof typeof positions;
+	variant?: 'default' | 'dark';
 };
 
 const Alert: React.FC<Props> = ({
 	children,
 	position = 'bottom-right',
 	type = 'success',
+	variant = 'default',
 	...props
 }) => {
 	return (
@@ -33,7 +40,8 @@ const Alert: React.FC<Props> = ({
 			className={clsx([
 				classes.root,
 				positions[position],
-				types[type],
+				variant === 'default' && types[type],
+				variant === 'dark' && darkTypes[type],
 				'u-text-capitalize',
 			])}
 			{...props}>

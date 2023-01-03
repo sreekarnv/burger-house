@@ -42,7 +42,7 @@ export class Location {
 	next();
 })
 @pre<User>('save', async function (next) {
-	if (!this.isNew || !this.isModified('password')) {
+	if (!this.isNew && !this.isModified('password')) {
 		return next();
 	}
 

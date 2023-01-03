@@ -8,7 +8,7 @@ export const signToken = (
 	req: NextApiRequest,
 	res: NextApiResponse
 ) => {
-	const token = jwt.sign(payload, process.env.JWT_SECRET!, {
+	const token = jwt.sign({ _id: payload.user._id }, process.env.JWT_SECRET!, {
 		expiresIn: parseInt(process.env.JWT_EXPIRES_IN!) * 60 * 60,
 	});
 

@@ -1,5 +1,4 @@
 import { Form, Formik } from 'formik';
-import type { NextPage } from 'next';
 import Alert from '../../../components/shared/alert';
 import Button from '../../../components/shared/button';
 import FormInput from '../../../components/shared/form-input';
@@ -11,8 +10,10 @@ import { loginInputSchema } from '../../../utils/schemas/auth/login';
 import { useRouter } from 'next/router';
 import { trpc } from '../../../utils/trpc';
 import clsx from 'clsx';
+import { NextPageWithLayout } from '../../_app';
+import BaseLayout from '../../../layouts/base-layout';
 
-const LoginPage: NextPage = ({}) => {
+const LoginPage: NextPageWithLayout = ({}) => {
 	const context = trpc.useContext();
 	const { setAlert, showAlert, alertMessage, alertType } = useAlert();
 	const router = useRouter();
@@ -77,5 +78,7 @@ const LoginPage: NextPage = ({}) => {
 		</>
 	);
 };
+
+LoginPage.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
 export default LoginPage;

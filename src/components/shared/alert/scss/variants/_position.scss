@@ -12,22 +12,11 @@
 
 .top-center {
 	top: 10rem;
-	left: 36.75%;
+	left: 50%;
 
-	@include respond(laptop-lg) {
-		left: 34.5%;
-	}
-
-	@include respond(laptop-md) {
-		left: 31.5%;
-	}
-
-	@include respond(laptop-sm) {
-		left: 30%;
-	}
+	transform: translateX(-50%);
 
 	@include respond(tab-land) {
-		left: 0;
 		top: 8rem;
 	}
 }

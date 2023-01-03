@@ -1,0 +1,11 @@
+@use 'src/scss/variables' as *;
+
+.root {
+	background-color: rgba($color-black, 0.85);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+}

@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import Button from '../../components/shared/button';
 import { HiOutlineSearch } from 'react-icons/hi';
 import FormInput from '../../components/shared/form-input';
-import { NextPage } from 'next';
 import { trpc } from '../../utils/trpc';
 import Heading from '../../components/shared/heading';
 import clsx from 'clsx';
@@ -13,8 +12,10 @@ import usePagination from '../../hooks/use-pagination';
 import Pagination from '../../components/shared/pagination';
 import BurgerCardSkeleton from '../../components/burger-card/BurgerCardSkeleton';
 import BurgerCard from '../../components/burger-card';
+import BaseLayout from '../../layouts/base-layout';
+import { NextPageWithLayout } from '../_app';
 
-const MenuPage: NextPage = ({}) => {
+const MenuPage: NextPageWithLayout = ({}) => {
 	const router = useRouter();
 	const { page, handleNextPage, handlePrevPage, reset, handlePage } =
 		usePagination({});
@@ -139,6 +140,10 @@ const MenuPage: NextPage = ({}) => {
 			</div>
 		</>
 	);
+};
+
+MenuPage.getLayout = (page) => {
+	return <BaseLayout>{page}</BaseLayout>;
 };
 
 export default MenuPage;
