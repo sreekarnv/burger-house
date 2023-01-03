@@ -17,7 +17,7 @@ const LoginPage: NextPageWithLayout = ({}) => {
 	const context = trpc.useContext();
 	const { setAlert, showAlert, alertMessage, alertType } = useAlert();
 	const router = useRouter();
-	const { mutate, isLoading, error } = trpc.auth.login.useMutation({
+	const { mutate, isLoading } = trpc.auth.login.useMutation({
 		onSuccess(data) {
 			context.auth.user.setData(undefined, data);
 		},
@@ -31,8 +31,6 @@ const LoginPage: NextPageWithLayout = ({}) => {
 			}
 		},
 	});
-
-	console.log({ error });
 
 	return (
 		<>

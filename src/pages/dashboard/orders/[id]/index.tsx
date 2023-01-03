@@ -6,6 +6,7 @@ import OrderListItem from '../../../../components/order-list-item';
 import Button from '../../../../components/shared/button';
 import Heading from '../../../../components/shared/heading';
 import PageLoader from '../../../../components/shared/loaders/page-loader/PageLoader';
+import TrackOrderMap from '../../../../components/track-order-map';
 import useDisclosure from '../../../../hooks/use-disclosure';
 import DashboardLayout from '../../../../layouts/dashboard-layout';
 import { trpc } from '../../../../utils/trpc';
@@ -35,7 +36,7 @@ const MyOrderDetailPage: NextPageWithLayout = ({}) => {
 
 	return (
 		<>
-			{/* <TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} /> */}
+			<TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
 			<div className={classes.root}>
 				<Heading
 					variant='h3'

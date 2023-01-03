@@ -1,4 +1,5 @@
 import './../scss/main.scss';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { Provider } from 'react-redux';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
