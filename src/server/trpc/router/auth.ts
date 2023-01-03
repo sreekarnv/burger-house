@@ -21,7 +21,7 @@ export const authRouter = router({
 				location: input.location,
 				photo: {
 					publicId: 'default',
-					url: '/users/default.png',
+					url: '/users/default.jpg',
 				},
 			});
 
@@ -83,12 +83,12 @@ export const authRouter = router({
 
 			const user = await UserModel.findById(ctx.user?._id).select('+password');
 
-			// if (!user || !(await user.checkPassword(oldPassword, user.password))) {
-			// 	throw new TRPCError({
-			// 		code: 'BAD_REQUEST',
-			// 		message: 'Invalid Credentials',
-			// 	});
-			// }
+			if (!user || !(await user.checkPassword(oldPassword, user.password))) {
+				throw new TRPCError({
+					code: 'BAD_REQUEST',
+					message: 'Invalid Credentials',
+				});
+			}
 
 			if (!user) return false;
 
