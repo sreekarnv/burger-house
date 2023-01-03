@@ -29,7 +29,7 @@
 
 		&:hover,
 		&:focus-visible {
-			color: $color-white;
+			color: contrast-color($color);
 			background-color: $color;
 		}
 	}

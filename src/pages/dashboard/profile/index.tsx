@@ -1,0 +1,213 @@
+import { Formik, Form } from 'formik';
+import Image from 'next/image';
+import React from 'react';
+import Alert from '../../../components/shared/alert';
+import Button from '../../../components/shared/button';
+import FormInput from '../../../components/shared/form-input';
+import useAlert from '../../../hooks/use-alert';
+import { updatePasswordSchema } from '../../../utils/schemas/auth/new-password';
+import { updateDetailsSchema } from '../../../utils/schemas/user/update-details';
+import { trpc } from '../../../utils/trpc';
+import { NextPageWithLayout } from '../../_app';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
+import DashboardLayout from '../../../layouts/dashboard-layout';
+
+import classes from './profile.module.scss';
+import clsx from 'clsx';
+import Heading from '../../../components/shared/heading';
+import { useRouter } from 'next/router';
+
+const MyProfilePage: NextPageWithLayout = () => {
+	const imageRef = React.useRef<any>();
+	const router = useRouter();
+	const context = trpc.useContext();
+	const user = context.auth.user.getData();
+	// const { imagefile, imageUrl, uploadFile } = useImageUpload();
+
+	const {
+		isLoading: updateDetailsLoading,
+		mutate: updateDetails,
+		error: updateDetailsError,
+	} = trpc.auth.details.useMutation({
+		onSuccess(data) {
+			context.auth.user.setData(undefined, data);
+		},
+	});
+
+	const {
+		isLoading: updatePasswordLoading,
+		mutate: updatePassword,
+		error: updatePasswordError,
+	} = trpc.auth.newPassword.useMutation({
+		onSuccess() {
+			setAlert(
+				'success',
+				'your password has been updated! You will be logged out'
+			);
+			setTimeout(() => {
+				router.replace('/auth/logout');
+			}, 1500);
+		},
+	});
+
+	const { showAlert, setAlert, alertMessage, alertType } = useAlert();
+
+	return (
+		<>
+			{showAlert && (
+				<Alert position='top-center' type={alertType}>
+					{alertMessage}
+				</Alert>
+			)}
+			<div className={classes['profile']}>
+				<Formik
+					validationSchema={toFormikValidationSchema(updateDetailsSchema)}
+					initialValues={{
+						name: user?.name || '',
+						email: user?.email || '',
+					}}
+					onSubmit={async (data, { setErrors }) => {
+						try {
+							if (user) {
+								await updateDetails({
+									name: data.name,
+									email: data.email,
+								});
+							}
+						} catch (err: any) {
+							if ((updateDetailsError as any).response.data.errors) {
+								const errorMap = {} as any;
+								(updateDetailsError as any).response.data.errors.forEach(
+									(error: any) => {
+										errorMap[error.field] = error.message;
+									}
+								);
+								setErrors(errorMap);
+							} else {
+								setAlert(
+									'danger',
+									(updateDetailsError as any).response.data.message ||
+										'something went wrong'
+								);
+							}
+						}
+					}}>
+					<Form
+						autoComplete='off'
+						className={clsx(
+							classes['profile__form'],
+							classes['profile__form--1']
+						)}>
+						<Heading
+							variant='h2'
+							color='primary'
+							className={clsx('u-fw-400', classes['profile__heading'])}>
+							Update User Details
+						</Heading>
+						<FormInput label='Name' name='name' />
+						<FormInput label='Email' name='email' />
+						<div className={classes['profile__form-photo']}>
+							<Button
+								type='button'
+								onClick={() => {
+									imageRef.current.click();
+								}}
+								variant='primary-outline'
+								size='sm'>
+								Upload Photo
+							</Button>
+							<input
+								onChange={() => {
+									//
+								}}
+								type='file'
+								style={{ display: 'none' }}
+								ref={imageRef}
+							/>
+							<div>
+								<figure className={classes['profile__form-photo-media']}>
+									<Image
+										src={user?.photo?.url || ''}
+										alt={user?.name || ''}
+										height={40}
+										width={40}
+									/>
+								</figure>
+							</div>
+						</div>
+						<Button type='submit' color='tertiary'>
+							{updateDetailsLoading ? 'Loading...' : 'Update Details'}
+						</Button>
+					</Form>
+				</Formik>
+
+				<Formik
+					initialValues={{
+						oldPassword: '',
+						password: '',
+						passwordConfirm: '',
+					}}
+					validationSchema={toFormikValidationSchema(updatePasswordSchema)}
+					onSubmit={async (values, { setErrors }) => {
+						try {
+							updatePassword(values as any);
+						} catch (err: any) {
+							if ((updatePasswordError as any).response.data.errors) {
+								const errorMap = {} as any;
+								(updatePasswordError as any).response.data.errors.forEach(
+									(error: any) => {
+										errorMap[error.field] = error.message;
+									}
+								);
+								setErrors(errorMap);
+							} else {
+								setAlert(
+									'danger',
+									(updatePasswordError as any).response.data.message ||
+										'something went wrong'
+								);
+							}
+						}
+					}}>
+					{() => {
+						return (
+							<Form
+								autoComplete='off'
+								className={clsx(
+									classes['profile__form'],
+									classes['profile__form--2']
+								)}>
+								<Heading
+									variant='h2'
+									color='primary'
+									className={clsx('u-fw-400', classes['profile__heading'])}>
+									Update User Password
+								</Heading>
+								<FormInput
+									label='Current Password'
+									name='oldPassword'
+									type='password'
+								/>
+								<FormInput label='Password' name='password' type='password' />
+								<FormInput
+									label='Password Confirm'
+									name='passwordConfirm'
+									type='password'
+								/>
+								<Button color='tertiary'>
+									{updatePasswordLoading ? 'Loading...' : 'Update Password'}
+								</Button>
+							</Form>
+						);
+					}}
+				</Formik>
+			</div>
+		</>
+	);
+};
+
+MyProfilePage.getLayout = (page) => {
+	return <DashboardLayout>{page}</DashboardLayout>;
+};
+
+export default MyProfilePage;

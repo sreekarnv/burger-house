@@ -1,19 +1,26 @@
 import './../scss/main.scss';
 
 import { Provider } from 'react-redux';
-import { type AppType } from 'next/app';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { trpc } from '../utils/trpc';
-import BaseLayout from '../layouts/base';
 import { store } from '../store';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import React from 'react';
-import {
-	updateError,
-	updateLocationCoordinates,
-} from '../store/modules/geoLocation';
 import { initCart } from '../store/modules/cart';
 import { togglePageIsReady } from '../store/modules/app';
+
+import type { ReactElement, ReactNode } from 'react';
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import PageLoader from '../components/shared/loaders/page-loader';
+
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+	getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout;
+};
 
 const AppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 	const { isLoading, isFetched } = trpc.auth.user.useQuery();
@@ -34,19 +41,20 @@ const AppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 		dispatch(initCart());
 	}, [dispatch]);
 
-	if (isLoading) return <div>Loading....</div>;
+	if (isLoading) return <PageLoader variant='full' />;
+
 	return <>{children}</>;
 };
 
-const MyApp: AppType = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+	const getLayout = Component.getLayout ?? ((page) => page);
+
 	return (
 		<>
 			<Provider store={store}>
 				<AppProvider>
-					<BaseLayout>
-						<Component {...pageProps} />
-						<ReactQueryDevtools />
-					</BaseLayout>
+					{getLayout(<Component {...pageProps} />)}
+					<ReactQueryDevtools />
 				</AppProvider>
 			</Provider>
 		</>

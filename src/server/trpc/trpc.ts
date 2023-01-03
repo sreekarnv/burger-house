@@ -23,14 +23,18 @@ export const parseCookie = t.middleware(async ({ ctx, next }) => {
 
 	if (!token) return next();
 
-	const payload = jwt.decodeToken(token) as { user: User };
+	const payload = jwt.decodeToken(token) as { _id: string };
 
-	if (!payload || !(await UserModel.findById(payload.user._id).count())) {
+	if (!payload) {
 		cookie.remove('burgerHouse');
 		return next();
 	}
 
-	ctx.user = payload.user;
+	const user = await UserModel.findById(payload._id).select('+password');
+
+	if (!user) return next();
+
+	ctx.user = user;
 
 	return next({ ctx });
 });

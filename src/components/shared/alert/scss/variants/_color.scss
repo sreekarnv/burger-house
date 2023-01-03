@@ -3,8 +3,16 @@
 
 .success {
 	@include alertVariant($color-success);
+
+	&--dark {
+		@include alertDarkVariant($color-success);
+	}
 }
 
 .danger {
 	@include alertVariant($color-danger);
+
+	&--dark {
+		@include alertDarkVariant($color-danger);
+	}
 }

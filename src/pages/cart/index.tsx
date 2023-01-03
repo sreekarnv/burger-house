@@ -1,15 +1,18 @@
 import clsx from 'clsx';
-import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import BurgerListItem from '../../components/burger-list-item/BurgerListItem';
 import Button from '../../components/shared/button';
 import Heading from '../../components/shared/heading';
+import BaseLayout from '../../layouts/base-layout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { clearCart } from '../../store/modules/cart';
 import { trpc } from '../../utils/trpc';
+import { NextPageWithLayout } from '../_app';
 
 import classes from './cart.module.scss';
 
-const CartPage: NextPage = ({}) => {
+const CartPage: NextPageWithLayout = ({}) => {
+	const router = useRouter();
 	const context = trpc.useContext();
 	const cartItems = useAppSelector((state) => state.cart.items);
 	const cartValue = useAppSelector((state) => state.cart.value);
@@ -17,7 +20,12 @@ const CartPage: NextPage = ({}) => {
 	const user = context.auth.user.getData();
 	const dispatch = useAppDispatch();
 
-	const { mutate: createOrder, isLoading } = trpc.order.create.useMutation();
+	const { mutate: createOrder, isLoading } = trpc.order.create.useMutation({
+		onSuccess() {
+			dispatch(clearCart());
+			router.replace('/dashboard');
+		},
+	});
 
 	return (
 		<>
@@ -98,13 +106,10 @@ const CartPage: NextPage = ({}) => {
 													});
 												});
 
-												console.log(items);
-												await createOrder({
+												return createOrder({
 													items,
 													price: cartPrice,
 												});
-												dispatch(clearCart());
-												// navigate('/dashboard/orders');
 											}}
 											className='u-w-100'
 											variant='primary-outline'>
@@ -143,5 +148,7 @@ const CartPage: NextPage = ({}) => {
 		</>
 	);
 };
+
+CartPage.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
 export default CartPage;

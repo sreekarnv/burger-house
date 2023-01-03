@@ -1,0 +1,28 @@
+@use 'src/scss/variables' as *;
+
+.root {
+	background-color: $color-white;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.text {
+	font-size: 3rem;
+}
+
+.full {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99998;
+	height: 100vh;
+}
+
+.embed {
+	height: calc(100vh - $navbar-height);
+}

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import clsx from 'clsx';
 
 import classes from './food-type.module.scss';
@@ -15,8 +14,11 @@ import Button from '../../../../components/shared/button';
 import Burger from '../../../../components/burger/Burger';
 import IngredientControls from '../../../../components/ingredient-controls';
 import { trpc } from '../../../../utils/trpc';
+import BaseLayout from '../../../../layouts/base-layout';
+import { NextPageWithLayout } from '../../../_app';
+import PageLoader from '../../../../components/shared/loaders/page-loader/PageLoader';
 
-const MakeBurger: React.FC = () => {
+const MakeBurger: NextPageWithLayout = () => {
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 
@@ -68,7 +70,7 @@ const MakeBurger: React.FC = () => {
 	};
 
 	if (isLoading) {
-		return <h1>Loading...</h1>;
+		return <PageLoader variant='embed' />;
 	}
 
 	return (
@@ -129,5 +131,7 @@ const MakeBurger: React.FC = () => {
 		</>
 	);
 };
+
+MakeBurger.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
 export default MakeBurger;
