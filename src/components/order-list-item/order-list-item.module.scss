@@ -2,109 +2,109 @@
 @use 'src/scss/mixins' as *;
 
 .order-list-item {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	justify-content: center;
-	justify-items: center;
-	align-items: center;
-	align-content: start;
-	padding: 1rem;
-	border-radius: 5px;
-	background-color: $color-light;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: start;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: $color-light;
 
-	&-sm {
-		grid-template-columns: repeat(3, 1fr);
-	}
+  &-sm {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-	@include respond(tab-land) {
-		grid-template-rows: 1fr 1fr;
-		grid-template-columns: 0.5fr 1fr 0.5fr;
-		grid-row-gap: 1.2rem;
-	}
+  @include respond(tab-land) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-row-gap: 1.2rem;
+  }
 
-	@include respond(phone-lg) {
-		grid-row-gap: 2rem;
-	}
+  @include respond(phone-lg) {
+    grid-row-gap: 2rem;
+  }
 
-	&__image {
-		height: 12rem;
-		width: 12rem;
-		display: grid;
-		align-items: center;
-		overflow: hidden;
-		border-radius: 8px;
+  &__image {
+    height: 12rem;
+    width: 12rem;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
 
-		@include respond(tab-land) {
-			grid-row: 1 / 3;
-			grid-column: 1 / 2;
-		}
+    @include respond(tab-land) {
+      grid-row: 1 / 3;
+      grid-column: 1 / 2;
+    }
 
-		@include respond(tab-port) {
-			height: 10rem;
-			width: 10rem;
-		}
+    @include respond(tab-port) {
+      height: 10rem;
+      width: 10rem;
+    }
 
-		img {
-			object-fit: cover;
-			width: 100%;
-			height: 100%;
-			object-position: center;
-		}
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-position: center;
+    }
 
-		svg {
-			@include respond(tab-port) {
-				height: 10rem;
-				width: 10rem;
-			}
-		}
-	}
+    svg {
+      @include respond(tab-port) {
+        height: 10rem;
+        width: 10rem;
+      }
+    }
+  }
 
-	&__ingredients {
-		grid-row: 2 / 3;
-		grid-column: 2 / -1;
-		font-size: 1.2rem;
-		text-transform: uppercase;
-		color: $color-dark;
-		display: flex;
-		gap: 3rem;
-		justify-self: start;
-		padding: 0 1rem;
+  &__ingredients {
+    grid-row: 2 / 3;
+    grid-column: 2 / -1;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: $color-dark;
+    display: flex;
+    gap: 3rem;
+    justify-self: start;
+    padding: 0 1rem;
 
-		@include respond(tab-land) {
-			grid-row: 3 / 4;
-			grid-column: 1 / -1;
-		}
-	}
+    @include respond(tab-land) {
+      grid-row: 3 / 4;
+      grid-column: 1 / -1;
+    }
+  }
 
-	&__name {
-		text-transform: uppercase;
-		font-size: 1.55rem;
-		color: $color-tertiary;
-		grid-column: 2 / 4;
-		justify-self: start;
+  &__name {
+    text-transform: uppercase;
+    font-size: 1.55rem;
+    color: $color-tertiary;
+    grid-column: 2 / 4;
+    justify-self: start;
 
-		@include respond(laptop-md) {
-			margin-left: 1.3rem;
-		}
+    @include respond(laptop-md) {
+      margin-left: 1.3rem;
+    }
 
-		@include respond(tab-land) {
-			margin-left: 0;
-			justify-self: center;
-		}
+    @include respond(tab-land) {
+      margin-left: 0;
+      justify-self: center;
+    }
 
-		@include respond(phone-lg) {
-			text-align: center;
-			margin-left: 1.2rem;
-		}
-	}
+    @include respond(phone-lg) {
+      text-align: center;
+      margin-left: 1.2rem;
+    }
+  }
 
-	&__price {
-		font-size: 2rem;
-		color: rgba($color-primary, 0.74);
+  &__price {
+    font-size: 2rem;
+    color: rgba($color-primary, 0.74);
 
-		@include respond(tab-land) {
-			grid-column: 2 / 4;
-			justify-self: center;
-		}
-	}
+    @include respond(tab-land) {
+      grid-column: 2 / 4;
+      justify-self: center;
+    }
+  }
 }

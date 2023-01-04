@@ -3,34 +3,34 @@
 @use '../functions' as *;
 
 @each $name, $color in $btn-colors {
-	.#{'' + $name} {
-		border: 2px solid $color;
-		background-color: $color;
-		color: contrast-color($color);
+  .#{'' + $name} {
+    border: 2px solid $color;
+    background-color: $color;
+    color: contrast-color($color);
 
-		&:hover,
-		&:focus-visible {
-			background-color: darken($color, 8%);
-			border: 2px solid darken($color, 8%);
-			color: contrast-color(darken($color, 8%));
-		}
+    &:hover,
+    &:focus-visible {
+      background-color: darken($color, 8%);
+      border: 2px solid darken($color, 8%);
+      color: contrast-color(darken($color, 8%));
+    }
 
-		&:disabled {
-			cursor: not-allowed;
-			opacity: 0.5;
-			filter: brightness(70%);
-		}
-	}
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      filter: brightness(70%);
+    }
+  }
 
-	.#{'' + $name}--outline {
-		border: 2px solid $color;
-		background-color: transparent;
-		color: $color;
+  .#{'' + $name}--outline {
+    border: 2px solid $color;
+    background-color: transparent;
+    color: $color;
 
-		&:hover,
-		&:focus-visible {
-			color: contrast-color($color);
-			background-color: $color;
-		}
-	}
+    &:hover,
+    &:focus-visible {
+      color: contrast-color($color);
+      background-color: $color;
+    }
+  }
 }

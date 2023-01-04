@@ -6,39 +6,39 @@
 *,
 *::before,
 *::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: inherit;
-	font-family: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: inherit;
 }
 
 html {
-	font-size: 62.5%;
+  font-size: 62.5%;
 
-	@include respond(desktop) {
-		font-size: 56.25%;
-	}
+  @include respond(desktop) {
+    font-size: 56.25%;
+  }
 
-	@include respond(desktop-xl) {
-		font-size: 75%;
-	}
+  @include respond(desktop-xl) {
+    font-size: 75%;
+  }
 
-	&::-webkit-scrollbar {
-		display: none;
-	}
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-	.ReactQueryDevtoolsPanel {
-		* {
-			font-size: 1.4rem !important;
-		}
-	}
+  .ReactQueryDevtoolsPanel {
+    * {
+      font-size: 1.4rem !important;
+    }
+  }
 
-	scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 body {
-	box-sizing: border-box;
-	font-family: $font-default;
+  box-sizing: border-box;
+  font-family: $font-default;
 }
 
 h1,
@@ -47,5 +47,5 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $font-heading;
+  font-family: $font-heading;
 }

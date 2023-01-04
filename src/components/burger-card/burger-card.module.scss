@@ -2,113 +2,113 @@
 @use 'src/scss/mixins' as *;
 
 .root {
-	background-color: $color-white;
-	border-radius: 8px;
-	box-shadow: 0 1px 10px rgba($color-dark, 0.45);
-	overflow: hidden;
-	position: relative;
+  background-color: $color-white;
+  border-radius: 8px;
+  box-shadow: 0 1px 10px rgba($color-dark, 0.45);
+  overflow: hidden;
+  position: relative;
 }
 
 .media {
-	height: 40rem;
-	min-width: 43.125rem;
-	position: relative;
+  height: 40rem;
+  min-width: 43.125rem;
+  position: relative;
 
-	@include respond(tab-land) {
-		height: 30rem;
-		min-width: 25rem;
-	}
+  @include respond(tab-land) {
+    height: 30rem;
+    min-width: 25rem;
+  }
 
-	source {
-		height: 40rem;
-		width: 43.125rem;
-		position: relative;
+  source {
+    height: 40rem;
+    width: 43.125rem;
+    position: relative;
 
-		@include respond(tab-land) {
-			height: 30rem;
-			min-width: 25rem;
-		}
-	}
+    @include respond(tab-land) {
+      height: 30rem;
+      min-width: 25rem;
+    }
+  }
 
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .content {
-	padding: 1.5rem 3rem;
+  padding: 1.5rem 3rem;
 }
 
 .title {
-	font-size: 2.5rem;
-	text-align: center;
-	margin-bottom: 1.5rem;
-	color: $color-tertiary;
-	text-transform: capitalize;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: $color-tertiary;
+  text-transform: capitalize;
 }
 
 .ingredients {
-	min-height: 5.1rem;
-	max-width: 30.9rem;
-	margin: 0 auto;
-	font-size: 1.5rem;
-	text-align: center;
-	margin-bottom: 3rem;
-	display: flex;
-	list-style: none;
-	flex-wrap: wrap;
-	gap: 1.5rem;
-	justify-content: center;
-	font-weight: 600;
-	color: rgba($color-dark, 0.85);
+  min-height: 5.1rem;
+  max-width: 30.9rem;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  font-weight: 600;
+  color: rgba($color-dark, 0.85);
 }
 
 .cta {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .badge {
-	border-radius: 50%;
-	border: 2px solid currentColor;
-	padding: 0.25rem;
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	height: 2.5rem;
-	width: 2.5rem;
-	z-index: 3;
-	display: grid;
-	place-items: center;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  padding: 0.25rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 2.5rem;
+  width: 2.5rem;
+  z-index: 3;
+  display: grid;
+  place-items: center;
 
-	span {
-		display: inline-block;
-		border-radius: 50%;
-		color: inherit;
-		background-color: currentColor;
-		height: 1.5rem;
-		width: 1.5rem;
-	}
+  span {
+    display: inline-block;
+    border-radius: 50%;
+    color: inherit;
+    background-color: currentColor;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 }
 
 .price {
-	font-weight: 800;
-	font-size: 2.5rem;
-	color: $color-dark;
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: $color-dark;
 }
 
 .sm {
-	box-shadow: 0 2px 10px rgba($color-dark, 0.45);
+  box-shadow: 0 2px 10px rgba($color-dark, 0.45);
 }
 
 .sm .media {
-	height: 30rem;
-	min-width: 25rem;
+  height: 30rem;
+  min-width: 25rem;
 }

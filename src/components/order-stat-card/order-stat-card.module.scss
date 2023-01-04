@@ -2,22 +2,22 @@
 @use 'src/scss/variables' as *;
 
 .root {
-	text-align: center;
-	padding: 2rem;
-	background-color: rgba($color-secondary, 0.65);
-	box-shadow: 0 1rem 2rem rgb($color-dark, 45%);
-	border-radius: 35px;
-	font-family: $font-heading;
-	min-height: 12rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba($color-secondary, 0.65);
+  box-shadow: 0 1rem 2rem rgb($color-dark, 45%);
+  border-radius: 35px;
+  font-family: $font-heading;
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
-	font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .content {
-	font-size: 3.5rem;
+  font-size: 3.5rem;
 }

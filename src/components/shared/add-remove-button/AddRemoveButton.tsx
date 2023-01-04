@@ -5,30 +5,30 @@ import * as React from 'react';
 import IconButton from '../icon-button';
 
 type Props = React.DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>,
-	HTMLDivElement
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
 > & {
-	leftOnClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-	rightOnClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  leftOnClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  rightOnClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const AddRemoveButton: React.FC<Props> = ({
-	leftOnClick,
-	rightOnClick,
-	className,
-	...props
+  leftOnClick,
+  rightOnClick,
+  className,
+  ...props
 }) => {
-	return (
-		<div className={clsx([classes.root, className])}>
-			<IconButton onClick={leftOnClick}>
-				<FiPlus className='u-text-dark' />
-			</IconButton>
-			<p className={classes.text}>{props.children}</p>
-			<IconButton onClick={rightOnClick}>
-				<FiMinus className='u-text-dark' />
-			</IconButton>
-		</div>
-	);
+  return (
+    <div className={clsx([classes.root, className])}>
+      <IconButton onClick={leftOnClick}>
+        <FiPlus className="u-text-dark" />
+      </IconButton>
+      <p className={classes.text}>{props.children}</p>
+      <IconButton onClick={rightOnClick}>
+        <FiMinus className="u-text-dark" />
+      </IconButton>
+    </div>
+  );
 };
 
 export default AddRemoveButton;

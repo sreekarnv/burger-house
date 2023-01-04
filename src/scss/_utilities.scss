@@ -1,44 +1,44 @@
 @use './variables' as *;
 
 @each $name, $font-weight in $font-weights {
-	.u-fw-#{'' + $name} {
-		font-weight: $font-weight !important;
-	}
+  .u-fw-#{'' + $name} {
+    font-weight: $font-weight !important;
+  }
 }
 
 @each $name, $text-transform in $text-tranforms {
-	.u-text-#{'' + $name} {
-		text-transform: $text-transform !important;
-	}
+  .u-text-#{'' + $name} {
+    text-transform: $text-transform !important;
+  }
 }
 
 @each $name, $color in $colors {
-	.u-text-#{'' + $name} {
-		color: $color !important;
-	}
+  .u-text-#{'' + $name} {
+    color: $color !important;
+  }
 }
 
 .u-jc-center {
-	justify-content: center !important;
+  justify-content: center !important;
 }
 
 .u-hide-scrollbar {
-	&::-webkit-scrollbar,
-	& > *::-webkit-scrollbar {
-		display: none;
-	}
+  &::-webkit-scrollbar,
+  & > *::-webkit-scrollbar {
+    display: none;
+  }
 
-	scrollbar-width: none;
+  scrollbar-width: none;
 }
 
 .u-block {
-	display: block !important;
+  display: block !important;
 }
 
 .u-fs-18 {
-	font-size: 1.8rem !important;
+  font-size: 1.8rem !important;
 }
 
 .u-fs-13 {
-	font-size: 1.3rem !important;
+  font-size: 1.3rem !important;
 }

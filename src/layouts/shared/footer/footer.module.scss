@@ -2,46 +2,62 @@
 @use 'src/scss/mixins' as *;
 
 .root {
-	padding: 2rem;
-	background-color: $color-black;
+  padding: 2rem;
+  background-color: $color-black;
 
-	display: grid;
-	grid-template-columns:
-		repeat(2, 1fr)
-		[start-copyright] repeat(4, minmax(5rem, 1fr))
-		[end-copyright start-social] repeat(4, minmax(5rem, 1fr))
-		[end-social]
-		repeat(2, 1fr);
-	align-items: center;
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr)
+    [start-copyright] repeat(4, minmax(5rem, 1fr))
+    [end-copyright start-social] repeat(4, minmax(5rem, 1fr))
+    [end-social]
+    repeat(2, 1fr);
+  align-items: center;
+
+  @include respond(laptop-sm) {
+    grid-template-columns: 2rem [start-full] 1fr [end-full] 2rem;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 2rem;
+  }
 }
 
 .text {
-	color: rgba($color-light, 0.8);
-	font-size: 1.5rem;
-	grid-column: start-copyright / end-copyright;
-	font-family: $font-heading;
+  color: rgba($color-light, 0.8);
+  font-size: 1.5rem;
+  grid-column: start-copyright / end-copyright;
+  font-family: $font-heading;
+
+  @include respond(laptop-sm) {
+    grid-column: start-full / end-full;
+    text-align: center;
+  }
 }
 
 .social {
-	display: flex;
-	gap: 2rem;
-	align-items: center;
-	grid-column: start-social / end-social;
-	justify-self: end;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  grid-column: start-social / end-social;
+  justify-self: end;
+
+  @include respond(laptop-sm) {
+    grid-column: start-full / end-full;
+    justify-self: center;
+  }
 }
 
 .link {
-	color: inherit;
-	font-weight: 600;
-	transition: all 0.3s ease-out;
+  color: inherit;
+  font-weight: 600;
+  transition: all 0.3s ease-out;
 
-	&:hover,
-	&:focus-visible {
-		color: $color-white;
-	}
+  &:hover,
+  &:focus-visible {
+    color: $color-white;
+  }
 }
 
 .copyright {
-	font-weight: 700;
-	color: $color-light;
+  font-weight: 700;
+  color: $color-light;
 }

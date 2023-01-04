@@ -6,23 +6,23 @@ import Seo from '../../components/shared/seo';
 import { trpc } from '../../utils/trpc';
 
 const LogoutPage: NextPage = ({}) => {
-	const router = useRouter();
-	const context = trpc.useContext();
-	const { mutate } = trpc.auth.logout.useMutation({
-		onSuccess() {
-			context.auth.user.setData(undefined, null);
-			router.replace('/');
-		},
-	});
+  const router = useRouter();
+  const context = trpc.useContext();
+  const { mutate } = trpc.auth.logout.useMutation({
+    onSuccess() {
+      context.auth.user.setData(undefined, null);
+      router.replace('/');
+    },
+  });
 
-	React.useEffect(() => mutate(), [mutate]);
+  React.useEffect(() => mutate(), [mutate]);
 
-	return (
-		<>
-			<Seo />
-			<PageLoader variant='full' />
-		</>
-	);
+  return (
+    <>
+      <Seo />
+      <PageLoader variant="full" />
+    </>
+  );
 };
 
 export default LogoutPage;

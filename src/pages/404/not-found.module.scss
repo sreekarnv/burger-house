@@ -1,0 +1,48 @@
+@use 'src/scss/mixins' as *;
+@use 'src/scss/variables' as *;
+
+.root {
+  height: calc(100vh - $footer-height);
+  background-image: linear-gradient(
+      rgba($color-black, 0.76),
+      rgba($color-black, 0.76)
+    ),
+    url(/images/error.webp);
+
+  @include respond(laptop-sm) {
+    background-image: linear-gradient(
+        rgba($color-black, 0.76),
+        rgba($color-black, 0.76)
+      ),
+      url(/images/error-md.webp);
+  }
+
+  @include respond(phone-lg) {
+    height: calc(100vh - $footer-height-sm);
+    background-image: linear-gradient(
+        rgba($color-black, 0.76),
+        rgba($color-black, 0.76)
+      ),
+      url(/images/error-sm.webp);
+
+    height: 100vh;
+  }
+}
+
+.message {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+}
+
+.h1 {
+  margin-bottom: 6rem;
+}
+
+.h2 {
+  margin-bottom: 3rem;
+}

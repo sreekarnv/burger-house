@@ -20,61 +20,61 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-	getLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
-	Component: NextPageWithLayout;
+  Component: NextPageWithLayout;
 };
 
 const AppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-	const { isLoading, isFetched } = trpc.auth.user.useQuery();
-	const dispatch = useAppDispatch();
-	const pageIsReady = useAppSelector((state) => state.app.pageIsReady);
+  const { isLoading, isFetched } = trpc.auth.user.useQuery();
+  const dispatch = useAppDispatch();
+  const pageIsReady = useAppSelector((state) => state.app.pageIsReady);
 
-	React.useEffect(() => {
-		if (isFetched && !pageIsReady) {
-			const timer = setTimeout(() => {
-				dispatch(togglePageIsReady());
-			}, 500);
+  React.useEffect(() => {
+    if (isFetched && !pageIsReady) {
+      const timer = setTimeout(() => {
+        dispatch(togglePageIsReady());
+      }, 500);
 
-			return () => clearTimeout(timer);
-		}
-	}, [isFetched, pageIsReady, dispatch]);
+      return () => clearTimeout(timer);
+    }
+  }, [isFetched, pageIsReady, dispatch]);
 
-	React.useEffect(() => {
-		dispatch(initCart());
-	}, [dispatch]);
+  React.useEffect(() => {
+    dispatch(initCart());
+  }, [dispatch]);
 
-	if (isLoading) return <PageLoader variant='full' />;
+  if (isLoading) return <PageLoader variant="full" />;
 
-	return (
-		<>
-			<PageFirstLoadOverlay>{children}</PageFirstLoadOverlay>
-		</>
-	);
+  return (
+    <>
+      <PageFirstLoadOverlay>{children}</PageFirstLoadOverlay>
+    </>
+  );
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-	const getLayout = Component.getLayout ?? ((page) => page);
-	const router = useRouter();
+  const getLayout = Component.getLayout ?? ((page) => page);
+  const router = useRouter();
 
-	return (
-		<>
-			<Provider store={store}>
-				<AppProvider>
-					<AnimatePresence mode='wait' key={router.pathname}>
-						{getLayout(
-							<PageFade>
-								<Component {...pageProps} />
-							</PageFade>
-						)}
-					</AnimatePresence>
-					<ReactQueryDevtools />
-				</AppProvider>
-			</Provider>
-		</>
-	);
+  return (
+    <>
+      <Provider store={store}>
+        <AppProvider>
+          <AnimatePresence mode="wait" key={router.pathname}>
+            {getLayout(
+              <PageFade>
+                <Component {...pageProps} />
+              </PageFade>
+            )}
+          </AnimatePresence>
+          <ReactQueryDevtools />
+        </AppProvider>
+      </Provider>
+    </>
+  );
 };
 
 export default trpc.withTRPC(MyApp);

@@ -16,91 +16,94 @@ import { NextPageWithLayout } from '../../../_app';
 import classes from './order-detail.module.scss';
 
 const MyOrderDetailPage: NextPageWithLayout = ({}) => {
-	const router = useRouter();
-	const context = trpc.useContext();
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const { isLoading, data } = trpc.order.userOneById.useQuery({
-		_id: router.query.id as string,
-	});
-	const { isLoading: isUpdateOrderLoading, mutate: updateOrderStatus } =
-		trpc.order.userUpdateStatus.useMutation({
-			onSuccess() {
-				context.order.userOneById.invalidate({
-					_id: router.query.id as string,
-				});
-			},
-		});
+  const router = useRouter();
+  const context = trpc.useContext();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isLoading, data } = trpc.order.userOneById.useQuery({
+    _id: router.query.id as string,
+  });
+  const { isLoading: isUpdateOrderLoading, mutate: updateOrderStatus } =
+    trpc.order.userUpdateStatus.useMutation({
+      onSuccess() {
+        context.order.userOneById.invalidate({
+          _id: router.query.id as string,
+        });
+      },
+    });
 
-	if (isLoading) {
-		return <PageLoader variant='embed' />;
-	}
+  if (isLoading) {
+    return <PageLoader variant="embed" />;
+  }
 
-	return (
-		<>
-			<Seo title='Dashboard | My Orders' />
+  return (
+    <>
+      <Seo title="Dashboard | My Orders" />
 
-			<TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
-			<div className={classes.root}>
-				<Heading
-					variant='h3'
-					color='primary'
-					className={classes['order-detail__heading']}>
-					Order &nbsp;#{data?._id}
-				</Heading>
-				<div className={classes['order-detail']}>
-					<div className={classes['order-detail__items']}>
-						{data?.items.map((item, i) => (
-							<OrderListItem orderItem={item} key={i} />
-						))}
-					</div>
-					<div className={classes['order-detail__info']}>
-						{data && (
-							<OrderInfoCard
-								order={data}
-								cta={
-									<>
-										<Button
-											onClick={() => {
-												if (data.status !== 'delivered') {
-													updateOrderStatus({
-														status: Status.Cancelled,
-														_id: data._id,
-													});
-												}
-											}}
-											disabled={
-												data.status === 'delivered' ||
-												data.status === 'cancelled'
-											}
-											variant='danger-outline'>
-											{isUpdateOrderLoading ? 'Updating...' : 'Cancel Order'}
-										</Button>
-										<Button
-											onClick={() => {
-												if (data.status === 'pending') {
-													onOpen();
-												}
-											}}
-											disabled={
-												data.status === 'delivered' ||
-												data.status === 'cancelled'
-											}
-											variant='tertiary-outline'>
-											Track Order
-										</Button>
-									</>
-								}
-							/>
-						)}
-					</div>
-				</div>
-			</div>
-		</>
-	);
+      <TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
+      <div className={classes.root}>
+        <Heading
+          variant="h3"
+          color="primary"
+          className={classes['order-detail__heading']}
+        >
+          Order &nbsp;#{data?._id}
+        </Heading>
+        <div className={classes['order-detail']}>
+          <div className={classes['order-detail__items']}>
+            {data?.items.map((item, i) => (
+              <OrderListItem orderItem={item} key={i} />
+            ))}
+          </div>
+          <div className={classes['order-detail__info']}>
+            {data && (
+              <OrderInfoCard
+                order={data}
+                cta={
+                  <>
+                    <Button
+                      onClick={() => {
+                        if (data.status !== 'delivered') {
+                          updateOrderStatus({
+                            status: Status.Cancelled,
+                            _id: data._id,
+                          });
+                        }
+                      }}
+                      disabled={
+                        data.status === 'delivered' ||
+                        data.status === 'cancelled'
+                      }
+                      variant="danger-outline"
+                    >
+                      {isUpdateOrderLoading ? 'Updating...' : 'Cancel Order'}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        if (data.status === 'pending') {
+                          onOpen();
+                        }
+                      }}
+                      disabled={
+                        data.status === 'delivered' ||
+                        data.status === 'cancelled'
+                      }
+                      variant="tertiary-outline"
+                    >
+                      Track Order
+                    </Button>
+                  </>
+                }
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 MyOrderDetailPage.getLayout = (page) => {
-	return <DashboardLayout>{page}</DashboardLayout>;
+  return <DashboardLayout>{page}</DashboardLayout>;
 };
 
 export default MyOrderDetailPage;

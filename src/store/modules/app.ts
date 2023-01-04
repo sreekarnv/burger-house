@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface AppState {
-	pageIsReady: boolean;
+  pageIsReady: boolean;
 }
 
 const initialState: AppState = {
-	pageIsReady: false,
+  pageIsReady: false,
 };
 
 export const appSlice = createSlice({
-	name: 'app',
-	initialState,
-	reducers: {
-		togglePageIsReady: (state) => {
-			state.pageIsReady = !state.pageIsReady;
-		},
-	},
+  name: 'app',
+  initialState,
+  reducers: {
+    togglePageIsReady: (state) => {
+      state.pageIsReady = !state.pageIsReady;
+    },
+  },
 });
 
 export const { togglePageIsReady } = appSlice.actions;

@@ -10,89 +10,89 @@ import { TRPCError } from '@trpc/server';
 import { updatePasswordSchema } from '../../../utils/schemas/auth/new-password';
 
 export const authRouter = router({
-	register: publicProcedure
-		.input(registerSchema)
-		.mutation(async ({ input, ctx }) => {
-			const { name, email, password } = input;
-			const user = await UserModel.create({
-				name,
-				email,
-				password,
-				location: input.location,
-				photo: {
-					publicId: 'default',
-					url: '/users/default.jpg',
-				},
-			});
+  register: publicProcedure
+    .input(registerSchema)
+    .mutation(async ({ input, ctx }) => {
+      const { name, email, password } = input;
+      const user = await UserModel.create({
+        name,
+        email,
+        password,
+        location: input.location,
+        photo: {
+          publicId: 'default',
+          url: '/users/default.jpg',
+        },
+      });
 
-			await jwt.signToken({ user }, ctx.req, ctx.res);
+      await jwt.signToken({ user }, ctx.req, ctx.res);
 
-			return user;
-		}),
-	login: publicProcedure
-		.input(loginInputSchema)
-		.mutation(async ({ input, ctx }) => {
-			const { email, password } = input;
+      return user;
+    }),
+  login: publicProcedure
+    .input(loginInputSchema)
+    .mutation(async ({ input, ctx }) => {
+      const { email, password } = input;
 
-			const user = await UserModel.findOne({
-				email,
-			}).select('+password');
+      const user = await UserModel.findOne({
+        email,
+      }).select('+password');
 
-			if (!user || !(await user.checkPassword(password, user.password))) {
-				throw new TRPCError({
-					code: 'BAD_REQUEST',
-					message: 'Invalid Credentials',
-				});
-			}
+      if (!user || !(await user.checkPassword(password, user.password))) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Invalid Credentials',
+        });
+      }
 
-			await jwt.signToken({ user }, ctx.req, ctx.res);
+      await jwt.signToken({ user }, ctx.req, ctx.res);
 
-			return user;
-		}),
-	logout: publicProcedure.mutation(async ({ ctx }) => {
-		const cookie = Cookie.fromApiRoute(ctx.req, ctx.res);
-		cookie.remove('burgerHouse');
-		return true;
-	}),
-	user: publicProcedure.query(async ({ ctx }) => {
-		return ctx.user || null;
-	}),
-	details: privateProcedure
-		.input(updateDetailsSchema)
-		.mutation(async ({ input, ctx }) => {
-			const { name, email, photo } = input;
+      return user;
+    }),
+  logout: publicProcedure.mutation(async ({ ctx }) => {
+    const cookie = Cookie.fromApiRoute(ctx.req, ctx.res);
+    cookie.remove('burgerHouse');
+    return true;
+  }),
+  user: publicProcedure.query(async ({ ctx }) => {
+    return ctx.user || null;
+  }),
+  details: privateProcedure
+    .input(updateDetailsSchema)
+    .mutation(async ({ input, ctx }) => {
+      const { name, email, photo } = input;
 
-			const user = await UserModel.findByIdAndUpdate(
-				ctx.user?._id,
-				{ email, name, photo },
-				{
-					new: true,
-					runValidators: true,
-				}
-			);
+      const user = await UserModel.findByIdAndUpdate(
+        ctx.user?._id,
+        { email, name, photo },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
 
-			return user;
-		}),
-	newPassword: privateProcedure
-		.input(updatePasswordSchema)
-		.mutation(async ({ ctx, input }) => {
-			const { password, oldPassword } = input;
+      return user;
+    }),
+  newPassword: privateProcedure
+    .input(updatePasswordSchema)
+    .mutation(async ({ ctx, input }) => {
+      const { password, oldPassword } = input;
 
-			const user = await UserModel.findById(ctx.user?._id).select('+password');
+      const user = await UserModel.findById(ctx.user?._id).select('+password');
 
-			if (!user || !(await user.checkPassword(oldPassword, user.password))) {
-				throw new TRPCError({
-					code: 'BAD_REQUEST',
-					message: 'Invalid Credentials',
-				});
-			}
+      if (!user || !(await user.checkPassword(oldPassword, user.password))) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Invalid Credentials',
+        });
+      }
 
-			if (!user) return false;
+      if (!user) return false;
 
-			user.password = password;
+      user.password = password;
 
-			await user.save({ validateBeforeSave: false });
+      await user.save({ validateBeforeSave: false });
 
-			return true;
-		}),
+      return true;
+    }),
 });
