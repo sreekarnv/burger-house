@@ -1,12 +1,47 @@
 @use 'src/scss/variables' as *;
+@use 'src/scss/mixins' as *;
 
 .root {
 	padding: 2rem;
-	background-color: rgba($color-black, 0.75);
+	background-color: $color-black;
+
+	display: grid;
+	grid-template-columns:
+		repeat(2, 1fr)
+		[start-copyright] repeat(4, minmax(5rem, 1fr))
+		[end-copyright start-social] repeat(4, minmax(5rem, 1fr))
+		[end-social]
+		repeat(2, 1fr);
+	align-items: center;
 }
 
 .text {
-	color: $color-white;
+	color: rgba($color-light, 0.8);
 	font-size: 1.5rem;
-	text-align: center;
+	grid-column: start-copyright / end-copyright;
+	font-family: $font-heading;
+}
+
+.social {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	grid-column: start-social / end-social;
+	justify-self: end;
+}
+
+.link {
+	color: inherit;
+	font-weight: 600;
+	transition: all 0.3s ease-out;
+
+	&:hover,
+	&:focus-visible {
+		color: $color-white;
+	}
+}
+
+.copyright {
+	font-weight: 700;
+	color: $color-light;
 }

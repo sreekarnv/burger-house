@@ -14,6 +14,10 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import PageLoader from '../components/shared/loaders/page-loader';
+import PageFirstLoadOverlay from '../animations/page-first-load-overlay';
+import PageFade from '../animations/page-fade';
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -44,17 +48,28 @@ const AppProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 
 	if (isLoading) return <PageLoader variant='full' />;
 
-	return <>{children}</>;
+	return (
+		<>
+			<PageFirstLoadOverlay>{children}</PageFirstLoadOverlay>
+		</>
+	);
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 	const getLayout = Component.getLayout ?? ((page) => page);
+	const router = useRouter();
 
 	return (
 		<>
 			<Provider store={store}>
 				<AppProvider>
-					{getLayout(<Component {...pageProps} />)}
+					<AnimatePresence mode='wait' key={router.pathname}>
+						{getLayout(
+							<PageFade>
+								<Component {...pageProps} />
+							</PageFade>
+						)}
+					</AnimatePresence>
 					<ReactQueryDevtools />
 				</AppProvider>
 			</Provider>
