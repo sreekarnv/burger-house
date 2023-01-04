@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { HiMenu } from 'react-icons/hi';
 import Backdrop from '../../components/shared/backdrop';
+import PageLoader from '../../components/shared/loaders/page-loader/PageLoader';
 import useDisclosure from '../../hooks/use-disclosure';
 import { trpc } from '../../utils/trpc';
 import Navbar from '../shared/navbar';
@@ -43,7 +44,10 @@ const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
         <div className={classes['dashboard__sidebar']}>
           <Sidebar />
         </div>
-        <main className={classes['dashboard__content']}>{children}</main>
+        <main className={classes['dashboard__content']}>
+          {isLoading && <PageLoader variant="embed" />}
+          {!isLoading && children}
+        </main>
       </div>
     </>
   );
