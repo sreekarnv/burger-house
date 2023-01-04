@@ -2,7 +2,7 @@
 
 Burger house is a fast-food e-commerce site similar to mcdonalds or burger king which sells burgers. This website allows you to choose burgers from a menu or you are free to make your own burger with the given ingredients. To place an order you must be logged in.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2bbf0a00-133e-4a5e-8c69-df21038a8185/deploy-status)](https://app.netlify.com/sites/burger-house-sreekar/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1feafbfb-a66d-47c4-bdd3-e27ecd92d92c/deploy-status)](https://app.netlify.com/sites/burger-house-sreekar/deploys)
 
 live-preview: https://burger-house-sreekar.netlify.app/
 
@@ -13,11 +13,11 @@ live-preview: https://burger-house-sreekar.netlify.app/
 Running dev server
 
         yarn install 
-        yarn lerna run dev 
+        yarn dev
 
 Building the app
 
-        yarn lerna run build
+        yarn build
 
 
 # Home Page
@@ -52,9 +52,9 @@ Admins can update existing manage orders
 
 # Techonlogies Used
 
-1. [React](https://reactjs.org/)
-2. [Parcel](https://parceljs.org/)
-3. [Express](https://expressjs.com/)
+1. [Next](https://nextjs.org/)
+2. [tRPC](https://trpc.io/)
+3. [Framer Motion](https://www.framer.com/motion/)
 4. [MongoDB](https://mongodb.com/)
 5. [MapBox](https://www.mapbox.com/)
 6. [Sass](https://sass-lang.com/)
