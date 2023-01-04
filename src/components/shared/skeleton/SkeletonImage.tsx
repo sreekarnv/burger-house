@@ -23,11 +23,13 @@ interface SkeletonImageProps {
   height: number | string;
   width?: number | string;
   removeMargins?: boolean;
+  rounded?: boolean;
 }
 
 const SkeletonImage: React.FC<SkeletonImageProps> = ({
   height,
   width,
+  rounded = false,
   removeMargins = false,
 }) => {
   return (
@@ -44,6 +46,7 @@ const SkeletonImage: React.FC<SkeletonImageProps> = ({
           className={clsx([
             classes.root,
             !removeMargins && classes.imageMargin,
+            rounded && classes.avatar,
           ])}
         />
       </div>

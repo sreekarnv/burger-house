@@ -19,6 +19,7 @@ import NavLinkMobile from '../nav-link/NavLinkMobile';
 import clsx from 'clsx';
 import useDisclosure from '../../../hooks/use-disclosure';
 import { trpc } from '../../../utils/trpc';
+import { SkeletonImage } from '../../../components/shared/skeleton';
 
 const toggleVariants: Variants = {
   hide: {
@@ -43,8 +44,7 @@ const toggleVariants: Variants = {
 
 const Navbar: React.FC = () => {
   const cartValue = useAppSelector((state) => state.cart.value);
-  const context = trpc.useContext();
-  const user = context.auth.user.getData();
+  const { data: user, isLoading } = trpc.auth.user.useQuery();
   const { isOpen, onToggle, onClose } = useDisclosure();
 
   return (
@@ -59,43 +59,57 @@ const Navbar: React.FC = () => {
           Burger House
         </Link>
         <>
-          <ul className={classes.nav}>
-            <NavLink exact label="home" href="/">
-              {FiHome}
-            </NavLink>
-            <NavLink label="menu" href="/menu">
-              {FiMap}
-            </NavLink>
-            {!user && (
-              <>
-                <NavLink exact label="login" href="/auth/login">
-                  {FiLogIn}
-                </NavLink>
-                <NavLink exact label="register" href="/auth/register">
-                  {FiUserPlus}
-                </NavLink>
-              </>
-            )}
-            {user && (
-              <NavLink label="dashboard" href="/dashboard">
-                {FiGrid}
+          {isLoading && (
+            <ul className={classes.nav}>
+              {Array(5)
+                .fill(0)
+                .map((_, index) => (
+                  <li key={index}>
+                    <SkeletonImage removeMargins height={'50px'} rounded />
+                  </li>
+                ))}
+            </ul>
+          )}
+          {!isLoading && (
+            <ul className={classes.nav}>
+              <NavLink exact label="home" href="/">
+                {FiHome}
               </NavLink>
-            )}
-            <NavLink
-              exact
-              showBadge
-              badgeValue={cartValue}
-              label="cart"
-              href="/cart"
-            >
-              {FiShoppingCart}
-            </NavLink>
-            {user && (
-              <NavLink variant="logout" label="Logout" href="/auth/logout">
-                {FiLogOut}
+              <NavLink label="menu" href="/menu">
+                {FiMap}
               </NavLink>
-            )}
-          </ul>
+
+              {!user && (
+                <>
+                  <NavLink exact label="login" href="/auth/login">
+                    {FiLogIn}
+                  </NavLink>
+                  <NavLink exact label="register" href="/auth/register">
+                    {FiUserPlus}
+                  </NavLink>
+                </>
+              )}
+              {user && (
+                <NavLink label="dashboard" href="/dashboard">
+                  {FiGrid}
+                </NavLink>
+              )}
+              <NavLink
+                exact
+                showBadge
+                badgeValue={cartValue}
+                label="cart"
+                href="/cart"
+              >
+                {FiShoppingCart}
+              </NavLink>
+              {user && (
+                <NavLink variant="logout" label="Logout" href="/auth/logout">
+                  {FiLogOut}
+                </NavLink>
+              )}
+            </ul>
+          )}
 
           <HiMenuAlt2
             className={classes.toggle}
