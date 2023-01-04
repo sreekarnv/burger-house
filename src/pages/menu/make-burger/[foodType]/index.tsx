@@ -17,6 +17,7 @@ import { trpc } from '../../../../utils/trpc';
 import BaseLayout from '../../../../layouts/base-layout';
 import { NextPageWithLayout } from '../../../_app';
 import PageLoader from '../../../../components/shared/loaders/page-loader/PageLoader';
+import Seo from '../../../../components/shared/seo';
 
 const MakeBurger: NextPageWithLayout = () => {
 	const dispatch = useAppDispatch();
@@ -75,6 +76,8 @@ const MakeBurger: NextPageWithLayout = () => {
 
 	return (
 		<>
+			<Seo title='Menu | Make Your Burger' />
+
 			{showAlert && (
 				<Alert type={alertType} position='bottom-right'>
 					{alertMessage}

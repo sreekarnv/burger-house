@@ -3,6 +3,7 @@ import OrderDataTable from '../../../components/order-data-table';
 import Button from '../../../components/shared/button';
 import Heading from '../../../components/shared/heading';
 import PageLoader from '../../../components/shared/loaders/page-loader';
+import Seo from '../../../components/shared/seo';
 import usePagination from '../../../hooks/use-pagination';
 import DashboardLayout from '../../../layouts/dashboard-layout';
 import { trpc } from '../../../utils/trpc';
@@ -21,6 +22,8 @@ const DashboardOrdersPage: NextPageWithLayout = () => {
 
 	return (
 		<>
+			<Seo title='Dashboard | My Orders' />
+
 			<div className={classes['my-orders']}>
 				<Heading variant='h2' className={classes['my-orders__heading']}>
 					My Orders

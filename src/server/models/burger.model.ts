@@ -72,9 +72,9 @@ export class Burger {
 	slug!: string;
 }
 
-// const BurgerModel = (mongoose.models.Burger ||
-// 	getModelForClass(Burger)) as ReturnModelType<typeof Burger, {}>;
+const BurgerModel = (mongoose.models.Burger ||
+	getModelForClass(Burger)) as ReturnModelType<typeof Burger, {}>;
 
-const BurgerModel = getModelForClass(Burger);
+// const BurgerModel = getModelForClass(Burger);
 
 export default BurgerModel;

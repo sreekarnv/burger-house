@@ -8,12 +8,14 @@ import clsx from 'clsx';
 import BurgerCardSkeleton from '../components/burger-card/BurgerCardSkeleton';
 import { NextPageWithLayout } from './_app';
 import BaseLayout from '../layouts/base-layout';
+import Seo from '../components/shared/seo';
 
 const IndexPage: NextPageWithLayout = ({}) => {
 	const { data, isLoading } = trpc.burger.all.useQuery({ limit: 3 });
 
 	return (
 		<>
+			<Seo />
 			<section className={classes.hero}>
 				<div className={classes['hero-display--1']}>
 					<Heading color='white' className='u-fw-400 u-text-capitalize'>

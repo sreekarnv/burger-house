@@ -27,9 +27,9 @@ const usePagination = (options: PaginationOptions | undefined) => {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	const handlePrevPage = () => {
+	const handlePrevPage = async () => {
 		if (updateHref) {
-			router.push({
+			await router.push({
 				pathname: router.pathname,
 				query: {
 					...router.query,
@@ -41,9 +41,9 @@ const usePagination = (options: PaginationOptions | undefined) => {
 		setPage((prevPage) => prevPage - 1);
 	};
 
-	const handlePage = (page: number) => {
+	const handlePage = async (page: number) => {
 		if (updateHref) {
-			router.push({
+			await router.push({
 				pathname: router.pathname,
 				query: {
 					...router.query,
@@ -55,9 +55,9 @@ const usePagination = (options: PaginationOptions | undefined) => {
 		setPage(page);
 	};
 
-	const reset = () => {
+	const reset = async () => {
 		if (updateHref) {
-			router.push({
+			await router.push({
 				pathname: router.pathname,
 				query: {
 					...router.query,

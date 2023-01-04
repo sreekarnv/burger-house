@@ -107,9 +107,9 @@ export class User {
 	}
 }
 
-// const UserModel = (mongoose.models.User ||
-// 	getModelForClass(User)) as ReturnModelType<typeof User, {}>;
+const UserModel = (mongoose.models.User ||
+	getModelForClass(User)) as ReturnModelType<typeof User, {}>;
 
-const UserModel = getModelForClass(User);
+// const UserModel = getModelForClass(User);
 
 export default UserModel;

@@ -12,6 +12,7 @@ import { trpc } from '../../../utils/trpc';
 import clsx from 'clsx';
 import { NextPageWithLayout } from '../../_app';
 import BaseLayout from '../../../layouts/base-layout';
+import Seo from '../../../components/shared/seo';
 
 const LoginPage: NextPageWithLayout = ({}) => {
 	const context = trpc.useContext();
@@ -34,6 +35,7 @@ const LoginPage: NextPageWithLayout = ({}) => {
 
 	return (
 		<>
+			<Seo title='Login' />
 			{showAlert && (
 				<Alert position='top-center' variant='dark' type={alertType}>
 					{alertMessage}

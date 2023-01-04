@@ -17,6 +17,7 @@ import clsx from 'clsx';
 import Heading from '../../../components/shared/heading';
 import { useRouter } from 'next/router';
 import useImageUpload from '../../../hooks/use-image-upload';
+import Seo from '../../../components/shared/seo';
 
 const MyProfilePage: NextPageWithLayout = () => {
 	const imageRef = React.useRef<any>();
@@ -55,6 +56,8 @@ const MyProfilePage: NextPageWithLayout = () => {
 
 	return (
 		<>
+			<Seo title='Dashboard | Profile' />
+
 			{showAlert && (
 				<Alert position='top-center' type={alertType}>
 					{alertMessage}

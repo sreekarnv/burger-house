@@ -14,6 +14,7 @@ import BurgerCardSkeleton from '../../components/burger-card/BurgerCardSkeleton'
 import BurgerCard from '../../components/burger-card';
 import BaseLayout from '../../layouts/base-layout';
 import { NextPageWithLayout } from '../_app';
+import Seo from '../../components/shared/seo';
 
 const MenuPage: NextPageWithLayout = ({}) => {
 	const router = useRouter();
@@ -31,6 +32,7 @@ const MenuPage: NextPageWithLayout = ({}) => {
 
 	return (
 		<>
+			<Seo title='Menu' />
 			<div className={classes.root}>
 				<div className={classes.container}>
 					<Heading
@@ -42,18 +44,18 @@ const MenuPage: NextPageWithLayout = ({}) => {
 
 					<div className={classes.filter}>
 						<Formik
-							onSubmit={({ search }, actions) => {
-								router.push({
+							onSubmit={async ({ search: s }, actions) => {
+								setSearch(s);
+
+								await handlePage(1);
+
+								await router.push({
 									pathname: router.pathname,
 									query: {
 										page: 1,
-										search,
+										search: s,
 									},
 								});
-
-								setSearch(search);
-
-								handlePage(1);
 
 								actions.resetForm();
 							}}
@@ -80,16 +82,16 @@ const MenuPage: NextPageWithLayout = ({}) => {
 						<div className={classes.cta}>
 							{search && (
 								<Button
-									onClick={() => {
-										setSearch('');
-
-										router.push({
+									onClick={async () => {
+										await router.push({
 											pathname: router.pathname,
 											query: {
 												...router.query,
 												search: undefined,
 											},
 										});
+
+										setSearch('');
 
 										reset();
 									}}
