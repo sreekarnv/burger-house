@@ -1,15 +1,25 @@
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { HiMenu } from 'react-icons/hi';
 import Backdrop from '../../components/shared/backdrop';
 import useDisclosure from '../../hooks/use-disclosure';
+import { trpc } from '../../utils/trpc';
 import Navbar from '../shared/navbar';
 
 import classes from './dashboard-layout.module.scss';
 import Sidebar from './sidebar';
 
 const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isLoading, data } = trpc.auth.user.useQuery();
+
+  React.useEffect(() => {
+    if (!isLoading && !data) {
+      router.replace('/auth/login?redirect=/dashboard');
+    }
+  }, [router, isLoading, data]);
 
   return (
     <>

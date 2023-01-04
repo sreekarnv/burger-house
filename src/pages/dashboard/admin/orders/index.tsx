@@ -5,6 +5,7 @@ import PageLoader from '../../../../components/shared/loaders/page-loader';
 import Seo from '../../../../components/shared/seo';
 import usePagination from '../../../../hooks/use-pagination';
 import DashboardLayout from '../../../../layouts/dashboard-layout';
+import AdminProvider from '../../../../providers/admin-provider';
 import { trpc } from '../../../../utils/trpc';
 import { NextPageWithLayout } from '../../../_app';
 import classes from './manage-orders.module.scss';
@@ -62,7 +63,11 @@ const ManageOrdersPage: NextPageWithLayout = ({}) => {
 };
 
 ManageOrdersPage.getLayout = (page) => {
-  return <DashboardLayout>{page}</DashboardLayout>;
+  return (
+    <DashboardLayout>
+      <AdminProvider>{page}</AdminProvider>
+    </DashboardLayout>
+  );
 };
 
 export default ManageOrdersPage;

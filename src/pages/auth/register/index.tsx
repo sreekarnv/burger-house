@@ -102,7 +102,6 @@ const RegisterPage: NextPageWithLayout = () => {
                 <div className={clsx(classes['form__switch'], 'u-mb-10')}>
                   <Switch
                     active={allowLocation}
-                    color="tertiary"
                     onToggle={() => {
                       onGeolocationAccess();
                     }}

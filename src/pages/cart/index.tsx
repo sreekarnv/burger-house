@@ -81,14 +81,14 @@ const CartPage: NextPageWithLayout = ({}) => {
                       onClick={async () => {
                         const items = [] as any;
 
-                        cartItems.forEach((item, i) => {
+                        cartItems.forEach((item) => {
                           const ingredients = [...item.ingredients];
 
                           let itemIngredients = ingredients;
 
                           if (item.photo?.url) {
                             itemIngredients = ingredients.map(
-                              (ingredient: any, i) => {
+                              (ingredient: any) => {
                                 return {
                                   ...ingredient.ingredient,
                                   amount: ingredient.amount,

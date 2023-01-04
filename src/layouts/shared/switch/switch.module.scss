@@ -3,7 +3,7 @@
 .root {
   width: 7rem;
   height: 4rem;
-  background-color: #ccc;
+  background-color: $color-gray;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -12,6 +12,7 @@
 
   &--active {
     justify-content: flex-end;
+    background-color: $color-tertiary;
   }
 }
 

@@ -6,6 +6,7 @@ import Heading from '../../../../../components/shared/heading';
 import PageLoader from '../../../../../components/shared/loaders/page-loader';
 import Seo from '../../../../../components/shared/seo';
 import DashboardLayout from '../../../../../layouts/dashboard-layout';
+import AdminProvider from '../../../../../providers/admin-provider';
 import { trpc } from '../../../../../utils/trpc';
 import { Status } from '../../../../../utils/types/orders';
 import { NextPageWithLayout } from '../../../../_app';
@@ -97,7 +98,11 @@ const AdminOrderDetailPage: NextPageWithLayout = () => {
 };
 
 AdminOrderDetailPage.getLayout = (page) => {
-  return <DashboardLayout>{page}</DashboardLayout>;
+  return (
+    <DashboardLayout>
+      <AdminProvider>{page}</AdminProvider>
+    </DashboardLayout>
+  );
 };
 
 export default AdminOrderDetailPage;
