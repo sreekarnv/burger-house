@@ -19,6 +19,7 @@
     "@typegoose/typegoose": "^10.0.0",
     "axios": "^1.2.2",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.33.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
