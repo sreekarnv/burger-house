@@ -4,6 +4,7 @@ import OrderListItem from '../../../../../components/order-list-item';
 import Button from '../../../../../components/shared/button';
 import Heading from '../../../../../components/shared/heading';
 import PageLoader from '../../../../../components/shared/loaders/page-loader';
+import Seo from '../../../../../components/shared/seo';
 import DashboardLayout from '../../../../../layouts/dashboard-layout';
 import { trpc } from '../../../../../utils/trpc';
 import { Status } from '../../../../../utils/types/orders';
@@ -33,6 +34,8 @@ const AdminOrderDetailPage: NextPageWithLayout = () => {
 
 	return (
 		<>
+			<Seo title='Dashboard | Orders' />
+
 			<div className={classes.root}>
 				<Heading variant='h3' color='primary' className={classes.heading}>
 					Order &nbsp;#{data?._id}

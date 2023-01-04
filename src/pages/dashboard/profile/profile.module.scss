@@ -2,7 +2,7 @@
 @use 'src/scss/mixins' as *;
 
 .profile {
-	height: 100%;
+	height: calc(100vh - $navbar-height);
 	display: grid;
 	grid-template-columns:
 		1fr [form-start] repeat(8, 1fr)
@@ -20,26 +20,18 @@
 	gap: 2rem;
 	padding: 2.5rem;
 
+	@include respond(desktop-sm) {
+		grid-template-columns:
+			1fr [form-start] repeat(10, 1fr)
+			[form-end] repeat(4, 1fr);
+	}
+
 	@include respond(laptop-md) {
 		background-image: linear-gradient(
 				rgba($color-light, 0.8),
 				rgba($color-light, 0.8)
 			),
 			url(/images/dashboard-md.webp);
-	}
-
-	@include respond(phone-lg) {
-		background-image: linear-gradient(
-				rgba($color-light, 0.8),
-				rgba($color-light, 0.8)
-			),
-			url(/images/dashboard-sm.webp);
-	}
-
-	@include respond(desktop-sm) {
-		grid-template-columns:
-			1fr [form-start] repeat(10, 1fr)
-			[form-end] repeat(4, 1fr);
 	}
 
 	@include respond(laptop-sm) {
@@ -57,6 +49,16 @@
 		row-gap: 8rem;
 		display: block;
 		min-height: 100vh;
+	}
+
+	@include respond(phone-lg) {
+		height: auto;
+		min-height: calc(100vh - $navbar-height-sm);
+		background-image: linear-gradient(
+				rgba($color-light, 0.8),
+				rgba($color-light, 0.8)
+			),
+			url(/images/dashboard-sm.webp);
 	}
 
 	@include respond(phone-md) {

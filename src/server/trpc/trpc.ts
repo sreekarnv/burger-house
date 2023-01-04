@@ -4,7 +4,7 @@ import superjson from 'superjson';
 import { Role } from '../../utils/types/user';
 import * as jwt from '../lib/jwt';
 
-import UserModel, { User } from '../models/user.model';
+import UserModel from '../models/user.model';
 
 import { type Context } from './context';
 

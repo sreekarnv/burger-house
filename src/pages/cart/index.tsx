@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import BurgerListItem from '../../components/burger-list-item/BurgerListItem';
 import Button from '../../components/shared/button';
 import Heading from '../../components/shared/heading';
+import Seo from '../../components/shared/seo';
 import BaseLayout from '../../layouts/base-layout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { clearCart } from '../../store/modules/cart';
@@ -29,6 +30,7 @@ const CartPage: NextPageWithLayout = ({}) => {
 
 	return (
 		<>
+			<Seo title='Cart' />
 			<div className={classes['cart']}>
 				{cartValue > 0 ? (
 					<>

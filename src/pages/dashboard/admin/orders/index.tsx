@@ -2,6 +2,7 @@ import React from 'react';
 import OrderDataTable from '../../../../components/order-data-table';
 import OrderStatCard from '../../../../components/order-stat-card';
 import PageLoader from '../../../../components/shared/loaders/page-loader';
+import Seo from '../../../../components/shared/seo';
 import usePagination from '../../../../hooks/use-pagination';
 import DashboardLayout from '../../../../layouts/dashboard-layout';
 import { trpc } from '../../../../utils/trpc';
@@ -27,6 +28,8 @@ const ManageOrdersPage: NextPageWithLayout = ({}) => {
 
 	return (
 		<>
+			<Seo title='Dashboard | Orders' />
+
 			<div className={classes['manage-orders']}>
 				<div className={classes['manage-orders__stats']}>
 					{orderStats?.map((stat: any) => {

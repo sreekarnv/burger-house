@@ -59,9 +59,9 @@ export class Ingredient {
 	display!: Display;
 }
 
-// const IngredientModel = (mongoose.models.Ingredient ||
-// 	getModelForClass(Ingredient)) as ReturnModelType<typeof Ingredient, {}>;
+const IngredientModel = (mongoose.models.Ingredient ||
+	getModelForClass(Ingredient)) as ReturnModelType<typeof Ingredient, {}>;
 
-const IngredientModel = getModelForClass(Ingredient);
+// const IngredientModel = getModelForClass(Ingredient);
 
 export default IngredientModel;

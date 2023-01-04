@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import useGeolocation from '../../../hooks/use-geolocation';
 import BaseLayout from '../../../layouts/base-layout';
 import { NextPageWithLayout } from '../../_app';
+import Seo from '../../../components/shared/seo';
 
 const RegisterPage: NextPageWithLayout = () => {
 	const router = useRouter();
@@ -46,6 +47,7 @@ const RegisterPage: NextPageWithLayout = () => {
 
 	return (
 		<>
+			<Seo title='Register' />
 			{showAlert && (
 				<Alert position='top-center' variant='dark' type={alertType}>
 					{alertMessage}

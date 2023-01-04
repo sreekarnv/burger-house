@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import MenuNavCard from '../../../components/menu-nav-card';
 import Heading from '../../../components/shared/heading';
+import Seo from '../../../components/shared/seo';
 import BaseLayout from '../../../layouts/base-layout';
 import { NextPageWithLayout } from '../../_app';
 import classes from './diet-choice.module.scss';
@@ -8,6 +9,7 @@ import classes from './diet-choice.module.scss';
 const DietChoice: NextPageWithLayout = () => {
 	return (
 		<>
+			<Seo title='Menu | Make Your Burger' />
 			<div className={classes.root}>
 				<Heading
 					variant='h2'

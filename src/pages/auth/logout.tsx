@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
 import PageLoader from '../../components/shared/loaders/page-loader/PageLoader';
+import Seo from '../../components/shared/seo';
 import { trpc } from '../../utils/trpc';
 
 const LogoutPage: NextPage = ({}) => {
@@ -18,6 +19,7 @@ const LogoutPage: NextPage = ({}) => {
 
 	return (
 		<>
+			<Seo />
 			<PageLoader variant='full' />
 		</>
 	);

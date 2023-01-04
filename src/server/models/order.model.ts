@@ -85,9 +85,9 @@ export class Order {
 	readonly updatedAt!: Date;
 }
 
-// const OrderModel = (mongoose.models.Order ||
-// 	getModelForClass(Order)) as ReturnModelType<typeof Order, {}>;
+const OrderModel = (mongoose.models.Order ||
+	getModelForClass(Order)) as ReturnModelType<typeof Order, {}>;
 
-const OrderModel = getModelForClass(Order);
+// const OrderModel = getModelForClass(Order);
 
 export default OrderModel;
