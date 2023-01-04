@@ -28,7 +28,7 @@ export async function disconnectDB() {
 			await mongoose.disconnect();
 			connection.isConnected = false;
 		} else {
-			console.log('not discounted');
+			console.log('not disconnected');
 		}
 	}
 }

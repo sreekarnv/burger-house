@@ -1,0 +1,58 @@
+@use 'src/scss/mixins' as *;
+@use 'src/scss/variables' as *;
+
+.root {
+	padding: 2rem;
+}
+
+.heading {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.order-detail {
+	display: grid;
+	grid-template-columns:
+		[items-start] repeat(5, 1fr)
+		[items-end info-start] repeat(5, 1fr)
+		[info-end];
+
+	@include respond(laptop-md) {
+		grid-template-columns:
+			[items-start] repeat(6, 1fr)
+			[items-end info-start] repeat(4, 1fr)
+			[info-end];
+	}
+
+	@include respond(tab-land) {
+		grid-template-columns:
+			[full-start] repeat(1, 1fr)
+			[full-end];
+	}
+
+	&__heading {
+		@include respond(phone-md) {
+			font-size: 2.4rem !important;
+			margin-top: 5rem;
+		}
+	}
+
+	&__items {
+		grid-column: items-start / items-end;
+		padding: 1rem;
+
+		@include respond(tab-land) {
+			grid-column: full-start / full-end;
+		}
+	}
+
+	&__info {
+		grid-column: info-start / info-end;
+		padding: 1rem;
+
+		@include respond(tab-land) {
+			grid-column: full-start / full-end;
+			grid-row: 1/ 2;
+		}
+	}
+}

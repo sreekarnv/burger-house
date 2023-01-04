@@ -81,8 +81,6 @@ const CartPage: NextPageWithLayout = ({}) => {
 												cartItems.forEach((item, i) => {
 													const ingredients = [...item.ingredients];
 
-													console.log(ingredients);
-
 													let itemIngredients = ingredients;
 
 													if (item.photo?.url) {

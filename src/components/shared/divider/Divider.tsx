@@ -17,7 +17,10 @@ type Props = React.DetailedHTMLProps<
 
 const Divider: React.FC<Props> = ({ color, className, ...props }) => {
 	return (
-		<div className={clsx(['divider', colors[color], className])} {...props} />
+		<div
+			className={clsx([classes.root, colors[color], className])}
+			{...props}
+		/>
 	);
 };
 
