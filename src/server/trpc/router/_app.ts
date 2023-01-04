@@ -1,3 +1,4 @@
+import { imageUploadRouter } from './image-upload';
 import { router } from '../trpc';
 import { authRouter } from './auth';
 import { burgerRouter } from './burger';
@@ -9,6 +10,7 @@ export const appRouter = router({
 	ingredient: ingredientRouter,
 	burger: burgerRouter,
 	order: orderRouter,
+	image: imageUploadRouter,
 });
 
 export type AppRouter = typeof appRouter;

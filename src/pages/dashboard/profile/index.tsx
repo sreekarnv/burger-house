@@ -16,23 +16,24 @@ import classes from './profile.module.scss';
 import clsx from 'clsx';
 import Heading from '../../../components/shared/heading';
 import { useRouter } from 'next/router';
+import useImageUpload from '../../../hooks/use-image-upload';
 
 const MyProfilePage: NextPageWithLayout = () => {
 	const imageRef = React.useRef<any>();
 	const router = useRouter();
 	const context = trpc.useContext();
 	const user = context.auth.user.getData();
-	// const { imagefile, imageUrl, uploadFile } = useImageUpload();
-
-	const {
-		isLoading: updateDetailsLoading,
-		mutate: updateDetails,
-		error: updateDetailsError,
-	} = trpc.auth.details.useMutation({
-		onSuccess(data) {
-			context.auth.user.setData(undefined, data);
-		},
+	const { imageUrl, uploadFile, imageDataURI } = useImageUpload();
+	const { refetch } = trpc.image.signedURL.useQuery(undefined, {
+		enabled: false,
 	});
+
+	const { mutate: updateDetails, error: updateDetailsError } =
+		trpc.auth.details.useMutation({
+			onSuccess(data) {
+				context.auth.user.setData(undefined, data);
+			},
+		});
 
 	const {
 		isLoading: updatePasswordLoading,
@@ -65,14 +66,52 @@ const MyProfilePage: NextPageWithLayout = () => {
 					initialValues={{
 						name: user?.name || '',
 						email: user?.email || '',
+						photo: user?.photo,
 					}}
 					onSubmit={async (data, { setErrors }) => {
 						try {
 							if (user) {
-								await updateDetails({
-									name: data.name,
-									email: data.email,
-								});
+								if (imageDataURI) {
+									const formData = new FormData();
+
+									const { data: rData } = await refetch();
+
+									if (!rData) {
+										return;
+									}
+
+									formData.append('file', imageDataURI);
+									formData.append('signature', rData.signature);
+									formData.append('api_key', rData.api_key!);
+									formData.append('timestamp', `${rData.timestamp}`);
+									formData.append('folder', `${rData.folder}/users`);
+
+									const imgRes = await fetch(`${rData.url}`, {
+										method: 'POST',
+										body: formData,
+									});
+
+									await imgRes.json().then((d) => {
+										const photo = {
+											publicId: d.public_id,
+											url: d.secure_url,
+										};
+
+										updateDetails({
+											name: data.name,
+											email: data.email,
+											photo,
+										});
+									});
+								} else {
+									await updateDetails({
+										name: data.name,
+										email: data.email,
+										photo: {
+											...user.photo,
+										},
+									});
+								}
 							}
 						} catch (err: any) {
 							if ((updateDetailsError as any).response.data.errors) {
@@ -92,53 +131,53 @@ const MyProfilePage: NextPageWithLayout = () => {
 							}
 						}
 					}}>
-					<Form
-						autoComplete='off'
-						className={clsx(
-							classes['profile__form'],
-							classes['profile__form--1']
-						)}>
-						<Heading
-							variant='h2'
-							color='primary'
-							className={clsx('u-fw-400', classes['profile__heading'])}>
-							Update User Details
-						</Heading>
-						<FormInput label='Name' name='name' />
-						<FormInput label='Email' name='email' />
-						<div className={classes['profile__form-photo']}>
-							<Button
-								type='button'
-								onClick={() => {
-									imageRef.current.click();
-								}}
-								variant='primary-outline'
-								size='sm'>
-								Upload Photo
-							</Button>
-							<input
-								onChange={() => {
-									//
-								}}
-								type='file'
-								style={{ display: 'none' }}
-								ref={imageRef}
-							/>
-							<div>
-								<figure className={classes['profile__form-photo-media']}>
-									<Image
-										src={user?.photo?.url || ''}
-										alt={user?.name || ''}
-										height={40}
-										width={40}
-									/>
-								</figure>
+					{({ isSubmitting }) => (
+						<Form
+							autoComplete='off'
+							className={clsx(
+								classes['profile__form'],
+								classes['profile__form--1']
+							)}>
+							<Heading
+								variant='h2'
+								color='primary'
+								className={clsx('u-fw-400', classes['profile__heading'])}>
+								Update User Details
+							</Heading>
+							<FormInput label='Name' name='name' />
+							<FormInput label='Email' name='email' />
+							<div className={classes['profile__form-photo']}>
+								<Button
+									type='button'
+									onClick={() => {
+										imageRef.current.click();
+									}}
+									variant='primary-outline'
+									size='sm'>
+									Upload Photo
+								</Button>
+								<input
+									onChange={uploadFile}
+									type='file'
+									style={{ display: 'none' }}
+									ref={imageRef}
+								/>
+								<div>
+									<figure className={classes['profile__form-photo-media']}>
+										<Image
+											src={imageUrl || user?.photo?.url || ''}
+											alt={user?.name || ''}
+											height={40}
+											width={40}
+										/>
+									</figure>
+								</div>
 							</div>
-						</div>
-						<Button type='submit' color='tertiary'>
-							{updateDetailsLoading ? 'Loading...' : 'Update Details'}
-						</Button>
-					</Form>
+							<Button type='submit' color='tertiary'>
+								{isSubmitting ? 'Loading...' : 'Update Details'}
+							</Button>
+						</Form>
+					)}
 				</Formik>
 
 				<Formik

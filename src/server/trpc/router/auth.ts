@@ -60,14 +60,11 @@ export const authRouter = router({
 	details: privateProcedure
 		.input(updateDetailsSchema)
 		.mutation(async ({ input, ctx }) => {
-			const { name, email } = input;
+			const { name, email, photo } = input;
 
 			const user = await UserModel.findByIdAndUpdate(
 				ctx.user?._id,
-				{
-					name,
-					email,
-				},
+				{ email, name, photo },
 				{
 					new: true,
 					runValidators: true,
@@ -94,7 +91,6 @@ export const authRouter = router({
 
 			user.password = password;
 
-			console.log(user);
 			await user.save({ validateBeforeSave: false });
 
 			return true;
