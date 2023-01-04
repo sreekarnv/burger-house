@@ -47,7 +47,7 @@ const RegisterPage: NextPageWithLayout = () => {
 	return (
 		<>
 			{showAlert && (
-				<Alert position='top-center' type={alertType}>
+				<Alert position='top-center' variant='dark' type={alertType}>
 					{alertMessage}
 				</Alert>
 			)}
