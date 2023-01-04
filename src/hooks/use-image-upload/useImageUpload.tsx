@@ -16,7 +16,6 @@ const useImageUpload = () => {
 
 		const reader = new FileReader();
 		reader.onload = function (onLoadEvent) {
-			console.log(onLoadEvent);
 			setImageDataURI(onLoadEvent.target?.result as string);
 		};
 
