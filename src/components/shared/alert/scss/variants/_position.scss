@@ -1,22 +1,22 @@
 @use 'src/scss/mixins' as *;
 
 .bottom-right {
-	bottom: 4rem;
-	right: 4rem;
+  bottom: 4rem;
+  right: 4rem;
 
-	@include respond(tab-land) {
-		bottom: 0;
-		right: 0;
-	}
+  @include respond(tab-land) {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .top-center {
-	top: 10rem;
-	left: 50%;
+  top: 10rem;
+  left: 50%;
 
-	transform: translateX(-50%);
+  transform: translateX(-50%);
 
-	@include respond(tab-land) {
-		top: 8rem;
-	}
+  @include respond(tab-land) {
+    top: 8rem;
+  }
 }

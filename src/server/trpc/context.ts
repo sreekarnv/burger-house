@@ -4,13 +4,13 @@ import { connectDB } from '../lib/mongoose';
 import { User } from '../models/user.model';
 
 export const createContext = async (opts: CreateNextContextOptions) => {
-	await connectDB();
+  await connectDB();
 
-	return {
-		req: opts.req,
-		res: opts.res,
-		user: null as User | null,
-	};
+  return {
+    req: opts.req,
+    res: opts.res,
+    user: null as User | null,
+  };
 };
 
 export type Context = inferAsyncReturnType<typeof createContext>;

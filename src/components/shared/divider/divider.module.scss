@@ -1,16 +1,16 @@
 @use '/src/scss/variables' as *;
 
 .root {
-	height: 1.5px;
-	width: 90%;
-	margin: 1rem auto;
-	opacity: 0.35;
+  height: 1.5px;
+  width: 90%;
+  margin: 1rem auto;
+  opacity: 0.35;
 }
 
 .primary {
-	background-color: $color-primary;
+  background-color: $color-primary;
 }
 
 .secondary {
-	background-color: $color-secondary;
+  background-color: $color-secondary;
 }

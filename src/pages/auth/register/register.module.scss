@@ -2,97 +2,97 @@
 @use 'src/scss/mixins' as *;
 
 .root {
-	min-height: $page-height;
-	padding: 4rem;
-	background-image: linear-gradient(
-			rgba($color-black, 0.75),
-			rgba($color-black, 0.75)
-		),
-		url(/images/register.webp);
+  min-height: $page-height;
+  padding: 4rem;
+  background-image: linear-gradient(
+      rgba($color-black, 0.75),
+      rgba($color-black, 0.75)
+    ),
+    url(/images/register.webp);
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-	@include respond(laptop-sm) {
-		background-image: linear-gradient(
-				rgba($color-black, 0.75),
-				rgba($color-black, 0.75)
-			),
-			url(/images/register-md.webp);
-	}
+  @include respond(laptop-sm) {
+    background-image: linear-gradient(
+        rgba($color-black, 0.75),
+        rgba($color-black, 0.75)
+      ),
+      url(/images/register-md.webp);
+  }
 
-	@include respond(tab-land) {
-		background-image: linear-gradient(
-				rgba($color-white, 0.75),
-				rgba($color-white, 0.75)
-			),
-			url(/images/register-md.webp);
-	}
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        rgba($color-white, 0.75),
+        rgba($color-white, 0.75)
+      ),
+      url(/images/register-md.webp);
+  }
 
-	@include respond(phone-lg) {
-		background-image: linear-gradient(
-				rgba($color-white, 0.75),
-				rgba($color-white, 0.75)
-			),
-			url(/images/register-sm.webp);
-		padding: 2rem;
-		align-items: flex-start;
-	}
+  @include respond(phone-lg) {
+    background-image: linear-gradient(
+        rgba($color-white, 0.75),
+        rgba($color-white, 0.75)
+      ),
+      url(/images/register-sm.webp);
+    padding: 2rem;
+    align-items: flex-start;
+  }
 
-	@include respond(phone-md) {
-		padding: 2rem 0;
-	}
+  @include respond(phone-md) {
+    padding: 2rem 0;
+  }
 }
 
 .heading {
-	padding-top: 1rem;
-	margin-bottom: 2.5rem;
+  padding-top: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .form {
-	padding: 2rem;
-	width: 30vw;
-	background-color: rgba($color-white, 0.7);
-	border-radius: 5px;
+  padding: 2rem;
+  width: 30vw;
+  background-color: rgba($color-white, 0.7);
+  border-radius: 5px;
 
-	@include respond(laptop-md) {
-		width: 40vw;
-	}
+  @include respond(laptop-md) {
+    width: 40vw;
+  }
 
-	@include respond(laptop-sm) {
-		width: 50vw;
-	}
+  @include respond(laptop-sm) {
+    width: 50vw;
+  }
 
-	@include respond(tab-land) {
-		width: 100%;
-		height: auto;
-		padding: 0;
-		background-color: transparent;
-	}
+  @include respond(tab-land) {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background-color: transparent;
+  }
 
-	&__content {
-		padding: 0.75rem 4rem;
+  &__content {
+    padding: 0.75rem 4rem;
 
-		@include respond(phone-lg) {
-			padding: 0.75rem 1rem;
-		}
-	}
+    @include respond(phone-lg) {
+      padding: 0.75rem 1rem;
+    }
+  }
 
-	&__switch {
-		display: flex;
-		align-items: center;
-		margin-bottom: 2rem;
-		gap: 1rem;
+  &__switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
 
-		span {
-			font-size: 1.4rem;
+    span {
+      font-size: 1.4rem;
 
-			@include respond(tab-land) {
-				font-size: 1.8rem;
-			}
-		}
-	}
+      @include respond(tab-land) {
+        font-size: 1.8rem;
+      }
+    }
+  }
 }

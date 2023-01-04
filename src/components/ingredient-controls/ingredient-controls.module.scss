@@ -1,13 +1,13 @@
 @use 'src/scss/mixins' as *;
 
 .ingredient-controls {
-	padding: 10rem 0;
+  padding: 10rem 0;
 
-	@include respond(tab-port) {
-		padding: 5rem;
-	}
+  @include respond(tab-port) {
+    padding: 5rem;
+  }
 
-	@include respond(phone-md) {
-		padding: 2rem;
-	}
+  @include respond(phone-md) {
+    padding: 2rem;
+  }
 }

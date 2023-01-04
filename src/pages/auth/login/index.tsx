@@ -15,68 +15,70 @@ import BaseLayout from '../../../layouts/base-layout';
 import Seo from '../../../components/shared/seo';
 
 const LoginPage: NextPageWithLayout = ({}) => {
-	const context = trpc.useContext();
-	const { setAlert, showAlert, alertMessage, alertType } = useAlert();
-	const router = useRouter();
-	const { mutate, isLoading } = trpc.auth.login.useMutation({
-		onSuccess(data) {
-			context.auth.user.setData(undefined, data);
-		},
-		onError(error) {
-			setAlert('danger', error.message || "We couldn't log you in");
-		},
-		onSettled(data) {
-			if (data) {
-				const redirect = (router.query.redirect as string) || '/menu';
-				router.replace(redirect);
-			}
-		},
-	});
+  const context = trpc.useContext();
+  const { setAlert, showAlert, alertMessage, alertType } = useAlert();
+  const router = useRouter();
+  const { mutate, isLoading } = trpc.auth.login.useMutation({
+    onSuccess(data) {
+      context.auth.user.setData(undefined, data);
+    },
+    onError(error) {
+      setAlert('danger', error.message || "We couldn't log you in");
+    },
+    onSettled(data) {
+      if (data) {
+        const redirect = (router.query.redirect as string) || '/menu';
+        router.replace(redirect);
+      }
+    },
+  });
 
-	return (
-		<>
-			<Seo title='Login' />
-			{showAlert && (
-				<Alert position='top-center' variant='dark' type={alertType}>
-					{alertMessage}
-				</Alert>
-			)}
-			<div className={classes.root}>
-				<Formik
-					onSubmit={async (values, actions) => {
-						const { email, password } = values;
-						mutate({
-							email,
-							password,
-						});
+  return (
+    <>
+      <Seo title="Login" />
+      {showAlert && (
+        <Alert position="top-center" variant="dark" type={alertType}>
+          {alertMessage}
+        </Alert>
+      )}
+      <div className={classes.root}>
+        <Formik
+          onSubmit={async (values, actions) => {
+            const { email, password } = values;
+            mutate({
+              email,
+              password,
+            });
 
-						actions.resetForm();
-					}}
-					initialValues={{ email: '', password: '' }}
-					validationSchema={toFormikValidationSchema(loginInputSchema)}>
-					<Form className={classes.form} autoComplete='off'>
-						<div className={classes['form-content']}>
-							<Heading
-								className={clsx([
-									classes.heading,
-									'u-text-capitalize u-fw-400',
-								])}
-								color='primary'
-								variant='h2'>
-								Login
-							</Heading>
-							<FormInput name='email' type='email' label='Email Address' />
-							<FormInput name='password' type='password' label='Password' />
+            actions.resetForm();
+          }}
+          initialValues={{ email: '', password: '' }}
+          validationSchema={toFormikValidationSchema(loginInputSchema)}
+        >
+          <Form className={classes.form} autoComplete="off">
+            <div className={classes['form-content']}>
+              <Heading
+                className={clsx([
+                  classes.heading,
+                  'u-text-capitalize u-fw-400',
+                ])}
+                color="primary"
+                variant="h2"
+              >
+                Login
+              </Heading>
+              <FormInput name="email" type="email" label="Email Address" />
+              <FormInput name="password" type="password" label="Password" />
 
-							<Button className='u-w-100'>
-								{isLoading ? 'Loading...' : 'Login'}
-							</Button>
-						</div>
-					</Form>
-				</Formik>
-			</div>
-		</>
-	);
+              <Button className="u-w-100">
+                {isLoading ? 'Loading...' : 'Login'}
+              </Button>
+            </div>
+          </Form>
+        </Formik>
+      </div>
+    </>
+  );
 };
 
 LoginPage.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;

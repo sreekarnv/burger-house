@@ -1,18 +1,18 @@
 import React from 'react';
 
 const useDisclosure = (initialState = false) => {
-	const [isOpen, setIsOpen] = React.useState<boolean>(initialState);
+  const [isOpen, setIsOpen] = React.useState<boolean>(initialState);
 
-	const onOpen = () => setIsOpen(true);
-	const onClose = () => setIsOpen(false);
-	const onToggle = () => setIsOpen(!isOpen);
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
+  const onToggle = () => setIsOpen(!isOpen);
 
-	return {
-		isOpen,
-		onOpen,
-		onClose,
-		onToggle,
-	};
+  return {
+    isOpen,
+    onOpen,
+    onClose,
+    onToggle,
+  };
 };
 
 export default useDisclosure;

@@ -10,59 +10,59 @@ import { NextPageWithLayout } from '../../../_app';
 import classes from './manage-orders.module.scss';
 
 const ManageOrdersPage: NextPageWithLayout = ({}) => {
-	const { page, handleNextPage, handlePrevPage } = usePagination({
-		initialPage: 1,
-	});
-	const { data, isLoading } = trpc.order.all.useQuery({ limit: 8, page });
+  const { page, handleNextPage, handlePrevPage } = usePagination({
+    initialPage: 1,
+  });
+  const { data, isLoading } = trpc.order.all.useQuery({ limit: 8, page });
 
-	const { data: orderStats, isLoading: isOrderStatsLoading } =
-		trpc.order.orderStats.useQuery();
+  const { data: orderStats, isLoading: isOrderStatsLoading } =
+    trpc.order.orderStats.useQuery();
 
-	if (isOrderStatsLoading || isLoading) {
-		return (
-			<>
-				<PageLoader variant='embed' />
-			</>
-		);
-	}
+  if (isOrderStatsLoading || isLoading) {
+    return (
+      <>
+        <PageLoader variant="embed" />
+      </>
+    );
+  }
 
-	return (
-		<>
-			<Seo title='Dashboard | Orders' />
+  return (
+    <>
+      <Seo title="Dashboard | Orders" />
 
-			<div className={classes['manage-orders']}>
-				<div className={classes['manage-orders__stats']}>
-					{orderStats?.map((stat: any) => {
-						return (
-							<>
-								<OrderStatCard
-									key={stat._id}
-									title={stat._id}
-									value={stat.count}
-								/>
-							</>
-						);
-					})}
-				</div>
-				<div>
-					{data && (
-						<OrderDataTable
-							nextPage={handleNextPage}
-							previousPage={handlePrevPage}
-							{...{ page }}
-							glass
-							linkUrl='/dashboard/admin/orders'
-							data={data}
-						/>
-					)}
-				</div>
-			</div>
-		</>
-	);
+      <div className={classes['manage-orders']}>
+        <div className={classes['manage-orders__stats']}>
+          {orderStats?.map((stat: any) => {
+            return (
+              <>
+                <OrderStatCard
+                  key={stat._id}
+                  title={stat._id}
+                  value={stat.count}
+                />
+              </>
+            );
+          })}
+        </div>
+        <div>
+          {data && (
+            <OrderDataTable
+              nextPage={handleNextPage}
+              previousPage={handlePrevPage}
+              {...{ page }}
+              glass
+              linkUrl="/dashboard/admin/orders"
+              data={data}
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 ManageOrdersPage.getLayout = (page) => {
-	return <DashboardLayout>{page}</DashboardLayout>;
+  return <DashboardLayout>{page}</DashboardLayout>;
 };
 
 export default ManageOrdersPage;

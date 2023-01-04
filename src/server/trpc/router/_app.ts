@@ -6,11 +6,11 @@ import { ingredientRouter } from './ingredient';
 import { orderRouter } from './order';
 
 export const appRouter = router({
-	auth: authRouter,
-	ingredient: ingredientRouter,
-	burger: burgerRouter,
-	order: orderRouter,
-	image: imageUploadRouter,
+  auth: authRouter,
+  ingredient: ingredientRouter,
+  burger: burgerRouter,
+  order: orderRouter,
+  image: imageUploadRouter,
 });
 
 export type AppRouter = typeof appRouter;

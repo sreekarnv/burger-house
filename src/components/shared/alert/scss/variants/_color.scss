@@ -2,17 +2,17 @@
 @use 'src/scss/variables' as *;
 
 .success {
-	@include alertVariant($color-success);
+  @include alertVariant($color-success);
 
-	&--dark {
-		@include alertDarkVariant($color-success);
-	}
+  &--dark {
+    @include alertDarkVariant($color-success);
+  }
 }
 
 .danger {
-	@include alertVariant($color-danger);
+  @include alertVariant($color-danger);
 
-	&--dark {
-		@include alertDarkVariant($color-danger);
-	}
+  &--dark {
+    @include alertDarkVariant($color-danger);
+  }
 }

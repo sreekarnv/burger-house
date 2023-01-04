@@ -5,12 +5,12 @@ import cartReducer from './modules/cart';
 import customBurgerReducer from './modules/customBurger';
 
 export const store = configureStore({
-	reducer: {
-		app: appReducer,
-		geolocation: geoLocationReducer,
-		cart: cartReducer,
-		customBurger: customBurgerReducer,
-	},
+  reducer: {
+    app: appReducer,
+    geolocation: geoLocationReducer,
+    cart: cartReducer,
+    customBurger: customBurgerReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

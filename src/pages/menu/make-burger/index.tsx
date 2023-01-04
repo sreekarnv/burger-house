@@ -7,27 +7,28 @@ import { NextPageWithLayout } from '../../_app';
 import classes from './diet-choice.module.scss';
 
 const DietChoice: NextPageWithLayout = () => {
-	return (
-		<>
-			<Seo title='Menu | Make Your Burger' />
-			<div className={classes.root}>
-				<Heading
-					variant='h2'
-					className={clsx(['u-text-capitalize', classes.heading])}
-					color='primary'>
-					Choose your diet
-				</Heading>
-				<div className={classes.nav}>
-					<MenuNavCard to={`/menu/make-burger/vegetarian`} veg />
-					<MenuNavCard to={`/menu/make-burger/non-vegetarian`} />
-				</div>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <Seo title="Menu | Make Your Burger" />
+      <div className={classes.root}>
+        <Heading
+          variant="h2"
+          className={clsx(['u-text-capitalize', classes.heading])}
+          color="primary"
+        >
+          Choose your diet
+        </Heading>
+        <div className={classes.nav}>
+          <MenuNavCard to={`/menu/make-burger/vegetarian`} veg />
+          <MenuNavCard to={`/menu/make-burger/non-vegetarian`} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 DietChoice.getLayout = (page) => {
-	return <BaseLayout>{page}</BaseLayout>;
+  return <BaseLayout>{page}</BaseLayout>;
 };
 
 export default DietChoice;

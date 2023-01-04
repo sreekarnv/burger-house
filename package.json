@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write --config .prettierrc ./src/**",
+    "check:format": "prettier --check --config .prettierrc ./src/**"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -49,6 +51,7 @@
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.26.0",
     "eslint-config-next": "13.1.1",
+    "prettier": "^2.8.1",
     "sass": "^1.57.1",
     "typescript": "^4.8.4"
   },
