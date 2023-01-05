@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             href="https://github.com/sreekarnv/burger-house"
             passHref
           >
-            <IconButton>
+            <IconButton aria-label="Github">
               <FiGithub />
             </IconButton>
           </Link>
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             href="https://linkedin.com/in/sreekar-venkata-nutulapati-63672120a"
             passHref
           >
-            <IconButton>
+            <IconButton aria-label="Linkedin">
               <FiLinkedin />
             </IconButton>
           </Link>
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
             href="https://sreekarnutulapati.vercel.app"
             passHref
           >
-            <IconButton>
+            <IconButton aria-label="Website">
               <FiLink2 />
             </IconButton>
           </Link>

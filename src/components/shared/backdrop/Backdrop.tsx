@@ -41,7 +41,7 @@ const Backdrop: React.FC<Props> = ({ show, onClose, className }) => {
           initial="hide"
           animate="show"
           exit="hide"
-          onClick={(e) => {
+          onClick={() => {
             onClose();
           }}
           className={clsx([classes.root, className])}

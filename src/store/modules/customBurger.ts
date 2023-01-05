@@ -82,7 +82,7 @@ export const customBurgerSlice = createSlice({
       state.burgerPrice = burgerPrice;
     },
 
-    resetIngredients: (state, action) => {
+    resetIngredients: (state) => {
       const burgerPrice = 350;
       const ingredients: any = [...state.ingredients];
       ingredients.forEach((el: any) => (el.amount = 0));

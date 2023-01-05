@@ -14,6 +14,12 @@ const useImageUpload = () => {
       return setError('please upload an image');
     }
 
+    const fileType = e.target.files![0].type.split('/')[1];
+
+    if (!imgTypes.includes(fileType!)) {
+      return setError('please upload an image');
+    }
+
     const reader = new FileReader();
     reader.onload = function (onLoadEvent) {
       setImageDataURI(onLoadEvent.target?.result as string);

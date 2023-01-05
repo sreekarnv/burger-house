@@ -249,6 +249,7 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
     if (data) {
       loadMapData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -270,7 +271,7 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
             >
               Refresh Map
             </Button>
-            <IconButton onClick={closeMap}>
+            <IconButton aria-label="close map" onClick={closeMap}>
               <HiX size={18} />
             </IconButton>
           </div>

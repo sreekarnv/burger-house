@@ -20,11 +20,11 @@ const AddRemoveButton: React.FC<Props> = ({
 }) => {
   return (
     <div className={clsx([classes.root, className])}>
-      <IconButton onClick={leftOnClick}>
+      <IconButton aria-label="add one item" onClick={leftOnClick}>
         <FiPlus className="u-text-dark" />
       </IconButton>
       <p className={classes.text}>{props.children}</p>
-      <IconButton onClick={rightOnClick}>
+      <IconButton aria-label="remove one item" onClick={rightOnClick}>
         <FiMinus className="u-text-dark" />
       </IconButton>
     </div>

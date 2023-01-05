@@ -19,6 +19,7 @@ const textColor = {
 interface HeadingProps extends React.PropsWithChildren {
   className?: string;
   variant?: keyof typeof variants;
+  component?: keyof typeof variants;
   color?: keyof typeof textColor;
 }
 
@@ -26,33 +27,20 @@ const Heading: React.FC<HeadingProps> = ({
   children,
   className,
   variant = 'h1',
+  component = 'h1',
   color = 'dark',
 }) => {
-  switch (variant) {
+  const classNames = [className, textColor[color], variants[variant]];
+
+  switch (component) {
     case 'h1':
-      return (
-        <h1 className={clsx([classes.h1, textColor[color], className])}>
-          {children}
-        </h1>
-      );
+      return <h1 className={clsx(classNames)}>{children}</h1>;
     case 'h2':
-      return (
-        <h2 className={clsx([classes.h2, textColor[color], className])}>
-          {children}
-        </h2>
-      );
+      return <h2 className={clsx(classNames)}>{children}</h2>;
     case 'h3':
-      return (
-        <h3 className={clsx([classes.h3, textColor[color], className])}>
-          {children}
-        </h3>
-      );
+      return <h3 className={clsx(classNames)}>{children}</h3>;
     default:
-      return (
-        <h1 className={clsx([classes.h1, textColor[color], className])}>
-          {children}
-        </h1>
-      );
+      return <h1 className={clsx(classNames)}>{children}</h1>;
   }
 };
 

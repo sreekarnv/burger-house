@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import React from 'react';
-// import { PaginatedOrders } from '../../hooks/api/types';
 import format from 'date-fns/format';
 
 import classes from './order-data-table.module.scss';
@@ -15,8 +14,6 @@ interface OrderDataTableProps {
   previousPage: () => void;
   page: number;
 }
-
-const LIMIT = 12;
 
 const OrderDataTable: React.FC<OrderDataTableProps> = ({
   data,

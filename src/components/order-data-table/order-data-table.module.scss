@@ -47,13 +47,13 @@
     }
 
     &--delivered {
-      color: $color-light;
+      color: $color-dark;
       background-color: $color-success;
     }
 
     &--cancelled {
-      color: rgba($color-dark, 0.5);
-      background-color: rgba($color-dark, 0.3);
+      color: rgba($color-dark, 0.8);
+      background-color: rgba($color-dark, 0.1);
     }
   }
 

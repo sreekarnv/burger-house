@@ -66,10 +66,11 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
           >
             My Profile
           </SidebarNavLink>
-
           {user?.role === 'admin' && (
             <>
-              <Divider color="secondary" />
+              <li>
+                <Divider color="secondary" />
+              </li>
               <SidebarNavLink
                 icon={<HiOutlineDocumentDuplicate />}
                 onClick={() => {

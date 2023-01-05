@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import React from 'react';
 import OrderInfoCard from '../../../../components/order-info-card';
@@ -38,8 +37,8 @@ const MyOrderDetailPage: NextPageWithLayout = ({}) => {
   return (
     <>
       <Seo title="Dashboard | My Orders" />
-
       <TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
+
       <div className={classes.root}>
         <Heading
           variant="h3"

@@ -55,7 +55,7 @@ const OrderInfoCard: React.FC<OrderInfoCardProps> = ({
                 className={clsx([
                   classes['order-info-card__body__row'],
                   'u-text-uppercase',
-                  order.status === 'delivered' && 'u-text-success',
+                  order.status === 'delivered' && 'u-text-dark',
                   order.status === 'pending' && 'u-text-danger',
                 ])}
               >

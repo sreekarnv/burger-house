@@ -26,7 +26,7 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ orderItem }) => {
             />
           </figure>
         </div>
-        <h4 className={classes['order-list-item__name']}>{orderItem.name}</h4>
+        <h2 className={classes['order-list-item__name']}>{orderItem.name}</h2>
         <p className={classes['order-list-item__price']}>
           Rs {orderItem.price} ({orderItem.itemsInCart})
         </p>

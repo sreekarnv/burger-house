@@ -30,6 +30,7 @@
   @include respond(laptop-sm) {
     grid-column: start-full / end-full;
     text-align: center;
+    line-height: 1.4;
   }
 }
 

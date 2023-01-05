@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import BurgerListItem from '../../components/burger-list-item/BurgerListItem';
+import BurgerListItem from '../../components/burger-list-item';
 import Button from '../../components/shared/button';
 import Heading from '../../components/shared/heading';
 import Seo from '../../components/shared/seo';
@@ -61,18 +61,18 @@ const CartPage: NextPageWithLayout = ({}) => {
                 </div>
                 <ul className={classes['cart__total__details']}>
                   <li className={classes['cart__total__item']}>
-                    <h3 className="u-fw-400 u-text-primary">Subtotal</h3>
-                    <h2 className="u-text-tertiary">Rs {cartPrice}</h2>
+                    <p className="u-fw-400 u-text-primary">Subtotal</p>
+                    <p className="u-text-tertiary">Rs {cartPrice}</p>
                   </li>
                   <li className={classes['cart__total__item']}>
-                    <h3 className="u-fw-400 u-text-primary">Tax</h3>
-                    <h2 className="u-text-tertiary">Rs 30</h2>
+                    <p className="u-fw-400 u-text-primary">Tax</p>
+                    <p className="u-text-tertiary">Rs 30</p>
                   </li>
                 </ul>
               </div>
               <div className={classes['cart__total__cta__container']}>
                 <div className={clsx([classes['cart__total__cta']])}>
-                  <h2>Total</h2>
+                  <h1>Total</h1>
                   <h1 className="u-text-tertiary">Rs {cartPrice + 30}</h1>
                 </div>
                 <div className={classes['cart__total__btn']}>

@@ -23,7 +23,7 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
 
   return (
     <>
-      <div className={classes['burger-list-item']}>
+      <li className={classes['burger-list-item']}>
         <div className={classes['burger-list-item__image']}>
           <figure>
             {burger?.photo?.url ? (
@@ -39,7 +39,7 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
             )}
           </figure>
         </div>
-        <h4 className={classes['burger-list-item__name']}>{burger.name}</h4>
+        <h2 className={classes['burger-list-item__name']}>{burger.name}</h2>
         <p className={classes['burger-list-item__price']}>
           Rs {burger.price * burger.itemsInCart}
         </p>
@@ -57,6 +57,7 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
             {burger.itemsInCart}
           </AddRemoveButton>
           <IconButton
+            aria-label="Remove All"
             onClick={() => {
               dispatch(removeBurgerInstancesFromCart({ burger }));
             }}
@@ -79,7 +80,7 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
             return null;
           })}
         </div>
-      </div>
+      </li>
     </>
   );
 };

@@ -39,7 +39,7 @@ const MakeBurger: NextPageWithLayout = () => {
   const burgerPrice = useAppSelector((state) => state.customBurger.burgerPrice);
 
   const onResetIngredients = () => {
-    dispatch(resetIngredients({}));
+    dispatch(resetIngredients());
     setAlert('danger', 'You reset all ingredients');
   };
 
@@ -55,6 +55,7 @@ const MakeBurger: NextPageWithLayout = () => {
     });
 
     cartIngredients.forEach((ingredient: any) => {
+      // eslint-disable-next-line
       ingredient = { ...ingredient, items: ingredient.amount };
     });
 
