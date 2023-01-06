@@ -3,6 +3,12 @@ import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
 import { connectDB } from '../lib/mongoose';
 import { User } from '../models/user.model';
 
+export const createSSGContext = async () => {
+  await connectDB();
+
+  return {};
+};
+
 export const createContext = async (opts: CreateNextContextOptions) => {
   await connectDB();
 
@@ -13,4 +19,5 @@ export const createContext = async (opts: CreateNextContextOptions) => {
   };
 };
 
+export type SSGContext = inferAsyncReturnType<typeof createSSGContext>;
 export type Context = inferAsyncReturnType<typeof createContext>;

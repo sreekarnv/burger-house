@@ -9,6 +9,26 @@ import BurgerCardSkeleton from '../components/burger-card/BurgerCardSkeleton';
 import { NextPageWithLayout } from './_app';
 import BaseLayout from '../layouts/base-layout';
 import Seo from '../components/shared/seo';
+import { createProxySSGHelpers } from '@trpc/react-query/ssg';
+import superjson from 'superjson';
+import { appRouter } from '../server/trpc/router/_app';
+import { createSSGContext } from '../server/trpc/context';
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createSSGContext() as any,
+    transformer: superjson,
+  });
+
+  await ssg.burger.all.prefetch({ limit: 3 });
+
+  return {
+    props: {
+      trpcState: JSON.parse(JSON.stringify(ssg.dehydrate())),
+    },
+  };
+}
 
 const IndexPage: NextPageWithLayout = ({}) => {
   const { data, isLoading } = trpc.burger.all.useQuery({ limit: 3 });
