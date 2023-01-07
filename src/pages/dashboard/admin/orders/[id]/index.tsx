@@ -37,17 +37,17 @@ const AdminOrderDetailPage: NextPageWithLayout = () => {
     <>
       <Seo title="Dashboard | Orders" />
 
-      <div className={classes.root}>
+      <div className={classes.container}>
         <Heading variant="h3" color="primary" className={classes.heading}>
           Order &nbsp;#{data?._id}
         </Heading>
-        <div className={classes['order-detail']}>
-          <div className={classes['order-detail__items']}>
-            {data?.items.map((item, i) => (
+        <div className={classes.root}>
+          <div className={classes.items}>
+            {data?.items.map((item: any, i: any) => (
               <OrderListItem orderItem={item} key={i} />
             ))}
           </div>
-          <div className={classes['order-detail__info']}>
+          <div className={classes.info}>
             {data && (
               <OrderInfoCard
                 showUser

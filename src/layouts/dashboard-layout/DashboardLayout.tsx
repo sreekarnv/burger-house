@@ -29,22 +29,19 @@ const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
       <Sidebar
         onClose={onClose}
         className={clsx([
-          classes['dashboard__sidebar__mobile'],
-          isOpen && classes['dashboard__sidebar__mobile--show'],
+          classes['sidebar__mobile'],
+          isOpen && classes['sidebar__mobile--show'],
         ])}
       />
 
-      <div className={classes['dashboard']}>
-        <button
-          onClick={() => onOpen()}
-          className={classes['dashboard__sidebar__toggler']}
-        >
+      <div className={classes.root}>
+        <button onClick={() => onOpen()} className={classes.toggler}>
           <HiMenu size={24} />
         </button>
-        <div className={classes['dashboard__sidebar']}>
+        <div className={classes.sidebar}>
           <Sidebar />
         </div>
-        <main className={classes['dashboard__content']}>
+        <main className={classes.content}>
           {isLoading && <PageLoader variant="embed" />}
           {!isLoading && children}
         </main>

@@ -1,7 +1,7 @@
 @use 'src/scss/variables' as *;
 @use 'src/scss/mixins' as *;
 
-.profile {
+.root {
   height: calc(100vh - $navbar-height);
   display: grid;
   grid-template-columns:
@@ -66,58 +66,58 @@
     gap: 4rem;
     padding: 8rem 3rem;
   }
+}
 
-  &__heading {
-    margin-bottom: 2rem;
+.heading {
+  margin-bottom: 2rem;
+}
+
+.form {
+  grid-column: form-start / form-end;
+
+  &--1,
+  &--2 {
+    h2 {
+      @include respond(phone-lg) {
+        font-size: 3.5rem;
+        text-align: center;
+      }
+    }
   }
 
-  &__form {
-    grid-column: form-start / form-end;
-
-    &--1,
-    &--2 {
-      h2 {
-        @include respond(phone-lg) {
-          font-size: 3.5rem;
-          text-align: center;
-        }
-      }
+  &--1 {
+    @include respond(tab-land) {
+      margin-bottom: 3.5rem;
     }
+    grid-row: 1 / 2;
+  }
 
-    &--1 {
-      @include respond(tab-land) {
-        margin-bottom: 3.5rem;
-      }
-      grid-row: 1 / 2;
-    }
+  &--2 {
+    grid-row: 2 / 3;
+  }
 
-    &--2 {
-      grid-row: 2 / 3;
-    }
+  &-photo {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    &-photo {
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  &-photo-media {
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
 
-    &-photo-media {
-      height: 5rem;
-      width: 5rem;
-      position: relative;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }

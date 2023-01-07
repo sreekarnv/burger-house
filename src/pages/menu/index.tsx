@@ -7,7 +7,6 @@ import { HiOutlineSearch } from 'react-icons/hi';
 import FormInput from '../../components/shared/form-input';
 import { trpc } from '../../utils/trpc';
 import Heading from '../../components/shared/heading';
-import clsx from 'clsx';
 import usePagination from '../../hooks/use-pagination';
 import Pagination from '../../components/shared/pagination';
 import BurgerCardSkeleton from '../../components/burger-card/BurgerCardSkeleton';
@@ -37,7 +36,8 @@ const MenuPage: NextPageWithLayout = ({}) => {
         <div className={classes.container}>
           <Heading
             variant="h1"
-            className={clsx(['u-fw-400', classes.heading])}
+            hasMarginBottom
+            weight="regular"
             color="primary"
           >
             Menu
@@ -68,7 +68,7 @@ const MenuPage: NextPageWithLayout = ({}) => {
                 <div>
                   <FormInput
                     placeholder="Search by name"
-                    className="u-w-100"
+                    className={'u-w-100'}
                     name="search"
                   />
                   <HiOutlineSearch

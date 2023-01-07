@@ -1,7 +1,7 @@
 @use 'src/scss/mixins' as *;
 @use 'src/scss/variables' as *;
 
-.burger {
+.root {
   overflow-y: scroll;
   padding: 5rem;
   height: 100%;
@@ -17,19 +17,19 @@
   @include respond(phone-sm) {
     padding: 3rem 0.85rem;
   }
+}
 
-  &-top-bun {
-    background-color: $color-primary-light;
-    height: 8rem;
-    width: 100%;
-    border-radius: 50% 50% 10px 10px;
-    margin-bottom: 1rem;
-  }
+.top-bun {
+  background-color: $color-primary-light;
+  height: 8rem;
+  width: 100%;
+  border-radius: 50% 50% 10px 10px;
+  margin-bottom: 1rem;
+}
 
-  &-bottom-bun {
-    background-color: $color-primary-light;
-    height: 6rem;
-    border-radius: 10px 10px 20px 20px;
-    width: 100%;
-  }
+.bottom-bun {
+  background-color: $color-primary-light;
+  height: 6rem;
+  border-radius: 10px 10px 20px 20px;
+  width: 100%;
 }

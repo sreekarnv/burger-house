@@ -76,7 +76,10 @@
 
 .make-burger {
   height: 40vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+  background-image: linear-gradient(
+      rgba($color-black, 0.75),
+      rgba($color-black, 0.75)
+    ),
     url(/images/make-burger.webp);
   background-size: cover;
   background-position: 50%;
@@ -88,7 +91,10 @@
   grid-row-gap: 1.5rem;
 
   @include respond(laptop-sm) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    background-image: linear-gradient(
+        rgba($color-black, 0.75),
+        rgba($color-black, 0.75)
+      ),
       url(/images/make-burger-md.webp);
   }
 
@@ -100,7 +106,10 @@
   @include respond(tab-port) {
     padding: 2rem;
     grid-row-gap: 3rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    background-image: linear-gradient(
+        rgba($color-black, 0.75),
+        rgba($color-black, 0.75)
+      ),
       url(/images/make-burger-sm.webp);
   }
 }
@@ -120,15 +129,6 @@
 
   @include respond(phone-sm) {
     padding: 3rem 1rem;
-  }
-
-  &__heading {
-    text-align: center;
-    padding: 2rem;
-
-    @include respond(phone-lg) {
-      padding: 0;
-    }
   }
 
   &__cards {

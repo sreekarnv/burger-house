@@ -31,51 +31,47 @@ const CartPage: NextPageWithLayout = ({}) => {
   return (
     <>
       <Seo title="Cart" />
-      <div className={classes['cart']}>
+      <div className={classes.root}>
         {cartValue > 0 ? (
           <>
-            <div className={classes['cart__content']}>
-              <div className={classes['cart__content__header']}>
-                <Heading variant="h3" color="dark">
+            <div className={classes.content}>
+              <div className={classes['content__header']}>
+                <Heading align="left" variant="h3" color="dark">
                   Your Cart{' '}
                   <span className="u-text-primary">({cartValue})</span>{' '}
                 </Heading>
               </div>
-              <ul className={classes['cart__content__list']}>
+              <ul className={classes['content__list']}>
                 {cartItems?.map((burger) => {
                   return <BurgerListItem key={burger._id} burger={burger} />;
                 })}
               </ul>
             </div>
 
-            <div className={classes['cart__total']}>
+            <div className={classes.total}>
               <div>
-                <div className={classes['cart__total__header']}>
-                  <Heading
-                    className={classes['cart__total__heading']}
-                    color="dark"
-                    variant="h3"
-                  >
+                <div className={classes['total__header']}>
+                  <Heading component="h3" color="dark" variant="h3">
                     Cart Total
                   </Heading>
                 </div>
-                <ul className={classes['cart__total__details']}>
-                  <li className={classes['cart__total__item']}>
+                <ul className={classes['total__details']}>
+                  <li className={classes['total__item']}>
                     <p className="u-fw-400 u-text-primary">Subtotal</p>
                     <p className="u-text-tertiary">Rs {cartPrice}</p>
                   </li>
-                  <li className={classes['cart__total__item']}>
+                  <li className={classes['total__item']}>
                     <p className="u-fw-400 u-text-primary">Tax</p>
                     <p className="u-text-tertiary">Rs 30</p>
                   </li>
                 </ul>
               </div>
-              <div className={classes['cart__total__cta__container']}>
-                <div className={clsx([classes['cart__total__cta']])}>
+              <div className={classes['total__cta__container']}>
+                <div className={clsx([classes['total__cta']])}>
                   <h1>Total</h1>
                   <h1 className="u-text-tertiary">Rs {cartPrice + 30}</h1>
                 </div>
-                <div className={classes['cart__total__btn']}>
+                <div className={classes['total__btn']}>
                   {user ? (
                     <Button
                       onClick={async () => {
@@ -132,12 +128,10 @@ const CartPage: NextPageWithLayout = ({}) => {
             </div>
           </>
         ) : (
-          <div className={clsx([classes['cart__empty'], 'u-text-center'])}>
+          <div className={clsx([classes.empty, 'u-text-center'])}>
             <Heading
-              className={clsx(
-                classes['cart__empty__heading'],
-                'u-text-uppercase'
-              )}
+              textTransform="uppercase"
+              hasMarginBottom
               variant="h1"
               color="primary"
             >

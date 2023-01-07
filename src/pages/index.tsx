@@ -4,7 +4,6 @@ import HomeGurantee from '../components/home-gurantee';
 import Button from '../components/shared/button';
 import { trpc } from '../utils/trpc';
 import Heading from '../components/shared/heading';
-import clsx from 'clsx';
 import BurgerCardSkeleton from '../components/burger-card/BurgerCardSkeleton';
 import { NextPageWithLayout } from './_app';
 import BaseLayout from '../layouts/base-layout';
@@ -38,7 +37,7 @@ const IndexPage: NextPageWithLayout = ({}) => {
       <Seo />
       <section className={classes.hero}>
         <div className={classes['hero-display--1']}>
-          <Heading color="white" className="u-fw-400 u-text-capitalize">
+          <Heading color="white" weight="regular">
             We make burgers
           </Heading>
           <Button isLink href="/menu" variant="tertiary" size="lg">
@@ -53,7 +52,7 @@ const IndexPage: NextPageWithLayout = ({}) => {
       </section>
 
       <section className={classes['make-burger']}>
-        <Heading variant="h3" color="secondary">
+        <Heading variant="h3" component="h3" color="secondary">
           Don&apos;t Like Our Menu? Then Make Your Own Burger!
         </Heading>
         <Button isLink href="/menu/make-burger" variant="tertiary">
@@ -65,10 +64,8 @@ const IndexPage: NextPageWithLayout = ({}) => {
         <Heading
           variant="h1"
           color="primary"
-          className={clsx(
-            classes['popular-burgers__heading'],
-            'u-text-uppercase'
-          )}
+          textTransform="uppercase"
+          align="center"
         >
           newly added to menu
         </Heading>

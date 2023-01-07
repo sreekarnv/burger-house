@@ -28,15 +28,15 @@ const SidebarNavLink: React.FC<Props> = ({
     <li>
       <Link
         className={clsx([
-          classes['sidebar-nav-link'],
-          isActive && classes['sidebar-nav-link--active'],
+          classes.root,
+          isActive && classes['root--active'],
           className,
         ])}
         href={href}
         {...{ onClick }}
       >
-        <span className={classes['sidebar-nav-link__icon']}>{icon}</span>
-        <span className={classes['sidebar-nav-link__text']}>{children}</span>
+        <span className={classes.icon}>{icon}</span>
+        <span className={classes.text}>{children}</span>
       </Link>
     </li>
   );

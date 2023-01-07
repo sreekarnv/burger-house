@@ -31,8 +31,8 @@ const ManageOrdersPage: NextPageWithLayout = ({}) => {
     <>
       <Seo title="Dashboard | Orders" />
 
-      <div className={classes['manage-orders']}>
-        <div className={classes['manage-orders__stats']}>
+      <div className={classes.root}>
+        <div className={classes.stats}>
           {orderStats?.map((stat: any) => {
             return (
               <>

@@ -53,11 +53,12 @@ Admins can update existing manage orders
 # Techonlogies Used
 
 1. [Next](https://nextjs.org/)
-2. [tRPC](https://trpc.io/)
+2. [tRPC](https://trpc.io/) + [Tanstack Query](https://tanstack.com/query/v4/docs/react/overview)
 3. [Framer Motion](https://www.framer.com/motion/)
-4. [MongoDB](https://mongodb.com/)
-5. [MapBox](https://www.mapbox.com/)
-6. [Sass](https://sass-lang.com/)
+4. [Redux Toolkit](https://redux-toolkit.js.org/)
+5. [MongoDB](https://mongodb.com/)
+6. [MapBox](https://www.mapbox.com/)
+7. [Sass](https://sass-lang.com/)
 
 
 

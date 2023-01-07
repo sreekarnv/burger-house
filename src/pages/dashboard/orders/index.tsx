@@ -24,8 +24,8 @@ const DashboardOrdersPage: NextPageWithLayout = () => {
     <>
       <Seo title="Dashboard | My Orders" />
 
-      <div className={classes['my-orders']}>
-        <Heading variant="h2" className={classes['my-orders__heading']}>
+      <div className={classes.root}>
+        <Heading variant="h2" className={classes.heading}>
           My Orders
         </Heading>
         {data && data?.orders.length ? (

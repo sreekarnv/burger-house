@@ -19,7 +19,7 @@ const IngredientControls: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={clsx([classes['ingredient-controls'], className])}>
+    <div className={clsx([classes.root, className])}>
       {ingredients.map((ingredient) => {
         if (ingredient.foodType === type || ingredient.foodType === 'none') {
           return (

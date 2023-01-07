@@ -23,8 +23,8 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
 
   return (
     <>
-      <li className={classes['burger-list-item']}>
-        <div className={classes['burger-list-item__image']}>
+      <li className={classes.root}>
+        <div className={classes.image}>
           <figure>
             {burger?.photo?.url ? (
               <Image
@@ -39,10 +39,8 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
             )}
           </figure>
         </div>
-        <h2 className={classes['burger-list-item__name']}>{burger.name}</h2>
-        <p className={classes['burger-list-item__price']}>
-          Rs {burger.price * burger.itemsInCart}
-        </p>
+        <h2 className={classes.name}>{burger.name}</h2>
+        <p className={classes.price}>Rs {burger.price * burger.itemsInCart}</p>
 
         <>
           <AddRemoveButton
@@ -67,7 +65,7 @@ const BurgerListItem: React.FC<BurgerListItemProps> = ({ burger }) => {
           </IconButton>
         </>
 
-        <div className={classes['burger-list-item__ingredients']}>
+        <div className={classes.ingredients}>
           {burger?.ingredients?.map((item: any, i: number) => {
             if (item.amount > 0) {
               return (

@@ -18,6 +18,12 @@
   }
 }
 
+@each $name, $align in $text-align {
+  .u-text-#{'' + $name} {
+    text-align: $align !important;
+  }
+}
+
 .u-jc-center {
   justify-content: center !important;
 }

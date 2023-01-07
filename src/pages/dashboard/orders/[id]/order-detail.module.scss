@@ -1,11 +1,21 @@
 @use 'src/scss/mixins' as *;
 @use 'src/scss/variables' as *;
 
-.root {
+.container {
   padding: 1.25rem;
 }
 
-.order-detail {
+.heading {
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+
+  @include respond(phone-md) {
+    font-size: 2.4rem !important;
+    margin-top: 5rem;
+  }
+}
+
+.root {
   display: grid;
   grid-template-columns:
     [items-start] repeat(5, 1fr)
@@ -24,34 +34,23 @@
       [full-start] repeat(1, 1fr)
       [full-end];
   }
+}
 
-  &__heading {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-top: 1rem;
+.items {
+  grid-column: items-start / items-end;
+  padding: 1rem;
 
-    @include respond(phone-md) {
-      font-size: 2.4rem !important;
-      margin-top: 5rem;
-    }
+  @include respond(tab-land) {
+    grid-column: full-start / full-end;
   }
+}
 
-  &__items {
-    grid-column: items-start / items-end;
-    padding: 1rem;
+.info {
+  grid-column: info-start / info-end;
+  padding: 1rem;
 
-    @include respond(tab-land) {
-      grid-column: full-start / full-end;
-    }
-  }
-
-  &__info {
-    grid-column: info-start / info-end;
-    padding: 1rem;
-
-    @include respond(tab-land) {
-      grid-column: full-start / full-end;
-      grid-row: 1/ 2;
-    }
+  @include respond(tab-land) {
+    grid-column: full-start / full-end;
+    grid-row: 1/ 2;
   }
 }

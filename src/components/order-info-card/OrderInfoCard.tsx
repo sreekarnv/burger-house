@@ -18,23 +18,19 @@ const OrderInfoCard: React.FC<OrderInfoCardProps> = ({
 }) => {
   return (
     <>
-      <div className={classes['order-info-card']}>
-        <table className={classes['order-info-card__table']}>
-          <thead className={classes['order-info-card__head']}>
+      <div className={classes.root}>
+        <table className={classes.table}>
+          <thead className={classes.head}>
             <tr>
-              {showUser && (
-                <th className={classes['order-info-card__head__row']}>User</th>
-              )}
-              <th className={classes['order-info-card__head__row']}>
-                Ordered at
-              </th>
-              <th className={classes['order-info-card__head__row']}>Status</th>
+              {showUser && <th className={classes['head-row']}>User</th>}
+              <th className={classes['head-row']}>Ordered at</th>
+              <th className={classes['head-row']}>Status</th>
             </tr>
           </thead>
-          <tbody className={classes['order-info-card__body']}>
+          <tbody className={classes.body}>
             <tr>
               {showUser && (
-                <td className={classes['order-info-card__body__row']}>
+                <td className={classes['body-row']}>
                   <div>
                     <div className="u-text-capitalize">
                       {(order.user as any).name}
@@ -48,12 +44,12 @@ const OrderInfoCard: React.FC<OrderInfoCardProps> = ({
                   </div>
                 </td>
               )}
-              <td className={classes['order-info-card__body__row']}>
+              <td className={classes['body-row']}>
                 {formatDistanceToNow(new Date(order.createdAt))} ago
               </td>
               <td
                 className={clsx([
-                  classes['order-info-card__body__row'],
+                  classes['body-row'],
                   'u-text-uppercase',
                   order.status === 'delivered' && 'u-text-dark',
                   order.status === 'pending' && 'u-text-danger',
@@ -65,7 +61,7 @@ const OrderInfoCard: React.FC<OrderInfoCardProps> = ({
           </tbody>
         </table>
 
-        <div className={classes['order-info-card__cta']}>{cta}</div>
+        <div className={classes.cta}>{cta}</div>
       </div>
     </>
   );

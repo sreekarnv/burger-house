@@ -1,7 +1,7 @@
 @use 'src/scss/mixins' as *;
 @use 'src/scss/variables' as *;
 
-.manage-orders {
+.root {
   background-image: linear-gradient(
       to right,
       rgba($color-white, 0.7),
@@ -38,11 +38,11 @@
       ),
       url(/images/dashboard-md.webp);
   }
+}
 
-  &__stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.85rem;
-    margin-bottom: 3rem;
-  }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.85rem;
+  margin-bottom: 3rem;
 }

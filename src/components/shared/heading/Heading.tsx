@@ -8,6 +8,17 @@ const variants = {
   h3: classes['h3'],
 };
 
+const aligns = {
+  left: 'u-text-left',
+  center: 'u-text-center',
+  right: 'u-text-right',
+};
+
+const weights = {
+  regular: 'u-fw-400',
+  bold: 'u-fw-600',
+};
+
 const textColor = {
   primary: 'u-text-primary',
   secondary: 'u-text-secondary',
@@ -16,11 +27,19 @@ const textColor = {
   white: 'u-text-white',
 };
 
+const transform = {
+  uppercase: 'u-text-uppercase',
+  capitalize: 'u-text-capitalize',
+};
 interface HeadingProps extends React.PropsWithChildren {
   className?: string;
   variant?: keyof typeof variants;
   component?: keyof typeof variants;
   color?: keyof typeof textColor;
+  align?: keyof typeof aligns;
+  weight?: keyof typeof weights;
+  textTransform?: keyof typeof transform;
+  hasMarginBottom?: boolean;
 }
 
 const Heading: React.FC<HeadingProps> = ({
@@ -29,8 +48,20 @@ const Heading: React.FC<HeadingProps> = ({
   variant = 'h1',
   component = 'h1',
   color = 'dark',
+  align = 'center',
+  weight = 'bold',
+  textTransform = 'capitalize',
+  hasMarginBottom,
 }) => {
-  const classNames = [className, textColor[color], variants[variant]];
+  const classNames = [
+    className,
+    transform[textTransform],
+    textColor[color],
+    variants[variant],
+    aligns[align],
+    weights[weight],
+    hasMarginBottom && classes.mb,
+  ];
 
   switch (component) {
     case 'h1':

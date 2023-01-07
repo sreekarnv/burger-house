@@ -63,7 +63,7 @@ const MyProfilePage: NextPageWithLayout = () => {
           {alertMessage}
         </Alert>
       )}
-      <div className={classes['profile']}>
+      <div className={classes.root}>
         <Formik
           validationSchema={toFormikValidationSchema(updateDetailsSchema)}
           initialValues={{
@@ -138,21 +138,20 @@ const MyProfilePage: NextPageWithLayout = () => {
           {({ isSubmitting }) => (
             <Form
               autoComplete="off"
-              className={clsx(
-                classes['profile__form'],
-                classes['profile__form--1']
-              )}
+              className={clsx(classes.form, classes['form--1'])}
             >
               <Heading
+                align="left"
                 variant="h2"
                 color="primary"
-                className={clsx('u-fw-400', classes['profile__heading'])}
+                weight="regular"
+                className={classes.heading}
               >
                 Update User Details
               </Heading>
               <FormInput label="Name" name="name" />
               <FormInput label="Email" name="email" />
-              <div className={classes['profile__form-photo']}>
+              <div className={classes['form-photo']}>
                 <Button
                   type="button"
                   onClick={() => {
@@ -170,7 +169,7 @@ const MyProfilePage: NextPageWithLayout = () => {
                   ref={imageRef}
                 />
                 <div>
-                  <figure className={classes['profile__form-photo-media']}>
+                  <figure className={classes['form-photo-media']}>
                     <Image
                       src={imageUrl || user?.photo?.url || ''}
                       alt={user?.name || ''}
@@ -220,15 +219,14 @@ const MyProfilePage: NextPageWithLayout = () => {
             return (
               <Form
                 autoComplete="off"
-                className={clsx(
-                  classes['profile__form'],
-                  classes['profile__form--2']
-                )}
+                className={clsx(classes['form'], classes['form--2'])}
               >
                 <Heading
+                  align="left"
                   variant="h2"
                   color="primary"
-                  className={clsx('u-fw-400', classes['profile__heading'])}
+                  weight="regular"
+                  className={classes.heading}
                 >
                   Update User Password
                 </Heading>

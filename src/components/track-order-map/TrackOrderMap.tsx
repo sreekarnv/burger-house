@@ -5,7 +5,6 @@ import * as React from 'react';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
 import { HiX } from 'react-icons/hi';
-import clsx from 'clsx';
 import mapboxgl from 'mapbox-gl';
 import { Order } from '../../server/models/order.model';
 import { trpc } from '../../utils/trpc';
@@ -261,9 +260,9 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
           initial={'hide'}
           animate={show ? 'show' : 'hide'}
           exit={'hide'}
-          className={classes['track-order']}
+          className={classes.root}
         >
-          <div className={clsx([classes['track-order__cta']])}>
+          <div className={classes.cta}>
             <Button
               onClick={() => refreshMap()}
               size="sm"
@@ -275,10 +274,7 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
               <HiX size={18} />
             </IconButton>
           </div>
-          <div
-            className={classes['track-order__map']}
-            ref={mapContainerRef}
-          ></div>
+          <div className={classes.map} ref={mapContainerRef}></div>
         </motion.div>
       </AnimatePresence>
     </>

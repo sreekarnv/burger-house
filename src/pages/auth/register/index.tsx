@@ -84,10 +84,7 @@ const RegisterPage: NextPageWithLayout = () => {
                 <Heading
                   variant="h2"
                   color="primary"
-                  className={clsx([
-                    classes.heading,
-                    'u-text-capitalize u-fw-400',
-                  ])}
+                  className={classes.heading}
                 >
                   Register
                 </Heading>

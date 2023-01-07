@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import MenuNavCard from '../../../components/menu-nav-card';
 import Heading from '../../../components/shared/heading';
 import Seo from '../../../components/shared/seo';
@@ -11,11 +10,7 @@ const DietChoice: NextPageWithLayout = () => {
     <>
       <Seo title="Menu | Make Your Burger" />
       <div className={classes.root}>
-        <Heading
-          variant="h2"
-          className={clsx(['u-text-capitalize', classes.heading])}
-          color="primary"
-        >
+        <Heading variant="h2" component="h2" color="primary">
           Choose your diet
         </Heading>
         <div className={classes.nav}>

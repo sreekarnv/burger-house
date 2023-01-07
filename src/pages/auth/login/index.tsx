@@ -9,7 +9,6 @@ import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { loginInputSchema } from '../../../utils/schemas/auth/login';
 import { useRouter } from 'next/router';
 import { trpc } from '../../../utils/trpc';
-import clsx from 'clsx';
 import { NextPageWithLayout } from '../../_app';
 import BaseLayout from '../../../layouts/base-layout';
 import Seo from '../../../components/shared/seo';
@@ -58,10 +57,8 @@ const LoginPage: NextPageWithLayout = ({}) => {
           <Form className={classes.form} autoComplete="off">
             <div className={classes['form-content']}>
               <Heading
-                className={clsx([
-                  classes.heading,
-                  'u-text-capitalize u-fw-400',
-                ])}
+                className={classes.heading}
+                weight="regular"
                 color="primary"
                 variant="h2"
               >

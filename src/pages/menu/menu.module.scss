@@ -67,7 +67,7 @@
   }
 
   @include respond(tab-port) {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -108,4 +108,21 @@
   display: flex;
   column-gap: 1rem;
   align-items: flex-start;
+
+  @include respond(tab-port) {
+    justify-content: center;
+    align-items: center;
+
+    & > button {
+      flex-basis: 50%;
+    }
+
+    & > a {
+      flex-basis: 50%;
+    }
+
+    & > a > button {
+      width: 100%;
+    }
+  }
 }

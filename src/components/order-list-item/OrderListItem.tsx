@@ -10,8 +10,8 @@ interface OrderListItemProps {
 const OrderListItem: React.FC<OrderListItemProps> = ({ orderItem }) => {
   return (
     <>
-      <div className={classes['order-list-item']}>
-        <div className={classes['order-list-item__image']}>
+      <div className={classes.root}>
+        <div className={classes.image}>
           <figure>
             <Image
               height={100}
@@ -26,11 +26,11 @@ const OrderListItem: React.FC<OrderListItemProps> = ({ orderItem }) => {
             />
           </figure>
         </div>
-        <h2 className={classes['order-list-item__name']}>{orderItem.name}</h2>
-        <p className={classes['order-list-item__price']}>
+        <h2 className={classes.name}>{orderItem.name}</h2>
+        <p className={classes.price}>
           Rs {orderItem.price} ({orderItem.itemsInCart})
         </p>
-        <div className={classes['order-list-item__ingredients']}>
+        <div className={classes.ingredients}>
           {orderItem?.ingredients?.map((item: any, i) => {
             if (item.amount > 0) {
               return (

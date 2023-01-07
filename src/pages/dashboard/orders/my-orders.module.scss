@@ -1,7 +1,7 @@
 @use 'src/scss/mixins' as *;
 @use 'src/scss/variables' as *;
 
-.my-orders {
+.root {
   max-width: 160rem;
   padding: 2rem;
 
@@ -17,15 +17,14 @@
   @include respond(tab-land) {
     padding: 2rem 1rem;
   }
+}
 
-  &__heading {
-    display: none;
+.heading {
+  display: none;
 
-    @include respond(laptop-md) {
-      display: block;
-      text-align: center;
-      margin: 1rem 0 2rem 0;
-    }
+  @include respond(laptop-md) {
+    display: block;
+    margin: 1rem 0 2rem 0;
   }
 }
 

@@ -1,7 +1,7 @@
 @use 'src/scss/variables' as *;
 @use 'src/scss/mixins' as *;
 
-.sidebar-nav-link {
+.root {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -33,32 +33,6 @@
     }
   }
 
-  &__icon {
-    svg {
-      height: 2.5rem;
-      width: 2.5rem;
-
-      @include respond(tab-land) {
-        height: 3.5rem;
-        width: 2.5rem;
-      }
-    }
-  }
-
-  &__text {
-    font-size: 1.6rem;
-    font-family: $font-heading;
-    font-weight: 600;
-
-    @include respond(tab-land) {
-      font-size: 2rem;
-    }
-
-    @include respond(phone-md) {
-      font-size: 2.2rem;
-    }
-  }
-
   &--active {
     color: $color-light;
     transform: translateY(-2px);
@@ -67,5 +41,31 @@
     &::before {
       background-color: currentColor;
     }
+  }
+}
+
+.icon {
+  svg {
+    height: 2.5rem;
+    width: 2.5rem;
+
+    @include respond(tab-land) {
+      height: 3.5rem;
+      width: 2.5rem;
+    }
+  }
+}
+
+.text {
+  font-size: 1.6rem;
+  font-family: $font-heading;
+  font-weight: 600;
+
+  @include respond(tab-land) {
+    font-size: 2rem;
+  }
+
+  @include respond(phone-md) {
+    font-size: 2.2rem;
   }
 }

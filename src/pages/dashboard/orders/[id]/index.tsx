@@ -39,21 +39,22 @@ const MyOrderDetailPage: NextPageWithLayout = ({}) => {
       <Seo title="Dashboard | My Orders" />
       <TrackOrderMap show={isOpen} closeMap={onClose} order={data as any} />
 
-      <div className={classes.root}>
+      <div className={classes.container}>
         <Heading
+          component="h3"
           variant="h3"
           color="primary"
-          className={classes['order-detail__heading']}
+          className={classes.heading}
         >
           Order &nbsp;#{data?._id}
         </Heading>
-        <div className={classes['order-detail']}>
-          <div className={classes['order-detail__items']}>
+        <div className={classes.root}>
+          <div className={classes.items}>
             {data?.items.map((item, i) => (
               <OrderListItem orderItem={item} key={i} />
             ))}
           </div>
-          <div className={classes['order-detail__info']}>
+          <div className={classes.info}>
             {data && (
               <OrderInfoCard
                 order={data}

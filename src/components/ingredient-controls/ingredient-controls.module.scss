@@ -1,6 +1,6 @@
 @use 'src/scss/mixins' as *;
 
-.ingredient-controls {
+.root {
   padding: 10rem 0;
 
   @include respond(tab-port) {

@@ -12,8 +12,8 @@ interface Props {
 
 const Burger: React.FC<Props> = ({ ingredients, className }) => {
   return (
-    <div className={clsx(classes['burger'], className)}>
-      <div className={classes['burger-top-bun']}></div>
+    <div className={clsx(classes.root, className)}>
+      <div className={classes['top-bun']}></div>
       {ingredients.map(({ display }: any, i: number) => {
         return (
           <Ingredient
@@ -23,7 +23,7 @@ const Burger: React.FC<Props> = ({ ingredients, className }) => {
           />
         );
       })}
-      <div className={classes['burger-bottom-bun']}></div>
+      <div className={classes['bottom-bun']}></div>
     </div>
   );
 };
