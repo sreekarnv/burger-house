@@ -54,7 +54,6 @@ Admins can update existing manage orders
 
 1. [Next](https://nextjs.org/)
 2. [tRPC](https://trpc.io/) + [Tanstack Query](https://tanstack.com/query/v4/docs/react/overview)
-3. [Upstash Redis](https://upstash.com/)
 4. [Framer Motion](https://www.framer.com/motion/)
 5. [Redux Toolkit](https://redux-toolkit.js.org/)
 6. [MongoDB](https://mongodb.com/)
