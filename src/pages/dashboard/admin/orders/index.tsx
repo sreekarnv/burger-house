@@ -35,13 +35,11 @@ const ManageOrdersPage: NextPageWithLayout = ({}) => {
         <div className={classes.stats}>
           {orderStats?.map((stat: any) => {
             return (
-              <>
-                <OrderStatCard
-                  key={stat._id}
-                  title={stat._id}
-                  value={stat.count}
-                />
-              </>
+              <OrderStatCard
+                key={stat._id}
+                title={stat._id}
+                value={stat.count}
+              />
             );
           })}
         </div>

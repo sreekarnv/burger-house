@@ -18,13 +18,48 @@ import BaseLayout from '../../../../layouts/base-layout';
 import { NextPageWithLayout } from '../../../_app';
 import PageLoader from '../../../../components/shared/loaders/page-loader/PageLoader';
 import Seo from '../../../../components/shared/seo';
+import { createProxySSGHelpers } from '@trpc/react-query/ssg';
+import { appRouter } from '../../../../server/trpc/router/_app';
+import { createSSGContext } from '../../../../server/trpc/context';
+import superjson from 'superjson';
+import { Ingredient } from '../../../../server/models/ingredient.model';
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: { foodType: 'vegetarian' },
+      },
+      {
+        params: { foodType: 'non-vegetarian' },
+      },
+    ],
+    fallback: false,
+  };
+}
+
+export async function getStaticProps() {
+  const ssg = createProxySSGHelpers({
+    router: appRouter,
+    ctx: createSSGContext() as any,
+    transformer: superjson,
+  });
+
+  await ssg.ingredient.all.prefetch();
+
+  return {
+    props: {
+      trpcState: JSON.parse(JSON.stringify(ssg.dehydrate())),
+    },
+  };
+}
 
 const MakeBurger: NextPageWithLayout = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const { isLoading } = trpc.ingredient.all.useQuery(undefined, {
-    onSuccess: (data) => {
+    onSuccess: (data: Ingredient[]) => {
       dispatch(initIngredients({ ingredients: data }));
     },
   });
