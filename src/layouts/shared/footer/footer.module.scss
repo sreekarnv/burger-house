@@ -3,7 +3,7 @@
 
 .root {
   padding: 2rem;
-  background-color: $color-black;
+  background-color: $color-white;
 
   display: grid;
   grid-template-columns:
@@ -22,7 +22,7 @@
 }
 
 .text {
-  color: rgba($color-light, 0.8);
+  color: $color-dark;
   font-size: 1.5rem;
   grid-column: start-copyright / end-copyright;
   font-family: $font-heading;
@@ -54,11 +54,11 @@
 
   &:hover,
   &:focus-visible {
-    color: $color-white;
+    color: $color-black;
   }
 }
 
 .copyright {
   font-weight: 700;
-  color: $color-light;
+  color: $color-dark;
 }
