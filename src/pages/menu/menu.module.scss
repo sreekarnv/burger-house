@@ -53,7 +53,7 @@
     gap: 1rem;
   }
 
-  @include respond(tab-port) {
+  @include respond(phone-lg) {
     flex-direction: column;
   }
 }
@@ -66,7 +66,7 @@
     width: 60%;
   }
 
-  @include respond(tab-port) {
+  @include respond(phone-lg) {
     width: 100%;
     margin: 0 auto;
   }
@@ -109,7 +109,7 @@
   column-gap: 1rem;
   align-items: flex-start;
 
-  @include respond(tab-port) {
+  @include respond(phone-lg) {
     justify-content: center;
     align-items: center;
 
@@ -121,8 +121,16 @@
       flex-basis: 50%;
     }
 
-    & > a > button {
+    & > a > button,
+    & > button {
       width: 100%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
     }
+  }
+
+  @include respond(phone-lg) {
+    display: block;
   }
 }

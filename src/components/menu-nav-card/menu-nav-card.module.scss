@@ -16,6 +16,14 @@
   align-items: center;
   backface-visibility: hidden;
 
+  @include respond(tab-port) {
+    height: 30rem;
+  }
+
+  @include respond(phone-lg) {
+    height: 25rem;
+  }
+
   &:hover,
   &:focus {
     transform: scale(1.02);

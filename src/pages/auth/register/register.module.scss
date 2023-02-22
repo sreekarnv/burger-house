@@ -33,11 +33,7 @@
   }
 
   @include respond(phone-lg) {
-    background-image: linear-gradient(
-        rgba($color-white, 0.75),
-        rgba($color-white, 0.75)
-      ),
-      url(/images/register-sm.webp);
+    background-image: none;
     padding: 2rem;
     align-items: flex-start;
   }

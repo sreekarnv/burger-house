@@ -52,7 +52,7 @@ const IndexPage: NextPageWithLayout = ({}) => {
       </section>
 
       <section className={classes['make-burger']}>
-        <Heading variant="h3" component="h3" color="secondary">
+        <Heading variant="h3" component="h2" color="secondary">
           Don&apos;t Like Our Menu? Then Make Your Own Burger!
         </Heading>
         <Button isLink href="/menu/make-burger" variant="tertiary">

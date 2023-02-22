@@ -57,6 +57,9 @@ const BurgerCard: React.FC<BurgerCardProps> = ({
             loading="lazy"
             height={1000}
             width={1000}
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
           />
         </figure>
         <div className={classes.content}>

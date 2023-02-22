@@ -114,6 +114,7 @@
 
       @include respond(phone-md) {
         flex-direction: column;
+        gap: 1rem;
       }
 
       & > * {
