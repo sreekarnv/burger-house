@@ -22,33 +22,33 @@ Building the app
 
 # Home Page
 
-![](preview-images/home.png)
+![](assets/home.png)
 
 # Menu Page
 
-![](preview-images/menu.png)
+![](assets/menu.png)
 
 # Make your own burger !
 
 In case you don't like the menu you can make your own burger.
 
-![](preview-images/make-1.png)
-![](preview-images/make-2.png)
+![](assets/make-1.png)
+![](assets/make-2.png)
 
 # Customer Dashboard
 
 Customers (admins also) can update their details, view their order status, cancel the order and track location of mock delivery.
 
-![](preview-images/customer-dashboard-1.png)
-![](preview-images/customer-dashboard-2.png)
-![](preview-images/customer-dashboard-3.png)
+![](assets/customer-dashboard-1.png)
+![](assets/customer-dashboard-2.png)
+![](assets/customer-dashboard-3.png)
 
 # Admin Dashboard
 
 Admins can update existing manage orders
 
-![](preview-images/admin-dashboard-1.png)
-![](preview-images/admin-dashboard-2.png)
+![](assets/admin-dashboard-1.png)
+![](assets/admin-dashboard-2.png)
 
 # Techonlogies Used
 
