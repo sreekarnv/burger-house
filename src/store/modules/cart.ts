@@ -20,12 +20,11 @@ export const appSlice = createSlice({
     addBurgerToCart: (state, action) => {
       const cartArr = [...state.items];
 
-      // if burger already exists, increment itemsInCart else push it to array
       if (cartArr.find((burger) => burger._id === action.payload.burger._id)) {
         const burgerIndex = cartArr.findIndex(
           (burger) => burger._id === action.payload.burger._id
         );
-        (cartArr[burgerIndex] as CartBurger).itemsInCart++;
+        cartArr[burgerIndex]!.itemsInCart++;
       } else {
         cartArr.push({ ...action.payload.burger, itemsInCart: 1 });
       }
@@ -54,10 +53,12 @@ export const appSlice = createSlice({
           (burger) => burger._id === action.payload.burger._id
         );
 
-        if ((cartArr[burgerIndex] as CartBurger).itemsInCart! > 1) {
-          (cartArr[burgerIndex] as CartBurger).itemsInCart!--;
-        } else {
-          cartArr.splice(burgerIndex, 1);
+        if (burgerIndex !== -1) {
+          if (cartArr[burgerIndex]!.itemsInCart > 1) {
+            cartArr[burgerIndex]!.itemsInCart--;
+          } else {
+            cartArr.splice(burgerIndex, 1);
+          }
         }
       }
 
@@ -81,7 +82,7 @@ export const appSlice = createSlice({
 
       if (cartArr.find((burger) => burger._id === action.payload.burger._id)) {
         const burgerIndex = cartArr.findIndex(
-          (burger) => burger._id === action.payload.burger.id
+          (burger) => burger._id === action.payload.burger._id
         );
 
         cartArr.splice(burgerIndex, 1);

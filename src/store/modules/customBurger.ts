@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { Ingredient } from '../../server/models/ingredient.model';
 
+export type CartIngredient = Ingredient & { amount: number };
+
 interface CustomBurgerState {
-  ingredients: Ingredient[];
-  displayIngredients: (Ingredient & { amount: number })[];
+  ingredients: CartIngredient[];
+  displayIngredients: CartIngredient[];
   burgerPrice: number;
 }
 
@@ -36,14 +38,14 @@ export const customBurgerSlice = createSlice({
     },
 
     addIngredient: (state, action) => {
-      const ingredients: any = [...state.ingredients];
+      const ingredients: CartIngredient[] = [...state.ingredients];
       const ingredientIndex = ingredients.findIndex(
         (el: any) => el.name === action.payload.ingredient.name
       );
 
-      ingredients[ingredientIndex].amount!++;
+      ingredients[ingredientIndex]!.amount!++;
       const burgerPrice =
-        state.burgerPrice + ingredients[ingredientIndex].price;
+        state.burgerPrice + ingredients[ingredientIndex]!.price;
 
       const displayIngredients = [...state.displayIngredients];
       displayIngredients.push({
