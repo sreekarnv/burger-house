@@ -18,11 +18,12 @@ import BaseLayout from '../../../../layouts/base-layout';
 import { NextPageWithLayout } from '../../../_app';
 import PageLoader from '../../../../components/shared/loaders/page-loader/PageLoader';
 import Seo from '../../../../components/shared/seo';
-import { createProxySSGHelpers } from '@trpc/react-query/ssg';
 import { appRouter } from '../../../../server/trpc/router/_app';
 import { createSSGContext } from '../../../../server/trpc/context';
 import superjson from 'superjson';
+import { createServerSideHelpers } from '@trpc/react-query/server';
 import { Ingredient } from '../../../../server/models/ingredient.model';
+4;
 
 export async function getStaticPaths() {
   return {
@@ -39,7 +40,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps() {
-  const ssg = createProxySSGHelpers({
+  const ssg = createServerSideHelpers({
     router: appRouter,
     ctx: createSSGContext() as any,
     transformer: superjson,
