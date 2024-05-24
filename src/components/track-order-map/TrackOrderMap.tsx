@@ -152,56 +152,61 @@ const TrackOrderMap: React.FC<Props> = ({ order, show, closeMap }) => {
             },
           },
         });
+
+        mapRef.current!.addLayer({
+          id: 'route',
+          type: 'line',
+          source: 'route',
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round',
+          },
+          paint: {
+            'line-color': '#0099CC',
+            'line-width': 8,
+          },
+        });
       }
 
-      mapRef.current!.addLayer({
-        id: 'route',
-        type: 'line',
-        source: 'route',
-        layout: {
-          'line-join': 'round',
-          'line-cap': 'round',
-        },
-        paint: {
-          'line-color': '#0099CC',
-          'line-width': 8,
-        },
-      });
-
       //////////////////
-      mapRef.current!.addSource('route1', {
-        type: 'geojson',
-        data: route as any,
-      });
 
-      mapRef.current!.addSource('point', {
-        type: 'geojson',
-        data: point as any,
-      });
+      if (!mapRef.current?.getLayer('route1')) {
+        mapRef.current!.addSource('route1', {
+          type: 'geojson',
+          data: route as any,
+        });
 
-      mapRef.current!.addLayer({
-        id: 'route1',
-        source: 'route',
-        type: 'line',
-        paint: {
-          'line-width': 2,
-          'line-color': 'transparent',
-        },
-      });
+        mapRef.current!.addLayer({
+          id: 'route1',
+          source: 'route',
+          type: 'line',
+          paint: {
+            'line-width': 2,
+            'line-color': 'transparent',
+          },
+        });
+      }
 
-      mapRef.current!.addLayer({
-        id: 'point',
-        source: 'point',
-        type: 'symbol',
-        layout: {
-          'icon-image': 'car-15',
-          'icon-size': 2,
-          'icon-rotate': ['get', 'bearing'],
-          'icon-rotation-alignment': 'map',
-          'icon-allow-overlap': true,
-          'icon-ignore-placement': true,
-        },
-      });
+      if (!mapRef.current?.getLayer('point')) {
+        mapRef.current!.addSource('point', {
+          type: 'geojson',
+          data: point as any,
+        });
+
+        mapRef.current!.addLayer({
+          id: 'point',
+          source: 'point',
+          type: 'symbol',
+          layout: {
+            'icon-image': 'car-15',
+            'icon-size': 2,
+            'icon-rotate': ['get', 'bearing'],
+            'icon-rotation-alignment': 'map',
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true,
+          },
+        });
+      }
 
       if (point.features.length) {
         point.features[0]!.geometry!.coordinates = [

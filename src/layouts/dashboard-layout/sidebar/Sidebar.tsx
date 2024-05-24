@@ -24,16 +24,18 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onClose }) => {
     <>
       <aside className={clsx(classes.root, className)}>
         <div className={clsx(classes['user'], 'u-p-5 u-mr-5')}>
-          <figure className={classes['user__media']}>
-            <Image
-              className={classes['user__image']}
-              src={user?.photo?.url || ''}
-              alt={user?.name || ''}
-              loading="lazy"
-              height={50}
-              width={50}
-            />
-          </figure>
+          {user?.name && user?.photo && (
+            <figure className={classes['user__media']}>
+              <Image
+                className={classes['user__image']}
+                src={user?.photo?.url || ''}
+                alt={user?.name || ''}
+                loading="lazy"
+                height={50}
+                width={50}
+              />
+            </figure>
+          )}
 
           <h5
             className={clsx(
