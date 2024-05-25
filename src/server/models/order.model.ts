@@ -54,7 +54,7 @@ export class OrderItem {
   },
 })
 @pre<Order>(/^find/, function (next) {
-  this.sort('-createdAt');
+  (this as any).sort('-createdAt');
   next();
 })
 export class Order {

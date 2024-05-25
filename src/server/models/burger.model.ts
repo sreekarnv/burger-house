@@ -36,7 +36,9 @@ export class BurgerIngredient {
   next();
 })
 @pre<Burger>(/^find/, async function (next) {
-  this.sort('-createdAt').populate('ingredients.ingredient', 'name photo');
+  (this as any)
+    .sort('-createdAt')
+    .populate('ingredients.ingredient', 'name photo');
 
   next();
 })

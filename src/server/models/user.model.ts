@@ -38,7 +38,8 @@ export class Location {
   },
 })
 @pre<User>('find', async function (next) {
-  this.find({ isActive: true });
+  (this as any).find({ isActive: true });
+
   next();
 })
 @pre<User>('save', async function (next) {
