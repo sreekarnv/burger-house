@@ -1,6 +1,6 @@
 {
   "name": "burger-house",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -47,10 +47,10 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "eslint": "^8.33.0",
-    "eslint-config-next": "13.1.6",
+    "eslint-config-next": "14.2.3",
     "prettier": "^2.8.3",
     "sass": "^1.77.2",
     "sharp": "^0.31.3",
@@ -58,5 +58,12 @@
   },
   "ct3aMetadata": {
     "initVersion": "6.12.0"
-  }
+  },
+  "browserslist": [
+    "chrome 64",
+    "edge 79",
+    "firefox 67",
+    "opera 51",
+    "safari 12"
+  ]
 }
