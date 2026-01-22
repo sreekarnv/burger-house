@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { FiGithub, FiLink2, FiLinkedin } from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import IconButton from '../../../components/shared/icon-button';
 import classes from './footer.module.scss';
 
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           </Link>
           .{' '}
           <span className={classes.copyright}>
-            Copyright &copy; {new Date(Date.now()).getFullYear()} by Sreekar
+            Copyright &copy; 2022-{new Date(Date.now()).getFullYear()} by Sreekar
             Venkata Nutulapati
           </span>
         </p>
@@ -45,21 +45,11 @@ const Footer: React.FC = () => {
 
           <Link
             target="_blank"
-            href="https://linkedin.com/in/sreekar-venkata-nutulapati-63672120a"
+            href="https://linkedin.com/in/sreekarnv"
             passHref
           >
             <IconButton aria-label="Linkedin">
               <FiLinkedin />
-            </IconButton>
-          </Link>
-
-          <Link
-            target="_blank"
-            href="https://sreekarnutulapati.vercel.app"
-            passHref
-          >
-            <IconButton aria-label="Website">
-              <FiLink2 />
             </IconButton>
           </Link>
         </div>
