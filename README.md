@@ -1,71 +1,94 @@
-# Burger House: Fast Food Ecommerce Website
+# Burger House - FullStack Burger E-Commerce App
 
-Burger house is a fast-food e-commerce site similar to mcdonalds or burger king which sells burgers. This website allows you to choose burgers from a menu or you are free to make your own burger with the given ingredients. To place an order you must be logged in.
+A full-stack fast-food e-commerce application where users can order from a curated menu or build custom burgers with their choice of ingredients. Features real-time order tracking with map integration.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1feafbfb-a66d-47c4-bdd3-e27ecd92d92c/deploy-status)](https://app.netlify.com/sites/burger-house-sreekar/deploys)
 
-live-preview: https://burger-house-sreekar.netlify.app/
+**Live Demo:** https://burger-house-sreekar.netlify.app/
 
-# Getting Started
+## Features
 
-### Make sure you have installed Node JS and yarn
+- **Custom Burger Builder** - Create your own burger by selecting ingredients
+- **Menu Ordering** - Browse and order from pre-designed menu items
+- **User Authentication** - Secure login/signup with JWT
+- **Order Management** - Track order status and history
+- **Live Delivery Tracking** - Real-time location tracking via MapBox
+- **Admin Dashboard** - Manage orders and update order statuses
+- **Responsive Design** - Works across desktop and mobile devices
 
-Running dev server
+## Tech Stack
 
-        yarn install 
-        yarn dev
+| Category         | Technologies                                                               |
+| ---------------- | -------------------------------------------------------------------------- |
+| Framework        | [Next.js](https://nextjs.org/) (React)                                     |
+| Language         | [TypeScript](https://www.typescriptlang.org/)                              |
+| API              | [tRPC](https://trpc.io/) + [Tanstack Query](https://tanstack.com/query/v4) |
+| State Management | [Redux Toolkit](https://redux-toolkit.js.org/)                             |
+| Database         | [MongoDB](https://mongodb.com/) + [Mongoose](https://mongoosejs.com/)      |
+| Validation       | [Zod](https://zod.dev/)                                                    |
+| Animations       | [Framer Motion](https://www.framer.com/motion/)                            |
+| Maps             | [MapBox GL](https://www.mapbox.com/)                                       |
+| Styling          | [Sass](https://sass-lang.com/)                                             |
+| Image Hosting    | [Cloudinary](https://cloudinary.com/)                                      |
 
-Building the app
+## Getting Started
 
-        yarn build
+### Prerequisites
 
+- Node.js (v18+)
+- Yarn
 
-# Home Page
+### Installation
 
-![](assets/home.png)
+```bash
+# Install dependencies
+yarn install
 
-# Menu Page
+# Start development server
+yarn dev
+```
 
-![](assets/menu.png)
+### Build
 
-# Make your own burger !
+```bash
+yarn build
+yarn start
+```
 
-In case you don't like the menu you can make your own burger.
+## Screenshots
 
-![](assets/make-1.png)
-![](assets/make-2.png)
+### Home Page
+![Home Page](assets/home.png)
 
-# Customer Dashboard
+### Menu Page
+![Menu Page](assets/menu.png)
 
-Customers (admins also) can update their details, view their order status, cancel the order and track location of mock delivery.
+### Custom Burger Builder
+Build your own burger with your favorite ingredients.
 
-![](assets/customer-dashboard-1.png)
-![](assets/customer-dashboard-2.png)
-![](assets/customer-dashboard-3.png)
+![Burger Builder Step 1](assets/make-1.png)
+![Burger Builder Step 2](assets/make-2.png)
 
-# Admin Dashboard
+### Customer Dashboard
+View order status, track delivery location, update profile, and manage orders.
 
-Admins can update existing manage orders
+![Customer Dashboard 1](assets/customer-dashboard-1.png)
+![Customer Dashboard 2](assets/customer-dashboard-2.png)
+![Customer Dashboard 3](assets/customer-dashboard-3.png)
 
-![](assets/admin-dashboard-1.png)
-![](assets/admin-dashboard-2.png)
+### Admin Dashboard
+Manage and update order statuses.
 
-# Techonlogies Used
+![Admin Dashboard 1](assets/admin-dashboard-1.png)
+![Admin Dashboard 2](assets/admin-dashboard-2.png)
 
-1. [Next](https://nextjs.org/)
-2. [tRPC](https://trpc.io/) + [Tanstack Query](https://tanstack.com/query/v4/docs/react/overview)
-4. [Framer Motion](https://www.framer.com/motion/)
-5. [Redux Toolkit](https://redux-toolkit.js.org/)
-6. [MongoDB](https://mongodb.com/)
-7. [MapBox](https://www.mapbox.com/)
-8. [Sass](https://sass-lang.com/)
+## Demo Credentials
 
+> **Note:** These are for demo purposes only.
 
+| Role  | Email           | Password |
+| ----- | --------------- | -------- |
+| Admin | admin@email.com | Pass123# |
+| User  | user1@email.com | Pass123# |
 
-# Credentials
-
-    Admin:  email: admin@email.com
-            Pass: Pass123#
-
-    user : email: user1@email.com (You can create your own account)
-            Pass: Pass123#
+You can also create your own account to test the user experience.
